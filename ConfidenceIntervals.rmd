@@ -1,0 +1,143 @@
+---
+title: "Confidence Interval - WES reporting"
+author: "Martin Monkman"
+date: "February 2, 2016"
+output: word_document
+---
+
+The current reporting criterial for WES is currently too arbitrary, and needs to incorporate a sliding scale. A work unit of 20 and 10 respondents will get a report, but one with 21 with 10 respondents would not.
+
+The minimum of 10 respondents gives us assurance that confidentiality is protected. But we also need to be mindful of the _quality_ of the results; that is to say, how confident can we be in the results?
+
+### One-off calculation
+
+This script calculates the 95% (alpha = 0.05) confidence intervals by the work unit size, number of responses, and proportion of respondents giving a specific response.
+
+```{r, echo = FALSE}
+
+# set work unit size
+N <- 20
+
+# set number of respondents
+n <- 10
+
+# set the response rate [enter as decimal from 0.0 to 1.0]
+RR <- 0.5
+
+# set proportion of respondents giving specific response 
+# (50% [enter as 0.5] gives the largest possible confidence interval)
+P <- 0.5
+
+# calculate the standard deviation of the sample
+SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
+SD
+
+CInt <- SD * 1.96
+CInt
+
+```
+
+The confidence interval is `r CInt`. 
+
+### Functions
+
+Let`s set it up as a pair of functions, one by `n` and the other by response rate (`RR`):
+
+
+```{r}
+
+# by n
+ConfInt_n <- function(N, n, P){
+  SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
+  CInt <- SD * 1.96
+}
+
+# by response rate
+ConfInt_RR <- function(N, RR, P){
+  n <- N * RR
+  SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
+  CInt <- SD * 1.96
+}
+
+```
+
+Now run a batch:
+
+```{r}
+
+for (N in 20:49){
+  print(N)
+}
+
+N <- 47
+RR <- 0.5
+n <- trunc(N * RR)
+P <- 0.5
+CI <- ConfInt_RR(N, RR, P)
+
+
+for(N in 20:49) {
+  n <- trunc(N * RR)
+  CI <- ConfInt_n(N, n, P)
+  print(CI)
+  }
+
+```
+
+### Make a table showing `N`, `n`, and the resulting confidence interval at 50% response rate.
+
+This uses the package `dplyr`. 
+
+#### Driven by response rate
+
+Calculate both the `n` (based on the defined response rate) and the confidence interval (`CI`).
+
+```{r}
+
+library(dplyr)
+
+N <- c(20:49)
+CItable <- data.frame(N)
+
+P <- 0.5
+RR <- 0.5
+
+mutate(CItable,
+       n = trunc(N * RR),
+       CI = ConfInt_n(N, n, P))
+
+
+# assign the output to a table
+
+CItable_RR <- mutate(CItable,
+                  n = trunc(N * RR),
+                  CI = ConfInt_n(N, n, P))
+
+CItable_RR
+
+```
+
+#### Driven by response rate
+
+Calculate the response rate `RR` (based on the number of responses) and the confidence interval (`CI`).
+
+
+```{r}
+
+P <- 0.5
+n <- 10
+
+# assign the output to a table
+
+CItable_n <- mutate(CItable,
+                    n = n,
+                    CI = ConfInt_n(N, n, P))
+
+CItable_n
+
+```
+
+
+The end (for now)
+
+-30-
