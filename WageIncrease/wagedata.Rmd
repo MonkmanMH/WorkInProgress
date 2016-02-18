@@ -1,0 +1,42 @@
+---
+title: "wageincreases"
+author: "Martin Monkman"
+date: "February 16, 2016"
+output: html_document
+---
+
+Hey, let's take a look to see what's happened to compensation in the B.C. Public Service over the past decade.
+
+```{r}
+setwd("//sfp.idir.bcgov/U152/MHMONKMA$/Profile/Desktop")
+
+wagedata <- read.csv("wagedata.csv", header = TRUE)
+ls.str(wagedata)
+head(wagedata)
+wagedata$Date <- as.Date(wagedata$Date, format = "%Y-%m-%d")
+ls.str(wagedata)
+
+wagedata
+
+
+
+library(ggplot2)
+library(ggthemes)
+
+ggplot(wagedata, aes(x=Date, y=Index, colour=Group)) +
+  geom_line(size=1.5) +
+  scale_x_date() +
+  theme_fivethirtyeight() +
+  ggtitle("Salary increases in the B.C. Public Service\n2006-04-01 to 2016-04-01") +
+  ylab("Index (2006-04-01 = 100)") +
+  xlab("")
+
+
+
+```
+
+Excluded staff need a 6% lift on April 1st to put excluded earning at parity with the gains received by the BCGEU since April 1, 2006.
+
+ha ha ha
+
+-30-
