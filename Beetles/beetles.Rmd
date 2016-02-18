@@ -1,0 +1,67 @@
+---
+title: "What is your VW New Beetle worth?"
+author: "Martin Monkman"
+date: "Monday, March 09, 2015"
+output: html_document
+---
+
+Inputs:  current asking price, age, and KM of VW New Beetles available for sale throughout British Columbia,
+as advertised on
+
+* autotrader.ca 
+
+* usedvictoria.ca
+
+* craigslist.ca
+
+The first chunk creates two linear regression models and plots them: 
+
+## predicting price by KM
+
+
+```{r}
+library("ggplot2")
+
+beetles <- read.csv("beetles.csv")
+
+lm(formula = Price ~ KM, data = beetles)
+
+plot_PKM <- ggplot(beetles, aes(x=KM, y=Price))
+plot_PKM + geom_point() + stat_smooth(method=lm, level=0.95)
+
+```
+
+## predicting price by age
+
+```{r}
+
+lm(formula = Price ~ age, data = beetles)
+
+plot_Page <- ggplot(beetles, aes(x=age, y=Price))
+plot_Page + geom_point() + stat_smooth(method=lm, level=0.95)
+
+
+plot_Page <- ggplot(beetles, aes(x=age, y=Price))
+plot_Page + 
+  geom_point() + 
+  stat_smooth(method=lm, level=0.95) +
+  theme_bw() +
+  theme(legend.position="bottom")
+
+```
+
+## predicting price by KM and age
+
+Now, a multiple regression model predicting price with both KM and age as the independent variables.
+
+```{r}
+
+lm(formula = Price ~ age + KM, data = beetles)
+
+```
+
+
+_How to plot this puppy?_
+
+
+-30-
