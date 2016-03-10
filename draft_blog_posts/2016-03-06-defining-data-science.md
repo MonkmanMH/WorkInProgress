@@ -97,9 +97,13 @@ Kennedy, Pagan (2013) ["Who Made That Universal Product Code?"](http://www.nytim
 
 Loukids, Mike (2010) ["What is data science? The future belongs to the companies and people that turn data into products."](https://www.oreilly.com/ideas/what-is-data-science), _o'reilly.com_ 2010-06-02.
 
-Data Science Department, New York University (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
+New York University, Data Science Department (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
 
-Peng, Roger (2014-2016) _R Programming for Data Science_, Lean Pub (https://leanpub.com/rprogramming)
+Peng, Roger D. (2015) _Exploratory Data Analysis with R_, Lean Pub (https://leanpub.com/exdata)
+
+Peng, Roger D. (2014-2016) _R Programming for Data Science_, Lean Pub (https://leanpub.com/rprogramming)
+
+Peng, Roger D. (2015-2016) _Report Writing for Data Science in R_, Lean Pub (https://leanpub.com/reportwriting)
 
 Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for Anyone Who Works with Data_, Lean Pub (https://leanpub.com/artofdatascience).
 
