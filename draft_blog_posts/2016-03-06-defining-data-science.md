@@ -49,14 +49,25 @@ He used three broad areas to define the skill necessary to do "data science":
 * Substantive Expertise:  this is “subject matter knowledge”, knowing enough about the topic at hand to be able to formulate meaningful research questions
 
 Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science) gets more specific:
+
 1. Three skill groups: business, technology/programming, and statistics/math
+
 2. Four types of data scientist: developer, researcher, creative, and business management
+
 3. Proficiency in the skill groups varies by job type
+
 4. "The scientific method is an effective way to approach data-intensive projects"
+
 5. "Statistics skills, compared to other data skills, are good predictors of success of analytics projects"
+
 6. People possessing all five skills in the three skill groups are rare
+
 7. A team approach, where the members possess complementary skills, can provide a successful approach to doing data science 
-8. We need more women in data science (ok, that's my own editorializing, but only 25% of data scientists are women)
+
+8. We need more women in data science [ok, that's my own editorializing, but as Hayes notes, only 25% of data scientists are women]
+ 
+
+>> Roger Peng
 
 
 ### The role of technology
