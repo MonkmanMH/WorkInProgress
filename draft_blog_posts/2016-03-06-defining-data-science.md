@@ -99,6 +99,10 @@ Loukids, Mike (2010) ["What is data science? The future belongs to the companies
 
 Data Science Department, New York University (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
 
+Peng, Roger (2014-2016) _R Programming for Data Science_, Lean Pub (https://leanpub.com/rprogramming)
+
+Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for Anyone Who Works with Data_, Lean Pub (https://leanpub.com/artofdatascience).
+
 Rickert, Joseph (2013) ["Nate Silver addresses assembled statisticians at this year's JSM"](http://blog.revolutionanalytics.com/2013/08/nate-silver-jsm.html), _Revolution Analytics_, 2013-08-08.
 
 Schutt, Rachel & O'Neil, Cathy (2014) _Doing Data Science: Straight Talk From the Frontline_. O'Reilly.
