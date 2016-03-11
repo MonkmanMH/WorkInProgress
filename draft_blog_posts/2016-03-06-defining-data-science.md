@@ -92,6 +92,8 @@ ___
 
 ## References
 
+Augur, Hannah (2016) ["Beginner's Guide to the History of Data Science"](http://dataconomy.com/beginners-guide-history-data-science/), Dataconomy.com, 2016-03-11 .
+
 Barabba, V.P. (1990) “Through a Glass _Less_ Darkly”, Presidential Address at the Annual Meeting of the American Statistical Association, Aug. 7, 1990. Printed in the _Journal of the American Statistical Association_, [Volume 86, Issue 413, 1991] (http://amstat.tandfonline.com/doi/abs/10.1080/01621459.1991.10474995).
 
 Conway, Drew (2013) ["The Data Science Venn Diagram"](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram).
