@@ -64,7 +64,7 @@ Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Pr
 
 7. A team approach, where the members possess complementary skills, can provide a successful approach to doing data science 
 
-8. We need more women in data science [ok, that's my own editorializing, but as Hayes notes, only 25% of data scientists are women]
+8. We need more women in data science [ok, that's my own editorializing, as Hayes calls it "diversity". But as he notes, only 25% of data scientists are women]
  
 
 >> Roger Peng
