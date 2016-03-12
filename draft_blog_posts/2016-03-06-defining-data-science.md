@@ -13,7 +13,11 @@ Nate Silver created a stir in his address to the Joint Statistical Meetings (JSM
 In 1962, the statistician John Tukey (author of the classic _Exploratory Data Analysis_) wrote that his central interest was in 
 > data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing data.
 
-V.P. Barabba 1990: role of statistician in supporting decision makers.
+In 1974, Peter Naur published _Concise Survey of Computer Methods_, wherein he uses the term "data science". It took some time, but the term has really caught on lately.
+
+The term as applied to an individual---a "data scientist"--doesn't appear until 2008.
+
+(The above was drawn from Hannah Augur's recent post, "Beginner's Guide to the History of Data Science". For links to this and other documents I refer to, see the References section below.)
 
 So perhaps it's a good time to look at what's changed.
 
@@ -39,9 +43,14 @@ So what does it take to make sense of all of this data? To collect it, shape it,
 
 “Data science” is a term increasingly used to describe a range of skills necessary to make this happen.
 
-Nearly three years ago, Drew Conway created a blog entry ["The Data Science Venn Diagram"](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram) wherein he started to define what constitutes data science. 
+What follows draws largely on 
 
-One of the opening remarks Conway made in the blog was "The difficulty in defining these skills is that the split between substance and methodology is ambiguous...". His solution was very clever---simply acknowledge that there _is_ an overlap between substance and methodology across disciplines.
+* the aforementioned Tukey (1962) paper;
+* Drew Conway's blog entry ["The Data Science Venn Diagram"](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram); 
+* Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science); and
+* Roger Peng's books on data science (see list in the References below).
+
+Conway comes at the question from the perspective of the necessary skills. One of the opening remarks Conway made in the blog was "The difficulty in defining these skills is that the split between substance and methodology is ambiguous...". His solution was very clever---simply acknowledge that there _is_ an overlap between substance and methodology across disciplines.
 
 He used three broad areas to define the skill necessary to do "data science":
 
@@ -51,7 +60,7 @@ He used three broad areas to define the skill necessary to do "data science":
 
 * Substantive Expertise:  this is “subject matter knowledge”, knowing enough about the topic at hand to be able to formulate meaningful research questions
 
-Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science) gets more specific:
+Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science) gets more specific and expansive:
 
 1. Three skill groups: business, technology/programming, and statistics/math
 
@@ -70,7 +79,7 @@ Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Pr
 8. We need more women in data science [ok, that's my own editorializing, as Hayes calls it "diversity". But as he notes, only 25% of data scientists are women]
  
 
->> Roger Peng
+I think my own perspective is close to Roger Peng's. It's interesting to note that even in the book _The Art of Data Science_ Peng and his co-author Elizabeth Matsui don't define "data science". They simply dive in and describe a process, one that looks very similar to what Tukey wrote about more than 50 years ago.
 
 
 ### The role of technology
@@ -89,6 +98,10 @@ But when it came to building the Panama Canal, human effort was insufficient---a
 The same is true with information technology---it can be used to accelerate the use of data, but it is _not_ the solution.
 
 Simultaneous with the increased volume and variety of data that are being collected (and in some cases shared), we have more accessible technology to work with the data. This includes powerful desktop computers with lots of storage, networks and clouds to share the information, and advances in analytic tools.
+
+
+### The Data Science Process
+
 
 
 ___
@@ -114,6 +127,10 @@ Hays, Constance L. (2004) ["What Wal-Mart Knows About Customers' Habits"](http:/
 Kennedy, Pagan (2013) ["Who Made That Universal Product Code?"](http://www.nytimes.com/2013/01/06/magazine/who-made-that-universal-product-code.html), New York Times, 2013-01-04.
 
 Loukids, Mike (2010) ["What is data science? The future belongs to the companies and people that turn data into products."](https://www.oreilly.com/ideas/what-is-data-science), _o'reilly.com_ 2010-06-02.
+
+Mimno, David (2014) "Data carpentry", [blog entry at mimno.org](http://www.mimno.org/articles/carpentry/), 2014-08-19.
+
+Naur, Peter (1974) _Concise Survey of Computer Methods_, Studentlitteratur.
 
 New York University, Data Science Department (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
 
