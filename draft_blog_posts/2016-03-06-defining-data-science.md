@@ -6,11 +6,14 @@ date: 2016-02-24
 
 What is "data science"? A google search of that question generates 460,000,000 hits, and the first page of that search is populated with a variety of inconsistent definitions. So, to add another to the pile, here's some of my thoughts as I try to make sense of this.
 
-### Is data science just a new name for applied statistics?
+### Is data science just a different name for applied statistics?
 
-Nate Silver created a stir in his address to the Joint Statistical Meetings (JSM) when he said "Data scientist is just a sexed up word for statistician." (He's earlier said that he's not a statistician. But then again, neither am I, in spite of my job title.)
+Nate Silver created a stir in his address to the Joint Statistical Meetings (JSM) in 2013 when he said "Data scientist is just a sexed up word for statistician." (He's earlier said that he's not a statistician. But then again, neither am I, in spite of my job title.)
 
-And nearly a quarter-century prior, V.P. Barabba noted that there's overlap between the work of a statistician.
+In 1962, the statistician John Tukey (author of the classic _Exploratory Data Analysis_) wrote that his central interest was in 
+> data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing data.
+
+V.P. Barabba 1990: role of statistician in supporting decision makers.
 
 So perhaps it's a good time to look at what's changed.
 
@@ -106,6 +109,8 @@ Franck, Christopher (2013) ["Is Nate Silver a Statistician?"](http://magazine.am
 
 Hayes, Bob (2015) ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science), businessoverbroadway.com, 2015-12-14.
 
+Hays, Constance L. (2004) ["What Wal-Mart Knows About Customers' Habits"](http://www.nytimes.com/2004/11/14/business/yourmoney/what-walmart-knows-about-customers-habits.html), _New York Times_, 2004-11-14
+
 Kennedy, Pagan (2013) ["Who Made That Universal Product Code?"](http://www.nytimes.com/2013/01/06/magazine/who-made-that-universal-product-code.html), New York Times, 2013-01-04.
 
 Loukids, Mike (2010) ["What is data science? The future belongs to the companies and people that turn data into products."](https://www.oreilly.com/ideas/what-is-data-science), _o'reilly.com_ 2010-06-02.
@@ -132,7 +137,9 @@ Simply Statistics (2013) ["Data scientist is just a sexed up word for statistici
 
 Statistics Views (2013) ["Nate Silver: What I need from statisticians"](http://www.statisticsviews.com/details/feature/5133141/Nate-Silver-What-I-need-from-statisticians.html), _Statistics Views_,  2013-08-23.
 
-Hays, Constance L. (2004) ["What Wal-Mart Knows About Customers' Habits"](http://www.nytimes.com/2004/11/14/business/yourmoney/what-walmart-knows-about-customers-habits.html), _New York Times_, 2004-11-14
+Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical Statistics_, 33-1, pp.1-67](https://projecteuclid.org/download/pdf_1/euclid.aoms/1177704711).
+
+Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
 ___
 
