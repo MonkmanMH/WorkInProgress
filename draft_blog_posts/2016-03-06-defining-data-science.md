@@ -103,7 +103,9 @@ Simultaneous with the increased volume and variety of data that are being collec
 ### The Data Science Process
 
 
+### In closing:
 
+> The scientific method guides data science. Data science solves known problems with the scientific method. (Wickham & Grolemund, [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html), chapter 20)
 ___
 
 ## References
@@ -158,6 +160,7 @@ Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical S
 
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
+Wickham, Hadley and Garrett Groelmund (2016), [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html)
 ___
 
 Jim Collins, Good to Great:
