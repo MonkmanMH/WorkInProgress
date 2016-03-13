@@ -96,6 +96,9 @@ Advanced statistical methods
 
 Where computing power has really changed the game; expanded possibilities of techniques such as K-NN and Monte Carlo
 
+(Note: statistics, as in the academic discipline, is one of the tools that a data scientist _absolutely_ needs to know. It supports accurate and informed EDA and modeling; these two phases of the data science process are informed by statistics, and benefit from advances in statistics. Contrary to some writers you may encounter, I don't believe that it is a "versus" thing, or that one is better than the other. Statistics makes good data science, and data science is one place that someone trained in statistics can become a practioner.)
+
+
 #### 6. Data visualization
 
 An important component of understanding your data at the EDA and modeling, and in how the data's meaning is communicated
