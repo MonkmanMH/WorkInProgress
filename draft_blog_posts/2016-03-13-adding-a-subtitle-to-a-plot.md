@@ -30,6 +30,10 @@ library(scales)
 # tables
 library(xtable)
 
+# or, for the development version of ggplot2...
+# install.packages("devtools")
+devtools::install_github("hadley/ggplot2")
+
 
 # PLOTTING ESSENTIALS
 
@@ -72,6 +76,7 @@ palette_BCStats_fill <- c("#3F3F3F", "#ABABAB", "#DFDFDF", "#969696", "#838383",
 #
 data_agedistrib01 <- read.csv("./data_source/data_agedistrib01.csv", header = TRUE)
 
+# rename the columns
 colnames(data_agedistrib01) <- c("year", "All.ages", 
                                  "00", "01", "02", "03", "04", 
                                  "05", "06", "07", "08", "09",
@@ -79,7 +84,6 @@ colnames(data_agedistrib01) <- c("year", "All.ages",
 
 
 # turn the wide version of data_medianage into long format, add pctage column
-
 data_agedistrib01_long <- data_agedistrib01 %>%
   gather(age, popul, -year) %>%
   filter(age != "All.ages") %>%
@@ -87,8 +91,9 @@ data_agedistrib01_long <- data_agedistrib01 %>%
   summarise(popul = sum(popul)) %>%
   mutate(year_pct = (popul / sum(popul) * 100)) 
 
-#head(data_agedistrib01_long)
+head(data_agedistrib01_long)
 
+# create a version of the table with only the annual total population (i.e. no age breakdown)
 data_totalpop_19712015 <- data_agedistrib01 %>%
   gather(age, popul, -year) %>%
   filter(age == "All.ages")
@@ -214,6 +219,10 @@ ggplot_with_subtitle(gg, subtitle,
 
 
 ```
+
+#### Alternate approach to the sub-title, using the dev version of ggplot2
+
+
 
 
 -30-
