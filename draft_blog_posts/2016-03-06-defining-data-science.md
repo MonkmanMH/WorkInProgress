@@ -4,8 +4,6 @@ title: "Defining data science"
 date: 2016-02-24
 ---
 
-### Is data science just a different name for applied statistics?
-
 What is "data science"? A google search of that question generates 460,000,000 hits, and the first page of that search is populated with a variety of inconsistent definitions. So, to add another to the pile, here's some of my thoughts as I try to make sense of this.
 
 Nate Silver created a stir in his address to the Joint Statistical Meetings (JSM) in 2013 when he said "Data scientist is just a sexed up word for statistician." (He's earlier said that he's not a statistician. But then again, neither am I, in spite of my job title.)
@@ -37,7 +35,8 @@ And retailers are using information about what we buy to try to sell us more stu
 In parallel with big data, public agencies around the world are being more transparent by releasing more and more data, and making it available in formats that can be read by any computer. This supports transparency and accountability, and also provides a public good by allowing outside entities to use publically-collected data and information in other applications.
 
 
-### Defining data science
+### The Data Science Process
+
 
 So what does it take to make sense of all of this data? To collect it, shape it, analyze it, and draw from it intelligence and knowledge?
 
@@ -45,12 +44,11 @@ So what does it take to make sense of all of this data? To collect it, shape it,
 
 It turns out that Tukey was prescient. "Data science" as currently understood is a process that is essentially what he'd described over 50 years ago.
 
-### The Data Science Process
-
 1. Collecting data
 2. Data carpentry (a.k.a. tidying, munging, hacking)
 3. Exploratory data analysis
 4. Data modeling
+5. Data visualization
 5. Communication
 
 Grolemund & Wickham's forthcoming book has the following diagram:
@@ -58,6 +56,33 @@ Grolemund & Wickham's forthcoming book has the following diagram:
 ![A data science project](http://www.creativetourist.com/cms/wp-content/uploads/2016/01/PHM-Grafters-Industrial-society-in-image-and-word-@-Peoples-History-Mus)
 
 While I They have a) skipped the important first step of collecting data (it has to come from somewhere), and b) looped the "Understanding" phase. I would also argue that visualization is an important tool that applies to exploring, modeling, and communicating...it's not constrained to being a single step in the "Understanding" component.
+
+Each of the five components separately:
+
+#### Collecting data
+
+#### Data carpentry
+
+Mimno
+
+#### Exploratory data analysis
+
+Tukey
+
+#### Data modeling
+
+Advanced statistical methods
+
+Where computing power has really changed the game; expanded possibilities of techniques such as K-NN and Monte Carlo
+
+#### Data visualization
+
+An important component of understanding your data at the EDA and modeling, and in how the data's meaning is communicated
+
+#### Communication
+
+
+
 
 ### I didn't make this up
 
@@ -164,6 +189,8 @@ Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for
 
 Rickert, Joseph (2013) ["Nate Silver addresses assembled statisticians at this year's JSM"](http://blog.revolutionanalytics.com/2013/08/nate-silver-jsm.html), _Revolution Analytics_, 2013-08-08.
 
+Saunders, Todd (2014) ["Data Science and Data Scientists: What’s in a Name?"](http://www.cbigconsulting.com/wp-content/uploads/2014/03/data-scientist.pdf), CBIG Counsulting, 2013-11-11
+
 Schutt, Rachel & O'Neil, Cathy (2014) _Doing Data Science: Straight Talk From the Frontline_. O'Reilly.
 
 Simply Statistics (2012) ["Schlep blindness in statistics"](http://simplystatistics.org/2012/05/28/schlep-blindness-in-statistics/), 2012-05-28.
@@ -177,6 +204,7 @@ Statistics Views (2013) ["Nate Silver: What I need from statisticians"](http://w
 Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical Statistics_, 33-1, pp.1-67](https://projecteuclid.org/download/pdf_1/euclid.aoms/1177704711).
 
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
+
 
 ___
 
