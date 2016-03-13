@@ -111,9 +111,9 @@ An important component of understanding your data at the EDA and modeling, and i
 
 ### The Role of R in Data Science
 
-R won't help you collect data, but in the subsequent steps R is a great tool. Having been designed at its core to facilitate exploratory data analysis and statistical modeling, packages have been created that provide the tools to quickly and efficiently undertake data carpentry and data visualization. 
+R won't help you collect data, but in the subsequent steps R is a great tool. Having been designed initially to facilitate exploratory data analysis and statistical modeling (i.e. statistics), packages have subsequently been created that provide the tools to quickly and efficiently undertake data carpentry and data visualization. 
 
-And as the dataviz packages improve (e.g. the recent release of `ggplot2` v.2 was a big leap forward; yes it broke some of my code but the additional functionality is worth the trouble) it will only get better. 
+And as the dataviz and web display packages improve (e.g. the recent release of `ggplot2` v.2 was a big leap forward; yes it broke some of my code but the additional functionality is worth the trouble) R will only get better. 
 
 Another sidebar: ggplot2 2.0.0 was released on 2016-01-01 [look up the correct date]. Since then there have been enough additions to warrant a 2.1.0 release; and meanwhile there are new extensions being added in the development version (e.g. [sub-title functionality by Bob Rudis](http://rud.is/b/2016/03/12/ggplot2%E3%81%A7%E5%AD%97%E5%B9%95-subtitles-in-ggplot2/?utm_content=buffer42831&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).)
 
