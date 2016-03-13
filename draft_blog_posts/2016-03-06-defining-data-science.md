@@ -59,27 +59,32 @@ While I They have a) skipped the important first step of collecting data (it has
 
 Each of the five components separately:
 
-#### Collecting data
+#### 1. Collecting data
 
-#### Data carpentry
+* Three sources:
++ Pre-packaged
++ Administrative or business data
++ Original (e.g. survey)
+
+#### 2. Data carpentry
 
 Mimno
 
-#### Exploratory data analysis
+#### 3. Exploratory data analysis
 
 Tukey
 
-#### Data modeling
+#### 4. Data modeling
 
 Advanced statistical methods
 
 Where computing power has really changed the game; expanded possibilities of techniques such as K-NN and Monte Carlo
 
-#### Data visualization
+#### 5. Data visualization
 
 An important component of understanding your data at the EDA and modeling, and in how the data's meaning is communicated
 
-#### Communication
+#### 6. Communication
 
 
 
