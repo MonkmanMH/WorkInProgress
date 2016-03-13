@@ -44,52 +44,75 @@ So what does it take to make sense of all of this data? To collect it, shape it,
 
 It turns out that Tukey was prescient. "Data science" as currently understood is a process that is essentially what he'd described over 50 years ago.
 
-1. Collecting data
-2. Data carpentry (a.k.a. tidying, munging, hacking)
-3. Exploratory data analysis
-4. Data modeling
-5. Data visualization
-5. Communication
+1. Defining the research question
+2. Collecting data
+3. Data carpentry (a.k.a. tidying, munging, hacking)
+4. Exploratory data analysis
+5. Data modeling
+6. Data visualization
+7. Communication
 
 Grolemund & Wickham's forthcoming book has the following diagram:
 
 ![A data science project](http://r4ds.had.co.nz/diagrams/data-science.png)
 
-While I They have a) skipped the important first step of collecting data (it has to come from somewhere), and b) looped the "Understanding" phase. I would also argue that visualization is an important tool that applies to exploring, modeling, and communicating...it's not constrained to being a single step in the "Understanding" component.
+While this diagram is a good place to start thinking about how to approach the data science, it has some shortcomings. They have a) skipped the important first step of collecting data (it has to come from somewhere), b) assumed that the "Understanding" phase won't send you back to the "Tidy" step, and c) looped the "Understanding" phase. I would also argue that visualization is an important tool that applies to exploring, modeling, and communicating...it's not constrained to the "Understanding" phase.
 
 Each of the five components separately:
 
-#### 1. Collecting data
+#### 1. Defining the research question
+
+Too often overlooked!
+
+#### 2. Collecting data
 
 * Three sources:
 + Pre-packaged
 + Administrative or business data
 + Original (e.g. survey)
 
-#### 2. Data carpentry
+Pre-packaged data: whether in the text book or from open data source (Statistics Canada, Data BC)
 
-Mimno
+#### 3. Data carpentry
 
-#### 3. Exploratory data analysis
+> Raw data is rarely usable for analysis without significant work. (Peter Mimno, ["Data carpentry"](http://www.mimno.org/articles/carpentry/)
+
+Sometimes called "data hacking", "data wrangling", or "data munging", a better term is "data carpentry". Peter Mimno rightly points out that the other terms either mischaracterize the nature of the work, or are essentially meaningless. He continues:
+
+> the process is more like deciding how to cut into a piece of material, or how much to plane down a surface. It’s not that there’s any real distinction between good and bad, it’s more that some parts are softer or knottier than others. Judgement is critical.
+
+The other key point is that data are often messy. [The Quartz guide to bad data](https://github.com/Quartz/bad-data-guide) provides a rather comprehensive list of all the problems you might encounter on your road to the analysis.
+
+There's a whole sub-topic on tidy vs. non-tidy (different than untidy!) data (see for instance Roger Peng's [blog entry of 2016-02-17](http://simplystatistics.org/2016/02/17/non-tidy-data/). That's a tangent for another day.
+
+
+#### 4. Exploratory data analysis
 
 Tukey
 
-#### 4. Data modeling
+#### 5. Data modeling
 
 Advanced statistical methods
 
 Where computing power has really changed the game; expanded possibilities of techniques such as K-NN and Monte Carlo
 
-#### 5. Data visualization
+#### 6. Data visualization
 
 An important component of understanding your data at the EDA and modeling, and in how the data's meaning is communicated
 
-#### 6. Communication
+#### 7. Communication
 
 
 
+### The Role of R in Data Science
 
-### I didn't make this up
+R won't help you collect data, but in the subsequent steps R is a great tool. Having been designed at its core to facilitate exploratory data analysis and statistical modeling, packages have been created that provide the tools to quickly and efficiently undertake data carpentry and data visualization. And as the dataviz packages improve (e.g. the recent release of `ggplot2` v.2 was a big leap forward; yes it broke some of my code but the additional functionality is worth the trouble) it will only get better. 
+
+Future presentations will cover specific applications of R packages to the steps in a data science project.
+
+___
+
+### Sidebar: I didn't make this up
 
 This paper draws largely on: 
 
@@ -127,7 +150,7 @@ Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Pr
 8. We need more women in data science [ok, that's my own editorializing, as Hayes calls it "diversity". But as he notes, only 25% of data scientists are women]
  
 
-I think my own perspective is close to Roger Peng's. It's interesting to note that even in the book _The Art of Data Science_ Peng and his co-author Elizabeth Matsui don't define "data science". They simply dive in and describe a process, one that looks very similar to what Tukey wrote about more than 50 years ago.
+My own perspective is close to Roger Peng's. It's interesting to note that even in the book _The Art of Data Science_ Peng and his co-author Elizabeth Matsui don't define "data science". They simply dive in and describe a process, one that looks very similar to what Tukey wrote about more than 50 years ago.
 
 
 ### The role of technology
@@ -189,6 +212,8 @@ Peng, Roger D. (2015) _Exploratory Data Analysis with R_, Lean Pub (https://lean
 Peng, Roger D. (2014-2016) _R Programming for Data Science_, Lean Pub (https://leanpub.com/rprogramming)
 
 Peng, Roger D. (2015-2016) _Report Writing for Data Science in R_, Lean Pub (https://leanpub.com/reportwriting)
+
+Peng, Roger D. (2016) ["Non-tidy data"](http://simplystatistics.org/2016/02/17/non-tidy-data/), simplystatistics.org, 2016-02-17.
 
 Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for Anyone Who Works with Data_, Lean Pub (https://leanpub.com/artofdatascience).
 
