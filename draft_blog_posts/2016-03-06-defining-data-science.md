@@ -4,9 +4,9 @@ title: "Defining data science"
 date: 2016-02-24
 ---
 
-What is "data science"? A google search of that question generates 460,000,000 hits, and the first page of that search is populated with a variety of inconsistent definitions. So, to add another to the pile, here's some of my thoughts as I try to make sense of this.
-
 ### Is data science just a different name for applied statistics?
+
+What is "data science"? A google search of that question generates 460,000,000 hits, and the first page of that search is populated with a variety of inconsistent definitions. So, to add another to the pile, here's some of my thoughts as I try to make sense of this.
 
 Nate Silver created a stir in his address to the Joint Statistical Meetings (JSM) in 2013 when he said "Data scientist is just a sexed up word for statistician." (He's earlier said that he's not a statistician. But then again, neither am I, in spite of my job title.)
 
@@ -105,7 +105,7 @@ Simultaneous with the increased volume and variety of data that are being collec
 
 ### In closing:
 
-> The scientific method guides data science. Data science solves known problems with the scientific method. (Wickham & Grolemund, [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html), chapter 20)
+> The scientific method guides data science. Data science solves known problems with the scientific method. (Grolemund & Wickham, [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html), chapter 20)
 ___
 
 ## References
@@ -121,6 +121,8 @@ Darmon, David (2013?) ["Statistics, Data Science, and Silver"](http://thirdorder
 Foreman, John W. (2014) _Data Smart: Using Data Science to Transform Information into Insight_. Wiley.
 
 Franck, Christopher (2013) ["Is Nate Silver a Statistician?"](http://magazine.amstat.org/blog/2013/10/01/is-nate-silver/), _AmStatNews_, 2013-10-01.
+
+Grolemund, Garrett and Hadley Wickham (2016), [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html)
 
 Hayes, Bob (2015) ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science), businessoverbroadway.com, 2015-12-14.
 
@@ -160,7 +162,6 @@ Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical S
 
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
-Wickham, Hadley and Garrett Groelmund (2016), [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html)
 ___
 
 Jim Collins, Good to Great:
