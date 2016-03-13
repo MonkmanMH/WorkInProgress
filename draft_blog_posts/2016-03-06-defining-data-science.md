@@ -58,6 +58,9 @@ Grolemund & Wickham's forthcoming book has the following diagram:
 
 While this diagram is a good place to start thinking about how to approach the data science, it has some shortcomings. They have a) skipped the important first step of collecting data (it has to come from somewhere), b) assumed that the "Understanding" phase won't send you back to the "Tidy" step, and c) looped the "Understanding" phase. I would also argue that visualization is an important tool that applies to exploring, modeling, and communicating...it's not constrained to the "Understanding" phase.
 
+(Note: statistics, as in the academic discipline, is one of the subject areas that a data scientist _absolutely_ needs to know. Knowledge of robust statistical methods supports accurate and informed EDA and modeling. These techniques and tools applied in these two phases of the data science process _are_ statistics, and a good practitioner of data science will benefit from advances in statistics. Contrary to some writers you may encounter, I don't believe that it is a "versus" thing, or that one is better than the other. Statistics makes good data science, and data science is one place that someone trained in statistics can become a practioner.)
+
+
 Each of the five components separately:
 
 #### 1. Defining the research question
@@ -96,7 +99,6 @@ Advanced statistical methods
 
 Where computing power has really changed the game; expanded possibilities of techniques such as K-NN and Monte Carlo
 
-(Note: statistics, as in the academic discipline, is one of the tools that a data scientist _absolutely_ needs to know. It supports accurate and informed EDA and modeling; these two phases of the data science process are informed by statistics, and benefit from advances in statistics. Contrary to some writers you may encounter, I don't believe that it is a "versus" thing, or that one is better than the other. Statistics makes good data science, and data science is one place that someone trained in statistics can become a practioner.)
 
 
 #### 6. Data visualization
@@ -195,6 +197,8 @@ Conway, Drew (2013) ["The Data Science Venn Diagram"](http://drewconway.com/zia/
 
 Darmon, David (2013?) ["Statistics, Data Science, and Silver"](http://thirdorderscientist.org/homoclinic-orbit/2013/8/11/statistics-data-science-and-silver), _Third Order Scientist_, 2013-08-11
 
+Donoho, David (2015) ["50 years of Data Science"](http://courses.csail.mit.edu/18.337/2015/docs/50YearsDataScience.pdf), 2015-09-18.
+
 Foreman, John W. (2014) _Data Smart: Using Data Science to Transform Information into Insight_. Wiley.
 
 Franck, Christopher (2013) ["Is Nate Silver a Statistician?"](http://magazine.amstat.org/blog/2013/10/01/is-nate-silver/), _AmStatNews_, 2013-10-01.
@@ -208,6 +212,8 @@ Hays, Constance L. (2004) ["What Wal-Mart Knows About Customers' Habits"](http:/
 Kennedy, Pagan (2013) ["Who Made That Universal Product Code?"](http://www.nytimes.com/2013/01/06/magazine/who-made-that-universal-product-code.html), New York Times, 2013-01-04.
 
 Loukids, Mike (2010) ["What is data science? The future belongs to the companies and people that turn data into products."](https://www.oreilly.com/ideas/what-is-data-science), _o'reilly.com_ 2010-06-02.
+
+Matloff, Norm (2016) ["Some Comments of Donoho's "50 Years of Data Science"](https://matloff.wordpress.com/2016/01/23/some-comments-on-donahos-50-years-of-data-science/), matloff.wordpress.com, 2016-01-23.
 
 Mimno, David (2014) "Data carpentry", [blog entry at mimno.org](http://www.mimno.org/articles/carpentry/), 2014-08-19.
 
