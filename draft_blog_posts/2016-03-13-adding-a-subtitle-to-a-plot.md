@@ -1,11 +1,9 @@
-FIX THE YAML
+---
+layout: post
+title: "Adding a sub-title to a ggplot2 plot"
+date: 2016-03-13
+---
 
----
-title: "BC_demography_02_agedistribution"
-author: "Martin Monkman"
-date: "February 14, 2016"
-output: html_document
----
 
 ## Plot the age distribution in British Columbia, 1971-2015
 
@@ -210,8 +208,7 @@ gg <- plot_totalpop
 subtitle <- "The population of B.C. has risen from 2.2 million in 1971 to 4.7 million in 2015"
  
 ggplot_with_subtitle(gg, subtitle,
-#                     fontfamily="FranklinGothic-Book",
-                     fontfamily="Arial",
+                     fontfamily="FranklinGothic-Book",
                      bottom_margin=20, lineheight=0.9)
 
 
