@@ -35,45 +35,13 @@ library(xtable)
 devtools::install_github("hadley/ggplot2")
 
 
-# PLOTTING ESSENTIALS
-
-# create a chart theme & colour palette for use in ggplot2
-# this theme is the basic background for a BC Stats chart
-#
-theme_bw_plus <- 
-  theme_bw() +
-  theme(
-    panel.border = element_rect(colour="white"),
-# next line commented out as axis.line does not work in ggplot2 v.2.1.0 but axis.line.x and .y do
-#    axis.line = element_line(colour="black"),
-    axis.line.x = element_line(colour="black"),
-    axis.line.y = element_line(colour="black"),
-    legend.position=c(1,0), 
-    legend.justification=c(1,0),
-    legend.title = element_text(size=12),
-    legend.text = element_text(size=11),
-    axis.title = element_text(size=16),
-    axis.text = element_text(size=12),
-    plot.title = element_text(size=18, hjust=0)
-  )
-#
-
-# colour palette for chart (use with scale_colour_manual)
-palette_BCStats <- c("#234275", "#E3A82B", "#26BDEF", "#11CC33", "#D3E2ED", "8A8A8A")
-
-# grayscale for fill (use with scale_fill_manual)
-palette_BCStats_fill <- c("#3F3F3F", "#ABABAB", "#DFDFDF", "#969696", "#838383", "8A8A8A")
-
-
-
 ```
 
-
+#### Read and summarize the data
 
 ```{r, echo=FALSE, message=FALSE}
 
 # read the data
-#
 data_agedistrib01 <- read.csv("./data_source/data_agedistrib01.csv", header = TRUE)
 
 # rename the columns
@@ -81,7 +49,6 @@ colnames(data_agedistrib01) <- c("year", "All.ages",
                                  "00", "01", "02", "03", "04", 
                                  "05", "06", "07", "08", "09",
                                  seq(10, 89, by = 1), "90+")
-
 
 # turn the wide version of data_medianage into long format, add pctage column
 data_agedistrib01_long <- data_agedistrib01 %>%
@@ -97,6 +64,8 @@ head(data_agedistrib01_long)
 data_totalpop_19712015 <- data_agedistrib01 %>%
   gather(age, popul, -year) %>%
   filter(age == "All.ages")
+
+head(data_totalpop_19712015)
 
 ```
 
@@ -125,10 +94,8 @@ plot_totalpop <- ggplot(data_totalpop_19712015, aes(x=year, y=popul, colour=age)
 plot_totalpop
 
 # fix the formatting
-
-plot_totalpop <- plot_totalpop +
-  theme_bw_plus +
-  scale_colour_manual(values=palette_BCStats) +
+plot_totalpop2 <- plot_totalpop +
+  theme_classic() +
   ggtitle("British Columbia, Total population, 1971-2015") +
   ylab("population") +
   scale_x_continuous(breaks = seq(1971, 2016, by = 5)) +
@@ -137,14 +104,12 @@ plot_totalpop <- plot_totalpop +
   # remove the legend (not much point when there's only one line!)
   theme(legend.position="none")
 
-plot_totalpop
+plot_totalpop2
 
 # save the plot as a png file
-png("plot_totalpop.png", width=1024, height=768, res=120)
-plot(plot_totalpop)
+png("plot_totalpop2.png", width=1024, height=768, res=120)
+plot(plot_totalpop2)
 dev.off()
-
-
 
 ```
 
@@ -222,7 +187,7 @@ ggplot_with_subtitle(gg, subtitle,
 
 #### Alternate approach to the sub-title, using the dev version of ggplot2
 
-
+(the dev version of ggplot2 is not yet ready for prime time)
 
 
 -30-
