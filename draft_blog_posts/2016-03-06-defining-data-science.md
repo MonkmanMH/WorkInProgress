@@ -41,9 +41,27 @@ In parallel with big data, public agencies around the world are being more trans
 
 So what does it take to make sense of all of this data? To collect it, shape it, analyze it, and draw from it intelligence and knowledge?
 
-“Data science” is a term increasingly used to describe a range of skills necessary to make this happen.
+“Data scientist” is a term increasingly used to describe an individual with a range of skills necessary to make this happen. But what do data scientists _do_?
 
-What follows draws largely on 
+It turns out that Tukey was prescient. "Data science" as currently understood is a process that is essentially what he'd described over 50 years ago.
+
+### The Data Science Process
+
+1. Collecting data
+2. Data carpentry (a.k.a. tidying, munging, hacking)
+3. Exploratory data analysis
+4. Data modeling
+5. Communication
+
+Grolemund & Wickham's forthcoming book has the following diagram:
+
+![A data science project](http://www.creativetourist.com/cms/wp-content/uploads/2016/01/PHM-Grafters-Industrial-society-in-image-and-word-@-Peoples-History-Mus)
+
+While I They have a) skipped the important first step of collecting data (it has to come from somewhere), and b) looped the "Understanding" phase. I would also argue that visualization is an important tool that applies to exploring, modeling, and communicating...it's not constrained to being a single step in the "Understanding" component.
+
+### I didn't make this up
+
+This paper draws largely on: 
 
 * the aforementioned Tukey (1962) paper;
 * Drew Conway's blog entry ["The Data Science Venn Diagram"](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram); 
@@ -100,9 +118,6 @@ The same is true with information technology---it can be used to accelerate the 
 Simultaneous with the increased volume and variety of data that are being collected (and in some cases shared), we have more accessible technology to work with the data. This includes powerful desktop computers with lots of storage, networks and clouds to share the information, and advances in analytic tools.
 
 
-### The Data Science Process
-
-
 ### In closing:
 
 > The scientific method guides data science. Data science solves known problems with the scientific method. (Grolemund & Wickham, [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html), chapter 20)
@@ -135,6 +150,7 @@ Loukids, Mike (2010) ["What is data science? The future belongs to the companies
 Mimno, David (2014) "Data carpentry", [blog entry at mimno.org](http://www.mimno.org/articles/carpentry/), 2014-08-19.
 
 Naur, Peter (1974) _Concise Survey of Computer Methods_, Studentlitteratur.
+(A summary of the book is [here](http://www.naur.com/Conc.Surv.html).)
 
 New York University, Data Science Department (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
 
