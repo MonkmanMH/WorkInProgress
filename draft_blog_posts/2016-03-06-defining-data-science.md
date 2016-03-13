@@ -53,7 +53,7 @@ It turns out that Tukey was prescient. "Data science" as currently understood is
 
 Grolemund & Wickham's forthcoming book has the following diagram:
 
-![A data science project](http://www.creativetourist.com/cms/wp-content/uploads/2016/01/PHM-Grafters-Industrial-society-in-image-and-word-@-Peoples-History-Mus)
+![A data science project](http://r4ds.had.co.nz/diagrams/data-science.png)
 
 While I They have a) skipped the important first step of collecting data (it has to come from somewhere), and b) looped the "Understanding" phase. I would also argue that visualization is an important tool that applies to exploring, modeling, and communicating...it's not constrained to being a single step in the "Understanding" component.
 
@@ -207,6 +207,9 @@ Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
 
 ___
+
+___
+
 
 Jim Collins, Good to Great:
 
