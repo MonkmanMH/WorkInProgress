@@ -207,6 +207,8 @@ Grolemund, Garrett and Hadley Wickham (2016), [_R for Data Science_](http://r4ds
 
 Hayes, Bob (2015) ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science), businessoverbroadway.com, 2015-12-14.
 
+Hayes, Bob (2016) ["Top 10 Skills in Data Science"](http://businessoverbroadway.com/top-10-skills-in-data-science), businessoverbroadway.com, 2016-03-12.
+
 Hays, Constance L. (2004) ["What Wal-Mart Knows About Customers' Habits"](http://www.nytimes.com/2004/11/14/business/yourmoney/what-walmart-knows-about-customers-habits.html), _New York Times_, 2004-11-14
 
 Kennedy, Pagan (2013) ["Who Made That Universal Product Code?"](http://www.nytimes.com/2013/01/06/magazine/who-made-that-universal-product-code.html), New York Times, 2013-01-04.
@@ -251,7 +253,7 @@ Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical S
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
 
-___
+-30-
 
 ___
 
