@@ -13,7 +13,7 @@ In 1962, the statistician John Tukey (author of the classic _Exploratory Data An
 
 In 1974, Peter Naur published _Concise Survey of Computer Methods_, wherein he uses the term "data science". It took some time, but the term has really caught on lately.
 
-The term as applied to an individual---a "data scientist"--doesn't appear until 2008.
+The term as applied to an individual---a "data scientist"---doesn't appear until 2008.
 
 (The above was drawn from Hannah Augur's recent post, "Beginner's Guide to the History of Data Science". For links to this and other documents I refer to, see the References section below.)
 
@@ -30,7 +30,9 @@ I think the UPC bar code is a perfect example of this shift. The UPC code was de
 
 Since then there has been exponential growth in the volume of data collected as part of business process.  And there have been similar expansions in how that data is used. The UPC codes have revolutionized supply chain management, and are used by stores to understand consumer behaviour. It’s not just “How many boxes of strawberry Pop Tarts are on the shelves?” or “How many boxes of strawberry Pop Tarts do we need to order?” but “What environmental conditions can be used to predict when shoppers will buy strawberry Pop Tarts?” [(Spoiler: hurricanes.)](http://www.nytimes.com/2004/11/14/business/yourmoney/what-walmart-knows-about-customers-habits.html)
 
-And retailers are using information about what we buy to try to sell us more stuff---think of amazon’s “frequently bought together” and “customers who viewed this item also viewed” entires.
+And retailers are using information about what we buy to try to sell us more stuff---think of amazon’s “frequently bought together” and “customers who viewed this item also viewed” entires. 
+
+Another thing that has changed is that in many cases data are updated frequently, and made available to analysts on the fly. This means that there is very little lag between the data collection and the analytic output. (Think of the GPS system in your car or on your phone.)
 
 In parallel with big data, public agencies around the world are being more transparent by releasing more and more data, and making it available in formats that can be read by any computer. This supports transparency and accountability, and also provides a public good by allowing outside entities to use publically-collected data and information in other applications.
 
@@ -42,7 +44,7 @@ So what does it take to make sense of all of this data? To collect it, shape it,
 
 “Data scientist” is a term increasingly used to describe an individual with a range of skills necessary to make this happen. But what do data scientists _do_?
 
-It turns out that Tukey was prescient. "Data science" as currently understood is a process that is essentially what he'd described over 50 years ago.
+It turns out that Tukey was prescient. "Data science" as currently understood is a process that is essentially what he'd described over 50 years ago. My own thinking about this is:
 
 1. Defining the research question
 2. Collecting data
