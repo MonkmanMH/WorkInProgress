@@ -15,7 +15,7 @@ In 1974, Peter Naur published _Concise Survey of Computer Methods_, wherein he u
 
 The term as applied to an individual---a "data scientist"---doesn't appear until 2008.
 
-(The above was drawn from Hannah Augur's recent post, "Beginner's Guide to the History of Data Science". For links to this and other documents I refer to, see the References section below.)
+(The above was drawn from Hannah Augur's recent post, ["Beginner's Guide to the History of Data Science"](http://dataconomy.com/beginners-guide-history-data-science/).)
 
 So perhaps it's a good time to look at what's changed.
 
@@ -54,7 +54,7 @@ It turns out that Tukey was prescient. "Data science" as currently understood is
 6. Data visualization
 7. Communication
 
-Grolemund & Wickham's forthcoming book has the following diagram:
+Grolemund & Wickham's forthcoming book [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html) has the following diagram:
 
 ![A data science project](http://r4ds.had.co.nz/diagrams/data-science.png)
 
@@ -101,11 +101,16 @@ Advanced statistical methods
 
 Where computing power has really changed the game; expanded possibilities of techniques such as K-NN and Monte Carlo
 
+(add machine learning, K-NN etc)
 
 
 #### 6. Data visualization
 
 An important component of understanding your data at the EDA and modeling, and in how the data's meaning is communicated
+
+
+
+Data visualization is also an important component of the last stage of the data science process: communication.
 
 #### 7. Communication
 
@@ -115,7 +120,7 @@ An important component of understanding your data at the EDA and modeling, and i
 
 R won't help you collect data, but in the subsequent steps R is a great tool. Having been designed initially to facilitate exploratory data analysis and statistical modeling (i.e. statistics), packages have subsequently been created that provide the tools to quickly and efficiently undertake data carpentry and data visualization. 
 
-As Roger D. Peng has put it, "The R programming language has become the de facto programming language for data science."
+As Roger D. Peng has put it, "The R programming language has become the de facto programming language for data science." (From the book "jacket blurb" for [_R Programming for Data Science_](https://leanpub.com/rprogramming).)
 
 And as the dataviz and web display packages improve (e.g. the recent release of `ggplot2` v.2 was a big leap forward; yes it broke some of my code but the additional functionality is worth the trouble) R will only get better. 
 
