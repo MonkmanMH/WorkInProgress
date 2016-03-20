@@ -257,10 +257,13 @@ Simply Statistics (2013) ["Data scientist is just a sexed up word for statistici
 
 Statistics Views (2013) ["Nate Silver: What I need from statisticians"](http://www.statisticsviews.com/details/feature/5133141/Nate-Silver-What-I-need-from-statisticians.html), _Statistics Views_,  2013-08-23.
 
+Toomey, Dan (2014) [_R for Data Science_], Packt Publishing.
+
 Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical Statistics_, 33-1, pp.1-67](https://projecteuclid.org/download/pdf_1/euclid.aoms/1177704711).
 
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
+Zumel, Nina and John Mount (2014) [_Practical Data Science with R_], Manning.
 
 -30-
 
