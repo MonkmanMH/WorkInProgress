@@ -63,7 +63,13 @@ While this diagram is a good place to start thinking about how to approach the d
 (Note: statistics, as in the academic discipline, is one of the subject areas that a data scientist _absolutely_ needs to know. Knowledge of robust statistical methods supports accurate and informed EDA and modeling. These techniques and tools applied in these two phases of the data science process _are_ statistics, and a good practitioner of data science will benefit from advances in statistics. Contrary to some writers you may encounter, I don't believe that it is a "versus" thing, or that one is better than the other. Statistics makes good data science, and data science is one place that someone trained in statistics can become a practioner.)
 
 
-Each of the five components separately:
+### The Role of R in Data Science
+
+R won't help you formulate your hypothesis or collect your data, but in the subsequent steps R is a great tool. Having been designed initially to facilitate exploratory data analysis and statistical modeling (i.e. statistics), packages have subsequently been created that provide the tools to quickly and efficiently undertake data carpentry and data visualization. 
+
+As Roger D. Peng has put it, "The R programming language has become the de facto programming language for data science." (From the book "jacket blurb" for [_R Programming for Data Science_](https://leanpub.com/rprogramming).)
+
+Let's look at each of the five components separately:
 
 #### 1. Defining the research question
 
@@ -108,25 +114,17 @@ Where computing power has really changed the game; expanded possibilities of tec
 
 An important component of understanding your data at the EDA and modeling, and in how the data's meaning is communicated
 
+And as the dataviz and web display packages improve (e.g. the recent release of `ggplot2` v.2 was a big leap forward; yes it broke some of my code but the additional functionality is worth the trouble) R will only get better. 
+
+Another sidebar: ggplot2 2.0.0 was released on 2016-01-01 [look up the correct date]. Since then there have been enough additions to warrant a 2.1.0 release; and meanwhile there are new extensions being added in the development version (e.g. [sub-title functionality by Bob Rudis](http://rud.is/b/2016/03/12/ggplot2%E3%81%A7%E5%AD%97%E5%B9%95-subtitles-in-ggplot2/?utm_content=buffer42831&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).)
 
 
 Data visualization is also an important component of the last stage of the data science process: communication.
 
 #### 7. Communication
 
+Shiny!
 
-
-### The Role of R in Data Science
-
-R won't help you collect data, but in the subsequent steps R is a great tool. Having been designed initially to facilitate exploratory data analysis and statistical modeling (i.e. statistics), packages have subsequently been created that provide the tools to quickly and efficiently undertake data carpentry and data visualization. 
-
-As Roger D. Peng has put it, "The R programming language has become the de facto programming language for data science." (From the book "jacket blurb" for [_R Programming for Data Science_](https://leanpub.com/rprogramming).)
-
-And as the dataviz and web display packages improve (e.g. the recent release of `ggplot2` v.2 was a big leap forward; yes it broke some of my code but the additional functionality is worth the trouble) R will only get better. 
-
-Another sidebar: ggplot2 2.0.0 was released on 2016-01-01 [look up the correct date]. Since then there have been enough additions to warrant a 2.1.0 release; and meanwhile there are new extensions being added in the development version (e.g. [sub-title functionality by Bob Rudis](http://rud.is/b/2016/03/12/ggplot2%E3%81%A7%E5%AD%97%E5%B9%95-subtitles-in-ggplot2/?utm_content=buffer42831&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).)
-
-Future presentations will cover specific applications of R packages to the steps in a data science project.
 
 ### The role of technology
 
@@ -211,6 +209,8 @@ Donoho, David (2015) ["50 years of Data Science"](http://courses.csail.mit.edu/1
 Foreman, John W. (2014) _Data Smart: Using Data Science to Transform Information into Insight_. Wiley.
 
 Franck, Christopher (2013) ["Is Nate Silver a Statistician?"](http://magazine.amstat.org/blog/2013/10/01/is-nate-silver/), _AmStatNews_, 2013-10-01.
+
+Grolemund, Garrett (2014) _Hands-On Programming With R_, O'Reilly Media.
 
 Grolemund, Garrett and Hadley Wickham (2016), [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html)
 
