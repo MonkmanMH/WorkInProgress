@@ -126,6 +126,12 @@ Data visualization is also an important component of the last stage of the data 
 Shiny!
 
 
+#### Some R resources
+
+* [awesome-R](https://github.com/qinwf/awesome-R): A curated list of awesome R frameworks, packages and software.
+* [Great R packages for data import, wrangling & visualization](http://www.computerworld.com/article/2921176/business-intelligence/great-r-packages-for-data-import-wrangling-visualization.html)
+
+
 ### The role of technology
 
 I just want to loop back to technology for a minute.
