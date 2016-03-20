@@ -265,6 +265,8 @@ Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical S
 
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
+Wickham, Hadley (2015) _Advanced R_, CRC Press.
+
 Zumel, Nina and John Mount (2014) _Practical Data Science with R_, Manning.
 
 -30-
