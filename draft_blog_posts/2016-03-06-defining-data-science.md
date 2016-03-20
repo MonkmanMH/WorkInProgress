@@ -233,17 +233,17 @@ Naur, Peter (1974) _Concise Survey of Computer Methods_, Studentlitteratur.
 
 New York University, Data Science Department (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
 
-Ojeda, Tony; Sean Patrick Murphy; Benjamin Bengfort; and Abhijit Dasgupta (2014) [_Practical Data Science Cookbook_], Packt Publishing.
+Ojeda, Tony; Sean Patrick Murphy; Benjamin Bengfort; and Abhijit Dasgupta (2014) _Practical Data Science Cookbook_, Packt Publishing.
 
-Peng, Roger D. (2015) _Exploratory Data Analysis with R_, Lean Pub (https://leanpub.com/exdata)
+Peng, Roger D. (2015) _Exploratory Data Analysis with R_, [Lean Pub](https://leanpub.com/exdata)
 
-Peng, Roger D. (2014-2016) _R Programming for Data Science_, Lean Pub (https://leanpub.com/rprogramming)
+Peng, Roger D. (2014-2016) _R Programming for Data Science_, [Lean Pub](https://leanpub.com/rprogramming)
 
-Peng, Roger D. (2015-2016) _Report Writing for Data Science in R_, Lean Pub (https://leanpub.com/reportwriting)
+Peng, Roger D. (2015-2016) _Report Writing for Data Science in R_, [Lean Pub](https://leanpub.com/reportwriting)
 
 Peng, Roger D. (2016) ["Non-tidy data"](http://simplystatistics.org/2016/02/17/non-tidy-data/), simplystatistics.org, 2016-02-17.
 
-Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for Anyone Who Works with Data_, Lean Pub (https://leanpub.com/artofdatascience).
+Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for Anyone Who Works with Data_, [Lean Pub](https://leanpub.com/artofdatascience).
 
 Rickert, Joseph (2013) ["Nate Silver addresses assembled statisticians at this year's JSM"](http://blog.revolutionanalytics.com/2013/08/nate-silver-jsm.html), _Revolution Analytics_, 2013-08-08.
 
@@ -259,13 +259,13 @@ Simply Statistics (2013) ["Data scientist is just a sexed up word for statistici
 
 Statistics Views (2013) ["Nate Silver: What I need from statisticians"](http://www.statisticsviews.com/details/feature/5133141/Nate-Silver-What-I-need-from-statisticians.html), _Statistics Views_,  2013-08-23.
 
-Toomey, Dan (2014) [_R for Data Science_], Packt Publishing.
+Toomey, Dan (2014) _R for Data Science_, Packt Publishing.
 
 Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical Statistics_, 33-1, pp.1-67](https://projecteuclid.org/download/pdf_1/euclid.aoms/1177704711).
 
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
 
-Zumel, Nina and John Mount (2014) [_Practical Data Science with R_], Manning.
+Zumel, Nina and John Mount (2014) _Practical Data Science with R_, Manning.
 
 -30-
 
