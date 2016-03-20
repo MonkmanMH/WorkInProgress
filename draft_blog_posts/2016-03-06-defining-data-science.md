@@ -162,7 +162,7 @@ This paper draws largely on:
 * Bob Hayes' blog piece ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science); and
 * Roger Peng's books on data science (see list in the References below).
 
-Conway comes at the question from the perspective of the necessary skills. One of the opening remarks Conway made in the blog was "The difficulty in defining these skills is that the split between substance and methodology is ambiguous...". His solution was very clever---simply acknowledge that there _is_ an overlap between substance and methodology across disciplines.
+Conway's Venn diagram has, in the words of Mike Barlow (2015, p.xv) "acquired the legendary status of an ancient rune or hieroglyph"---you'll find it everywhere. Conway comes at the question from the perspective of the necessary skills. One of the opening remarks Conway made in the blog was "The difficulty in defining these skills is that the split between substance and methodology is ambiguous...". His solution was very clever---simply acknowledge that there _is_ an overlap between substance and methodology across disciplines.
 
 He used three broad areas to define the skill necessary to do "data science":
 
@@ -237,6 +237,8 @@ ___
 Augur, Hannah (2016) ["Beginner's Guide to the History of Data Science"](http://dataconomy.com/beginners-guide-history-data-science/), Dataconomy.com, 2016-03-11 .
 
 Barabba, V.P. (1990) “Through a Glass _Less_ Darkly”, Presidential Address at the Annual Meeting of the American Statistical Association, Aug. 7, 1990. Printed in the _Journal of the American Statistical Association_, [Volume 86, Issue 413, 1991] (http://amstat.tandfonline.com/doi/abs/10.1080/01621459.1991.10474995). (An [alternate version that is not behind a paywall is on the ASA website](asapresidentialpapers.info/documents/Barabba_1990_BAK_07-27-09.pdf), in the [Presidential Papers section](https://asapresidentialpapers.info/4a.html) {PDF}.)
+
+Barlow, Mike (2015) _Learning to Love Data Science: Explorations of Emerging Technologies and Platforms for Predictive Analytics, Machine Learning, Digital Manufacturing and Supply Chain Optimization_, O'Reilly Media.
 
 Conway, Drew (2013) ["The Data Science Venn Diagram"](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram).
 
