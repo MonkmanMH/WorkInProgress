@@ -233,6 +233,8 @@ Naur, Peter (1974) _Concise Survey of Computer Methods_, Studentlitteratur.
 
 New York University, Data Science Department (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
 
+Ojeda, Tony; Sean Patrick Murphy; Benjamin Bengfort; and Abhijit Dasgupta (2014) [_Practical Data Science Cookbook_], Packt Publishing.
+
 Peng, Roger D. (2015) _Exploratory Data Analysis with R_, Lean Pub (https://leanpub.com/exdata)
 
 Peng, Roger D. (2014-2016) _R Programming for Data Science_, Lean Pub (https://leanpub.com/rprogramming)
