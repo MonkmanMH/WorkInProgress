@@ -126,10 +126,6 @@ Data visualization is also an important component of the last stage of the data 
 Shiny!
 
 
-#### Some R resources
-
-* [awesome-R](https://github.com/qinwf/awesome-R): A curated list of awesome R frameworks, packages and software.
-* [Great R packages for data import, wrangling & visualization](http://www.computerworld.com/article/2921176/business-intelligence/great-r-packages-for-data-import-wrangling-visualization.html)
 
 
 ### The role of technology
@@ -200,7 +196,43 @@ My own perspective is close to Roger Peng's. It's interesting to note that even 
 
 ___
 
-## References
+## References and Resources: R
+
+* [awesome-R](https://github.com/qinwf/awesome-R): A curated list of awesome R frameworks, packages and software.
+
+* [Great R packages for data import, wrangling & visualization](http://www.computerworld.com/article/2921176/business-intelligence/great-r-packages-for-data-import-wrangling-visualization.html)
+
+Chang, Winston (2013) _R Graphics Cookbook_, O'Reilly Media.
+
+Grolemund, Garrett (2014) _Hands-On Programming With R_, O'Reilly Media.
+
+Grolemund, Garrett and Hadley Wickham (2016), [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html)
+
+Hilfiger, John Jay (2015) _Graphing Data with R_, O'Reilly Media.
+
+Ojeda, Tony; Sean Patrick Murphy; Benjamin Bengfort; and Abhijit Dasgupta (2014) _Practical Data Science Cookbook_, Packt Publishing.
+
+Peng, Roger D. (2015) _Exploratory Data Analysis with R_, [Lean Pub](https://leanpub.com/exdata)
+
+Peng, Roger D. (2014-2016) _R Programming for Data Science_, [Lean Pub](https://leanpub.com/rprogramming)
+
+Peng, Roger D. (2015-2016) _Report Writing for Data Science in R_, [Lean Pub](https://leanpub.com/reportwriting)
+
+Peng, Roger D. (2016) ["Non-tidy data"](http://simplystatistics.org/2016/02/17/non-tidy-data/), simplystatistics.org, 2016-02-17.
+
+Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for Anyone Who Works with Data_, [Lean Pub](https://leanpub.com/artofdatascience).
+
+Toomey, Dan (2014) _R for Data Science_, Packt Publishing.
+
+Wickham, Hadley (2015) _Advanced R_, CRC Press.
+
+Zumel, Nina and John Mount (2014) _Practical Data Science with R_, Manning.
+
+
+___
+
+
+## References: Data Science 
 
 Augur, Hannah (2016) ["Beginner's Guide to the History of Data Science"](http://dataconomy.com/beginners-guide-history-data-science/), Dataconomy.com, 2016-03-11 .
 
@@ -215,10 +247,6 @@ Donoho, David (2015) ["50 years of Data Science"](http://courses.csail.mit.edu/1
 Foreman, John W. (2014) _Data Smart: Using Data Science to Transform Information into Insight_. Wiley.
 
 Franck, Christopher (2013) ["Is Nate Silver a Statistician?"](http://magazine.amstat.org/blog/2013/10/01/is-nate-silver/), _AmStatNews_, 2013-10-01.
-
-Grolemund, Garrett (2014) _Hands-On Programming With R_, O'Reilly Media.
-
-Grolemund, Garrett and Hadley Wickham (2016), [_R for Data Science_](http://r4ds.had.co.nz/do-science-with-data.html)
 
 Hayes, Bob (2015) ["Getting More Insights from Data: Nine Facts about the Practice of Data Science"](http://businessoverbroadway.com/getting-more-insights-from-data-nine-facts-about-the-practice-of-data-science), businessoverbroadway.com, 2015-12-14.
 
@@ -239,18 +267,6 @@ Naur, Peter (1974) _Concise Survey of Computer Methods_, Studentlitteratur.
 
 New York University, Data Science Department (?) ["What is Data Science?"](http://datascience.nyu.edu/what-is-data-science/)
 
-Ojeda, Tony; Sean Patrick Murphy; Benjamin Bengfort; and Abhijit Dasgupta (2014) _Practical Data Science Cookbook_, Packt Publishing.
-
-Peng, Roger D. (2015) _Exploratory Data Analysis with R_, [Lean Pub](https://leanpub.com/exdata)
-
-Peng, Roger D. (2014-2016) _R Programming for Data Science_, [Lean Pub](https://leanpub.com/rprogramming)
-
-Peng, Roger D. (2015-2016) _Report Writing for Data Science in R_, [Lean Pub](https://leanpub.com/reportwriting)
-
-Peng, Roger D. (2016) ["Non-tidy data"](http://simplystatistics.org/2016/02/17/non-tidy-data/), simplystatistics.org, 2016-02-17.
-
-Peng, Roger D. and Elizabeth Matsui (2015) _The Art of Data Science: A Guide for Anyone Who Works with Data_, [Lean Pub](https://leanpub.com/artofdatascience).
-
 Rickert, Joseph (2013) ["Nate Silver addresses assembled statisticians at this year's JSM"](http://blog.revolutionanalytics.com/2013/08/nate-silver-jsm.html), _Revolution Analytics_, 2013-08-08.
 
 Saunders, Todd (2014) ["Data Science and Data Scientists: What’s in a Name?"](http://www.cbigconsulting.com/wp-content/uploads/2014/03/data-scientist.pdf), CBIG Counsulting, 2013-11-11
@@ -265,15 +281,9 @@ Simply Statistics (2013) ["Data scientist is just a sexed up word for statistici
 
 Statistics Views (2013) ["Nate Silver: What I need from statisticians"](http://www.statisticsviews.com/details/feature/5133141/Nate-Silver-What-I-need-from-statisticians.html), _Statistics Views_,  2013-08-23.
 
-Toomey, Dan (2014) _R for Data Science_, Packt Publishing.
-
 Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical Statistics_, 33-1, pp.1-67](https://projecteuclid.org/download/pdf_1/euclid.aoms/1177704711).
 
 Tukey, John (1977) _Exploratory Data Analysis_, Addison Wesley.
-
-Wickham, Hadley (2015) _Advanced R_, CRC Press.
-
-Zumel, Nina and John Mount (2014) _Practical Data Science with R_, Manning.
 
 -30-
 
