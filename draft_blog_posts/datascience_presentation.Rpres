@@ -1,0 +1,108 @@
+Data Science & R: An Overview
+========================================================
+author: Martin Monkman
+date: 2016-03-29
+autosize: true
+
+
+What is "data science"?
+========================================================
+
+## A _process_
+
+## It's not new
+
+- Tukey 1962
+- Naur 1974
+
+
+The big data deluge
+========================================================
+
+[bar code image]
+
+
+
+
+Defining the process--an incomplete view
+========================================================
+
+[Grolemund & Wickham's diagram]
+
+
+
+
+The steps of data science
+========================================================
+
+1. Defining the research question
+2. Collecting data
+3. Data carpentry (a.k.a. tidying, munging, hacking)
+4. Exploratory data analysis
+5. Data modeling
+6. Data visualization
+7. Communication
+
+
+
+
+The Role of R in Data Science
+========================================================
+
+1. Defining the research question
+2. Collecting data
+
+
+## 3. Data carpentry (a.k.a. tidying, munging, hacking)
+
+## 4. Exploratory data analysis
+
+## 5. Data modeling
+
+## 6. Data visualization
+
+## 7. Communication
+
+
+
+The role of technology
+========================================================
+
+Navvies
+
+& 
+
+Steam shovel
+
+
+
+Data Science & R
+========================================================
+
+> The scientific method guides data science. Data science solves known problems with the scientific method. (Grolemund & Wickham, _R for Data Science_, chapter 20)
+
+
+
+More on R presentations
+========================================================
+
+
+For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
