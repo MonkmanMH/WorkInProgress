@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
   output$cityControls <- renderUI({
     cities <- c("Seattle", "Anaheim", "Arlington", "Houston", "Oakland")
     selectInput("city", 
-                label = h3("Choose City"), 
+                label = h3("Choose the city"), 
                 choices = cities, 
                 selected = "Seattle"
                 )
