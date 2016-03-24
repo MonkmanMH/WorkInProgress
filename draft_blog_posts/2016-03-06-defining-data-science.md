@@ -145,6 +145,7 @@ The same is true with information technology---it can be used to accelerate the 
 
 Simultaneous with the increased volume and variety of data that are being collected (and in some cases shared), we have more accessible technology to work with the data. This includes powerful desktop computers with lots of storage, networks and clouds to share the information, and advances in analytic tools.
 
+> "People think this is a technological revolution, but it's really a business revolution enabled by technology." (Stephen Messer, quoted in Barlow, _Learning to Love Data Science_, p.6)
 
 ### In closing:
 
