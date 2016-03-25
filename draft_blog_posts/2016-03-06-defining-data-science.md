@@ -257,6 +257,8 @@ Hayes, Bob (2016) ["Top 10 Skills in Data Science"](http://businessoverbroadway.
 
 Hays, Constance L. (2004) ["What Wal-Mart Knows About Customers' Habits"](http://www.nytimes.com/2004/11/14/business/yourmoney/what-walmart-knows-about-customers-habits.html), _New York Times_, 2004-11-14
 
+Jaffe, Andrew (2016) ["The Evolution of a data Scientist"](http://simplystatistics.org/2016/03/21/dataScientistEvo-jaffe/), simplystatistics.org, 2016-03-21.
+
 Kennedy, Pagan (2013) ["Who Made That Universal Product Code?"](http://www.nytimes.com/2013/01/06/magazine/who-made-that-universal-product-code.html), New York Times, 2013-01-04.
 
 Loukids, Mike (2010) ["What is data science? The future belongs to the companies and people that turn data into products."](https://www.oreilly.com/ideas/what-is-data-science), _o'reilly.com_ 2010-06-02.
