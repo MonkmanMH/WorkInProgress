@@ -15,7 +15,12 @@ If you are an R user creating data visualizations (plots, charts, graphs, and ma
 library(grDevices)
 library(RColorBrewer)
 
-colors <- brewer.pal(4, "BuPu")
+colors <- brewer.pal(10, "BuPu")
+palette(colors)
+
+pie_data_10 <- c(10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+
+pie(pie_data_10)
 
 ```
 
@@ -28,6 +33,12 @@ The R package `ggplot2` provides access to a variety of built-in palettes, somet
    + note that there are three types of palette: sequential, diverging, and qualitative.
    + the color schemes can be found at [colorbrewer2.org](http://colorbrewer2.org/)
 
+```{r}
+
+display.brewer.all()
+
+```
+
    
 ## eigengrau palette
 
@@ -37,10 +48,28 @@ You can also create your own custom palettes. Here's the code to create a custom
 # 4 step eigengrau palette
 eigengrau_palette <- c("#16161D", "#5b5b60", "#a1a1a4", "#e7e7e8")
 
+# 2 step eigengrau palette (from eigengrau to palest)
 eigengrau_palette <- c("#16161D", "#e7e7e8")
 
 pal <- colorRampPalette(eigengrau_palette)
-pal(10)
+pal10 <- pal(10)
+
+pie_data_10 <- c(10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+
+pie(pie_data_10, col = pal10)
+
+# repeat with 5 shades
+
+eigengrau_palette <- c("#16161D", "#e7e7e8")
+
+pal <- colorRampPalette(eigengrau_palette)
+pal05 <- pal(5)
+
+pie_data_05 <- c(5, 5, 5, 5, 5)
+pie_data_05 <- c(1, 2, 3, 4, 5)
+
+pie(pie_data_05, col = pal05)
+
 
 ```
 
@@ -54,18 +83,4 @@ pal(10)
 * Nathan Yau, ["Using Color Scales and Palettes in R"](http://thedata.co/sites/thedata.co/files/u1/VisThis_Tutorial_Using%20Color%20Scales%20and%20Palettes%20in%20R.pdf) {PDF}, at [thedata.co](thedata.co)
 
 
-
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+-30-
