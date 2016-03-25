@@ -1,0 +1,71 @@
+---
+title: "ggplot2_palette eigengrau"
+author: "Martin Monkman"
+date: "March 25, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+If you are an R user creating data visualizations (plots, charts, graphs, and maps), you will be aware that there are _many_ colours available to you. Much is available in base R!
+
+```{r}
+library(grDevices)
+library(RColorBrewer)
+
+colors <- brewer.pal(4, "BuPu")
+
+```
+
+
+## ggplot2 palettes
+
+The R package `ggplot2` provides access to a variety of built-in palettes, sometimes you just need more.
+
+* `RColorBrewer` - this package is based on the work of cartographer [Cynthia Brewer](http://www.personal.psu.edu/cab38/)
+   + note that there are three types of palette: sequential, diverging, and qualitative.
+   + the color schemes can be found at [colorbrewer2.org](http://colorbrewer2.org/)
+
+   
+## eigengrau palette
+
+You can also create your own custom palettes. Here's the code to create a custom palette based on the not-quite-black colour we see in the pitch black darkness, often refered to as "eigengrau". In hex, this colour is [#16161D](http://www.color-hex.com/color/16161d).
+
+```{r}
+# 4 step eigengrau palette
+eigengrau_palette <- c("#16161D", "#5b5b60", "#a1a1a4", "#e7e7e8")
+
+eigengrau_palette <- c("#16161D", "#e7e7e8")
+
+pal <- colorRampPalette(eigengrau_palette)
+pal(10)
+
+```
+
+
+
+
+### Further reading
+
+* ["Colors in R"](http://simplystatistics.org/2011/10/17/colors-in-r/), from [Simply Statistics](http://simplystatistics.org/)
+
+* Nathan Yau, ["Using Color Scales and Palettes in R"](http://thedata.co/sites/thedata.co/files/u1/VisThis_Tutorial_Using%20Color%20Scales%20and%20Palettes%20in%20R.pdf) {PDF}, at [thedata.co](thedata.co)
+
+
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
