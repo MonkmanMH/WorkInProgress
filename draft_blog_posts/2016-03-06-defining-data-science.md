@@ -62,6 +62,15 @@ While this diagram is a good place to start thinking about how to approach the d
 
 (Note: statistics, as in the academic discipline, is one of the subject areas that a data scientist _absolutely_ needs to know. Knowledge of robust statistical methods supports accurate and informed EDA and modeling. These techniques and tools applied in these two phases of the data science process _are_ statistics, and a good practitioner of data science will benefit from advances in statistics. Contrary to some writers you may encounter, I don't believe that it is a "versus" thing, or that one is better than the other. Statistics makes good data science, and data science is one place that someone trained in statistics can become a practioner.)
 
+Demming on the role of the "statistician", something that is less about the discipline of Statistics and more closely aligned with what we would now call data science:
+
+> “The data of an experiment consist of much more than a mean and it's standard deviation. The user of the results in order to understand them may require not only the original data, but also a description or reference to the method of investigation, the date, place, the duration of the test, a record of the faults discovered during the test, the amount of nonresponse by class, and any side-effects observed.
+>
+> That Statistiscian has an obligation to help his client to perceive in advance the limitations of any study that is contemplated.
+> 
+> An important question to ask before the plans for a study go too far is this: What will the results refer to? How do you propose to use them? The answer(s) sometimes can bring forth drastic modification of the plan.”
+>
+> “Some Contributions to Statistical Inference and Practice”, by W. E Deming, Ch. 20 in Quantitative Techniques for Evaluating the Behavior of Psychiatric Patients. Burdock, 1979
 
 ### The Role of R in Data Science
 
