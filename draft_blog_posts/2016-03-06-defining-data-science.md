@@ -11,6 +11,26 @@ Nate Silver created a stir in his address to the Joint Statistical Meetings (JSM
 In 1962, the statistician John Tukey (author of the classic _Exploratory Data Analysis_) wrote that his central interest was in 
 > data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing data.
 
+In 1965, Deming wrote about the "Principles of Professional Statistical Practice". What he described is less about the discipline of Statistics and more closely aligned with what we would now call data science (and beware the dated gender-specific language; apparently women didn't do statistics / data science in 1965):
+
+> "Statistical theory is transferable. The specialist in statistical methods may find himself applying the same basic theory in a dozen different fields in a week, rotating through the same projects the next week. Or, he may work day after day primarily in a single substantive field.
+> Either way, the statistician requires certain principles of practice for effective use of statistical knowledge. Knowledge of statistical theory is necessary but not sufficient. Statistical theory does not provide a road-map towards effective use of itself."
+> ...
+> Even though carried off with reasonable conformance to specifications, a study may fail through structural deficiencies in the method of investigation (questionnaire, type of test, technique of interviewing), to provide the information needed. The statistician may reduce the risk of this kind of failure by pointing out to his clinet in the early stages of the study the nature of the contributions that he himself must put into it."
+> Deming, W. Edwards. Principles of Professional Statistical Practice. Ann. Math. Statist. 36 (1965), no. 6, 1883--1900. doi:10.1214/aoms/1177699824. http://projecteuclid.org/euclid.aoms/1177699824.
+
+
+(Alternate from 1979, better written)
+> “The data of an experiment consist of much more than a mean and its standard deviation. The user of the results in order to understand them may require not only the original data, but also a description or reference to the method of investigation, the date, place, the duration of the test, a record of the faults discovered during the test, the amount of nonresponse by class, and any side-effects observed.
+>
+> That Statistiscian has an obligation to help his client to perceive in advance the limitations of any study that is contemplated.
+> 
+> An important question to ask before the plans for a study go too far is this: What will the results refer to? How do you propose to use them? The answer(s) sometimes can bring forth drastic modification of the plan.”
+>
+> “Some Contributions to Statistical Inference and Practice”, by W. E Deming, Ch. 20 in Quantitative Techniques for Evaluating the Behavior of Psychiatric Patients. Burdock, 1979
+
+
+
 In 1974, Peter Naur published _Concise Survey of Computer Methods_, wherein he uses the term "data science". It took some time, but the term has really caught on lately.
 
 The term as applied to an individual---a "data scientist"---doesn't appear until 2008.
@@ -62,15 +82,6 @@ While this diagram is a good place to start thinking about how to approach the d
 
 (Note: statistics, as in the academic discipline, is one of the subject areas that a data scientist _absolutely_ needs to know. Knowledge of robust statistical methods supports accurate and informed EDA and modeling. These techniques and tools applied in these two phases of the data science process _are_ statistics, and a good practitioner of data science will benefit from advances in statistics. Contrary to some writers you may encounter, I don't believe that it is a "versus" thing, or that one is better than the other. Statistics makes good data science, and data science is one place that someone trained in statistics can become a practioner.)
 
-Demming on the role of the "statistician", something that is less about the discipline of Statistics and more closely aligned with what we would now call data science:
-
-> “The data of an experiment consist of much more than a mean and it's standard deviation. The user of the results in order to understand them may require not only the original data, but also a description or reference to the method of investigation, the date, place, the duration of the test, a record of the faults discovered during the test, the amount of nonresponse by class, and any side-effects observed.
->
-> That Statistiscian has an obligation to help his client to perceive in advance the limitations of any study that is contemplated.
-> 
-> An important question to ask before the plans for a study go too far is this: What will the results refer to? How do you propose to use them? The answer(s) sometimes can bring forth drastic modification of the plan.”
->
-> “Some Contributions to Statistical Inference and Practice”, by W. E Deming, Ch. 20 in Quantitative Techniques for Evaluating the Behavior of Psychiatric Patients. Burdock, 1979
 
 ### The Role of R in Data Science
 
@@ -253,6 +264,8 @@ Barlow, Mike (2015) _Learning to Love Data Science: Explorations of Emerging Tec
 Conway, Drew (2013) ["The Data Science Venn Diagram"](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram).
 
 Darmon, David (2013?) ["Statistics, Data Science, and Silver"](http://thirdorderscientist.org/homoclinic-orbit/2013/8/11/statistics-data-science-and-silver), _Third Order Scientist_, 2013-08-11
+
+Deming, W. Edwards (1965) ["Principles of Professional Statistical Practice"](http://projecteuclid.org/euclid.aoms/1177699824). _Ann. Math. Statist._, 36 (1965), no. 6, 1883--1900.
 
 Donoho, David (2015) ["50 years of Data Science"](http://courses.csail.mit.edu/18.337/2015/docs/50YearsDataScience.pdf), 2015-09-18.
 
