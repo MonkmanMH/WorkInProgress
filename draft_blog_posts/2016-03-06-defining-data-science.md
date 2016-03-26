@@ -145,6 +145,7 @@ Data visualization is also an important component of the last stage of the data 
 
 Shiny!
 
+Link to data journalism -- Jonathan Stray, Alberto Cairo
 
 
 
@@ -261,6 +262,8 @@ Barabba, V.P. (1990) “Through a Glass _Less_ Darkly”, Presidential Address a
 
 Barlow, Mike (2015) _Learning to Love Data Science: Explorations of Emerging Technologies and Platforms for Predictive Analytics, Machine Learning, Digital Manufacturing and Supply Chain Optimization_, O'Reilly Media.
 
+Cairo, Alberto (
+
 Conway, Drew (2013) ["The Data Science Venn Diagram"](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram).
 
 Darmon, David (2013?) ["Statistics, Data Science, and Silver"](http://thirdorderscientist.org/homoclinic-orbit/2013/8/11/statistics-data-science-and-silver), _Third Order Scientist_, 2013-08-11
@@ -309,6 +312,8 @@ Simply Statistics (2013) ["Data scientist is just a sexed up word for statistici
 Statistical & Scientific Thinking (2015) ["Basic Principles of Using Data"](http://jsdstat.com/Statblog/basic-principles-of-using-data/), [Statistical & Scientific Thinking](jsdstat.com), 2015-08-25.
 
 Statistics Views (2013) ["Nate Silver: What I need from statisticians"](http://www.statisticsviews.com/details/feature/5133141/Nate-Silver-What-I-need-from-statisticians.html), _Statistics Views_,  2013-08-23.
+
+Stray, Jonathan (2016) [_The Curious Journalist's Guide to Data_](https://www.gitbook.com/book/towcenter/curious-journalist-s-guide-to-data/details), at [www.gitbook.com](www.gitbook.com)
 
 Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical Statistics_, 33-1, pp.1-67](https://projecteuclid.org/download/pdf_1/euclid.aoms/1177704711).
 
