@@ -284,6 +284,8 @@ Simply Statistics (2012) ["Statistics/statisticians need better marketing"](http
 
 Simply Statistics (2013) ["Data scientist is just a sexed up word for statistician"](http://simplystatistics.org/2013/08/08/data-scientist-is-just-a-sexed-up-word-for-statistician/), 2013-08-08.
 
+Statistical & Scientific Thinking (2015) ["Basic Principles of Using Data"](http://jsdstat.com/Statblog/basic-principles-of-using-data/), [Statistical & Scientific Thinking](jsdstat.com), 2015-08-25.
+
 Statistics Views (2013) ["Nate Silver: What I need from statisticians"](http://www.statisticsviews.com/details/feature/5133141/Nate-Silver-What-I-need-from-statisticians.html), _Statistics Views_,  2013-08-23.
 
 Tukey, John (1962) "The Future of Data Analysis", [_The Annals of Mathematical Statistics_, 33-1, pp.1-67](https://projecteuclid.org/download/pdf_1/euclid.aoms/1177704711).
