@@ -118,12 +118,24 @@ There's a whole sub-topic on tidy vs. non-tidy (different than untidy!) data (se
 
 R is very good for pulling your data from other sources. There's a wealth of tools for querying SQL databases, importing Excel files (e.g. `readr`).
 
-There are also many tools available for effectively working with dates (date formatting is a favourite pet peeve of mine), 
+There are also many tools available for effectively working with dates (date formatting is a favourite pet peeve of mine).
+
+And finally, data carpentry is facilitated with packages such as `dplyr`, which contain straight-forward verb-based syntax (such as `filter`, `group_by` and `summarise`) to create permutations of your existing data. 
+
+I can't say enough good things about `dplyr`. It has become my go-to tool for things I used to do in other software, including completely replacing my use of pivot tables in Excel. And it addressess many of the criticisms that "R is slow"--for one of the 
 
 
 #### 4. Exploratory data analysis
 
-Tukey
+The ideas of "exploratory data analysis" (EDA) was first presented by Tukey, and he presented a set of tools for EDA in his seminal book (1977). In the book he writes:
+
+> Exploratory data analysis is detective work--numerical detective work--or counting detective work--or graphical detective work. ...the analyst of data needs both tools and understanding." (p.1)
+
+Tukey also emphasizes the importance of data visualization in exploring data; the book is the source of the quote
+
+> ... pictures based on exploration of data should _force_ their messages upon us. Pictures that emphasize what we already know--"security blankets" to reassure us--are frequently not worth the space they take. Pictures that have to be gone over with a reading glass to see the main point are wasteful of time and inadequate of effect. **The greatest value of a picture** is when it _forces_ ust to notice **what we never expected to see.** (p.vi) [emphasis in original]
+
+
 
 #### 5. Data modeling
 
