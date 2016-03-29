@@ -128,13 +128,12 @@ I can't say enough good things about `dplyr`. It has become my go-to tool for th
 #### 4. Exploratory data analysis
 
 The ideas of "exploratory data analysis" (EDA) was first presented by Tukey, and he presented a set of tools for EDA in his seminal book (1977). In the book he writes:
-
 > Exploratory data analysis is detective work--numerical detective work--or counting detective work--or graphical detective work. ...the analyst of data needs both tools and understanding." (p.1)
 
-Tukey also emphasizes the importance of data visualization in exploring data; the book is the source of the quote
+Tukey also emphasizes the importance of data visualization in exploring data; the book is the source of the quote:
+> ... pictures based on exploration of data should _force_ their messages upon us. Pictures that emphasize what we already know--"security blankets" to reassure us--are frequently not worth the space they take. Pictures that have to be gone over with a reading glass to see the main point are wasteful of time and inadequate of effect. **The greatest value of a picture** is when it _forces_ us to notice **what we never expected to see.** (p.vi) _[emphasis in original]_
 
-> ... pictures based on exploration of data should _force_ their messages upon us. Pictures that emphasize what we already know--"security blankets" to reassure us--are frequently not worth the space they take. Pictures that have to be gone over with a reading glass to see the main point are wasteful of time and inadequate of effect. **The greatest value of a picture** is when it _forces_ ust to notice **what we never expected to see.** (p.vi) [emphasis in original]
-
+Plenty has been written about using R as a tool for exploratory data analysis; Roger Peng's leanpub book _Exploratory Data Analysis with R_ is a great place to start. Other resources include Eric Cai's [Chemical Statistician blog series](https://chemicalstatistician.wordpress.com/tag/exploratory-data-analysis/).
 
 
 #### 5. Data modeling
