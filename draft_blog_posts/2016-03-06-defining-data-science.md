@@ -145,9 +145,16 @@ Where computing power has really changed the game; expanded possibilities of tec
 (add machine learning, K-NN etc)
 
 
-#### 6. Data visualization
+#### 6. Communication
 
-An important component of understanding your data at the EDA and modeling, and in how the data's meaning is communicated
+Shiny!
+
+Link to data journalism -- Jonathan Stray, Alberto Cairo
+
+
+#### 7. Data visualization
+
+An important component of understanding your data at the EDA and modeling stages (#4 and 5), and in how the data's meaning is communicated (#6)
 
 And as the dataviz and web display packages improve (e.g. the recent release of `ggplot2` v.2 was a big leap forward; yes it broke some of my code but the additional functionality is worth the trouble) R will only get better. 
 
@@ -156,13 +163,8 @@ Another sidebar: ggplot2 2.0.0 was released on 2016-01-01 [look up the correct d
 
 Data visualization is also an important component of the last stage of the data science process: communication.
 
-#### 7. Communication
 
-Shiny!
-
-Link to data journalism -- Jonathan Stray, Alberto Cairo
-
-
+___
 
 ### The role of technology
 
