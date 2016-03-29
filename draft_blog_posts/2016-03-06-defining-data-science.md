@@ -14,7 +14,7 @@ In 1962, the statistician John Tukey (author of the classic _Exploratory Data An
 In 1965, Deming wrote about the "Principles of Professional Statistical Practice". What he described is less about the discipline of Statistics and more closely aligned with what we would now call data science (and beware the dated gender-specific language; apparently women didn't do statistics / data science in 1965):
 
 > "Statistical theory is transferable. The specialist in statistical methods may find himself applying the same basic theory in a dozen different fields in a week, rotating through the same projects the next week. Or, he may work day after day primarily in a single substantive field.
-> Either way, the statistician requires certain principles of practice for effective use of statistical knowledge. Knowledge of statistical theory is necessary but not sufficient. Statistical theory does not provide a road-map towards effective use of itself."
+> Either way, the statistician requires certain principles of practice for effective use of statistical knowledge. Knowledge of statistical theory is necessary but not sufficient. Statistical theory does not provide a road-map towards effective use of itself.
 > ...
 > Even though carried off with reasonable conformance to specifications, a study may fail through structural deficiencies in the method of investigation (questionnaire, type of test, technique of interviewing), to provide the information needed. The statistician may reduce the risk of this kind of failure by pointing out to his clinet in the early stages of the study the nature of the contributions that he himself must put into it."
 > Deming, W. Edwards. Principles of Professional Statistical Practice. Ann. Math. Statist. 36 (1965), no. 6, 1883--1900. doi:10.1214/aoms/1177699824. http://projecteuclid.org/euclid.aoms/1177699824.
@@ -115,6 +115,10 @@ Sometimes called "data hacking", "data wrangling", or "data munging", a better t
 The other key point is that data are often messy. [The Quartz guide to bad data](https://github.com/Quartz/bad-data-guide) provides a rather comprehensive list of all the problems you might encounter on your road to the analysis.
 
 There's a whole sub-topic on tidy vs. non-tidy (different than untidy!) data (see for instance Roger Peng's [blog entry of 2016-02-17](http://simplystatistics.org/2016/02/17/non-tidy-data/). That's a tangent for another day.
+
+R is very good for pulling your data from other sources. There's a wealth of tools for querying SQL databases, importing Excel files (e.g. `readr`).
+
+There are also many tools available for effectively working with dates (date formatting is a favourite pet peeve of mine), 
 
 
 #### 4. Exploratory data analysis
