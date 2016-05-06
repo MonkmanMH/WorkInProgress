@@ -4,7 +4,7 @@ A place to put some odds and ends that are of little or no consequence at this p
 
 ---
 
-** The Bard, on Learning in Old Age **
+**The Bard, on Learning in Old Age**
 
 Sir, I am too old to learn.
 _King Lear_ (2.2.99)
