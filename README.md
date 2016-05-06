@@ -1,7 +1,10 @@
 # WorkInProgress
 
-A place to put some odds and ends that are of little or no consequence.
+A place to put some odds and ends that are of little or no consequence at this point, but which may flourish into something meaningful.
 
+---
+
+** The Bard, on Learning in Old Age **
 
 Sir, I am too old to learn.
 _King Lear_ (2.2.99)
