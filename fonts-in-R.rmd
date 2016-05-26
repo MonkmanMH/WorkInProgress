@@ -27,6 +27,8 @@ Note that Myriad Pro and Garamond Pro are both OTF type fonts--not TTF. This mea
 
 [Using system and web fonts in R plots](http://www.magesblog.com/2015/06/using-system-and-web-fonts-in-r-plots.html)
 
+[showtext: http://finzi.psych.upenn.edu/library/showtext/html/showtext.begin.html](http://finzi.psych.upenn.edu/library/showtext/html/showtext.begin.html)
+
 [another stackoverflow thing on fonts](http://stackoverflow.com/questions/1395323/fonts-in-r-plots)
 
 ```{r}
