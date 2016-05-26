@@ -2,8 +2,12 @@
 
 ## Or, _Trying to spruce up your graphics_
 
+#### Some generic tips and pointers
 
-`extrafont`
+[An example](http://stackoverflow.com/questions/30058107/using-custom-otf-fonts-in-ggplot2) 
+
+
+### `extrafont`
 
 [Tired of using Helvetica in your R graphics? Here’s how to use the fonts you like](http://zevross.com/blog/2014/07/30/tired-of-using-helvetica-in-your-r-graphics-heres-how-to-use-the-fonts-you-like-2/)
 
@@ -14,7 +18,14 @@
 [Change fonts in ggplot2, and create xkcd style graphs](http://www.r-bloggers.com/change-fonts-in-ggplot2-and-create-xkcd-style-graphs/)
 
 
-`showtext`
+#### Process for getting `extrafont` to work on your computer
+
+
+
+
+---
+
+### `showtext`
 
 [CRAN page: showtext: Using Fonts More Easily in R Graphs](https://cran.rstudio.com/web/packages/showtext/index.html)
 
@@ -26,6 +37,5 @@
 
 [`showtext` page on github](https://github.com/yixuan/showtext)
 
-#### Stackoverflow
 
-[An example](http://stackoverflow.com/questions/30058107/using-custom-otf-fonts-in-ggplot2) 
+
