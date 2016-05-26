@@ -17,13 +17,17 @@ Note that Myriad Pro and Garamond Pro are both OTF type fonts--not TTF. This mea
 
 [package manual](https://cran.rstudio.com/web/packages/showtext/showtext.pdf)
 
+[`showtext` page on github](https://github.com/yixuan/showtext)
+
+[R Journal article](https://journal.r-project.org/archive/2015-1/qiu.pdf) [PDF file]
+
 [Using system fonts in R graphs](http://statr.me/2014/01/using-system-fonts-in-r-graphs/)
 
 [showtext: Using System Fonts in R Graphics](https://journal.r-project.org/archive/2015-1/qiu.pdf) [pdf file]
 
-[`showtext` page on github](https://github.com/yixuan/showtext)
+[Using system and web fonts in R plots](http://www.magesblog.com/2015/06/using-system-and-web-fonts-in-r-plots.html)
 
-
+[another stackoverflow thing on fonts](http://stackoverflow.com/questions/1395323/fonts-in-r-plots)
 
 ```{r}
 
@@ -37,28 +41,285 @@ fonttestplot <- ggplot(mtcars, aes(x=wt, y=mpg)) +
 
 fonttestplot
 
+```
+
+
+```{r}
+
+
+download.file("http://fontpro.com/download-family.php?file=36289",
+              "newrocker.ttf", mode="wb")
+download.file("http://fontpro.com/download-family.php?file=35128",
+              "cutetumblr.ttf", mode ="wb")
+
+library(showtext)
+
+font.add("newrocker", "newrocker.ttf")
+font.add("cutetumblr", "cutetumblr.ttf")
+
+png("showtext-ex2.png", 800, 500)
+plot(1, type = "n")
+showtext.begin()
+text(1, 1.2, "Let me tell you a story", cex = 4, family = "newrocker")
+text(1, 0.8, "Long long ago...", cex = 4, family = "cutetumblr")
+showtext.end()
+dev.off()
+
+
+font.add("Garamond", "GARA.TTF")
+font.add("MyriadPro", "MyriadPro-Regular.otf")
+
+png("showtext-ex2a.png", 800, 500)
+plot(1, type = "n")
+showtext.begin()
+text(1, 1.2, "Let me tell you a story", cex = 4, family = "Garamond")
+text(1, 0.8, "Long long ago...", cex = 4, family = "MyriadPro")
+showtext.end()
+dev.off()
+
+
+
+```
+
+#### Ok, now we are getting somewhere! 
+
+These chunks seem to work ... at producing a PNG file.
+
+```{r}
 # install `showtext`
 install.packages("showtext")
 
 library(showtext)
 
+showtext.auto()
+
+
 # add MyriadPro as font
 font.paths()
 font.files()
 
-
 #font.add("MyriadPro", "C:\\Windows\\Fonts\\MyriadPro-Regular.otf")
+font.add("Garamond", "GARA.TTF")
 font.add("MyriadPro", "MyriadPro-Regular.otf")
 
-fonts()
 
-fonttestplot <- fonttestplot + theme(text=element_text(family="Times"))
+# plot inside the png() etc instructions
 
-showtext.auto()
+library(ggplot2)
 
+png("showtext-cars.png", 800, 500)
+plot(1, type = "n")
+showtext.begin()
+
+fonttestplot <- ggplot(mtcars, aes(x=wt, y=mpg)) + 
+  geom_point() +
+  ggtitle("Miles Per Gallon by Weight of Car") +
+  theme(plot.title = element_text(family="Garamond"),
+        axis.title.x = element_text(family="MyriadPro"),
+        axis.title.y = element_text(family="MyriadPro"))
 fonttestplot
 
-# run chart again, with Myriad Pro font
+showtext.end()
+dev.off()
+
+
+```
+
+```{r}
+
+# create plot first, render to Plot window
+
+fonttestplot2 <- ggplot(mtcars, aes(x=wt, y=mpg)) + 
+  geom_point() +
+  ggtitle("Miles Per Gallon by Weight of Car") +
+  theme(plot.title = element_text(family="Garamond"),
+        axis.title.x = element_text(family="MyriadPro"),
+        axis.title.y = element_text(family="MyriadPro"))
+
+fonttestplot2
+
+# then create png of existing object
+
+png("showtext-cars2.png", 800, 500)
+plot(1, type = "n")
+showtext.begin()
+
+fonttestplot2
+
+showtext.end()
+dev.off()
+
+
+```
+
+
+
+---
+
+```{r}
+
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+font.add.google("Gochi Hand", "gochi")
+font.add.google("Schoolbell", "bell")
+font.add.google("Covered By Your Grace", "grace")
+font.add.google("Rock Salt", "rock")
+
+## Automatically use showtext to render text for future devices
+showtext.auto()
+
+## Tell showtext the resolution of the device,
+## only needed for bitmap graphics. Default is 96
+## showtext.opts(dpi = 96)
+
+set.seed(123)
+x = rnorm(10)
+y = 1 + x + rnorm(10, sd = 0.2)
+y[1] = 5
+mod = lm(y ~ x)
+
+## Plotting functions as usual
+## Open a graphics device if you want, e.g.
+## png("demo.png", 700, 600, res = 96)
+
+op = par(cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+plot(x, y, pch = 16, col = "steelblue",
+     xlab = "X variable", ylab = "Y variable", family = "gochi")
+grid()
+title("Draw Plots Before You Fit A Regression", family = "bell")
+text(-0.5, 4.5, "This is the outlier", cex = 2, col = "steelblue",
+     family = "grace")
+abline(coef(mod))
+abline(1, 1, col = "red")
+par(family = "rock")
+text(1, 1, expression(paste("True model: ", y == x + 1)),
+     cex = 1.5, col = "red", srt = 20)
+text(0, 2, expression(paste("OLS: ", hat(y) == 0.79 * x + 1.49)),
+     cex = 1.5, srt = 15)
+legend("topright", legend = c("Truth", "OLS"), col = c("red", "black"), lty = 1)
+
+par(op)
+
+
+# ------------
+
+png("op_pngoutput.png", 800, 500)
+plot(1, type = "n")
+showtext.begin()
+
+set.seed(123)
+x = rnorm(10)
+y = 1 + x + rnorm(10, sd = 0.2)
+y[1] = 5
+mod = lm(y ~ x)
+
+## code from above to render the chart
+
+op = par(cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+plot(x, y, pch = 16, col = "steelblue",
+     xlab = "X variable", ylab = "Y variable", family = "gochi")
+grid()
+title("Draw Plots Before You Fit A Regression", family = "bell")
+text(-0.5, 4.5, "This is the outlier", cex = 2, col = "steelblue",
+     family = "grace")
+abline(coef(mod))
+abline(1, 1, col = "red")
+par(family = "rock")
+text(1, 1, expression(paste("True model: ", y == x + 1)),
+     cex = 1.5, col = "red", srt = 20)
+text(0, 2, expression(paste("OLS: ", hat(y) == 0.79 * x + 1.49)),
+     cex = 1.5, srt = 15)
+legend("topright", legend = c("Truth", "OLS"), col = c("red", "black"), lty = 1)
+
+par(op)
+
+showtext.end()
+dev.off()
+
+
+# -------
+
+showtext.begin()
+
+set.seed(123)
+x = rnorm(10)
+y = 1 + x + rnorm(10, sd = 0.2)
+y[1] = 5
+mod = lm(y ~ x)
+
+## code from above to render the chart
+
+op = par(cex.lab = 2, cex.axis = 1.5, cex.main = 2)
+plot(x, y, pch = 16, col = "steelblue",
+     xlab = "X variable", ylab = "Y variable", family = "gochi")
+grid()
+title("Draw Plots Before You Fit A Regression", family = "bell")
+text(-0.5, 4.5, "This is the outlier", cex = 2, col = "steelblue",
+     family = "grace")
+abline(coef(mod))
+abline(1, 1, col = "red")
+par(family = "rock")
+text(1, 1, expression(paste("True model: ", y == x + 1)),
+     cex = 1.5, col = "red", srt = 20)
+text(0, 2, expression(paste("OLS: ", hat(y) == 0.79 * x + 1.49)),
+     cex = 1.5, srt = 15)
+legend("topright", legend = c("Truth", "OLS"), col = c("red", "black"), lty = 1)
+
+par(op)
+
+showtext.end()
+dev.off()
+
+
+```
+
+
+```{r}
+# copy-paste from 
+# https://github.com/yixuan/showtext
+
+library(showtext)
+
+## Add fonts that are available on Windows
+font.add("heiti", "simhei.ttf")
+font.add("constan", "constan.ttf", italic = "constani.ttf")
+
+
+library(ggplot2)
+
+p = ggplot(NULL, aes(x = 1, y = 1)) + ylim(0.8, 1.2) +
+    theme(axis.title = element_blank(), axis.ticks = element_blank(),
+          axis.text = element_blank()) +
+    annotate("text", 1, 1.1, family = "heiti", size = 15,
+             label = "\u4F60\u597D\uFF0C\u4E16\u754C") +
+    annotate("text", 1, 0.9, label = 'Chinese for "Hello, world!"',
+             family = "constan", fontface = "italic", size = 12)
+
+showtext.auto()  ## automatically use showtext for new devices
+
+print(p)  ## on-screen device
+
+showtext.auto(FALSE)  ## turn off if no longer needed
+
+# so that works...
+
+# tweaks
+
+#font.add("MyriadPro", "C:\\Windows\\Fonts\\MyriadPro-Regular.otf")
+font.add("garamond", "GARA.TTF")
+font.add("myriadpro", "MyriadPro-Regular.otf")
+
+p1 = ggplot(NULL, aes(x = 1, y = 1)) + ylim(0.8, 1.2) +
+    theme(axis.title = element_blank(), axis.ticks = element_blank(),
+          axis.text = element_blank()) +
+#    annotate("text", 1, 1.1, family = "heiti", size = 15,
+#             label = "\u4F60\u597D\uFF0C\u4E16\u754C") +
+    annotate("text", 1, 0.9, label = 'Chinese for "Hello, world!"',
+             family = "garamond", fontface = "italic", size = 12)
+
+showtext.auto()  ## automatically use showtext for new devices
+
+print(p1)  ## on-screen device
 
 
 ```
@@ -92,6 +353,12 @@ font_import()
 ```
 
 
+#### Devices
+
+Understanding what devices are in use
+
+* [dev {grDevices}: Control Multiple Devices](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/dev.html)
 
 
 
+-30-
