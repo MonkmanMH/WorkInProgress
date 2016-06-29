@@ -4,6 +4,12 @@ A place to put some odds and ends that are of little or no consequence at this p
 
 ---
 
+#### Quotes worth quoting
+
+* “Spreadsheets: A dystopian moonscape of unrecorded user actions” Gordon Shotwell [github](https://github.com/GShotwell) (as cited by [Jenny Bryan](https://github.com/jennybc)
+
+---
+
 **The Bard, on Learning in Old Age**
 
 Sir, I am too old to learn.
