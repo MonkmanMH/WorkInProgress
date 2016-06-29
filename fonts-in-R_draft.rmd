@@ -133,6 +133,10 @@ dev.off()
 
 # create plot first, render to Plot window
 
+
+library(ggplot2)
+library(showtext)
+
 fonttestplot2 <- ggplot(mtcars, aes(x=wt, y=mpg)) + 
   geom_point() +
   ggtitle("Miles Per Gallon by Weight of Car") +
@@ -184,6 +188,70 @@ dev.off()
 
 
 ```
+
+# SUMMARY CODE - THIS IS ALL YOU NEED
+
+The `fonttestplot2` object, rendered in a Windows window and then as a .png file
+
+```{r}
+
+# load packages
+library(ggplot2)
+library(showtext)
+
+# add MyriadPro as font
+font.paths()
+font.files()
+
+#font.add("MyriadPro", "C:\\Windows\\Fonts\\MyriadPro-Regular.otf")
+font.add("Garamond", "GARA.TTF")
+font.add("MyriadPro", "MyriadPro-Regular.otf")
+
+
+# ggplot2 code to create plot object
+fonttestplot2 <- ggplot(mtcars, aes(x=wt, y=mpg)) + 
+  geom_point() +
+  ggtitle("Miles Per Gallon by Weight of Car") +
+  theme(plot.title = element_text(family="Garamond"),
+        axis.title.x = element_text(family="MyriadPro"),
+        axis.title.y = element_text(family="MyriadPro"))
+
+
+# ---
+
+# render in a Windows window
+
+windows(800, 500)
+plot(1, type = "n")
+showtext.begin()
+
+fonttestplot2
+
+showtext.end()
+
+# and then when you're ready to close the window...
+dev.off()
+
+
+# ---
+
+# then save a png of existing object
+
+png("showtext-cars2.png", 800, 500)
+plot(1, type = "n")
+showtext.begin()
+
+fonttestplot2
+
+showtext.end()
+dev.off()
+
+
+```
+
+
+
+## DO NOT CROSS THIS LINE
 
 ---
 
