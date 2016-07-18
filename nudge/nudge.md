@@ -40,6 +40,10 @@
 [Why Nudging Your Customers Can Backfire](https://hbr.org/2016/04/why-nudging-your-customers-can-backfire)
 
 
+### Operations
+
+[Forget CVs, here's how to use behavioural science to hire the best people](https://www.weforum.org/agenda/2016/05/forget-cvs-heres-how-to-use-behavioral-science-to-hire-the-best-people)
+
 ### General
 
 [TEN - The European Nudging Network](http://tenudge.eu/)
