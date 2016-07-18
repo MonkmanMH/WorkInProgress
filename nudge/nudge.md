@@ -4,6 +4,10 @@
 
 [Nudge theory: Wikipedia entry](https://en.wikipedia.org/wiki/Nudge_theory)
 
+[TED Radio Hour: _Nudge_](http://www.npr.org/2016/06/24/483112809/www.npr.org/programs/ted-radio-hour/483080945/nudge)
+
+[Digital Arts: "5 Brilliant Talks on how Psychology Affects Design, UX, Branding, Marketing and Advertising"](http://www.digitalartsonline.co.uk/news/graphic-design/5-brilliant-talks-on-how-psychology-affects-design-ux-branding-marketing-advertising/)
+
 
 
 ## The Behavioural Insights Team
@@ -23,11 +27,22 @@
 
 ## Applications
 
+### Health
+
+[Food nudging can help us to eat in a healthier way](https://www.sciencedaily.com/releases/2016/07/160713105852.htm)
+
+
+
 ### Customer decisions
 
 [Nudge Your Customers Toward Better Choices](https://hbr.org/2008/12/nudge-your-customers-toward-better-choices)
 
 [Why Nudging Your Customers Can Backfire](https://hbr.org/2016/04/why-nudging-your-customers-can-backfire)
+
+
+### General
+
+[TEN - The European Nudging Network](http://tenudge.eu/)
 
 
 -30-
