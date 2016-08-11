@@ -49,3 +49,22 @@ Willie Nelson, c.1974 (pilot for _Austin City Limits_)
 Willie Nelson, 1973
 
 ![](http://i2.cdn.turner.com/cnnnext/dam/assets/130425133841-11-willie-nelson-horizontal-large-gallery.jpg)
+
+
+___
+
+### BEFORE
+
+
+_Country Favorites, Willie Nelson Style (1966)_
+![](http://e.snmc.io/lk/f/l/ae165a0a07579313c06c58dbec09a650/2258226.jpg)
+
+
+Willie Nelson, c. 1968
+![](http://i1361.photobucket.com/albums/r664/ChronPhoto5/willie4_zps91575148.jpg)
+
+___
+
+### BEFORE & AFTER
+
+![](https://uproxx.files.wordpress.com/2015/04/willie-nelson-split.jpg?quality=90&w=650)
