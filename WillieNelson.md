@@ -10,7 +10,7 @@ Then comes the dramatic jump to the 1960s Willie.  This usually gets some chuckl
 
 > Willie Nelson is one of the most successful and familiar musicians on the planet. But before he became famous, and famous for doing whatever he wanted to do, he was a struggling songwriter in Nashville who was trying to conform to what a "country singer" was supposed to look and sound like.
 
-> He gave that up, moved back to Texas (Austin, naturally), and started making the records he wanted to. Many of the early records of this phase were met with incredulity by the record company; his 1975 album _Red Headed Stranger_ was first thought of as a collection of demo recordings, and just as he was getting famous as a rebelious country music "outlaw" he recorded _Stardust_, a collection of 1920s and 1930s pop standards--which has gone on to be one of the best-selling albums of all time.
+> He gave that up, moved back to Texas (Austin, naturally), grew his hair, and started making the records he wanted to. Many of the early records of this phase were met with incredulity by the record company; his 1975 album _Red Headed Stranger_ was first thought of as a collection of demo recordings, and just as he was getting famous as a rebelious country music "outlaw" he recorded _Stardust_, a collection of 1920s and 1930s pop standards--which has gone on to be one of the best-selling albums of all time.
 
 > My point is that, even though most of us will never be as successful and famous as Willie Nelson, we can all be most successful if we are true to ourselves. We all have different strengths and interests, and we're better off when we're using our strengths rather than trying to fix our weaknesses.
 
