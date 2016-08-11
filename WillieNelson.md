@@ -2,15 +2,16 @@
 
 ## _or_, Career lessons from Willie Nelson
 
-Willie Nelson is one of the most successful and familiar musicians on the planet. But before he became famous, and famous for doing whatever he wanted to do, he was a struggling songwriter in Nashville who was trying to conform to what a "country singer" was supposed to look and sound like.
+At the end of the presentation, I say something like "Let's play _Name That Celebrity_" and show a sequence of photos of Willie Nelson, working backwards in time, noting the fact that it's clearly the same man, just younger (and sometimes pointing out that the hole in the guitar is smaller).  Then comes the dramatic jump to the 1960s Willie.  This usually gets some chuckles ... I then say something like:
 
-He gave that up, moved back to Texas (Austin, naturally), and started making the records he wanted to. Many of the early records of this phase were met with incredulity by the record company; his 1975 album _Red Headed Stranger_ was first thought of as a collection of demo recordings, and just as he was getting famous as a rebelious country music "outlaw" he recorded _Stardust_, a collection of 1920s and 1930s pop standards--which has gone on to be one of the best-selling albums of all time.
+> Willie Nelson is one of the most successful and familiar musicians on the planet. But before he became famous, and famous for doing whatever he wanted to do, he was a struggling songwriter in Nashville who was trying to conform to what a "country singer" was supposed to look and sound like.
 
-My point is that, even though most of us will never be as successful and famous as Willie Nelson, we can all be most successful if we are true to ourselves. We all have different strengths and interests, and we're better off when we're using our strengths rather than trying to fix our weaknesses.
+> He gave that up, moved back to Texas (Austin, naturally), and started making the records he wanted to. Many of the early records of this phase were met with incredulity by the record company; his 1975 album _Red Headed Stranger_ was first thought of as a collection of demo recordings, and just as he was getting famous as a rebelious country music "outlaw" he recorded _Stardust_, a collection of 1920s and 1930s pop standards--which has gone on to be one of the best-selling albums of all time.
 
-For more on this philosophy, and a book (and test) to help you identify your own strengths, I recommend _Strengths Finder 2.0_ by Tom Rath.
+> My point is that, even though most of us will never be as successful and famous as Willie Nelson, we can all be most successful if we are true to ourselves. We all have different strengths and interests, and we're better off when we're using our strengths rather than trying to fix our weaknesses.
 
-Let's play name that celebrity...
+> For more on this approach, I recommend the book _Strengths Finder 2.0_ by Tom Rath.
+
 
 Willie Nelson, 2013
 
