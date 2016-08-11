@@ -36,10 +36,16 @@ Willie Nelson, c.1975
 ![Willie Nelson, 1975](http://i2.cdn.turner.com/cnnnext/dam/assets/150917180714-26-willie-nelson-farm-aid-85-super-169.jpg
 )
 
+
+Willie Nelson, c.1975
+![](http://i2.cdn.turner.com/cnnnext/dam/assets/130425133746-10-willie-nelson-horizontal-large-gallery.jpg)
+
 Willie Nelson, c.1974 (pilot for _Austin City Limits_)
 
 ![Willie Nelson, 1974](http://stillisstillmoving.com/wp-content/uploads/2008/12/img5682.jpg
 )
 
 
+Willie Nelson, 1973
 
+![](http://i2.cdn.turner.com/cnnnext/dam/assets/130425133841-11-willie-nelson-horizontal-large-gallery.jpg)
