@@ -31,11 +31,6 @@ Willie Nelson, c.1980
 
 
 
-Willie Nelson, c.1975
-
-![Willie Nelson, 1975](http://i2.cdn.turner.com/cnnnext/dam/assets/150917180714-26-willie-nelson-farm-aid-85-super-169.jpg
-)
-
 
 Willie Nelson, c.1975
 ![](http://i2.cdn.turner.com/cnnnext/dam/assets/130425133746-10-willie-nelson-horizontal-large-gallery.jpg)
