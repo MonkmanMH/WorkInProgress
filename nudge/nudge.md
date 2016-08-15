@@ -8,7 +8,7 @@
 
 [Digital Arts: "5 Brilliant Talks on how Psychology Affects Design, UX, Branding, Marketing and Advertising"](http://www.digitalartsonline.co.uk/news/graphic-design/5-brilliant-talks-on-how-psychology-affects-design-ux-branding-marketing-advertising/)
 
-
+[‘Nudge’; the current popularity of the agenda, its evidence base and the potential for it’s application to Mental Health and Well-being](http://www.academia.edu/928782/_Nudge_the_current_popularity_of_the_agenda_its_evidence_base_and_the_potential_for_it_s_application_to_Mental_Health_and_Well-being)
 
 ## The Behavioural Insights Team
 
@@ -54,6 +54,9 @@
 
 ## Applications
 
+[Nudge list](https://www.stir.ac.uk/media/schools/management/documents/economics/Nudge%20Database%201.2.pdf)
+
+
 ### Public Sector
 
 [Designing for nudge effects: how behaviour management can ease public sector  problems](http://eprints.lse.ac.uk/37810/1/Designing_for_nudge_effects_(lsero).pdf)
@@ -93,6 +96,8 @@
 [On the merits of nudge](http://policyoptions.irpp.org/2015/04/27/on-the-merits-of-nudge/)
 
 [Mols et al., "Why a nudge is not enought"](http://onlinelibrary.wiley.com/doi/10.1111/1475-6765.12073/epdf)
+
+[The nudge is not enough!](https://www.behavioraleconomics.com/the-nudge-is-not-enough-the-love-story-between-behavioral-science-and-practical-applications/)
 
 [The Ontario government should pursue innovation, not just promote it](http://www.competeprosper.ca/blog/the_ontario_government_should_pursue_innovation_not_just_promote_it)
 
