@@ -17,6 +17,8 @@
 [BIT: Wikipedia entry](https://en.wikipedia.org/wiki/Behavioural_Insights_Team)
 
 
+[MINDSPACE: Influencing behaviour through public policy](http://www.instituteforgovernment.org.uk/sites/default/files/publications/MINDSPACE.pdf)
+
 ## U.S.A.
 
 [Office of Science and Technology Policy](https://en.wikipedia.org/wiki/Office_of_Science_and_Technology_Policy)
@@ -26,6 +28,16 @@
 
 
 ## Applications
+
+### Public Sector
+
+[Designing for nudge effects: how behaviour management can ease public sector  problems](http://eprints.lse.ac.uk/37810/1/Designing_for_nudge_effects_(lsero).pdf)
+
+
+[Behavioural Economics - Ireland](http://igees.gov.ie/wp-content/uploads/2013/10/Behavioural-Economics-1.pdf)
+
+
+[Nudging around the world](https://www.um.es/documents/1922922/1973600/Nudging+Around+The+World.pdf/3af04386-ba8b-4742-b339-73626bf2be94)
 
 ### Health
 
