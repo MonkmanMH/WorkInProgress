@@ -34,9 +34,23 @@
 [http://www.pco-bcp.gc.ca/index.asp?lang=eng&page=innovation&doc=4-eng.htm](http://www.pco-bcp.gc.ca/index.asp?lang=eng&page=innovation&doc=4-eng.htm)
 
 
-### Ontario
+### Ontario: Centre of Excellence for Evidence-Based Decision Making Support
+
+(has a Behavioural Insights Unit [BIU]) support)
+
+[anouncement](http://thepublicservant.ca/government-of-ontario-announces-new-behavioural-insights-unit/)
+
+[On the value of nudging](https://www.mun.ca/harriscentre//policy/conferencesworkshops/Julian_House.pdf)
+
+[Pilot projects](https://www.ontario.ca/page/behavioural-science-insights-pilot-projects)
 
 [license plate sticker](https://www.ontario.ca/page/behavioural-insights-pilot-project-license-plate-sticker-renewal)
+
+[Policy innovation platform](http://policyinnovationplatform.ca/climate-hack-to-action/guests/julian-house/)
+
+[KPMG report](https://www.kpmg.com/Ca/en/IssuesAndInsights/ArticlesPublications/Documents/Public-Service-Transformed-FINAL2.pdf)
+
+[Mowat Centre: Behavioural Insights](https://mowatcentre.ca/tag/behavioural-insights/)
 
 ## Applications
 
