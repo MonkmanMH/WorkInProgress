@@ -10,6 +10,11 @@
 
 [‘Nudge’; the current popularity of the agenda, its evidence base and the potential for it’s application to Mental Health and Well-being](http://www.academia.edu/928782/_Nudge_the_current_popularity_of_the_agenda_its_evidence_base_and_the_potential_for_it_s_application_to_Mental_Health_and_Well-being)
 
+
+[Should Governments Nudge Us to Make Good Choices? Scientific American](http://www.scientificamerican.com/article/should-governments-nudge-us-to-make-good-choices/)
+
+___
+
 ## The Behavioural Insights Team
 
 [The Behavioural Insights Team](http://www.behaviouralinsights.co.uk/)
@@ -24,6 +29,8 @@
 [Office of Science and Technology Policy](https://en.wikipedia.org/wiki/Office_of_Science_and_Technology_Policy)
 
 [HBR: "Why the U.S. Government Is Embracing Behavioral Science](https://hbr.org/2015/09/why-the-u-s-government-is-embracing-behavioral-science), 2015-09-18
+
+[Obama's Nudge Brigade, Forbes](http://www.forbes.com/sites/beltway/2015/09/16/obama-nudge-government/#6956404f11f3)
 
 ## Canada
 
