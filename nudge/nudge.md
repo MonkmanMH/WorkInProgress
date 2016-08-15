@@ -87,4 +87,13 @@
 
 [World Economic Forum: Behaviour Change](https://www.weforum.org/agenda/archive/behaviour-change)
 
+
+## Critique
+
+[On the merits of nudge](http://policyoptions.irpp.org/2015/04/27/on-the-merits-of-nudge/)
+
+[Mols et al., "Why a nudge is not enought"](http://onlinelibrary.wiley.com/doi/10.1111/1475-6765.12073/epdf)
+
+[The Ontario government should pursue innovation, not just promote it](http://www.competeprosper.ca/blog/the_ontario_government_should_pursue_innovation_not_just_promote_it)
+
 -30-
