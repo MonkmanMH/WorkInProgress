@@ -25,6 +25,12 @@
 
 [HBR: "Why the U.S. Government Is Embracing Behavioral Science](https://hbr.org/2015/09/why-the-u-s-government-is-embracing-behavioral-science), 2015-09-18
 
+## Canada
+
+THIS:
+
+[http://www.theglobeandmail.com/report-on-business/rob-commentary/canadian-business-jumping-on-the-behavioural-economics-bandwagon/article28747073/](http://www.theglobeandmail.com/report-on-business/rob-commentary/canadian-business-jumping-on-the-behavioural-economics-bandwagon/article28747073/)
+
 
 
 ## Applications
