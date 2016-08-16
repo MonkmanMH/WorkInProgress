@@ -13,6 +13,8 @@
 
 [Should Governments Nudge Us to Make Good Choices? Scientific American](http://www.scientificamerican.com/article/should-governments-nudge-us-to-make-good-choices/)
 
+[Nudging Taxpayers to Do the Right Thing (Sunstein in Bloomberg)](https://www.bloomberg.com/view/articles/2014-04-15/nudging-taxpayers-to-do-the-right-thing)
+
 ___
 
 ## The Behavioural Insights Team
