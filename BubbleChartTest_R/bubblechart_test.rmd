@@ -1,0 +1,28 @@
+---
+title: "bubble chart - introduction"
+author: "Martin Monkman"
+date: "September 1, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Bubble charts, a.k.a. balloon plots
+
+Bubble charts are a way of expressing three dimensions of data.  They work particularly well for an X-Y scatter plot, where the Z dimension is the size (e.g. population) of the group for which the X and Y variables are being measured.
+
+A famous example are Hans Rosling's Gapminder plots, showing how birth rates and life expectancy compare by country, where the country's population is the size of the circle (the bubble). (If you haven't seen Rosling's TED talk, you can see it at ["The best stats you've ever seen"](https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen?language=en).)
+
+Rosling's particularly brilliant expansion is into the fourth dimension--time. But chart animations is a topic for another day.
+
+
+
+
+## Resources and References
+
+[The R Graph Catalog](http://shiny.stat.ubc.ca/r-graph-catalog/#fig03-02_area-and-volume-judgments) (based on Naomi Robbins' _Creating More Effective Graphs_)
+
+["Taking control of qualitative colors in `ggplot2`"](http://www.stat.ubc.ca/~jenny/STAT545A/block17_colorsGgplot2Qualitative.html)
+
