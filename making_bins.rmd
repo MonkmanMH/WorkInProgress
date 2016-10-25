@@ -1,0 +1,68 @@
+---
+title: "making bins"
+author: "Martin Monkman"
+date: "October 21, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Creating bins
+
+Want to group continuous variable into categories.
+
+#### Step 1 - create some test data
+
+```{r}
+
+library(dplyr)
+
+testdata <- tibble(x = 1:1000, y = runif(1000, 100, 999))
+# testdata <- tibble(x = 1:1000, y = rnorm(1000, 500, 150))
+
+testdata
+
+# approach 1 - create new variable y_grp
+
+testdata1 <- testdata %>%
+  mutate(y_grp = (ceiling(y/100))*100)
+
+testdata1
+
+testdata1 %>%
+  group_by(y_grp) %>%
+  summarize(count=n())
+
+# approach 2 - embed ceiling calculation in `group_by`
+
+testdata
+
+testdata %>%
+  group_by((ceiling(y/100))*100) %>%
+  summarize(count=n())
+
+
+
+# approach 3 - create new variable y_grp
+#               - and define bin size
+
+bin.size = 50
+
+testdata <- tibble(x = 1:1000, y = runif(1000, 100, 999))
+
+testdata3 <- testdata %>%
+  mutate(y_grp = (ceiling(y/bin.size))*bin.size)
+
+testdata3
+
+testdata3 %>%
+  group_by(y_grp) %>%
+  summarize(count=n())
+
+
+
+```
+
+
