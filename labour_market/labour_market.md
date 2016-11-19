@@ -19,3 +19,11 @@
 [https://www.whitehouse.gov/blog/2016/07/05/chart-week-automation-and-its-impact-our-jobs](https://www.whitehouse.gov/blog/2016/07/05/chart-week-automation-and-its-impact-our-jobs)
 
 [http://qz.com/202312/is-your-job-at-risk-from-robot-labor-check-this-handy-interactive/](http://qz.com/202312/is-your-job-at-risk-from-robot-labor-check-this-handy-interactive/)
+
+
+### Shifting demographics of the labour market
+
+"The employment rate for seniors has more than doubled since 1988, from 6.7 per cent to 13.2 per cent." [Seniors and the generation spending gap](http://www.macleans.ca/society/life/seniors-and-the-generation-spending-gap/)
+
+Kourtney Kobel and Tammy Schirle, ["The differential impact of universal child benefits on the labor supply of married and single mothers"](http://www.lcerpa.org/public/papers/LCERPA_2015_11.pdf)
+
