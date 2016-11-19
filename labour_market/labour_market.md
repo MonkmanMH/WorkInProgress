@@ -27,3 +27,5 @@
 
 Kourtney Kobel and Tammy Schirle, ["The differential impact of universal child benefits on the labor supply of married and single mothers"](http://www.lcerpa.org/public/papers/LCERPA_2015_11.pdf)
 
+Labour Force Survey, [Table 282-0211 -- Labour force survey estimates (LFS), by family type and family age composition, annual (Persons)](http://www5.statcan.gc.ca/cansim/a26?lang=eng&retrLang=eng&id=2820211&pattern=lfs&tabMode=dataTable&srchLan=-1&p1=1&p2=-1) -- for recreating Tammy Schirle's twitter charts
+
