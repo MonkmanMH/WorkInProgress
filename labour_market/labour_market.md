@@ -25,7 +25,11 @@
 
 "The employment rate for seniors has more than doubled since 1988, from 6.7 per cent to 13.2 per cent." [Seniors and the generation spending gap](http://www.macleans.ca/society/life/seniors-and-the-generation-spending-gap/)
 
+#### Women with children in the labour market
+
 Kourtney Kobel and Tammy Schirle, ["The differential impact of universal child benefits on the labor supply of married and single mothers"](http://www.lcerpa.org/public/papers/LCERPA_2015_11.pdf)
 
 Labour Force Survey, [Table 282-0211 -- Labour force survey estimates (LFS), by family type and family age composition, annual (Persons)](http://www5.statcan.gc.ca/cansim/a26?lang=eng&retrLang=eng&id=2820211&pattern=lfs&tabMode=dataTable&srchLan=-1&p1=1&p2=-1) -- for recreating Tammy Schirle's twitter charts
+
+Tyler Cowen, 2016, ["Why is female labor force participation down?"](http://marginalrevolution.com/marginalrevolution/2016/11/female-labor-force-participation.html) - U.S. measures
 
