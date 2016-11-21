@@ -33,3 +33,7 @@ Labour Force Survey, [Table 282-0211 -- Labour force survey estimates (LFS), by 
 
 Tyler Cowen, 2016, ["Why is female labor force participation down?"](http://marginalrevolution.com/marginalrevolution/2016/11/female-labor-force-participation.html) - U.S. measures
 
+
+### The so-called gig economy
+
+Lael Brainard, 2016-11-17, [The "Gig" Economy: Implications of the Growth of Contingent Work](https://www.federalreserve.gov/newsevents/speech/brainard20161117a.htm)
