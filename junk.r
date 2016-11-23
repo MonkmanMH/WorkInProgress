@@ -84,5 +84,10 @@ data2 <- data_agedistrib01 %>%
 unique(data2$AGE)
 
 
-gsub(" years", "", "0 years")
+data2$age.num <- gsub(" years", "", data2$AGE)
+data2$age.num <- gsub(" year", "", data2$age.num)
+data2$age.num <- as.integer(gsub(" and over", "", data2$age.num))
+unique(data2$age.num)
+
+
 
