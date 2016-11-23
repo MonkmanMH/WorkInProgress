@@ -52,16 +52,17 @@ palette_BCStats_fill <- c("#3F3F3F", "#ABABAB", "#DFDFDF", "#969696", "#838383",
 setwd("C:/@data/GitHub/BC_demographic_trends")
 #
 
-data_agedistrib01 <- read_csv("./data_source/00510001-eng.csv")
+data_agedistrib <- read_csv("./data_source/00510001-eng.csv")
 
-ls.str(data_agedistrib01)
+ls.str(data_agedistrib)
 
-unique(data_agedistrib01$AGE)
-unique(data_agedistrib01$GEO)
-unique(data_agedistrib01$Ref_Date)
-unique(data_agedistrib01$SEX)
+unique(data_agedistrib$AGE)
+unique(data_agedistrib$GEO)
+unique(data_agedistrib$Ref_Date)
+unique(data_agedistrib$SEX)
 
 
+# define a list of the values in the field "AGE" that need to be dropped
 drop.age.vals <- c("All ages", "0 to 4 years", "5 to 9 years",
                    "10 to 14 years", "15 to 19 years", 
                    "20 to 24 years", "25 to 29 years", 
@@ -78,16 +79,47 @@ drop.age.vals <- c("All ages", "0 to 4 years", "5 to 9 years",
                    "45 to 64 years", "65 years and over", "90 years and over", 
                    "Median age (years)")
 
-data2 <- data_agedistrib01 %>%
+# filter out the values
+data_agedistrib01 <- data_agedistrib %>%
   filter(!AGE %in% drop.age.vals)
 
-unique(data2$AGE)
+# check the list again
+unique(data_agedistrib01$AGE)
 
 
-data2$age.num <- gsub(" years", "", data2$AGE)
-data2$age.num <- gsub(" year", "", data2$age.num)
-data2$age.num <- as.integer(gsub(" and over", "", data2$age.num))
+# create a new variable age.num that converts the age variable to an integer 
+# (instead of a string that has " year" AND no padding, so an alpha sort will yield inappropriate results)
+# step 1: use gsub to replace " years" (and its variants) with blank in string
+# step 2: set as.integer
+data_agedistrib01$age.num <- gsub(" years", "", data2$AGE)
+data_agedistrib01$age.num <- gsub(" year", "", data2$age.num)
+data_agedistrib01$age.num <- as.integer(gsub(" and over", "", data2$age.num))
 unique(data2$age.num)
 
 
+#colnames(data_agedistrib01) <- c("year", "All.ages", 
+#                                 "00", "01", "02", "03", "04", 
+#                                 "05", "06", "07", "08", "09",
+#                                 seq(10, 99, by = 1), "100+")
 
+# turn the wide version of data_medianage into long format
+#data_agedistrib01_long <- data_agedistrib01 %>%
+#  gather(age, popul, -year) %>%
+#  filter(age != "All.ages")
+
+#head(data_agedistrib01_long)
+
+# turn the wide version of data_medianage into long format, add pctage column
+
+data_agedistrib01_long <- data_agedistrib01 %>%
+  gather(age, popul, -year) %>%
+  filter(age != "All.ages") %>%
+  group_by(year, age) %>%
+  summarise(popul = sum(popul)) %>%
+  mutate(year_pct = (popul / sum(popul) * 100)) 
+
+#head(data_agedistrib01_long)
+
+data_totalpop_19712015 <- data_agedistrib01 %>%
+  gather(age, popul, -year) %>%
+  filter(age == "All.ages")
