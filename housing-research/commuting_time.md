@@ -2,5 +2,7 @@
 
 ## Mapping thereof
 
-(Locrating)[http://www.locrating.com/CommutingMap.aspx]
+[Locrating](http://www.locrating.com/CommutingMap.aspx)
+
+
 
