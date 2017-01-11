@@ -1,8 +1,10 @@
 # Commuting time
 
-## Mapping thereof
-
 ### Canada
+
+[Smart Commute (Greater Toronto)](http://smartcommute.ca/)
+
+[Statistics Canada, General Social Survey 2010](http://www.statcan.gc.ca/pub/11-008-x/2011002/article/11531-eng.htm)
 
 ### U.K.
 
