@@ -20,6 +20,7 @@ Then comes the dramatic jump to the 1960s Willie.  This usually gets some chuckl
 
 Willie wisdom: "If you want to change, you can. Failure is not fatal." (from _Roll Me Up and Smoke Me When I Die_)
 
+---
 
 Willie Nelson, 2013
 
