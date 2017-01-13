@@ -16,6 +16,8 @@ Then comes the dramatic jump to the 1960s Willie.  This usually gets some chuckl
 
 > For more on this approach, I recommend the book _Strengths Finder 2.0_ by Tom Rath.
 
+Willie wisdom: "If you want to change, you can. Failure is not fatal." (from _Roll Me Up and Smoke Me When I Die_)
+
 
 Willie Nelson, 2013
 
@@ -76,3 +78,23 @@ ___
 ### BEFORE & AFTER
 
 ![](https://uproxx.files.wordpress.com/2015/04/willie-nelson-split.jpg?quality=90&w=650)
+
+
+---
+## Further reading / listening
+
+Willie Nelson, [_The Tao of Willie: A Guide to the Happiness in Your Heart_], 2006, Gotham Books.
+
+Willie Nelson, [_Roll Me Up and Smoke Me When I Die: Musings from the Road_], 2012, HarperCollins.
+
+
+Bruce Robison, “What Would Willie Do?” (on the album _Country Sunshine_)
+
+
+#### Country music
+
+George O. Carney, [“Country Music and the South: A Cultural Geography Perspective”](http://www.tandfonline.com/doi/abs/10.1080/08873638009478650), Journal of Cultural Geography, Volume 1, Issue 1, 1980.
+
+James N. Gregory, [“The Southern Diaspora: How the Great Migrations of Black and White Southerners Transformed America”](http://faculty.washington.edu/gregoryj/greatmigration/country%20music.htm)
+
+
