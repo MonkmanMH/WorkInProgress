@@ -4,3 +4,5 @@ Nicholas J. L. Brown, James A. J. Heathers (2016) ["The GRIM Test: A Simple Tech
 * [supplemental material](https://osf.io/3fcbr/files/)
 
 
+Jordan Anaya, ["The GRIMMER test: A method for testing the validity of reported measures of variability"](https://peerj.com/preprints/2400.pdf)
+
