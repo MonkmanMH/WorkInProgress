@@ -1,0 +1,134 @@
+---
+title: "population-pyramids"
+author: "Martin Monkman"
+date: "March 24, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## making population pyramids in R
+
+Population pyramids are a fundamental piece of the demographer's toolkit; how can we create them in R?
+
+### The plotrix::pyramidplot()
+
+from [StackExchange](http://stats.stackexchange.com/questions/2455/how-to-make-age-pyramid-like-plot-in-r):
+
+```{r cars}
+# You can do this with the pyramid.plot() function from the plotrix package. Here's an example:
+
+library(plotrix)
+ xy.pop<-c(3.2,3.5,3.6,3.6,3.5,3.5,3.9,3.7,3.9,3.5,3.2,2.8,2.2,1.8,
+  1.5,1.3,0.7,0.4)
+ xx.pop<-c(3.2,3.4,3.5,3.5,3.5,3.7,4,3.8,3.9,3.6,3.2,2.5,2,1.7,1.5,
+  1.3,1,0.8)
+ agelabels<-c("0-4","5-9","10-14","15-19","20-24","25-29","30-34",
+  "35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74",
+  "75-79","80-44","85+")
+ mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),18)
+ fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),18)
+ par(mar=pyramid.plot(xy.pop,xx.pop,labels=agelabels,
+  main="Australian population pyramid 2002",lxcol=mcol,rxcol=fcol,
+  gap=0.5,show.values=TRUE))
+
+```
+
+### ggplot2
+
+from [Top 50 ggplot2 Visualizations - The Master List](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Population%20Pyramid)
+
+
+```{r pressure, echo=FALSE}
+
+
+#Population Pyramid
+#Population pyramids offer a unique way of visualizing how much population or what percentage of #population fall under a certain category. The below pyramid is an excellent example of how many #users are retained at each stage of a email marketing campaign funnel.
+
+library(ggplot2)
+library(ggthemes)
+options(scipen = 999)  # turns of scientific notations like 1e+40
+
+# Read data
+email_campaign_funnel <- read.csv("https://raw.githubusercontent.com/selva86/datasets/master/email_campaign_funnel.csv")
+
+# X Axis Breaks and Labels 
+brks <- seq(-15000000, 15000000, 5000000)
+lbls = paste0(as.character(c(seq(15, 0, -5), seq(5, 15, 5))), "m")
+
+# Plot
+ggplot(email_campaign_funnel, aes(x = Stage, y = Users, fill = Gender)) +   # Fill column
+                              geom_bar(stat = "identity", width = .6) +   # draw the bars
+                              scale_y_continuous(breaks = brks,   # Breaks
+                                                 labels = lbls) + # Labels
+                              coord_flip() +  # Flip axes
+                              labs(title="Email Campaign Funnel") +
+                              theme_tufte() +  # Tufte theme from ggfortify
+                              theme(plot.title = element_text(hjust = .5), 
+                                    axis.ticks = element_blank()) +   # Centre plot title
+                              scale_fill_brewer(palette = "Dark2")  # Color palette
+
+```
+
+
+
+```{r}
+
+library("ggplot2")
+
+library("animation")
+
+
+
+
+
+saveGIF({
+
+  for(shadyside in 1:39)
+
+  {
+
+    sides <- c("Sky", "Sunny side of pyramid", "Shady side of pyramid")
+
+    amounts <- c(150, 40 - shadyside, shadyside)
+
+    
+
+    mydf <- data.frame(values=ordered(rep(sides, amounts), levels = sides))
+
+    
+
+    p <- ggplot(mydf, aes(x = factor(1), fill=factor(values))) + 
+
+      geom_bar(width = 1) + 
+
+      coord_polar(theta = "y", start = 3.8, direction = -1) + 
+
+      scale_fill_manual(values = c("#0095d9", "#f5e837", "#c4b633")) + 
+
+      theme(axis.line = element_blank(),
+
+            axis.title = element_blank(),
+
+            axis.text = element_blank(),
+
+            axis.ticks = element_blank(),
+
+            legend.position = c(1, .9),
+
+            legend.title = element_blank(),
+
+            panel.background = element_blank())
+
+    
+
+    print(p)
+
+  }
+
+}, interval = 1/30, ani.width = 550, ani.height=450)
+
+```
+
