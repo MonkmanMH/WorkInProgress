@@ -8,10 +8,12 @@ date: 2016-03-06
 
 #### The Sabermetric bookshelf, #5
 
-To say that there are many books about the statistical software environment _R_ is, now, a bit of an understatement. I've got over a dozen sitting on my bookshelf, ranging from the general (Norman Matloff's _The Art of R Programming_) to the package-specific (both editions of Hadley Wickham's _ggplot2_ book). And there are a great many more; the publishers CRC and Springer both have dedicated R series. And let's not forget the self-publishers; shout outs here to Roger Peng, Brian Caffo, and David Robinson.
+To say that there are many books about the statistical software environment _R_ is, now, a bit of an understatement. I've got over a dozen sitting on my own bookshelf, ranging from the general (Norman Matloff's _The Art of R Programming_ and Paul Teetor's _R Cookbook_) to the package-specific (both editions of Hadley Wickham's _ggplot2_ book). And there are a great many more; the publishers CRC and Springer both have dedicated R series. And let's not forget on-line books and the self-publishers; shout outs here to Roger Peng, Brian Caffo, Julia Silge, and David Robinson.
+
+This variety of resources 
 
 
-This variety of resources
+
 
 Hadley Wickham and Garrett Grolemund's  _R for Data Science: Import, Tidy, Transform, Visualize, and Model Data_ was published in 2017 by O'Reilly. The online edition is available at [http://r4ds.had.co.nz/index.html](http://r4ds.had.co.nz/index.html).
 
@@ -25,11 +27,15 @@ _Cross-posted at [bayesball.blogspot.com](bayesball.blogspot.com)_
 
 * Michael Friendly and David Meyer, _Discrete Data Analysis with R: Visualization and Modeling Techniques for Categorical and Count Data_ (2016) CRC Press.
 
+* Julia Silge and David Robinson, _Text Mining with R: A Tidy Approach_ (2017/forthcoming) O'Reilly. The online edition is available at [http://tidytextmining.com/](http://tidytextmining.com/)
+
 * Norman Matloff, _The Art of R Programming_ (2011) No Starch Press.
 
 * Roger Peng, [_R Programming for Data Science_](https://leanpub.com/rprogramming) (2016) LeanPub.
 
 * David Robinson, _Introduction to Empirical Bayes: Examples from Baseball Statistics_ (2017). Available at gumroad; see ["Announcing the release of my e-book: Introduction to Empirical Bayes"](http://varianceexplained.org/r/empirical-bayes-book/) for more information.
+
+* Paul Teetor, _R Cookbook_ (2011) O'Reilly.
 
 * Hadley Wickham, _Advanced R_ (2014) Companion website at [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
 
