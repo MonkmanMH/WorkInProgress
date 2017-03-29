@@ -10,8 +10,7 @@ date: 2016-03-06
 
 To say that there are many books about the statistical software environment _R_ is, now, a bit of an understatement. I've got over a dozen sitting on my own bookshelf, ranging from the general (Norman Matloff's _The Art of R Programming_ and Paul Teetor's _R Cookbook_) to the package-specific (both editions of Hadley Wickham's _ggplot2_ book). And there are a great many more; the publishers CRC and Springer both have dedicated R series. And let's not forget on-line books and the self-publishers; shout outs here to Roger Peng, Brian Caffo, Julia Silge, and David Robinson.
 
-This variety of resources 
-
+A new book stands apart, and in many ways above, the others is Hadley Wickham and Garrett Grolemund's  _R for Data Science: Import, Tidy, Transform, Visualize, and Model Data_. While others have tackled the relationship between R and data science before (notably Roger Peng), this new book is fundamentally different because it focusses on The Tidyverse.
 
 
 
