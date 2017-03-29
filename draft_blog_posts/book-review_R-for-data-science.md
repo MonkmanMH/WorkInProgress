@@ -14,9 +14,14 @@ A new book stands apart, and in many ways above, the others is Hadley Wickham an
 
 
 
+
+---
+
 Hadley Wickham and Garrett Grolemund's  _R for Data Science: Import, Tidy, Transform, Visualize, and Model Data_ was published in 2017 by O'Reilly. The online edition is available at [http://r4ds.had.co.nz/index.html](http://r4ds.had.co.nz/index.html).
 
 _Cross-posted at [bayesball.blogspot.com](bayesball.blogspot.com)_
+
+---
 
 #### References
 
@@ -26,7 +31,7 @@ _Cross-posted at [bayesball.blogspot.com](bayesball.blogspot.com)_
 
 * Michael Friendly and David Meyer, _Discrete Data Analysis with R: Visualization and Modeling Techniques for Categorical and Count Data_ (2016) CRC Press.
 
-* Julia Silge and David Robinson, _Text Mining with R: A Tidy Approach_ (2017/forthcoming) O'Reilly. The online edition is available at [http://tidytextmining.com/](http://tidytextmining.com/)
+* Julia Silge and David Robinson, _Text Mining with R: A Tidy Approach_ (2017/forthcoming) O'Reilly. The online edition is available at [http://tidytextmining.com/](http://tidytextmining.com/).
 
 * Norman Matloff, _The Art of R Programming_ (2011) No Starch Press.
 
@@ -36,7 +41,7 @@ _Cross-posted at [bayesball.blogspot.com](bayesball.blogspot.com)_
 
 * Paul Teetor, _R Cookbook_ (2011) O'Reilly.
 
-* Hadley Wickham, _Advanced R_ (2014) Companion website at [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
+* Hadley Wickham, _Advanced R_ (2014). Companion website at [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
 
 * Hadley Wickham, _ggplot2: Elegant Graphics for Data Analysis_ (2nd edition, 2016) Springer.
 
