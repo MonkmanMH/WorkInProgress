@@ -12,7 +12,7 @@ To say that there are many books about the statistical software environment _R_ 
 
 A new book stands apart, and in many ways above, the others is Hadley Wickham and Garrett Grolemund's  _R for Data Science: Import, Tidy, Transform, Visualize, and Model Data_. While others have tackled the relationship between R and data science before (notably Roger Peng), this new book is fundamentally different because it focusses on The Tidyverse.
 
-
+In a recent episode of the [Not So Standard Deviations](https://soundcloud.com/nssd-podcast) podcast, Hilary Parker made the astute observation that the tidyverse is built around a single data structure: the data frame.
 
 
 ---
