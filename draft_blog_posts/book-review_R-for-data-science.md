@@ -4,6 +4,7 @@ title: "Book review: R for Data Science"
 date: 2016-03-06
 ---
 
+#### _R for Data Science: Import, Tidy, Transform, Visualize, and Model Data_
 #### by Hadley Wickham & Garrett Grolemund (2017, O'Reilly)
 
 #### The Sabermetric bookshelf, #5
