@@ -64,17 +64,3 @@ final_accountactivity <- new_accountactivity %>%
 write_csv(final_accountactivity, "final_accountactivty.csv")
 
 
-# -------------------------------------------------------------
-
-# more financial processing in R
-# 
-# mortgage calculator
-# https://www.r-bloggers.com/mortgage-calculator-and-amortization-charts-with-r/
-
-# empirical finance package
-# https://cran.r-project.org/web/views/Finance.html
-
-# simple amortization function
-# https://www.r-bloggers.com/a-simple-amortization-function/
-
-
