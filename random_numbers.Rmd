@@ -9,9 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-build a data frame with 
+From @StatsbyLopez:
+> David and Emily arrive at the Rec Centre at times uniformly distributed between noon and 2 pm independently of each other. What's the probability that they will get there within 20 minutes of each other?
+[https://twitter.com/StatsbyLopez/status/852898752876642305](https://twitter.com/StatsbyLopez/status/852898752876642305)
 
-* two variables, each with a value between 1 and 120 (the number of minutes in a 2 hour period) randomly selected from a uniform distibution distribution
+
+My solution: 
+
+build a data frame with two variables, each with a value between 1 and 120 (the number of minutes in a 2 hour period) randomly selected from a uniform distibution distribution
 
 plot as X-Y
 
@@ -35,22 +40,22 @@ set.seed(8675309)
 
 # with a thousand
 
-ETA <- data_frame(Jamie = floor(runif(1000, 1, 120)),
-                  Martin = floor(runif(1000, 1, 120))
+ETA <- data_frame(Emily = floor(runif(1000, 1, 120)),
+                  David = floor(runif(1000, 1, 120))
 )
 
-ggplot(ETA, aes(x = Jamie, y = Martin)) +
+ggplot(ETA, aes(x = Emily, y = David)) +
   geom_point()
 
 
 # with a million cases
 
-ETA <- data_frame(Jamie = floor(runif(1e6, 1, 120)),
-                  Martin = floor(runif(1e6, 1, 120))
+ETA <- data_frame(Emily = floor(runif(1e6, 1, 120)),
+                  David = floor(runif(1e6, 1, 120))
 )
 
 ETA <- ETA %>%
-  mutate(difference = Jamie - Martin)
+  mutate(difference = Emily - David)
 
 
 ggplot(ETA, aes(x = difference)) +
@@ -73,7 +78,7 @@ ETA %>%
 
 ### David Robinson's elegant solution
 
-https://twitter.com/drob/status/852899563782451200
+[https://twitter.com/drob/status/852899563782451200](https://twitter.com/drob/status/852899563782451200)
 
 
 ```{r}
