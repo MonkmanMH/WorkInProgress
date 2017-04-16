@@ -58,11 +58,13 @@ ETA <- ETA %>%
   mutate(difference = Emily - David)
 
 
+# plot a histogram of the distribution
 ggplot(ETA, aes(x = difference)) +
   geom_histogram(binwidth = 10) +
   geom_density()
 
 
+# summary table of the 
 ETA %>%
   mutate(within20 = ifelse((difference >= -20 & difference <= 20), "Yes", "No")) %>%
   group_by(within20) %>%
