@@ -1,0 +1,84 @@
+---
+title: "2 hours"
+author: "Martin Monkman"
+date: "April 14, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+build a data frame with 
+
+* two variables, each with a value between 1 and 120 (the number of minutes in a 2 hour period) randomly selected from a uniform distibution distribution
+
+plot as X-Y
+
+then mutate to calculate difference between the two 
+
+calculate proportion where difference <= 20
+
+
+```{r}
+
+library(dplyr)
+library(tibble)
+library(ggplot2)
+
+```
+
+
+```{r}
+
+set.seed(8675309)
+
+# with a thousand
+
+ETA <- data_frame(Jamie = floor(runif(1000, 1, 120)),
+                  Martin = floor(runif(1000, 1, 120))
+)
+
+ggplot(ETA, aes(x = Jamie, y = Martin)) +
+  geom_point()
+
+
+# with a million cases
+
+ETA <- data_frame(Jamie = floor(runif(1e6, 1, 120)),
+                  Martin = floor(runif(1e6, 1, 120))
+)
+
+ETA <- ETA %>%
+  mutate(difference = Jamie - Martin)
+
+
+ggplot(ETA, aes(x = difference)) +
+  geom_histogram(binwidth = 10) +
+  geom_density()
+
+
+ETA %>%
+  mutate(within20 = ifelse((difference >= -20 & difference <= 20), "Yes", "No")) %>%
+  group_by(within20) %>%
+  summarise(n = n()) %>%
+  mutate(freq = n / sum(n))
+  
+
+
+
+
+```
+
+
+### David Robinson's elegant solution
+
+https://twitter.com/drob/status/852899563782451200
+
+
+```{r}
+
+mean(abs(runif(1e7, 0, 2) - runif(1e7, 0, 2)) < 1 / 3)
+
+```
+
