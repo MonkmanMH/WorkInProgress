@@ -8,7 +8,6 @@ library(readr)
 
 library(fuzzyjoin)
 
-setwd("E:/@documents/budget/pRocessing")
 
 # -------------------------------------------------------------
 # Step 1: read in files
@@ -27,11 +26,7 @@ accountactivity <- read_csv("datafiles/accountactivity.csv",
 # resolve NA values
 
 accountactivity$debit[is.na(accountactivity$debit)] <- 0
-
 accountactivity$credit[is.na(accountactivity$credit)] <- 0
-accountactivity$credit <- as.numeric(accountactivity$credit)
-
-ls.str(accountactivity)
 
 # create single column with "amount"
 # filter out payments to the VISA account
@@ -67,19 +62,5 @@ final_accountactivity <- new_accountactivity %>%
   select(category, date, vendor.x, amount)
 
 write_csv(final_accountactivity, "final_accountactivty.csv")
-
-
-# -------------------------------------------------------------
-
-# more financial processing in R
-# 
-# mortgage calculator
-# https://www.r-bloggers.com/mortgage-calculator-and-amortization-charts-with-r/
-
-# empirical finance package
-# https://cran.r-project.org/web/views/Finance.html
-
-# simple amortization function
-# https://www.r-bloggers.com/a-simple-amortization-function/
 
 
