@@ -21,6 +21,10 @@
 #  if (interactive()) 
 #    fortunes::fortune()
 
+  
+  Sys.setenv(PATH = paste("c:/PGMS/ImageMagick-7.0.5-5/bin",
+                          Sys.getenv("PATH"), sep = ";"))
+  
 
   .libPaths("C:/PGMS/RLibrary")
   
