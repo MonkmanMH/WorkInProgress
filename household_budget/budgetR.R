@@ -17,9 +17,9 @@ setwd("E:/@documents/budget/pRocessing")
 
 #read_csv("datafiles/accountactivity.csv", col_names = FALSE)
 
-accountactivity <- read_csv("datafiles/accountactivity.csv", 
+accountactivity <- read_csv("C:/Users/User/Downloads/accountactivity.csv", 
                             col_names = c("date", "vendor", "debit", "credit", "balance")
-                            )
+)
 
 #accountactivity <- read_csv("datafiles/accountactivity (1).csv", 
 #                            col_names = c("date", "vendor", "debit", "credit", "balance"))
