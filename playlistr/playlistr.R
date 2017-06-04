@@ -3,6 +3,13 @@
 library(readr)
 library(dplyr)
 
+
+### --- 
+
+# iTunes
+
+# iTunes playlist --  summarize by artist and album
+
 playlist <- read_csv("playlist.csv")
 
 ls(playlist)
