@@ -8,6 +8,10 @@ library(dplyr)
 
 library(ggplot2)
 
+# and yes I know this is bad form but has anyone come up with a more elegant way to define the current directory?
+setwd("C:/@data/GitHub/WorkInProgress/playlistr")
+
+
 
 #### iTunes ----
 
@@ -101,7 +105,7 @@ write_csv(ECMNSalbums, "ECMNSalbums.csv")
 #### ECM albums on LP and CD ----
 
 
-ECMalbumlist <- read_csv("playlistr/albumlist_ECM_2017-05-30.csv")
+ECMalbumlist <- read_csv("albumlist_ECM_2017-05-30.csv")
 
 ls(ECMalbumlist)
 ls.str(ECMalbumlist)
