@@ -1,6 +1,6 @@
 # WHITEHALL BOATS
 
-Whitehall brand
+[Whitehall Spirit](http://www.boothboats.com/whitehall/) -- 85 Dallas Road
 
 [Booth Enterprises](http://www.boothboats.com/whitehall/) -- Victoria!
 
