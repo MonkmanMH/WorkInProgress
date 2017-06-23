@@ -1,0 +1,66 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is a preliminary test of the R package `digest`, which will undertake a variety of data masking functions.
+
+For this test, we'll use baseball data housed in the `Lahman` package.
+
+
+#### packages
+
+```{r}
+
+#data masking
+library(digest)
+
+#data
+library(Lahman)
+data("Batting")
+
+#data summarization / filtering etc
+library(dplyr)
+
+library(ggplot2)
+
+
+```
+
+#### build working data table
+
+This uses the "Batting" table in the Lahman database. The data are filtered to include only the years 2001 through 2015 inclusive, and then only those batters with a minimum of 100 hits in a season*.
+
+(*Since I can't be bothered to add the cases where a player was active for two or more teams in season, this is technically "100 hits for any one team in a single season.")
+
+```{r}
+
+head(Batting)
+
+year_range <- (2001:2015)
+
+Batting2015 <- Batting %>%
+  filter(yearID %in% year_range & H >= 100)
+
+# calculate batting average
+Batting2015 <- Batting2015 %>%
+  mutate(bat_avg = H / AB) %>%
+  select(playerID, yearID, teamID, H, bat_avg)
+
+
+# take a quick look at the distribution
+ggplot(Batting2015, aes(x=H, y=bat_avg) ) +
+  geom_point() +
+  geom_smooth(method = lm)     # add regression line
+
+
+```
+
+
+Now we've got a data set of `r length(Batting2015$H)` records from 2001 to 2015 inclusive, let's test the functionality of `digest`.
+
+Note that this draws heavily on the blog post by Jan Garbarek.
+
+
+
+
