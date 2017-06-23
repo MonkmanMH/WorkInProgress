@@ -22,6 +22,7 @@ For this test, we'll use baseball data housed in the `Lahman` package.
 
 #data masking
 library(digest)
+library(sdcMicro)
 
 #data
 library(Lahman)
