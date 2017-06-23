@@ -22,7 +22,9 @@ data("Batting")
 #data summarization / filtering etc
 library(dplyr)
 
+#graphs and tables
 library(ggplot2)
+library(knitr)
 
 
 ```
@@ -48,6 +50,9 @@ Batting2015 <- Batting2015 %>%
   select(playerID, yearID, teamID, H, bat_avg)
 
 
+# take a quick look at the resulting table
+kable(head(Batting2015))
+
 # take a quick look at the distribution
 ggplot(Batting2015, aes(x=H, y=bat_avg) ) +
   geom_point() +
@@ -59,7 +64,9 @@ ggplot(Batting2015, aes(x=H, y=bat_avg) ) +
 
 Now we've got a data set of `r length(Batting2015$H)` records from 2001 to 2015 inclusive, let's test the functionality of `digest`.
 
-Note that this draws heavily on the blog post by Jan Garbarek.
+Note that this draws heavily on the blog post by Jan Gorecki, "[Data anonymization in R]"(https://jangorecki.github.io/blog/2014-11-07/Data-Anonymization-in-R.html). 
+
+
 
 
 
