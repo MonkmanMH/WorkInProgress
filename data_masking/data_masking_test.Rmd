@@ -47,7 +47,8 @@ Batting2015 <- Batting %>%
 # calculate batting average
 Batting2015 <- Batting2015 %>%
   mutate(bat_avg = H / AB) %>%
-  select(playerID, yearID, teamID, H, bat_avg)
+  select(playerID, yearID, teamID, H, bat_avg) %>%
+  arrange(desc(H))
 
 
 # take a quick look at the resulting table
@@ -68,6 +69,73 @@ Note that this draws heavily on the blog post by Jan Gorecki, "[Data anonymizati
 
 
 
+### Anonymize function
 
 
+from Gorecki
+
+```{r fun_anonymize}
+
+anonymize <- function(x, algo="crc32"){
+  unq_hashes <- vapply(unique(x), function(object) digest(object, algo=algo), FUN.VALUE="", USE.NAMES=TRUE)
+  unname(unq_hashes[x])
+}
+
+
+```
+
+
+
+```{r}
+
+SURV <- read.csv("SURV.csv")
+
+# NOTE: Gorecki's code as posted does not run in my current environment
+
+## choose columns to mask
+#cols_to_mask <- c("name","address","postal_code")
+## backup original data
+#SURV_ORG <- copy(SURV)
+## anonymize
+#SURV[,cols_to_mask := lapply(.SD, anonymize),.SDcols=cols_to_mask,with=FALSE]  ### DOES NOT WORK!
+
+# let's try a dplyr approach instead ...
+
+# first, a version of the data table with new values appended
+SURV_new <- SURV %>%
+  mutate(newPost = anonymize(Postal.Code)) %>%
+  mutate(newAddress = anonymize(Address))
+kable(head(SURV_new))
+
+
+# or, we can overwrite the existing variables with masked
+SURV_mask <- SURV %>%
+  mutate(Postal.Code = anonymize(Postal.Code),
+         Address = anonymize(Address))
+
+
+```
+
+
+One of the clever things about Goreki's code is that the same masked value is generated for each iteration of a value in the original column. In SURV$Postal.Code, "SW1P 3BU" appears twice, and in the generated masked variable it appears as "265a1b6b". This means that summaries on Postal.Code will be consistent for that code.
+
+
+Let's run it on Battter2015's playerID column. 
+
+
+```{r}
+
+#cols_to_mask <- c("playerID", "teamID")
+
+Batting2015_mask <- Batting2015 %>%
+  mutate(playerID_new = anonymize(playerID)) 
+
+Batting2015_mask2 <- Batting2015_mask %>%
+  mutate(teamID_new = anonymize(teamID))
+
+# pretty print
+kable(head(Batting2015_mask))
+kable(head(Batting2015_mask2))
+
+```
 
