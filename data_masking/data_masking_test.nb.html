@@ -321,22 +321,6 @@ ggplot(Batting2015, aes(x=H, y=bat_avg) ) +
 <p>run using the “SURV” example that Gorecki provides</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU1VSViA8LSByZWFkLmNzdihcIlNVUlYuY3N2XCIpXG4jIE5PVEU6IEdvcmVja2kncyBjb2RlIGFzIHBvc3RlZCBkb2VzIG5vdCBydW4gaW4gbXkgY3VycmVudCBlbnZpcm9ubWVudFxuIyMgY2hvb3NlIGNvbHVtbnMgdG8gbWFza1xuI2NvbHNfdG9fbWFzayA8LSBjKFwibmFtZVwiLFwiYWRkcmVzc1wiLFwicG9zdGFsX2NvZGVcIilcbiMjIGJhY2t1cCBvcmlnaW5hbCBkYXRhXG4jU1VSVl9PUkcgPC0gY29weShTVVJWKVxuIyMgYW5vbnltaXplXG4jU1VSVlssY29sc190b19tYXNrIDo9IGxhcHBseSguU0QsIGFub255bWl6ZSksLlNEY29scz1jb2xzX3RvX21hc2ssd2l0aD1GQUxTRV0gICMjIyBET0VTIE5PVCBXT1JLIVxuIyBsZXQncyB0cnkgYSBkcGx5ciBhcHByb2FjaCBpbnN0ZWFkIC4uLlxuIyBmaXJzdCwgYSB2ZXJzaW9uIG9mIHRoZSBkYXRhIHRhYmxlIHdpdGggbmV3IHZhbHVlcyBhcHBlbmRlZFxuU1VSVl9uZXcgPC0gU1VSViAlPiVcbiAgbXV0YXRlKG5ld1Bvc3QgPSBhbm9ueW1pemUoUG9zdGFsLkNvZGUpKSAlPiVcbiAgbXV0YXRlKG5ld0FkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpXG5rYWJsZShoZWFkKFNVUlZfbmV3KSlcbmBgYCJ9 -->
-<pre class="r"><code>SURV &lt;- read.csv(&quot;SURV.csv&quot;)
-# NOTE: Gorecki's code as posted does not run in my current environment
-## choose columns to mask
-#cols_to_mask &lt;- c(&quot;name&quot;,&quot;address&quot;,&quot;postal_code&quot;)
-## backup original data
-#SURV_ORG &lt;- copy(SURV)
-## anonymize
-#SURV[,cols_to_mask := lapply(.SD, anonymize),.SDcols=cols_to_mask,with=FALSE]  ### DOES NOT WORK!
-# let's try a dplyr approach instead ...
-# first, a version of the data table with new values appended
-SURV_new &lt;- SURV %&gt;%
-  mutate(newPost = anonymize(Postal.Code)) %&gt;%
-  mutate(newAddress = anonymize(Address))
-kable(head(SURV_new))</code></pre>
-<!-- rnb-source-end -->
 <p>
 <!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImtuaXRfYXNpcyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
 
@@ -440,8 +424,14 @@ kable(head(SURV_new))</code></pre>
 
 
 <!-- rnb-html-end -->
- <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvciwgd2UgY2FuIG92ZXJ3cml0ZSB0aGUgZXhpc3RpbmcgdmFyaWFibGVzIHdpdGggbWFza2VkXG5TVVJWX21hc2sgPC0gU1VSViAlPiVcbiAgbXV0YXRlKFBvc3RhbC5Db2RlID0gYW5vbnltaXplKFBvc3RhbC5Db2RlKSxcbiAgICAgICAgIEFkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpXG5gYGAifQ== --></p>
-<pre class="r"><code># or, we can overwrite the existing variables with masked
+ <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBmaXJzdCwgYSB2ZXJzaW9uIG9mIHRoZSBkYXRhIHRhYmxlIHdpdGggbmV3IHZhbHVlcyBhcHBlbmRlZFxuU1VSVl9uZXcgPC0gU1VSViAlPiVcbiAgbXV0YXRlKG5ld1Bvc3QgPSBhbm9ueW1pemUoUG9zdGFsLkNvZGUpKSAlPiVcbiAgbXV0YXRlKG5ld0FkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpXG5rYWJsZShoZWFkKFNVUlZfbmV3KSlcblxuIyBvciwgd2UgY2FuIG92ZXJ3cml0ZSB0aGUgZXhpc3RpbmcgdmFyaWFibGVzIHdpdGggbWFza2VkXG5TVVJWX21hc2sgPC0gU1VSViAlPiVcbiAgbXV0YXRlKFBvc3RhbC5Db2RlID0gYW5vbnltaXplKFBvc3RhbC5Db2RlKSxcbiAgICAgICAgIEFkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpXG5gYGAifQ== --></p>
+<pre class="r"><code># first, a version of the data table with new values appended
+SURV_new &lt;- SURV %&gt;%
+  mutate(newPost = anonymize(Postal.Code)) %&gt;%
+  mutate(newAddress = anonymize(Address))
+kable(head(SURV_new))
+
+# or, we can overwrite the existing variables with masked
 SURV_mask &lt;- SURV %&gt;%
   mutate(Postal.Code = anonymize(Postal.Code),
          Address = anonymize(Address))</code></pre>
