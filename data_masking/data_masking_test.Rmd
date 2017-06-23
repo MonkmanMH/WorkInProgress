@@ -5,6 +5,10 @@ output: html_notebook
 
 This is a preliminary test of the R package `digest`, which will undertake a variety of data masking functions.
 
+`digest` references:
+
+* [](https://www.rdocumentation.org/packages/digest/versions/0.6.12/topics/digest)
+
 For this test, we'll use baseball data housed in the `Lahman` package.
 
 
@@ -84,7 +88,7 @@ anonymize <- function(x, algo="crc32"){
 
 ```
 
-
+another chunk 
 
 ```{r}
 

@@ -173,6 +173,10 @@ $(document).ready(function () {
 
 <!-- rnb-text-begin -->
 <p>This is a preliminary test of the R package <code>digest</code>, which will undertake a variety of data masking functions.</p>
+<p><code>digest</code> references:</p>
+<ul>
+<li><a href="https://www.rdocumentation.org/packages/digest/versions/0.6.12/topics/digest"></a></li>
+</ul>
 <p>For this test, we’ll use baseball data housed in the <code>Lahman</code> package.</p>
 <div id="packages" class="section level4">
 <h4>packages</h4>
@@ -309,9 +313,26 @@ ggplot(Batting2015, aes(x=H, y=bat_avg) ) +
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>another chunk</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU1VSViA8LSByZWFkLmNzdihcIlNVUlYuY3N2XCIpXG4jIE5PVEU6IEdvcmVja2kncyBjb2RlIGFzIHBvc3RlZCBkb2VzIG5vdCBydW4gaW4gbXkgY3VycmVudCBlbnZpcm9ubWVudFxuIyMgY2hvb3NlIGNvbHVtbnMgdG8gbWFza1xuI2NvbHNfdG9fbWFzayA8LSBjKFwibmFtZVwiLFwiYWRkcmVzc1wiLFwicG9zdGFsX2NvZGVcIilcbiMjIGJhY2t1cCBvcmlnaW5hbCBkYXRhXG4jU1VSVl9PUkcgPC0gY29weShTVVJWKVxuIyMgYW5vbnltaXplXG4jU1VSVlssY29sc190b19tYXNrIDo9IGxhcHBseSguU0QsIGFub255bWl6ZSksLlNEY29scz1jb2xzX3RvX21hc2ssd2l0aD1GQUxTRV0gICMjIyBET0VTIE5PVCBXT1JLIVxuIyBsZXQncyB0cnkgYSBkcGx5ciBhcHByb2FjaCBpbnN0ZWFkIC4uLlxuIyBmaXJzdCwgYSB2ZXJzaW9uIG9mIHRoZSBkYXRhIHRhYmxlIHdpdGggbmV3IHZhbHVlcyBhcHBlbmRlZFxuU1VSVl9uZXcgPC0gU1VSViAlPiVcbiAgbXV0YXRlKG5ld1Bvc3QgPSBhbm9ueW1pemUoUG9zdGFsLkNvZGUpKSAlPiVcbiAgbXV0YXRlKG5ld0FkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpXG5rYWJsZShoZWFkKFNVUlZfbmV3KSlcbmBgYCJ9 -->
+<pre class="r"><code>SURV &lt;- read.csv(&quot;SURV.csv&quot;)
+# NOTE: Gorecki's code as posted does not run in my current environment
+## choose columns to mask
+#cols_to_mask &lt;- c(&quot;name&quot;,&quot;address&quot;,&quot;postal_code&quot;)
+## backup original data
+#SURV_ORG &lt;- copy(SURV)
+## anonymize
+#SURV[,cols_to_mask := lapply(.SD, anonymize),.SDcols=cols_to_mask,with=FALSE]  ### DOES NOT WORK!
+# let's try a dplyr approach instead ...
+# first, a version of the data table with new values appended
+SURV_new &lt;- SURV %&gt;%
+  mutate(newPost = anonymize(Postal.Code)) %&gt;%
+  mutate(newAddress = anonymize(Address))
+kable(head(SURV_new))</code></pre>
+<!-- rnb-source-end -->
+<p>
 <!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImtuaXRfYXNpcyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
 
 <table>
@@ -414,13 +435,98 @@ ggplot(Batting2015, aes(x=H, y=bat_avg) ) +
 
 
 <!-- rnb-html-end -->
-
+ <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvciwgd2UgY2FuIG92ZXJ3cml0ZSB0aGUgZXhpc3RpbmcgdmFyaWFibGVzIHdpdGggbWFza2VkXG5TVVJWX21hc2sgPC0gU1VSViAlPiVcbiAgbXV0YXRlKFBvc3RhbC5Db2RlID0gYW5vbnltaXplKFBvc3RhbC5Db2RlKSxcbiAgICAgICAgIEFkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpXG5gYGAifQ== --></p>
+<pre class="r"><code># or, we can overwrite the existing variables with masked
+SURV_mask &lt;- SURV %&gt;%
+  mutate(Postal.Code = anonymize(Postal.Code),
+         Address = anonymize(Address))</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>One of the clever things about Goreki’s code is that the same masked value is generated for each iteration of a value in the original column. In SURV$Postal.Code, “SW1P 3BU” appears twice, and in the generated masked variable it appears as “265a1b6b”. This means that summaries on Postal.Code will be consistent for that code.</p>
 <p>Let’s run it on Battter2015’s playerID column.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbHNfdG9fbWFzayA8LSBjKFwicGxheWVySURcIiwgXCJ0ZWFtSURcIilcbkJhdHRpbmcyMDE1X21hc2sgPC0gQmF0dGluZzIwMTUgJT4lXG4gIG11dGF0ZShwbGF5ZXJJRF9uZXcgPSBhbm9ueW1pemUocGxheWVySUQpKSBcbkJhdHRpbmcyMDE1X21hc2syIDwtIEJhdHRpbmcyMDE1X21hc2sgJT4lXG4gIG11dGF0ZSh0ZWFtSURfbmV3ID0gYW5vbnltaXplKHRlYW1JRCkpXG4jIHByZXR0eSBwcmludFxua2FibGUoaGVhZChCYXR0aW5nMjAxNV9tYXNrKSlcbmBgYCJ9 -->
+<pre class="r"><code>#cols_to_mask &lt;- c(&quot;playerID&quot;, &quot;teamID&quot;)
+Batting2015_mask &lt;- Batting2015 %&gt;%
+  mutate(playerID_new = anonymize(playerID)) 
+Batting2015_mask2 &lt;- Batting2015_mask %&gt;%
+  mutate(teamID_new = anonymize(teamID))
+# pretty print
+kable(head(Batting2015_mask))</code></pre>
+<!-- rnb-source-end -->
+<p>
+<!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImtuaXRfYXNpcyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">playerID</th>
+<th align="right">yearID</th>
+<th align="left">teamID</th>
+<th align="right">H</th>
+<th align="right">bat_avg</th>
+<th align="left">playerID_new</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">suzukic01</td>
+<td align="right">2004</td>
+<td align="left">SEA</td>
+<td align="right">262</td>
+<td align="right">0.3721591</td>
+<td align="left">7bb4a4b4</td>
+</tr>
+<tr class="even">
+<td align="left">suzukic01</td>
+<td align="right">2001</td>
+<td align="left">SEA</td>
+<td align="right">242</td>
+<td align="right">0.3497110</td>
+<td align="left">7bb4a4b4</td>
+</tr>
+<tr class="odd">
+<td align="left">suzukic01</td>
+<td align="right">2007</td>
+<td align="left">SEA</td>
+<td align="right">238</td>
+<td align="right">0.3510324</td>
+<td align="left">7bb4a4b4</td>
+</tr>
+<tr class="even">
+<td align="left">suzukic01</td>
+<td align="right">2009</td>
+<td align="left">SEA</td>
+<td align="right">225</td>
+<td align="right">0.3521127</td>
+<td align="left">7bb4a4b4</td>
+</tr>
+<tr class="odd">
+<td align="left">altuvjo01</td>
+<td align="right">2014</td>
+<td align="left">HOU</td>
+<td align="right">225</td>
+<td align="right">0.3409091</td>
+<td align="left">49969aa7</td>
+</tr>
+<tr class="even">
+<td align="left">suzukic01</td>
+<td align="right">2006</td>
+<td align="left">SEA</td>
+<td align="right">224</td>
+<td align="right">0.3223022</td>
+<td align="left">7bb4a4b4</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- rnb-html-end -->
+ <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua2FibGUoaGVhZChCYXR0aW5nMjAxNV9tYXNrMikpXG5gYGAifQ== --></p>
+<pre class="r"><code>kable(head(Batting2015_mask2))</code></pre>
+<!-- rnb-source-end -->
 
 <!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImtuaXRfYXNpcyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
 
@@ -502,7 +608,7 @@ ggplot(Batting2015, aes(x=H, y=bat_avg) ) +
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGEgcHJlbGltaW5hcnkgdGVzdCBvZiB0aGUgUiBwYWNrYWdlIGBkaWdlc3RgLCB3aGljaCB3aWxsIHVuZGVydGFrZSBhIHZhcmlldHkgb2YgZGF0YSBtYXNraW5nIGZ1bmN0aW9ucy4NCg0KRm9yIHRoaXMgdGVzdCwgd2UnbGwgdXNlIGJhc2ViYWxsIGRhdGEgaG91c2VkIGluIHRoZSBgTGFobWFuYCBwYWNrYWdlLg0KDQoNCiMjIyMgcGFja2FnZXMNCg0KYGBge3J9DQoNCiNkYXRhIG1hc2tpbmcNCmxpYnJhcnkoZGlnZXN0KQ0KDQojZGF0YQ0KbGlicmFyeShMYWhtYW4pDQpkYXRhKCJCYXR0aW5nIikNCg0KI2RhdGEgc3VtbWFyaXphdGlvbiAvIGZpbHRlcmluZyBldGMNCmxpYnJhcnkoZHBseXIpDQoNCiNncmFwaHMgYW5kIHRhYmxlcw0KbGlicmFyeShnZ3Bsb3QyKQ0KbGlicmFyeShrbml0cikNCg0KDQpgYGANCg0KIyMjIyBidWlsZCB3b3JraW5nIGRhdGEgdGFibGUNCg0KVGhpcyB1c2VzIHRoZSAiQmF0dGluZyIgdGFibGUgaW4gdGhlIExhaG1hbiBkYXRhYmFzZS4gVGhlIGRhdGEgYXJlIGZpbHRlcmVkIHRvIGluY2x1ZGUgb25seSB0aGUgeWVhcnMgMjAwMSB0aHJvdWdoIDIwMTUgaW5jbHVzaXZlLCBhbmQgdGhlbiBvbmx5IHRob3NlIGJhdHRlcnMgd2l0aCBhIG1pbmltdW0gb2YgMTAwIGhpdHMgaW4gYSBzZWFzb24qLg0KDQooKlNpbmNlIEkgY2FuJ3QgYmUgYm90aGVyZWQgdG8gYWRkIHRoZSBjYXNlcyB3aGVyZSBhIHBsYXllciB3YXMgYWN0aXZlIGZvciB0d28gb3IgbW9yZSB0ZWFtcyBpbiBzZWFzb24sIHRoaXMgaXMgdGVjaG5pY2FsbHkgIjEwMCBoaXRzIGZvciBhbnkgb25lIHRlYW0gaW4gYSBzaW5nbGUgc2Vhc29uLiIpDQoNCmBgYHtyfQ0KDQpoZWFkKEJhdHRpbmcpDQoNCnllYXJfcmFuZ2UgPC0gKDIwMDE6MjAxNSkNCg0KQmF0dGluZzIwMTUgPC0gQmF0dGluZyAlPiUNCiAgZmlsdGVyKHllYXJJRCAlaW4lIHllYXJfcmFuZ2UgJiBIID49IDEwMCkNCg0KIyBjYWxjdWxhdGUgYmF0dGluZyBhdmVyYWdlDQpCYXR0aW5nMjAxNSA8LSBCYXR0aW5nMjAxNSAlPiUNCiAgbXV0YXRlKGJhdF9hdmcgPSBIIC8gQUIpICU+JQ0KICBzZWxlY3QocGxheWVySUQsIHllYXJJRCwgdGVhbUlELCBILCBiYXRfYXZnKSAlPiUNCiAgYXJyYW5nZShkZXNjKEgpKQ0KDQoNCiMgdGFrZSBhIHF1aWNrIGxvb2sgYXQgdGhlIHJlc3VsdGluZyB0YWJsZQ0Ka2FibGUoaGVhZChCYXR0aW5nMjAxNSkpDQoNCiMgdGFrZSBhIHF1aWNrIGxvb2sgYXQgdGhlIGRpc3RyaWJ1dGlvbg0KZ2dwbG90KEJhdHRpbmcyMDE1LCBhZXMoeD1ILCB5PWJhdF9hdmcpICkgKw0KICBnZW9tX3BvaW50KCkgKw0KICBnZW9tX3Ntb290aChtZXRob2QgPSBsbSkgICAgICMgYWRkIHJlZ3Jlc3Npb24gbGluZQ0KDQoNCmBgYA0KDQoNCk5vdyB3ZSd2ZSBnb3QgYSBkYXRhIHNldCBvZiBgciBsZW5ndGgoQmF0dGluZzIwMTUkSClgIHJlY29yZHMgZnJvbSAyMDAxIHRvIDIwMTUgaW5jbHVzaXZlLCBsZXQncyB0ZXN0IHRoZSBmdW5jdGlvbmFsaXR5IG9mIGBkaWdlc3RgLg0KDQpOb3RlIHRoYXQgdGhpcyBkcmF3cyBoZWF2aWx5IG9uIHRoZSBibG9nIHBvc3QgYnkgSmFuIEdvcmVja2ksICJbRGF0YSBhbm9ueW1pemF0aW9uIGluIFJdIihodHRwczovL2phbmdvcmVja2kuZ2l0aHViLmlvL2Jsb2cvMjAxNC0xMS0wNy9EYXRhLUFub255bWl6YXRpb24taW4tUi5odG1sKS4gDQoNCg0KDQojIyMgQW5vbnltaXplIGZ1bmN0aW9uDQoNCg0KZnJvbSBHb3JlY2tpDQoNCmBgYHtyIGZ1bl9hbm9ueW1pemV9DQoNCmFub255bWl6ZSA8LSBmdW5jdGlvbih4LCBhbGdvPSJjcmMzMiIpew0KICB1bnFfaGFzaGVzIDwtIHZhcHBseSh1bmlxdWUoeCksIGZ1bmN0aW9uKG9iamVjdCkgZGlnZXN0KG9iamVjdCwgYWxnbz1hbGdvKSwgRlVOLlZBTFVFPSIiLCBVU0UuTkFNRVM9VFJVRSkNCiAgdW5uYW1lKHVucV9oYXNoZXNbeF0pDQp9DQoNCg0KYGBgDQoNCg0KDQpgYGB7cn0NCg0KU1VSViA8LSByZWFkLmNzdigiU1VSVi5jc3YiKQ0KDQojIE5PVEU6IEdvcmVja2kncyBjb2RlIGFzIHBvc3RlZCBkb2VzIG5vdCBydW4gaW4gbXkgY3VycmVudCBlbnZpcm9ubWVudA0KDQojIyBjaG9vc2UgY29sdW1ucyB0byBtYXNrDQojY29sc190b19tYXNrIDwtIGMoIm5hbWUiLCJhZGRyZXNzIiwicG9zdGFsX2NvZGUiKQ0KIyMgYmFja3VwIG9yaWdpbmFsIGRhdGENCiNTVVJWX09SRyA8LSBjb3B5KFNVUlYpDQojIyBhbm9ueW1pemUNCiNTVVJWWyxjb2xzX3RvX21hc2sgOj0gbGFwcGx5KC5TRCwgYW5vbnltaXplKSwuU0Rjb2xzPWNvbHNfdG9fbWFzayx3aXRoPUZBTFNFXSAgIyMjIERPRVMgTk9UIFdPUkshDQoNCiMgbGV0J3MgdHJ5IGEgZHBseXIgYXBwcm9hY2ggaW5zdGVhZCAuLi4NCg0KIyBmaXJzdCwgYSB2ZXJzaW9uIG9mIHRoZSBkYXRhIHRhYmxlIHdpdGggbmV3IHZhbHVlcyBhcHBlbmRlZA0KU1VSVl9uZXcgPC0gU1VSViAlPiUNCiAgbXV0YXRlKG5ld1Bvc3QgPSBhbm9ueW1pemUoUG9zdGFsLkNvZGUpKSAlPiUNCiAgbXV0YXRlKG5ld0FkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpDQprYWJsZShoZWFkKFNVUlZfbmV3KSkNCg0KDQojIG9yLCB3ZSBjYW4gb3ZlcndyaXRlIHRoZSBleGlzdGluZyB2YXJpYWJsZXMgd2l0aCBtYXNrZWQNClNVUlZfbWFzayA8LSBTVVJWICU+JQ0KICBtdXRhdGUoUG9zdGFsLkNvZGUgPSBhbm9ueW1pemUoUG9zdGFsLkNvZGUpLA0KICAgICAgICAgQWRkcmVzcyA9IGFub255bWl6ZShBZGRyZXNzKSkNCg0KDQpgYGANCg0KDQpPbmUgb2YgdGhlIGNsZXZlciB0aGluZ3MgYWJvdXQgR29yZWtpJ3MgY29kZSBpcyB0aGF0IHRoZSBzYW1lIG1hc2tlZCB2YWx1ZSBpcyBnZW5lcmF0ZWQgZm9yIGVhY2ggaXRlcmF0aW9uIG9mIGEgdmFsdWUgaW4gdGhlIG9yaWdpbmFsIGNvbHVtbi4gSW4gU1VSViRQb3N0YWwuQ29kZSwgIlNXMVAgM0JVIiBhcHBlYXJzIHR3aWNlLCBhbmQgaW4gdGhlIGdlbmVyYXRlZCBtYXNrZWQgdmFyaWFibGUgaXQgYXBwZWFycyBhcyAiMjY1YTFiNmIiLiBUaGlzIG1lYW5zIHRoYXQgc3VtbWFyaWVzIG9uIFBvc3RhbC5Db2RlIHdpbGwgYmUgY29uc2lzdGVudCBmb3IgdGhhdCBjb2RlLg0KDQoNCkxldCdzIHJ1biBpdCBvbiBCYXR0dGVyMjAxNSdzIHBsYXllcklEIGNvbHVtbi4gDQoNCg0KYGBge3J9DQoNCiNjb2xzX3RvX21hc2sgPC0gYygicGxheWVySUQiLCAidGVhbUlEIikNCg0KQmF0dGluZzIwMTVfbWFzayA8LSBCYXR0aW5nMjAxNSAlPiUNCiAgbXV0YXRlKHBsYXllcklEX25ldyA9IGFub255bWl6ZShwbGF5ZXJJRCkpIA0KDQpCYXR0aW5nMjAxNV9tYXNrMiA8LSBCYXR0aW5nMjAxNV9tYXNrICU+JQ0KICBtdXRhdGUodGVhbUlEX25ldyA9IGFub255bWl6ZSh0ZWFtSUQpKQ0KDQojIHByZXR0eSBwcmludA0Ka2FibGUoaGVhZChCYXR0aW5nMjAxNV9tYXNrKSkNCmthYmxlKGhlYWQoQmF0dGluZzIwMTVfbWFzazIpKQ0KDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGEgcHJlbGltaW5hcnkgdGVzdCBvZiB0aGUgUiBwYWNrYWdlIGBkaWdlc3RgLCB3aGljaCB3aWxsIHVuZGVydGFrZSBhIHZhcmlldHkgb2YgZGF0YSBtYXNraW5nIGZ1bmN0aW9ucy4NCg0KYGRpZ2VzdGAgcmVmZXJlbmNlczoNCg0KKiBbXShodHRwczovL3d3dy5yZG9jdW1lbnRhdGlvbi5vcmcvcGFja2FnZXMvZGlnZXN0L3ZlcnNpb25zLzAuNi4xMi90b3BpY3MvZGlnZXN0KQ0KDQpGb3IgdGhpcyB0ZXN0LCB3ZSdsbCB1c2UgYmFzZWJhbGwgZGF0YSBob3VzZWQgaW4gdGhlIGBMYWhtYW5gIHBhY2thZ2UuDQoNCg0KIyMjIyBwYWNrYWdlcw0KDQpgYGB7cn0NCg0KI2RhdGEgbWFza2luZw0KbGlicmFyeShkaWdlc3QpDQoNCiNkYXRhDQpsaWJyYXJ5KExhaG1hbikNCmRhdGEoIkJhdHRpbmciKQ0KDQojZGF0YSBzdW1tYXJpemF0aW9uIC8gZmlsdGVyaW5nIGV0Yw0KbGlicmFyeShkcGx5cikNCg0KI2dyYXBocyBhbmQgdGFibGVzDQpsaWJyYXJ5KGdncGxvdDIpDQpsaWJyYXJ5KGtuaXRyKQ0KDQoNCmBgYA0KDQojIyMjIGJ1aWxkIHdvcmtpbmcgZGF0YSB0YWJsZQ0KDQpUaGlzIHVzZXMgdGhlICJCYXR0aW5nIiB0YWJsZSBpbiB0aGUgTGFobWFuIGRhdGFiYXNlLiBUaGUgZGF0YSBhcmUgZmlsdGVyZWQgdG8gaW5jbHVkZSBvbmx5IHRoZSB5ZWFycyAyMDAxIHRocm91Z2ggMjAxNSBpbmNsdXNpdmUsIGFuZCB0aGVuIG9ubHkgdGhvc2UgYmF0dGVycyB3aXRoIGEgbWluaW11bSBvZiAxMDAgaGl0cyBpbiBhIHNlYXNvbiouDQoNCigqU2luY2UgSSBjYW4ndCBiZSBib3RoZXJlZCB0byBhZGQgdGhlIGNhc2VzIHdoZXJlIGEgcGxheWVyIHdhcyBhY3RpdmUgZm9yIHR3byBvciBtb3JlIHRlYW1zIGluIHNlYXNvbiwgdGhpcyBpcyB0ZWNobmljYWxseSAiMTAwIGhpdHMgZm9yIGFueSBvbmUgdGVhbSBpbiBhIHNpbmdsZSBzZWFzb24uIikNCg0KYGBge3J9DQoNCmhlYWQoQmF0dGluZykNCg0KeWVhcl9yYW5nZSA8LSAoMjAwMToyMDE1KQ0KDQpCYXR0aW5nMjAxNSA8LSBCYXR0aW5nICU+JQ0KICBmaWx0ZXIoeWVhcklEICVpbiUgeWVhcl9yYW5nZSAmIEggPj0gMTAwKQ0KDQojIGNhbGN1bGF0ZSBiYXR0aW5nIGF2ZXJhZ2UNCkJhdHRpbmcyMDE1IDwtIEJhdHRpbmcyMDE1ICU+JQ0KICBtdXRhdGUoYmF0X2F2ZyA9IEggLyBBQikgJT4lDQogIHNlbGVjdChwbGF5ZXJJRCwgeWVhcklELCB0ZWFtSUQsIEgsIGJhdF9hdmcpICU+JQ0KICBhcnJhbmdlKGRlc2MoSCkpDQoNCg0KIyB0YWtlIGEgcXVpY2sgbG9vayBhdCB0aGUgcmVzdWx0aW5nIHRhYmxlDQprYWJsZShoZWFkKEJhdHRpbmcyMDE1KSkNCg0KIyB0YWtlIGEgcXVpY2sgbG9vayBhdCB0aGUgZGlzdHJpYnV0aW9uDQpnZ3Bsb3QoQmF0dGluZzIwMTUsIGFlcyh4PUgsIHk9YmF0X2F2ZykgKSArDQogIGdlb21fcG9pbnQoKSArDQogIGdlb21fc21vb3RoKG1ldGhvZCA9IGxtKSAgICAgIyBhZGQgcmVncmVzc2lvbiBsaW5lDQoNCg0KYGBgDQoNCg0KTm93IHdlJ3ZlIGdvdCBhIGRhdGEgc2V0IG9mIGByIGxlbmd0aChCYXR0aW5nMjAxNSRIKWAgcmVjb3JkcyBmcm9tIDIwMDEgdG8gMjAxNSBpbmNsdXNpdmUsIGxldCdzIHRlc3QgdGhlIGZ1bmN0aW9uYWxpdHkgb2YgYGRpZ2VzdGAuDQoNCk5vdGUgdGhhdCB0aGlzIGRyYXdzIGhlYXZpbHkgb24gdGhlIGJsb2cgcG9zdCBieSBKYW4gR29yZWNraSwgIltEYXRhIGFub255bWl6YXRpb24gaW4gUl0iKGh0dHBzOi8vamFuZ29yZWNraS5naXRodWIuaW8vYmxvZy8yMDE0LTExLTA3L0RhdGEtQW5vbnltaXphdGlvbi1pbi1SLmh0bWwpLiANCg0KDQoNCiMjIyBBbm9ueW1pemUgZnVuY3Rpb24NCg0KDQpmcm9tIEdvcmVja2kNCg0KYGBge3IgZnVuX2Fub255bWl6ZX0NCg0KYW5vbnltaXplIDwtIGZ1bmN0aW9uKHgsIGFsZ289ImNyYzMyIil7DQogIHVucV9oYXNoZXMgPC0gdmFwcGx5KHVuaXF1ZSh4KSwgZnVuY3Rpb24ob2JqZWN0KSBkaWdlc3Qob2JqZWN0LCBhbGdvPWFsZ28pLCBGVU4uVkFMVUU9IiIsIFVTRS5OQU1FUz1UUlVFKQ0KICB1bm5hbWUodW5xX2hhc2hlc1t4XSkNCn0NCg0KDQpgYGANCg0KYW5vdGhlciBjaHVuayANCg0KYGBge3J9DQoNClNVUlYgPC0gcmVhZC5jc3YoIlNVUlYuY3N2IikNCg0KIyBOT1RFOiBHb3JlY2tpJ3MgY29kZSBhcyBwb3N0ZWQgZG9lcyBub3QgcnVuIGluIG15IGN1cnJlbnQgZW52aXJvbm1lbnQNCg0KIyMgY2hvb3NlIGNvbHVtbnMgdG8gbWFzaw0KI2NvbHNfdG9fbWFzayA8LSBjKCJuYW1lIiwiYWRkcmVzcyIsInBvc3RhbF9jb2RlIikNCiMjIGJhY2t1cCBvcmlnaW5hbCBkYXRhDQojU1VSVl9PUkcgPC0gY29weShTVVJWKQ0KIyMgYW5vbnltaXplDQojU1VSVlssY29sc190b19tYXNrIDo9IGxhcHBseSguU0QsIGFub255bWl6ZSksLlNEY29scz1jb2xzX3RvX21hc2ssd2l0aD1GQUxTRV0gICMjIyBET0VTIE5PVCBXT1JLIQ0KDQojIGxldCdzIHRyeSBhIGRwbHlyIGFwcHJvYWNoIGluc3RlYWQgLi4uDQoNCiMgZmlyc3QsIGEgdmVyc2lvbiBvZiB0aGUgZGF0YSB0YWJsZSB3aXRoIG5ldyB2YWx1ZXMgYXBwZW5kZWQNClNVUlZfbmV3IDwtIFNVUlYgJT4lDQogIG11dGF0ZShuZXdQb3N0ID0gYW5vbnltaXplKFBvc3RhbC5Db2RlKSkgJT4lDQogIG11dGF0ZShuZXdBZGRyZXNzID0gYW5vbnltaXplKEFkZHJlc3MpKQ0Ka2FibGUoaGVhZChTVVJWX25ldykpDQoNCg0KIyBvciwgd2UgY2FuIG92ZXJ3cml0ZSB0aGUgZXhpc3RpbmcgdmFyaWFibGVzIHdpdGggbWFza2VkDQpTVVJWX21hc2sgPC0gU1VSViAlPiUNCiAgbXV0YXRlKFBvc3RhbC5Db2RlID0gYW5vbnltaXplKFBvc3RhbC5Db2RlKSwNCiAgICAgICAgIEFkZHJlc3MgPSBhbm9ueW1pemUoQWRkcmVzcykpDQoNCg0KYGBgDQoNCg0KT25lIG9mIHRoZSBjbGV2ZXIgdGhpbmdzIGFib3V0IEdvcmVraSdzIGNvZGUgaXMgdGhhdCB0aGUgc2FtZSBtYXNrZWQgdmFsdWUgaXMgZ2VuZXJhdGVkIGZvciBlYWNoIGl0ZXJhdGlvbiBvZiBhIHZhbHVlIGluIHRoZSBvcmlnaW5hbCBjb2x1bW4uIEluIFNVUlYkUG9zdGFsLkNvZGUsICJTVzFQIDNCVSIgYXBwZWFycyB0d2ljZSwgYW5kIGluIHRoZSBnZW5lcmF0ZWQgbWFza2VkIHZhcmlhYmxlIGl0IGFwcGVhcnMgYXMgIjI2NWExYjZiIi4gVGhpcyBtZWFucyB0aGF0IHN1bW1hcmllcyBvbiBQb3N0YWwuQ29kZSB3aWxsIGJlIGNvbnNpc3RlbnQgZm9yIHRoYXQgY29kZS4NCg0KDQpMZXQncyBydW4gaXQgb24gQmF0dHRlcjIwMTUncyBwbGF5ZXJJRCBjb2x1bW4uIA0KDQoNCmBgYHtyfQ0KDQojY29sc190b19tYXNrIDwtIGMoInBsYXllcklEIiwgInRlYW1JRCIpDQoNCkJhdHRpbmcyMDE1X21hc2sgPC0gQmF0dGluZzIwMTUgJT4lDQogIG11dGF0ZShwbGF5ZXJJRF9uZXcgPSBhbm9ueW1pemUocGxheWVySUQpKSANCg0KQmF0dGluZzIwMTVfbWFzazIgPC0gQmF0dGluZzIwMTVfbWFzayAlPiUNCiAgbXV0YXRlKHRlYW1JRF9uZXcgPSBhbm9ueW1pemUodGVhbUlEKSkNCg0KIyBwcmV0dHkgcHJpbnQNCmthYmxlKGhlYWQoQmF0dGluZzIwMTVfbWFzaykpDQprYWJsZShoZWFkKEJhdHRpbmcyMDE1X21hc2syKSkNCg0KYGBgDQoNCg==</div>
 
 
 
