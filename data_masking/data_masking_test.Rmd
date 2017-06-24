@@ -182,8 +182,9 @@ Et voilà!
 
 ---
 
-### `sdcMicro`
+## `sdcMicro`
 
 
-This is a change.
+References: see [Anonymity and Confidentiality](https://github.com/MonkmanMH/DataScienceResources/blob/master/docs/Anonymity_Confidentiality.md)
+
 
