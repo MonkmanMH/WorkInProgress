@@ -190,6 +190,21 @@ SampleSizeR(N, P, CoV)
 
 
 
+
+batch it
+
+```{r}
+
+N <- c(15000, 22500)
+P <- c(0.05, 0.10)
+CoV <- c(10, 16.5)
+
+
+
+
+```
+
+
 Now for the tests:
 
 
