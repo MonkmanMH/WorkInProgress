@@ -1,29 +1,32 @@
 ---
-title: "Sample Size calculator"
-author: "Martin Monkman"
-date: "2017-08-22"
-output: word_document
+title: "sample size calculations"
+output: html_notebook
 ---
-
 
 # Sample Size Calculator
 
 
 This script calculates 
 
-* CInt = confidence interval based on
+* CInt = confidence interval 
+
+* CoV = coefficient of variation
 
 * N = population size
 
 * n = the sample size (or the number of responses, assuming 100% response)
 
-* with P = prevalance (proportion observed in the population).
+* P = prevalance (proportion observed in the population).
 
 
 
 ### Functions
 
-Let's set it up as a pair of functions, one by `n` and the other by response rate (`RR`):
+Let's set it up as functions
+
+* confidence interval, one by `n` and the other by response rate (`RR`)
+
+* coefficient of variation
 
 
 ```{r}
@@ -56,8 +59,7 @@ CoefVar <- function(N, n, P){
 
 ```
 
-this is the text
-
+a quick and dirty test
 
 ```{r}
 
@@ -164,12 +166,14 @@ the SampleSizeR function
 ```{r}
 
 # coefficient of variation
-SampleSizeR <- function(N, P, CoV){
+SampleSizeR_CoV <- function(N, P, CoV){
   SD <- (CoV * P / 100)
   n <- N / (((SD ^ 2) * (N-1)) / (P * (1 - P)) + 1)
   return(n)
 }
   
+
+# add Confidence Interval variant
 
 
 ```
@@ -183,7 +187,7 @@ P <- 0.05
 CoV <- 10
 
 
-SampleSizeR(N, P, CoV)
+SampleSizeR_CoV(N, P, CoV)
 
 
 ```
@@ -195,161 +199,31 @@ batch it
 
 ```{r}
 
+library(dplyr)
+
 N <- c(15000, 22500)
 P <- c(0.05, 0.10)
 CoV <- c(10, 16.5)
 
+variation_table <- as_tibble(expand.grid(N, P, CoV)) %>%
+    rename(N = Var1,
+         P = Var2,
+         CoV = Var3)
+
+variation_table
+
+variation_table %>%
+  mutate(community_count = ifelse(N == 15000, 300, 200)) %>%
+  mutate(samplesize = SampleSizeR_CoV(N, P, CoV)) %>%
+  mutate(totalsample = samplesize * community_count)
 
 
 
 ```
 
 
-Now for the tests:
 
 
-```{r, echo = FALSE}
-
-# set population size
-N <- 3000
-
-# set sample size
-n <- 385
-
-# set the response rate [enter as decimal from 0.0 to 1.0]
-RR <- 0.5
-
-# set proportion of respondents giving specific response 
-# (50% [enter as 0.5] gives the largest possible confidence interval)
-P <- 0.1
-
-
-```
-
-
-a coefficient of variation of either 10.0% or 16.5%, 
-
-
-Now run a batch:
-
-```{r}
-
-for (N in 20:49){
-  print(N)
-}
-
-N <- 47
-RR <- 0.5
-n <- trunc(N * RR)
-P <- 0.5
-CI <- ConfInt_RR(N, RR, P)
-
-
-for(N in 20:49) {
-  n <- trunc(N * RR)
-  CI <- ConfInt_n(N, n, P)
-  print(CI)
-  }
-
-```
-
-### Make a table showing `N`, `n`, and the resulting confidence interval at 50% response rate.
-
-This uses the package `dplyr`. 
-
-#### Driven by response rate
-
-Calculate both the `n` (based on the defined response rate) and the confidence interval (`CI`).
-
-```{r}
-
-library(dplyr)
-
-N <- c(20:49)
-CItable <- data.frame(N)
-
-P <- 0.5
-RR <- 0.5
-
-mutate(CItable,
-       n = trunc(N * RR),
-       CI = ConfInt_n(N, n, P))
-
-
-# assign the output to a table
-
-CItable_RR <- mutate(CItable,
-                  n = trunc(N * RR),
-                  CI = ConfInt_n(N, n, P))
-
-CItable_RR
-
-```
-
-#### Driven by response rate
-
-Calculate the response rate `RR` (based on the number of responses) and the confidence interval (`CI`).
-
-
-```{r}
-
-P <- 0.5
-n <- 10
-
-# assign the output to a table
-
-CItable_n <- mutate(CItable,
-                    n = n,
-                    CI = ConfInt_n(N, n, P))
-
-CItable_n
-
-```
-
-Wait a minute -- we can make a single table with both sets of values.
-
-```{r}
-
-N <- c(20:49)
-CItable_master <- data.frame(N)
-
-P <- 0.5
-RR <- 0.5
-
-# assign the output to a table
-
-CItable_master <- mutate(CItable_master,
-                  n1 = trunc(N * RR),
-                  CI1 = ConfInt_n(N, n1, P))
-
-CItable_master
-
-# add by n = 10
-
-n2 <- 10
-
-# assign the output to a table
-
-CItable_master <- mutate(CItable_master,
-                    n2 = n2,
-                    CI2 = ConfInt_n(N, n2, P))
-
-CItable_master
-
-
-```
-
-### Plot: N by CI
-
-```{r}
-
-library(ggplot2)
-
-ggplot(CItable_master, aes(N)) + 
-  geom_line(aes(y = CI1), colour = "red") + 
-  geom_line(aes(y = CI2), colour = "black")
-
-```
 The end (for now)
 
 -30-
