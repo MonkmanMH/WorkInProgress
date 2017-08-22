@@ -1,29 +1,47 @@
 ---
-title: "Sample Size calculator"
+title: "Confidence Interval - WES reporting"
 author: "Martin Monkman"
-date: "2017-08-22"
+date: "February 2, 2016"
 output: word_document
 ---
 
+The current reporting criterial for WES is currently too arbitrary, and needs to incorporate a sliding scale. A work unit of 20 and 10 respondents will get a report, but one with 21 with 10 respondents would not.
 
-# Sample Size Calculator
+The minimum of 10 respondents gives us assurance that confidentiality is protected. But we also need to be mindful of the _quality_ of the results; that is to say, how confident can we be in the results?
 
+### One-off calculation
 
-This script calculates 
+This script calculates the 95% (alpha = 0.05) confidence intervals by the work unit size, number of responses, and proportion of respondents giving a specific response.
 
-* CInt = confidence interval based on
+```{r, echo = FALSE}
 
-* N = population size
+# set work unit size
+N <- 20
 
-* n = the sample size (or the number of responses, assuming 100% response)
+# set number of respondents
+n <- 10
 
-* with P = prevalance (proportion observed in the population).
+# set the response rate [enter as decimal from 0.0 to 1.0]
+RR <- 0.5
 
+# set proportion of respondents giving specific response 
+# (50% [enter as 0.5] gives the largest possible confidence interval)
+P <- 0.5
 
+# calculate the standard deviation of the sample
+SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
+SD
+
+CInt <- SD * 1.96
+CInt
+
+```
+
+The confidence interval is `r CInt`. 
 
 ### Functions
 
-Let's set it up as a pair of functions, one by `n` and the other by response rate (`RR`):
+Let`s set it up as a pair of functions, one by `n` and the other by response rate (`RR`):
 
 
 ```{r}
@@ -32,75 +50,16 @@ Let's set it up as a pair of functions, one by `n` and the other by response rat
 ConfInt_n <- function(N, n, P){
   SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
   CInt <- SD * 1.96
-  return(CInt)
 }
 
 # by response rate
 ConfInt_RR <- function(N, RR, P){
-  n <- n * RR
+  n <- N * RR
   SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
   CInt <- SD * 1.96
-  return(CInt)
 }
 
-
-
-
-# coefficient of variation
-CoefVar <- function(N, n, P){
-  SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
-  CoV <- (SD / P * 100)
-  return(CoV)
-}
-
-
 ```
-
-this is the text
-
-
-```{r}
-
-N = 3000
-n = 385
-RR = 0.5
-P = 0.1
-
-ConfInt_n(N, n, P)
-
-CoefVar(N, n, P)
-
-ConfInt_RR(N, RR, P)
-
-
-```
-
-
-
-Now for the tests:
-
-
-```{r, echo = FALSE}
-
-# set population size
-N <- 3000
-
-# set sample size
-n <- 385
-
-# set the response rate [enter as decimal from 0.0 to 1.0]
-RR <- 0.5
-
-# set proportion of respondents giving specific response 
-# (50% [enter as 0.5] gives the largest possible confidence interval)
-P <- 0.1
-
-
-```
-
-
-a coefficient of variation of either 10.0% or 16.5%, 
-
 
 Now run a batch:
 
