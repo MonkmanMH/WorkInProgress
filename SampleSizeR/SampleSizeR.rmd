@@ -6,6 +6,12 @@ output: html_notebook
 # Sample Size Calculator
 
 
+```{r}
+
+library(tidyverse)
+
+```
+
 This script calculates 
 
 * CInt = confidence interval 
@@ -199,7 +205,6 @@ batch it
 
 ```{r}
 
-library(dplyr)
 
 N <- c(15000, 22500)
 P <- c(0.05, 0.10)
@@ -210,14 +215,15 @@ variation_table <- as_tibble(expand.grid(N, P, CoV)) %>%
          P = Var2,
          CoV = Var3)
 
-variation_table
-
-variation_table %>%
+variation_table <- variation_table %>%
   mutate(community_count = ifelse(N == 15000, 300, 200)) %>%
   mutate(samplesize = SampleSizeR_CoV(N, P, CoV)) %>%
   mutate(totalsample = samplesize * community_count)
 
+variation_table
 
+
+write_csv(variation_table, "variation_table.csv")
 
 ```
 
