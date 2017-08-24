@@ -20,13 +20,16 @@ This script calculates
 
 
 
-### Functions
+### Functions: binomial distributions (P)
 
-Let's set it up as functions
+Three functions:
 
-* confidence interval, one by `n` and the other by response rate (`RR`)
+* confidence interval where `n` is the number of measurements
 
-* coefficient of variation
+* confidence interval by response rate (`RR`); that is, a proportion of `n`
+
+* coefficient of variation, using `n`
+
 
 
 ```{r}
