@@ -5,7 +5,13 @@ output: html_notebook
 
 # datasaurus
 
+[Download the Datasaurus](http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html)
+
+[The Datasaurus Dozen](http://blog.revolutionanalytics.com/2017/05/the-datasaurus-dozen.html)
+
 [datasauRus](https://github.com/stephlocke/datasauRus)
+
+[Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing](https://www.autodeskresearch.com/publications/samestats)
 
 ```{r}
 
