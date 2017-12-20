@@ -127,6 +127,8 @@ data_for_mod %>%
 ...but with the `tidy()` etc rows from above (with the term name changed) it fails
  -- error "Error in tidy.list(.) : No tidying method recognized for this list"
 
+Note: I have tried a variety of filter options!
+
 ```{r}
 
 data_for_mod %>% 
