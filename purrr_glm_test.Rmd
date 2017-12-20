@@ -136,6 +136,8 @@ glm_list <- data_for_mod %>%
   map(~glm(data_for_mod$bino1 ~ .x, data = data_for_mod, family = binomial))
 ```
 
+** NOTE: what follows is from @cwickham **
+
 The problem is, at this stage we have a list of `glm` objects:
 ```{r}
 glm_list
