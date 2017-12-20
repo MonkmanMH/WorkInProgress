@@ -130,18 +130,30 @@ data_for_mod %>%
 Note: I have tried a variety of filter options!
 
 ```{r}
-
-data_for_mod %>% 
+glm_list <- data_for_mod %>% 
   dplyr::select(-bino1) %>%  # exclude outcome, leave only predictors 
   dplyr::select(-c(con1, con2)) %>%  # exclude other factors, leave only continuous (double) variables 
-  map(~glm(data_for_mod$bino1 ~ .x, data = data_for_mod, family = binomial)) %>% 
-  tidy() %>%
-  filter(term == "bino21") %>%
-  pull("estimate")
-
-
-
+  map(~glm(data_for_mod$bino1 ~ .x, data = data_for_mod, family = binomial))
 ```
 
+The problem is, at this stage we have a list of `glm` objects:
+```{r}
+glm_list
+```
 
+If we try to pipe that into `tidy()` we get the error because `tidy()` sees it as a list, (not a glm object):
+```{r}
+glm_list %>% tidy()
+```
 
+Really you want to `map()` `tidy()` (i.e. for each mdoel in this list, tidy it):
+```{r}
+glm_list %>% map(tidy)
+```
+
+Then you could proceed to pull out the pieces you want, but you would have to keep mapping because we still have a list of data frames:
+```{r}
+glm_list %>% 
+  map(tidy) %>%
+  map("estimate")
+```
