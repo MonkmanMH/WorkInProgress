@@ -23,6 +23,8 @@ beepr::beep("coin")
 ```
 
 
+## data - build a table
+
 ```{r}
 
 set.seed(8675309)
@@ -55,6 +57,8 @@ data_for_mod
 ```
 
 ## purrr the lm
+
+modified from https://sebastiansauer.github.io/multiple-lm-purrr2/
 
 
 ```{r}
@@ -105,18 +109,26 @@ It works!
 
 
 
+### make it purrr
+
+This chunk produces the "summary" output for the individual models for both X variables
 
 ```{r}
 
-# produces the "summary" output for the individual models for both X variables
 data_for_mod %>% 
   dplyr::select(-bino1) %>%  # exclude outcome, leave only predictors 
   dplyr::select(-c(con1, con2)) %>%  # exclude other factors, leave only continuous (double) variables 
   map(~glm(data_for_mod$bino1 ~ .x, data = data_for_mod, family = binomial))
 
+```
 
-#...but with the `tidy()` etc rows from above (with the term name changed) it fails
-# -- error "Error in tidy.list(.) : No tidying method recognized for this list"
+
+
+...but with the `tidy()` etc rows from above (with the term name changed) it fails
+ -- error "Error in tidy.list(.) : No tidying method recognized for this list"
+
+```{r}
+
 data_for_mod %>% 
   dplyr::select(-bino1) %>%  # exclude outcome, leave only predictors 
   dplyr::select(-c(con1, con2)) %>%  # exclude other factors, leave only continuous (double) variables 
