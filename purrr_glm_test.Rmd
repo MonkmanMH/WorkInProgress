@@ -15,6 +15,8 @@ library(tidyverse)
 library(broom)
 library(purrr)
 
+library(skimr)
+
 library(beepr)
 
 beepr::beep("coin")
@@ -55,6 +57,20 @@ data_for_mod <- data_for_mod %>%
 data_for_mod
 
 ```
+
+
+### Testing `skimr`
+
+See https://ropensci.org/blog/2017/07/11/skimr/ 
+
+(alas, earwax: Windows does not render the histogram / sparklines correctly)
+
+```{r}
+
+skim(data_for_mod)
+
+```
+
 
 ## purrr the lm
 
