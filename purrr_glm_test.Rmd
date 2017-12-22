@@ -5,6 +5,19 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Using `purrr` and `broom` in conjunction.
+
+Some background reading:
+
+`broom`
+
+* https://cran.r-project.org/web/packages/broom/vignettes/broom.html
+
+* https://github.com/tidyverse/broom/issues/158
+
+
+
+
 ## preliminaries
 
 packages
