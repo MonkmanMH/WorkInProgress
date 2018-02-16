@@ -1,0 +1,155 @@
+---
+title: "tidyeval primer"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+Beginning to understand tidyeval
+
+## Hadley Wickham's _Tidy evaluation in 5 minutes_
+
+A [short video on YouTube](https://www.youtube.com/watch?v=nERXS3ssntw), converted to text, script, and annotations
+
+# The 5 big ideas of tidy evaluation
+
+## 1: R code is a tree
+
+R code has a hierarchical structure which can be visualized
+
+
+```{r}
+
+f(x, "y", 1)
+
+
+```
+
+![function structure](tidyeval_1.01.JPG)
+
+and this structure can have multiple levels
+
+
+![function structure](tidyeval_1.02.JPG)
+
+
+```{r}
+
+f(g(x), "y", 1)
+
+```
+
+Every expression has a tree
+
+![function structure](tidyeval_1.03.JPG)
+
+```{r}
+
+y <- x * 10
+
+`<-`(y, `*`(x, 10))
+
+```
+
+
+## 2: Capture the tree by quoting
+
+> `rlang:expr()` and > `rlang:enexpr()`
+
+
+![function structure](tidyeval_2.01.JPG)
+
+```{r}
+
+library(rlang)
+
+f1 <- function(z) expr(z)
+f1(a + b)
+
+f2 <- function(z) enexpr(z)
+f2(x + y)
+
+```
+
+
+This leads to new vocabulary: 
+
+Arguments can be **evaluated** or **quoted**
+
+
+![function structure](tidyeval_2.02.JPG)
+
+
+Which is used throughout the tidyverse
+
+![function structure](tidyeval_2.03.JPG)
+
+
+## 3: Unquoting makes it easy to build trees
+
+"!!" unquotes (and is pronounced "bang-bang")
+
+```{r}
+
+(xy <- expr(x + y))
+
+expr(!!xy + z)
+
+expr(1 / !!xy)
+
+
+
+```
+
+
+A simple example:
+
+![function structure](tidyeval_3.01.JPG)
+
+
+```{r}
+
+x <- expr(a + b)
+
+expr(f(!!x, y))
+
+```
+
+
+## 4: Quote / unquote
+
+If you want to wrap a function that quotes one or more of its arguments you need to quote one or more of your arguments, and then unquote them
+
+
+A simple example from `ggplot2`:
+
+![function structure](tidyeval_4.01.JPG)
+
+
+
+## NOTE: doesn't _quite_ work
+
+Doesn't take into account the environment in which those expressions are evaluated
+
+Important when variables from dataframe mingle with variables from environment
+
+![function structure](tidyeval_4.02.JPG)
+
+
+![function structure](tidyeval_4.03.JPG)
+
+
+
+## 5: Quosures capture expression and environment
+
+"Quosure" -- portmanteau of "quotation" and "closure"
+
+Change expression from `enexpr` to `enquo`
+
+* `enquo` uses n from global environment, not function
+
+![function structure](tidyeval_5.01.JPG)
+
+
+
+
