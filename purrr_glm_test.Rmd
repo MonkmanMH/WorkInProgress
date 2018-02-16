@@ -5,6 +5,19 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Using `purrr` and `broom` in conjunction.
+
+Some background reading:
+
+`broom`
+
+* https://cran.r-project.org/web/packages/broom/vignettes/broom.html
+
+* https://github.com/tidyverse/broom/issues/158
+
+
+
+
 ## preliminaries
 
 packages
@@ -15,6 +28,8 @@ library(tidyverse)
 library(broom)
 library(purrr)
 
+library(skimr)
+
 library(beepr)
 
 beepr::beep("coin")
@@ -22,6 +37,8 @@ beepr::beep("coin")
 
 ```
 
+
+## data - build a table
 
 ```{r}
 
@@ -54,7 +71,23 @@ data_for_mod
 
 ```
 
+
+### Testing `skimr`
+
+See https://ropensci.org/blog/2017/07/11/skimr/ 
+
+(alas, earwax: Windows does not render the histogram / sparklines correctly)
+
+```{r}
+
+skim(data_for_mod)
+
+```
+
+
 ## purrr the lm
+
+modified from https://sebastiansauer.github.io/multiple-lm-purrr2/
 
 
 ```{r}
@@ -105,29 +138,53 @@ It works!
 
 
 
+### make it purrr
+
+This chunk produces the "summary" output for the individual models for both X variables
 
 ```{r}
 
-# produces the "summary" output for the individual models for both X variables
 data_for_mod %>% 
   dplyr::select(-bino1) %>%  # exclude outcome, leave only predictors 
   dplyr::select(-c(con1, con2)) %>%  # exclude other factors, leave only continuous (double) variables 
   map(~glm(data_for_mod$bino1 ~ .x, data = data_for_mod, family = binomial))
 
-
-#...but with the `tidy()` etc rows from above (with the term name changed) it fails
-# -- error "Error in tidy.list(.) : No tidying method recognized for this list"
-data_for_mod %>% 
-  dplyr::select(-bino1) %>%  # exclude outcome, leave only predictors 
-  dplyr::select(-c(con1, con2)) %>%  # exclude other factors, leave only continuous (double) variables 
-  map(~glm(data_for_mod$bino1 ~ .x, data = data_for_mod, family = binomial)) %>% 
-  tidy() %>%
-  filter(term == "bino21") %>%
-  pull("estimate")
-
-
-
 ```
 
 
 
+...but with the `tidy()` etc rows from above (with the term name changed) it fails
+ -- error "Error in tidy.list(.) : No tidying method recognized for this list"
+
+Note: I have tried a variety of filter options!
+
+```{r}
+glm_list <- data_for_mod %>% 
+  dplyr::select(-bino1) %>%  # exclude outcome, leave only predictors 
+  dplyr::select(-c(con1, con2)) %>%  # exclude other factors, leave only continuous (double) variables 
+  map(~glm(data_for_mod$bino1 ~ .x, data = data_for_mod, family = binomial))
+```
+
+** NOTE: what follows is from @cwickham **
+
+The problem is, at this stage we have a list of `glm` objects:
+```{r}
+glm_list
+```
+
+If we try to pipe that into `tidy()` we get the error because `tidy()` sees it as a list, (not a glm object):
+```{r}
+glm_list %>% tidy()
+```
+
+Really you want to `map()` `tidy()` (i.e. for each mdoel in this list, tidy it):
+```{r}
+glm_list %>% map(tidy)
+```
+
+Then you could proceed to pull out the pieces you want, but you would have to keep mapping because we still have a list of data frames:
+```{r}
+glm_list %>% 
+  map(tidy) %>%
+  map("estimate")
+```
