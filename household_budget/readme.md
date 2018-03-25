@@ -10,6 +10,10 @@
 --- 
 
 ### more financial processing in R
+
+Sharla Gelfand's **peppermint** shiny app
+https://sharlagelfand.netlify.com/posts/peppermint/
+
  
 **mortgage calculator**
 https://www.r-bloggers.com/mortgage-calculator-and-amortization-charts-with-r/

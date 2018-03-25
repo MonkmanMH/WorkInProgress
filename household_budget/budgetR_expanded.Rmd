@@ -60,13 +60,8 @@ ls.str(accountactivity)
 accountactivity <- accountactivity %>%
   mutate(amount = debit - credit) %>%
   filter(vendor != "SCOTIABANK PAYMENT") %>%
-  mutate(FinIn = "TDVisa")
-
-mdy(accountactivity$date)
-
-accountactivity %>%
-  mutate(date = mdy(date)) %>%
-  
+  mutate(date = mdy(date),
+         FinIn = "TDVisa")
 
 ls.str(accountactivity)
 
@@ -84,33 +79,36 @@ final_accountactivity <- accountactivity %>%
 
 ```{r}
 
-pcbanking_chequing <- read_csv("C:/Users/User/Downloads/pcbanking.csv")
-
-
-, 
-                            col_names = c("date", "vendor", "debit", "credit", "balance")
+pcbanking_chequing <- read_csv("C:/Users/User/Downloads/pcbanking.csv",
+                               col_names = c("date", "amount", "dash", "type", "source")
                             )
 
 #accountactivity <- read_csv("datafiles/accountactivity (1).csv", 
 #                            col_names = c("date", "vendor", "debit", "credit", "balance"))
 
-# resolve NA values
 
-accountactivity$debit[is.na(accountactivity$debit)] <- 0
-
-accountactivity$credit[is.na(accountactivity$credit)] <- 0
-accountactivity$credit <- as.numeric(accountactivity$credit)
-
-ls.str(accountactivity)
+ls.str(pcbanking_chequing)
 
 # create single column with "amount"
 # filter out payments to the VISA account
 
-accountactivity <- accountactivity %>%
-  mutate(amount = debit - credit) %>%
-  filter(vendor != "SCOTIABANK PAYMENT")
+pcbanking_chequing <- pcbanking_chequing %>%
+  mutate(date = mdy(date),
+         FinIn = "ScotiaChequing")
 
-ls.str(accountactivity)
+
+
+ls.str(pcbanking_chequing)
+
+write_csv(pcbanking_chequing, "E:/@documents/budget/pRocessing/pcbanking_chequing_test.csv")
+
+
+final_pcbanking_chequing <- pcbanking_chequing %>%
+  select(date, type, source, amount, FinIn)
+
+
+
+ls.str(final_pcbanking_chequing)
 
 ```
 
@@ -119,13 +117,16 @@ ls.str(accountactivity)
 
 ## Step 2: merge the three files
 
+Need to consolidate the "source" and "type" fields in the Scotiabank so it can merge with the "vendor" in the TD file...or is this a job for `case_when`?
 
 
 
-## Step 2: match vendors to categories
+
+## Step 3: match vendors to categories
 
 
 Read in vendor to category assignment file.
+
 
 ```{r}
 
@@ -171,8 +172,7 @@ write_csv(final_accountactivity, "final_accountactivty.csv")
 
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+-30-
