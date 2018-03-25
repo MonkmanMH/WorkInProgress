@@ -16,18 +16,15 @@ and merges them into a single csv file that can be incorporated into a budget sp
 
 ```{r}
 
-# budgetr.r
-# latest revision: 2017-07-01
-#
-# script to automate categorization of VISA expenses
-
+# load packages
 
 library(dplyr)
 library(readr)
 
+library(lubridate)
+
 library(fuzzyjoin)
 
-setwd("E:/@documents/budget/pRocessing")
 
 ```
 
@@ -40,7 +37,57 @@ Read in TD VISA expenses, code to spending categories.
 
 ```{r}
 
+
 accountactivity <- read_csv("C:/Users/User/Downloads/accountactivity.csv", 
+                            col_names = c("date", "vendor", "debit", "credit", "balance")
+                            )
+
+#accountactivity <- read_csv("datafiles/accountactivity (1).csv", 
+#                            col_names = c("date", "vendor", "debit", "credit", "balance"))
+
+# resolve NA values
+
+accountactivity$debit[is.na(accountactivity$debit)] <- 0
+
+accountactivity$credit[is.na(accountactivity$credit)] <- 0
+accountactivity$credit <- as.numeric(accountactivity$credit)
+
+ls.str(accountactivity)
+
+# create single column with "amount"
+# filter out payments to the VISA account
+
+accountactivity <- accountactivity %>%
+  mutate(amount = debit - credit) %>%
+  filter(vendor != "SCOTIABANK PAYMENT") %>%
+  mutate(FinIn = "TDVisa")
+
+mdy(accountactivity$date)
+
+accountactivity %>%
+  mutate(date = mdy(date)) %>%
+  
+
+ls.str(accountactivity)
+
+write_csv(accountactivity, "E:/@documents/budget/pRocessing/accountactivty_test.csv")
+
+
+final_accountactivity <- accountactivity %>%
+  select(date, vendor, amount, FinIn)
+
+
+
+```
+
+
+
+```{r}
+
+pcbanking_chequing <- read_csv("C:/Users/User/Downloads/pcbanking.csv")
+
+
+, 
                             col_names = c("date", "vendor", "debit", "credit", "balance")
                             )
 
@@ -65,16 +112,27 @@ accountactivity <- accountactivity %>%
 
 ls.str(accountactivity)
 
-# Read in vendor to category assignment file.
+```
+
+
+
+
+## Step 2: merge the three files
+
+
+
+
+## Step 2: match vendors to categories
+
+
+Read in vendor to category assignment file.
+
+```{r}
 
 vendor_category <- read_csv("vendor-category.csv")
 
 ```
 
-
-
-# -------------------------------------------------------------
-# Step 2: match
 
 
 
