@@ -14,7 +14,7 @@ This is reads in downloaded CSV files with financial transactions
 and merges them into a single csv file that can be incorporated into a budget spreadsheet.
 
 
-```{r}
+```{r setup}
 
 # load packages
 
