@@ -1,14 +1,19 @@
 ---
 title: "sample size calculations"
 output: html_notebook
+editor_options: 
+  chunk_output_type: inline
 ---
 
 # Sample Size Calculator
 
 
-```{r}
+```{r Setup}
 
 library(tidyverse)
+
+library(stats)
+
 
 ```
 
@@ -238,6 +243,56 @@ write_csv(variation_table, "variation_table.csv")
 
 ```
 
+
+
+
+** batch version **
+
+* two different values of each of `N`, `P`, and `CoV`)
+
+(note use of `expand.grid` to build table)
+
+```{r}
+
+
+N <- c(3000000)
+P <- c(0.20
+       , 0.10)
+CoV <- c(10, 16.5)
+
+variation_table <- as_tibble(expand.grid(N, P, CoV)) %>%
+    rename(N = Var1,
+         P = Var2,
+         CoV = Var3)
+
+variation_table <- variation_table %>%
+#  mutate(community_count = ifelse(P == 0.2, 5, 1)) %>%
+#  mutate(samplesize = SampleSizeR_CoV(N, P, CoV)) %>%
+  mutate(samplesize = SampleSizeR_CoV(N, P, CoV))
+#  mutate(totalsample = samplesize * community_count)
+
+variation_table
+
+
+write_csv(variation_table, "variation_table.csv")
+
+```
+
+***
+
+## Confidence Interval Calculations
+
+https://stackoverflow.com/questions/21719578/confidence-interval-for-binomial-data-in-r
+
+```{r}
+
+x <- 200
+n <- 400
+
+
+stats::prop.test(x, n, conf.level=0.95, correct = FALSE)
+
+```
 
 
 
