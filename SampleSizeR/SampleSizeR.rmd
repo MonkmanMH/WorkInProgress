@@ -220,9 +220,12 @@ n
 ```
 
 
-### the SampleSizeR function
+### the SampleSizeR functions
 
-Calculating `n` from desired coefficient of variation, given estimated incidence `P` and population `N`
+
+#### SampleSizeR_CoV
+
+1. Calculating `n` from desired coefficient of variation, given estimated incidence `P` and population `N`
 
 
 ```{r}
@@ -241,13 +244,13 @@ SampleSizeR_CoV <- function(N, P, CoV){
 ```
 
 
-a quick test
+a quick test (should approximate 385)
 
 ```{r}
 
-N <- 22500
+N <- 30000
 P <- 0.50
-CoV <- 10
+CoV <- 5
 
 
 SampleSizeR_CoV(N, P, CoV)
@@ -291,37 +294,38 @@ write_csv(variation_table, "variation_table.csv")
 
 
 
-** batch version **
+#### SampleSizeR_ConfInt
 
-* two different values of each of `N`, `P`, and `CoV`)
+1. Calculating `n` from desired coefficient of variation, given estimated incidence `P` and population `N`
 
-(note use of `expand.grid` to build table)
 
 ```{r}
 
-
-N <- c(3000000)
-P <- c(0.20
-       , 0.10)
-CoV <- c(10, 16.5)
-
-variation_table <- as_tibble(expand.grid(N, P, CoV)) %>%
-    rename(N = Var1,
-         P = Var2,
-         CoV = Var3)
-
-variation_table <- variation_table %>%
-#  mutate(community_count = ifelse(P == 0.2, 5, 1)) %>%
-#  mutate(samplesize = SampleSizeR_CoV(N, P, CoV)) %>%
-  mutate(samplesize = SampleSizeR_CoV(N, P, CoV))
-#  mutate(totalsample = samplesize * community_count)
-
-variation_table
+# by n
+ConfInt_n <- function(N, n, P, pvalue){
+  z = abs(qnorm(pvalue / 2))
+  SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
+  CInt <- SD * z
+  return(CInt)
+}
 
 
-write_csv(variation_table, "variation_table.csv")
+# coefficient of variation
+SampleSizeR_ConfInt <- function(N, P, pvalue, CInt){
+  z = abs(qnorm(pvalue / 2))
+#  SD <- (CoV * P / 100)
+#  n <- N / (((SD ^ 2) * (N-1)) / (P * (1 - P)) + 1)
+  return(n)
+}
+  
+
+# add Confidence Interval variant
+
 
 ```
+
+
+
 
 ***
 
