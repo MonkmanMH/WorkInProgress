@@ -7,6 +7,9 @@ editor_options:
 
 # Sample Size Calculator
 
+2018-03-29
+
+
 
 ```{r Setup}
 
@@ -27,8 +30,43 @@ This script calculates
 
 * n = the sample size (or the number of responses, assuming 100% response)
 
-* P = prevalance (proportion observed in the population).
+* P = prevalance (proportion observed in the population)
 
+* pvalue = probablity value, a.k.a. alpha
+
+* z = z-score or standard score (the significance value alpha, expressed in number of standard deviations)
+
+
+#### basic functions
+
+```{r}
+
+# assign z, calculate pvalue (two-sided version)
+
+z = 1.96
+
+pvalue2sided=2*pnorm(-abs(z))
+
+pvalue2sided
+round(pvalue2sided, digits = 2)
+
+```
+
+
+
+
+```{r}
+
+# assign pvalue, calculate z
+
+pvalue2sided = 0.05
+
+z = abs(qnorm(pvalue2sided / 2))
+
+z
+round(z, digits = 2)
+
+```
 
 
 ### Functions: binomial distributions (P)
@@ -46,17 +84,19 @@ Three functions:
 ```{r}
 
 # by n
-ConfInt_n <- function(N, n, P){
+ConfInt_n <- function(N, n, P, pvalue){
+  z = abs(qnorm(pvalue / 2))
   SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
-  CInt <- SD * 1.96
+  CInt <- SD * z
   return(CInt)
 }
 
 # by response rate
-ConfInt_RR <- function(N, RR, P){
+ConfInt_RR <- function(N, RR, P, pvalue){
+  z = abs(qnorm(pvalue / 2))
   n <- n * RR
   SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
-  CInt <- SD * 1.96
+  CInt <- SD * z
   return(CInt)
 }
 
@@ -81,12 +121,15 @@ N = 3000
 n = 385
 RR = 0.5
 P = 0.1
+pvalue = 0.05
 
-ConfInt_n(N, n, P)
+
+ConfInt_n(N, n, P, pvalue)
+
+ConfInt_RR(N, RR, P, pvalue)
 
 CoefVar(N, n, P)
 
-ConfInt_RR(N, RR, P)
 
 
 ```
@@ -103,6 +146,8 @@ ConfInt_RR(N, RR, P)
 N <- 3000
 n <- 385
 P <- 0.15
+#pvalue = 0.05
+
 
 # SD from proportion and sample size
 SD <- sqrt((P * (1 - P)) / n)
@@ -201,7 +246,7 @@ a quick test
 ```{r}
 
 N <- 22500
-P <- 0.05
+P <- 0.50
 CoV <- 10
 
 
@@ -286,11 +331,11 @@ https://stackoverflow.com/questions/21719578/confidence-interval-for-binomial-da
 
 ```{r}
 
-x <- 200
+x <- 100
 n <- 400
 
 
-stats::prop.test(x, n, conf.level=0.95, correct = FALSE)
+stats::prop.test(x, n, conf.level=0.05, correct = FALSE)
 
 ```
 
