@@ -296,46 +296,37 @@ write_csv(variation_table, "variation_table.csv")
 
 #### SampleSizeR_ConfInt
 
-1. Calculating `n` from desired coefficient of variation, given estimated incidence `P` and population `N`
+2. Calculating `n` from desired confidence interval, given estimated incidence `P` and population `N`
 
 
 ```{r}
 
-# by n
-ConfInt_n <- function(N, n, P, pvalue){
-  z = abs(qnorm(pvalue / 2))
-  SD <- sqrt((P * (1 - P)) / n) * sqrt((N - n) / (N - 1))
-  CInt <- SD * z
-  return(CInt)
-}
+# function: calculate ConfInt based on n
+
+N = 3000000
+n = 400
+P = 0.5
+pvalue = 0.05
+CInt = 0.05
+
+ConfInt_n(N, n, P, pvalue)
 
 
-# coefficient of variation
+# function: calculate n (sample size) based on confidence interval (ConfInt)
 SampleSizeR_ConfInt <- function(N, P, pvalue, CInt){
-  z = abs(qnorm(pvalue / 2))
-  n = (z^2 * P * (1 - P))/(CInt^2)
-  n = (n/(1 + ((n - 1)/N)))
-
-#  SD <- (CoV * P / 100)
-#  n <- N / (((SD ^ 2) * (N-1)) / (P * (1 - P)) + 1)
+  z = abs(qnorm(pvalue / 2))                              # calculate z value
+  n = (z^2 * P * (1 - P))/(CInt^2)                        # calculate n
+  n = (n/(1 + ((n - 1)/N)))                               # adjustment of n based on population size
   return(n)
 }
   
 
-SampleSizeR_ConfInt(300000, P, 0.05, 0.05)
+SampleSizeR_ConfInt(N, P, pvalue, CInt)
 
-
-# add Confidence Interval variant
-
-
-samp.size = function(z.val, margin, c.interval, population) {
-    ss = (z.val^2 * margin * (1 - margin))/(c.interval^2)
-    return(ss/(1 + ((ss - 1)/population)))
-}
-
-samp.size(1.96, 0.5, 0.05, 3000000)
 
 ```
+
+
 
 
 
