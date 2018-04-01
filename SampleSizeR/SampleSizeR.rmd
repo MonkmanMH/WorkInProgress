@@ -1,17 +1,18 @@
 ---
 title: "sample size calculations"
-output: html_notebook
-editor_options: 
+author: "Martin Monkman"
+date: "2018-03-26"
+output:
+  html_notebook:
+    toc: yes
+    toc_float: yes
+editor_options:
   chunk_output_type: inline
 ---
 
-# Sample Size Calculator
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 
-2018-03-29
-
-
-
-```{r Setup}
 
 library(tidyverse)
 
@@ -19,6 +20,13 @@ library(stats)
 
 
 ```
+
+
+# Sample Size Calculator
+
+2018-03-29
+
+
 
 This script calculates 
 
@@ -37,7 +45,7 @@ This script calculates
 * z = z-score or standard score (the significance value alpha, expressed in number of standard deviations)
 
 
-#### basic functions
+## basic functions
 
 ```{r}
 
@@ -220,10 +228,10 @@ n
 ```
 
 
-### the SampleSizeR functions
+## the SampleSizeR functions
 
 
-#### SampleSizeR_CoV
+### SampleSizeR_CoV
 
 1. Calculating `n` from desired coefficient of variation, given estimated incidence `P` and population `N`
 
@@ -294,7 +302,7 @@ write_csv(variation_table, "variation_table.csv")
 
 
 
-#### SampleSizeR_ConfInt
+### SampleSizeR_ConfInt
 
 2. Calculating `n` from desired confidence interval, given estimated incidence `P` and population `N`
 
