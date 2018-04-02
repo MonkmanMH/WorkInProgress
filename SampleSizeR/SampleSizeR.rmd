@@ -278,8 +278,8 @@ SampleSizeR_CoV(N, P, CoV)
 ```{r}
 
 
-N <- c(15000, 22500)
-P <- c(0.05, 0.10)
+N <- c(1500, 3000)
+P <- c(0.50, 0.20)
 CoV <- c(10, 16.5)
 
 variation_table <- as_tibble(expand.grid(N, P, CoV)) %>%
@@ -288,9 +288,7 @@ variation_table <- as_tibble(expand.grid(N, P, CoV)) %>%
          CoV = Var3)
 
 variation_table <- variation_table %>%
-  mutate(community_count = ifelse(N == 15000, 300, 200)) %>%
-  mutate(samplesize = SampleSizeR_CoV(N, P, CoV)) %>%
-  mutate(totalsample = samplesize * community_count)
+  mutate(samplesize = SampleSizeR_CoV(N, P, CoV))
 
 variation_table
 
@@ -334,6 +332,48 @@ SampleSizeR_ConfInt(N, P, pvalue, CInt)
 
 ```
 
+
+
+
+
+
+** batch version **
+
+* two different values of each of `N`, `P`, and `CoV`)
+
+(note use of `expand.grid` to build table)
+
+```{r}
+
+#N = c(300000, 3000000) 
+Region = c("B.C.", "Interior", "Fraser", "Vancouver Coastal", "Vancouver Island", "Northern")
+# adult (20+) population of B.C. Health Regions, 2017
+N = c(3847189, 614205, 1392979, 980084, 649438, 210483) 
+P = c(0.5, 0.2)
+pvalue = 0.05
+CInt = c(0.05, 0.025)
+
+
+Region_pop <- tibble(Region = Region, N = N)
+
+interval_table <- as_tibble(expand.grid(Region, P, CInt)) %>%
+  rename(Region = Var1,
+         P = Var2,
+         CInt = Var3) %>%
+  left_join(Region_pop)
+
+interval_table
+  
+
+interval_table <- interval_table %>%
+  mutate(samplesize = SampleSizeR_ConfInt(N, P, pvalue, CInt))
+
+interval_table
+
+
+write_csv(interval_table, "interval_table.csv")
+
+```
 
 
 
