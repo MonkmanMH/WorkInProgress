@@ -45,11 +45,11 @@ This script calculates
 * z = z-score or standard score (the significance value alpha, expressed in number of standard deviations)
 
 
-## basic functions
+## Basic functions
 
 ```{r}
 
-# assign z, calculate pvalue (two-sided version)
+# calculate pvalue based on z (two-sided version)
 
 z = 1.96
 
@@ -65,7 +65,7 @@ round(pvalue2sided, digits = 2)
 
 ```{r}
 
-# assign pvalue, calculate z
+# calculate z based on pvalue
 
 pvalue2sided = 0.05
 
@@ -77,7 +77,9 @@ round(z, digits = 2)
 ```
 
 
-### Functions: binomial distributions (P)
+***
+
+## Functions: binomial distributions (P)
 
 Three functions:
 
@@ -141,6 +143,39 @@ CoefVar(N, n, P)
 
 
 ```
+
+
+** batch version **
+
+* two different values of each of `N`, `P`, and `CoV`)
+
+(note use of `expand.grid` to build table)
+
+```{r}
+
+N <- 3000000
+n <- c(2250, 500)
+P <- c(0.25, 0.50)
+pvalue <- 0.05
+
+ConfInt_table <- as_tibble(expand.grid(N, n, P)) %>%
+    rename(N = Var1,
+         n = Var2,
+         P = Var3)
+
+ConfInt_table <- ConfInt_table %>%
+  mutate(ConfidenceInterval = ConfInt_n(N, n, P, pvalue) * 100) %>%
+  mutate(ConfidenceInterval = round(ConfidenceInterval, 1))
+
+
+ConfInt_table
+
+
+write_csv(ConfInt_table, "variation_table.csv")
+
+```
+
+
 
 
 
@@ -228,7 +263,9 @@ n
 ```
 
 
-## the SampleSizeR functions
+***
+
+## SampleSizeR functions
 
 
 ### SampleSizeR_CoV
