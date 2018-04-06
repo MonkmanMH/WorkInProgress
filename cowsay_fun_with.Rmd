@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+Fun with `cowsay`
+
+```{r}
+
+library(cowsay)
+library(praise)
+
+```
+
+
+```{r}
+
+say("Thanks, Andy!", by = "yoda")
+
+```
+
+
+
+```{r}
+
+say("Thanks, Andy!", by = "clippy")
+
+```
