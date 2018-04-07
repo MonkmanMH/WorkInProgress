@@ -1,13 +1,16 @@
 ---
-title: "R Notebook"
+title: "Fun with `cowsay`"
 output: html_notebook
 editor_options: 
   chunk_output_type: inline
 ---
 
-Fun with `cowsay`
+## The `cowsay` package
 
-```{r}
+[the tutorial](https://cran.r-project.org/web/packages/cowsay/vignettes/cowsay_tutorial.html)
+
+
+```{r setup}
 
 library(cowsay)
 library(praise)
@@ -22,9 +25,32 @@ say("Thanks, Andy!", by = "yoda")
 ```
 
 
+#### Hypnotoad
 
 ```{r}
 
-say("Thanks, Andy!", by = "clippy")
+say("fhqwhgadshgnsdhjsdbkhsdabkfabkveybvf", "hypnotoad")
 
 ```
+
+
+
+### how do we fix this?!
+
+```{r}
+
+say("Thanks, Andy!", by = "fish")
+
+```
+
+
+## Add `praise`
+
+
+```{r}
+
+say(praise ("${Exclamation}! This is the most ${adjective}!"), by = "cow")
+
+```
+
+
