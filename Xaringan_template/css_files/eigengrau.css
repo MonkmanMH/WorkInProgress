@@ -9,6 +9,8 @@ a, a > code {
   color: rgb(249, 38, 114);
   text-decoration: none;
 }
+
+
 .footnote {
   position: absolute;
   bottom: 3em;
@@ -22,7 +24,6 @@ a, a > code {
   color: #fafaff;
   text-shadow: 0 0 20px #333;
 }
-
 .inverse h1, .inverse h2, .inverse h3 {
   color: #fafaff;
 }
@@ -81,13 +82,15 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 
+/* TITLE SLIDE */
+
 .title-slide {
 /* background-image: linear-gradient(to right, #16161d, #47474e,#7e7e85, #babac8, #fafaff); */
   background-image: linear-gradient(to right, #16161d, #47474e,#7e7e85, #babac8);
 }
 .title-slide > h1  {
   color: #fafaff;
-  font-size: 40px;
+  font-size: 60px;
   text-shadow: none;
   font-weight: 400;
   text-align: left;
@@ -100,7 +103,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   color: #fafaff;
   text-shadow: none;
   font-weight: 300;
-  font-size: 35px;
+  font-size: 50px;
   text-align: left;
   margin-left: 15px;
 }
@@ -114,12 +117,17 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   margin-bottom: -30px;
 }
 
-.slide-eigengrau {
+
+/* FINAL SLIDE */
+
+.slide-final {
   background-color: #16161d;
   color: #fafaff;
 }
 
-.slide-eigengrau > h3, h4  {
+.slide-final > h3, h4  {
   color: #babac8;
   text-shadow: none;
 }
+
+
