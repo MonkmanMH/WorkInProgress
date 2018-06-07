@@ -1,0 +1,129 @@
+---
+title: "Xaringan slide template"
+subtitle: "eigengrau theme"
+author: "Martin Monkman"
+date: "2018/06/06"
+output:
+  xaringan::moon_reader:
+    css: ["default", "css_files/eigengrau.css", "css_files/eigengrau-fonts.css"]    
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: inverse
+
+# eigengrau
+
+### /ˈʔaɪ̯gn̩ˌgʁaʊ̯/
+
+- "own gray"
+
+- the uniform dark gray background that many people report seeing in the absence of light<sup>1</sup>
+
+- the hex color of eigengrau is "#16161d"
+
+.footnote[
+[1] [wikipedia](https://en.wikipedia.org/wiki/Eigengrau)
+]
+
+
+---
+
+
+# eigengrau
+
+This deck is based a gradation palette based on eigengrau
+
+The hex code values are
+
+- "#16161d" (eigengrau)
+- "#47474e"
+- "#7e7e85"
+- "#babac8"
+- "#fafaff" (not quite pure white)
+
+---
+
+# light background
+
+# h1
+
+## h2
+
+### h3
+
+and some text
+
+
+---
+class: inverse
+
+
+# This is class: inverse
+
+# h1
+
+## h2
+
+### h3
+
+text
+
+---
+
+class: inverse, centre, middle
+
+# Suitable for section breaks
+
+
+
+
+---
+
+class: slide-blackback
+
+#### A pure black background
+
+suitable for images when you want the illusion of full-bleed
+
+--
+
+background-image: url(rmarkdown_hex_small.png)
+background-position: 50% 50%
+
+
+---
+
+slides to compare 
+
+- pure black with eigengrau
+
+- pure white with "fafaff"
+
+
+---
+
+class: slide-final, left, middle
+
+# Final slide
+
+## Thank you
+
+Where you might also say "questions?"
+
+
+### @monkmanmh
+
+<BR><BR>
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) and the eigengrau theme
+
+
+

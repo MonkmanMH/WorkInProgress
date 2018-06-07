@@ -1,5 +1,6 @@
 /* Eigengrau                                 */
 /* ---------                                 */
+/* /??a??gn??g?a??/                               */
 /* https://en.wikipedia.org/wiki/Eigengrau   */
 /*                                           */
 /* A xaringan theme                          */
@@ -48,7 +49,11 @@ blockquote {
   text-shadow: 0 0 20px #333;
 }
 
-.inverse h1, .inverse h2, .inverse h3 {
+.inverse h1, .inverse h2, .inverse h3, inverse h4 {
+  color: #babac8;
+}
+
+.inverse p {
   color: #fafaff;
 }
 
@@ -140,7 +145,16 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 }
 
 
-/* FINAL SLIDE */
+/* BLACK BACKGROUND SLIDE                        */
+/* suitable for full-bleed images     */
+
+.slide-blackback {
+  background-color: #000000;
+  color: #fafaff;
+}
+
+
+/* FINAL SLIDE                        */
 
 .slide-final {
   background-color: #16161d;
