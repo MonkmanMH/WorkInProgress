@@ -1,0 +1,198 @@
+---
+title: "Overcoming gravity and <BR>achieving escape velocity"
+subtitle: ""
+author: "Martin Monkman <BR> <BR> EARL Seattle"
+date: "2018/11/07"
+output:
+  xaringan::moon_reader:
+    css: ["default", "css_files/eigengrau.css", "css_files/eigengrau-fonts.css"]    
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: slide-eigengrau
+
+# BC Stats
+
+
+---
+
+background-image: url(images/BC_library-stats-act_1894.jpg)
+background-position: 50% 50%
+class: center, bottom
+
+???
+
+
+The provincial statistics agency
+
+- been doing data science since 1894
+- no, seriously
+
+
+---
+
+class: slide-eigengrau
+
+###It is a truth universally acknowledged...
+
+--
+
+background-image: url(images/MrBennett.gif)
+background-position: 50% 50%
+
+
+---
+class: inverse, center, middle
+
+# The Hairball
+
+---
+
+
+Admin priviledge
+
+Typical of many large organizations, the central IT dept put us on lockdown
+
+{screenshot}
+
+---
+
+
+{tweet about the proliferation of policy}
+
+
+---
+
+Mordac the Preventer
+
+{cartoon}
+
+
+
+---
+
+
+{Jeff Leek tweet}
+
+
+---
+class: center, middle, inverse
+
+background-image: url(images/Orbiting-the-giant-hairball_cover.jpg)
+
+
+---
+class: center, middle, inverse
+
+background-image: url(images/hairball_large.jpg)
+
+
+
+---
+
+
+class: inverse, center, middle, clear
+
+# The Launch Pad
+
+
+## or, things that enabled getting into orbit
+
+
+---
+
+
+class: inverse, center, middle
+
+# Escape Velocity
+
+---
+
+
+
+"Escape velocity is the speed needed to break free from the gravitational attraction of a massive body without further propulsion. Achieving it takes lots of energy, especially if the gravitational pull is strong."
+
+???
+
+[Achieving Escape Velocity: Breaking Free from the Impact Failure of Applied Philosophy](http://blogs.lse.ac.uk/impactofsocialsciences/2015/04/27/achieving-escape-velocity-applied-philosophy/)
+
+
+
+
+---
+
+
+
+background-image: url(images/WickhamH_tweet_2018-03-07_1.PNG)
+background-position: 50% 50%
+class: center, bottom
+
+
+???
+
+Image credit: [@hadleywickham](https://twitter.com/hadleywickham/status/971452620983427073)
+
+---
+
+
+background-image: url(images/WickhamH_tweet_2018-03-07_2.PNG)
+background-position: 50% 50%
+class: center, bottom
+
+
+???
+
+Image credit: [@hadleywickham](https://twitter.com/hadleywickham/status/971452620983427073)
+
+---
+
+background-image: url(images/nasa_astronaut_canadarm.jpg)
+background-position: 50% 50%
+class: left, top, inverse
+
+
+
+# In Orbit
+
+## or, the view from here
+
+
+???
+
+Image credit: [Edmonton Journal](http://edmontonjournal.com/news/national/canadian-engineers-fix-faulty-canadarm-2-replacement-hand/wcm/1b7285f9-df24-4e81-b2e1-f636599e4f1a)
+
+---
+
+class: inverse, center, middle
+
+# Staying in Orbit
+
+## or, things we're doing to make sure we don't crash back into the hairball
+
+("I survived Skylab"")
+
+---
+
+class: slide-eigengrau, left, middle
+
+# Thank you
+
+### martin.monkman@gov.bc.ca
+
+### 250.216.5848
+
+### @monkmanmh
+
+<BR><BR>
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) and the eigengrau theme
+
+
+
