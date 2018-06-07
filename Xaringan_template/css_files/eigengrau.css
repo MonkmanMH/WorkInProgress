@@ -1,14 +1,28 @@
-/* Eigengrau          */
-/* ---------          */
+/* Eigengrau                                 */
+/* ---------                                 */
 /* https://en.wikipedia.org/wiki/Eigengrau   */
-/*                    */
-/* A xaringan theme   */
+/*                                           */
+/* A xaringan theme                          */
 /* https://github.com/yihui/xaringan         */
 
+/* gradient(#16161d, #47474e, #7e7e85, #babac8, #fafaff); */
+
+
+p {
+  font-weight: normal;
+  color: #47474e;
+}
+
 a, a > code {
-  color: rgb(249, 38, 114);
+  color: #7e7e85;
   text-decoration: none;
 }
+
+h1, h2, h3, h4 {
+  font-weight: normal;
+  color: #16161d;
+}
+
 
 
 .footnote {
@@ -19,11 +33,14 @@ a, a > code {
 }
 .remark-code-line-highlighted     { background-color: #fafaff; }
 
+
+/* INVERSE */
 .inverse {
   background-color: #16161d;
   color: #fafaff;
   text-shadow: 0 0 20px #333;
 }
+
 .inverse h1, .inverse h2, .inverse h3 {
   color: #fafaff;
 }
@@ -36,7 +53,7 @@ a, a > code {
   float: left;
 }
 .left-column h2:last-of-type, .left-column h3:last-child {
-  color: #000;
+  color: #f49b42;
 }
 .right-column {
   width: 75%;
@@ -123,6 +140,11 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
 .slide-final {
   background-color: #16161d;
   color: #fafaff;
+}
+
+.slide-final > h1, h2  {
+  color: #fafaff;
+  text-shadow: none;
 }
 
 .slide-final > h3, h4  {

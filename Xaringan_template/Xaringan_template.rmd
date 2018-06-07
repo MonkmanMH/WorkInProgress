@@ -33,6 +33,19 @@ class: inverse, centre, middle
 
 # eigengrau
 
+# h1
+
+## h2
+
+### h3
+
+and some text
+
+---
+
+
+# eigengrau
+
 This deck is based on the theme "eigengrau"
 
 The hex code values are
@@ -44,13 +57,16 @@ The hex code values are
 - "#fafaff"
 
 ---
-
 class: inverse
 
 
 # This is in inverse mode
 
+# h1
 
+## h2
+
+### h3
 
 ---
 
@@ -78,7 +94,9 @@ class: slide-final, left, middle
 
 # Final slide
 
-Where you might say "thank you" or "questions?"
+## Thank you
+
+Where you might also say "questions?"
 
 
 ### @monkmanmh
