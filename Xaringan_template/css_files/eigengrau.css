@@ -24,6 +24,13 @@ h1, h2, h3, h4 {
 }
 
 
+img, video, iframe {
+  max-width: 100%;
+}
+blockquote {
+  border-left: solid 5px #babac8;
+  padding-left: 1em;
+}
 
 .footnote {
   position: absolute;
@@ -45,7 +52,7 @@ h1, h2, h3, h4 {
   color: #fafaff;
 }
 
-/* Two-column layout */
+/* TWO-COLUMN LAYOUT      */
 .left-column {
   color: #777;
   width: 20%;
@@ -71,13 +78,11 @@ h1, h2, h3, h4 {
 .pull-right ~ * {
   clear: both;
 }
-img, video, iframe {
-  max-width: 100%;
-}
-blockquote {
-  border-left: solid 5px #babac8;
-  padding-left: 1em;
-}
+
+
+
+/* TABLE      */
+
 table {
   margin: auto;
   border-top: 1px solid #666;
@@ -142,7 +147,12 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   color: #fafaff;
 }
 
-.slide-final > h1, h2  {
+.slide-final > h1  {
+  color: #fafaff;
+  text-shadow: none;
+}
+
+.slide-final > h2  {
   color: #fafaff;
   text-shadow: none;
 }
