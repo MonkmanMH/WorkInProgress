@@ -102,12 +102,21 @@ background-position: 50% 50%
 
 ---
 
-slides to compare 
+## add slides 
 
-- pure black with eigengrau
+- pure white background
 
-- pure white with "fafaff"
+#### slides with banners 
 
+- eigengrau banner with "fafaff" body
+
+- "fafaff" banner with eigengrau body
+
+---
+
+#### punch colours
+
+- need some thematically consistent highlight colours
 
 ---
 
