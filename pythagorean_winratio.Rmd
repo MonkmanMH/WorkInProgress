@@ -1,0 +1,76 @@
+---
+title: "teamStats"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+
+
+```{r setup}
+
+library(tidyverse)
+library(Lahman)
+
+```
+
+
+
+## Pythagorean win ratio
+
+wikipedia page: [Pythagorean expectation](https://en.wikipedia.org/wiki/Pythagorean_expectation)
+
+
+FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=BaseRuns)
+
+* [Pythagorean Win-Loss](https://www.fangraphs.com/library/principles/expected-wins-and-losses/)
+
+* [Pythagorean Win-Loss](https://www.fangraphs.com/library/team-record-pythagorean-record-and-base-runs/)
+
+* See also ["BaseRuns" definition](https://www.fangraphs.com/library/features/baseruns/) for alternative measure
+
+
+### function
+
+```{r}
+
+Pyth_winratio <- function(runsscored, runsallowed) {
+  runsscored_sq <- runsscored ^ 2
+  runsallowed_sq <- runsallowed ^ 2
+  winratio <- runsscored_sq / (runsscored_sq + runsallowed_sq)
+  print(winratio)
+}
+
+```
+
+
+test
+
+```{r}
+
+games <- 84
+RSpG <- 4.43
+RApG <- 4.18
+
+runsscored <- RSpG * games
+runsallowed <- RApG * games
+RDif <- runsscored - runsallowed
+RDif
+
+runsscored_sq <- runsscored ^ 2
+runsallowed_sq <- runsallowed ^ 2
+winratio <- runsscored_sq / (runsscored_sq + runsallowed_sq)
+
+winratio
+
+
+```
+
+
+```{r}
+
+Pyth_winratio(runsscored, runsallowed)
+
+```
+
+
