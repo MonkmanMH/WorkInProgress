@@ -1,5 +1,5 @@
 ---
-title: "teamStats"
+title: "Pythagorean win ratio"
 output: html_notebook
 editor_options: 
   chunk_output_type: inline
@@ -15,10 +15,12 @@ library(Lahman)
 ```
 
 
+Bill James, the godfather of Sabermetrics, developed the Pythagorean win ratio or win expectation model ([wikipedia page](https://en.wikipedia.org/wiki/Pythagorean_expectation))
+
+
 
 ## Pythagorean win ratio
 
-wikipedia page: [Pythagorean expectation](https://en.wikipedia.org/wiki/Pythagorean_expectation)
 
 
 FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=BaseRuns)
@@ -34,11 +36,8 @@ FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=
 
 ```{r}
 
-Pyth_winratio <- function(runsscored, runsallowed) {
-  runsscored_sq <- runsscored ^ 2
-  runsallowed_sq <- runsallowed ^ 2
-  winratio <- runsscored_sq / (runsscored_sq + runsallowed_sq)
-  print(winratio)
+winexp_fun <- function(RS, RA) {
+  winratio <- RS^2 / (RS^2 + RA^2)
 }
 
 ```
@@ -48,29 +47,60 @@ test
 
 ```{r}
 
-games <- 84
-RSpG <- 4.43
-RApG <- 4.18
+RS <- 4.43
+RA <- 4.18
 
-runsscored <- RSpG * games
-runsallowed <- RApG * games
-RDif <- runsscored - runsallowed
-RDif
 
-runsscored_sq <- runsscored ^ 2
-runsallowed_sq <- runsallowed ^ 2
-winratio <- runsscored_sq / (runsscored_sq + runsallowed_sq)
-
-winratio
-
+winexp_fun(RS, RA)
 
 ```
 
+## Empirical test
 
 ```{r}
 
-Pyth_winratio(runsscored, runsallowed)
+data(Teams)
+
+head(Teams)
+
+Teams_sel <- Teams %>%
+  filter(yearID > 1961) %>%
+  rename(RS = R) %>%
+  mutate(winpct = W / G)
+
+Teams_sel <- Teams_sel %>%
+  mutate(winpct_Pyth = winexp_fun(RS, RA))
+
+
+head(Teams_sel)
 
 ```
+
+
+#### plot
+
+Use ggplot2 to look at the relationship between the Pythagorean estimate and the true value.
+
+```{r}
+
+ggplot(data = Teams_sel) +
+  geom_point(mapping = aes(x = winpct_Pyth, y = winpct))
+
+```
+
+
+#### The regression model
+
+```{r}
+
+winexp_mod <- lm(winpct_Pyth ~ winpct, Teams_sel)
+
+print(winexp_mod)
+
+summary(winexp_mod)
+
+```
+
+
 
 
