@@ -23,7 +23,9 @@ The Mariners' relatively small run differential (i.e. how many more runs they ha
 
 *at the end of May (2018-05-29) John Trupin (@JohnTrupin) on the same site wrote ["The Mariners aren’t the first team built on a run differential-beating bullpen"](https://www.lookoutlanding.com/2018/5/29/17406204/the-mariners-arent-the-first-team-built-on-a-run-differential-beating-bullpen-diaz-colome-nicasio).
 
-The team's success has continued; {fill in the blank}
+* and on July 3, Jeff Sullivan opined ["The Mariners Are Trying to Be the Clutchiest Team on Record"](https://www.fangraphs.com/blogs/the-mariners-are-trying-to-be-the-clutchiest-team-on-record/)
+
+
 
 I've written before about run scoring and prevention (here and here); this time, I will compare the individual team performance in a single season.
 
@@ -105,7 +107,20 @@ Use ggplot2 to look at the relationship between the Pythagorean estimate and the
 ```{r}
 
 ggplot(data = Teams_sel) +
-  geom_point(mapping = aes(x = winexp, y = winpct))
+  geom_density(aes(x = winexp), colour = "red") +
+  geom_density(aes(x = winpct), colour = "blue")
+                 
+
+
+ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
+  geom_point() +
+  geom_smooth(method = lm)
+
+ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
+  geom_point() +
+  geom_smooth(method = loess)
+
+
 
 ```
 
