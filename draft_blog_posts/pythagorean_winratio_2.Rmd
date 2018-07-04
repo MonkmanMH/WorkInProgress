@@ -46,6 +46,9 @@ FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=
 
 
 
+#### `ggplot2 3.0.0`
+
+This also seemed like a good time to take [the latest version of `ggplot2` (3.0.0)](https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/) for a test run.
 
 
 
@@ -121,7 +124,9 @@ summary(winexp_mod)
 
 
 
+### `ggeffects` package
 
+Daniel Lüdecke, 2018-07-04, ["Marginal Effects for Regression Models in R"](https://www.r-bloggers.com/marginal-effects-for-regression-models-in-r-rstats-dataviz/)
 
 
 
