@@ -111,14 +111,9 @@ ggplot(data = Teams_sel) +
   geom_density(aes(x = winpct), colour = "blue")
                  
 
-
 ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
-  geom_point() +
-  geom_smooth(method = lm)
+  geom_point()
 
-ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
-  geom_point() +
-  geom_smooth(method = loess)
 
 
 
@@ -134,6 +129,20 @@ winexp_mod <- lm(winexp ~ winpct, Teams_sel)
 print(winexp_mod)
 
 summary(winexp_mod)
+
+```
+
+
+
+Add the model line to the scatter plot
+
+```{r}
+
+ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
+  geom_point() +
+  geom_smooth(method = lm)
+
+
 
 ```
 
