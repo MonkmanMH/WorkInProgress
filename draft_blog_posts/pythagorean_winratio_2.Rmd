@@ -1,8 +1,6 @@
 ---
-title: "R Notebook"
-output: html_notebook
-editor_options: 
-  chunk_output_type: inline
+title: "Regression models and win expectancy"
+output: html_document
 ---
 
 
@@ -23,17 +21,24 @@ The Mariners' relatively small run differential (i.e. how many more runs they ha
 
 *at the end of May (2018-05-29) John Trupin (@JohnTrupin) on the same site wrote ["The Mariners aren’t the first team built on a run differential-beating bullpen"](https://www.lookoutlanding.com/2018/5/29/17406204/the-mariners-arent-the-first-team-built-on-a-run-differential-beating-bullpen-diaz-colome-nicasio).
 
-The team's success has continued; 
+The team's success has continued; {fill in the blank}
 
-So this seems like a good time to look at a few of the measures of "win expectation" that have burbled up in the Sabremetric community of the years, and how we might tackle them using R.
+I've written before about run scoring and prevention (here and here); this time, I will compare the individual team performance in a single season.
 
-For this season, our data source is [Fangraphs' team dashboard](https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=8&season=2018&month=0&season1=2018&ind=0&team=0,ts&rost=&age=&filter=&players=0). It takes a bit of flinagalling to get what we want.
+This seems like a good time to look at the first and simplest of the measures of "win expectation" that have burbled up in the Sabremetric community over the years; the other approaches may be worthy of consideration for a future post.
+
+For the 2018 season, our data source is [Fangraphs' team dashboard](https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=8&season=2018&month=0&season1=2018&ind=0&team=0,ts&rost=&age=&filter=&players=0). It takes a bit of flinagalling to get what we want.
+
+And for the earlier seasons, we'll rely on the [`Lahman` package](https://cran.r-project.org/web/packages/Lahman/).
 
 
 ## Pythagorean win ratio
 
 
-Bill James, the godfather of Sabermetrics, developed the Pythagorean win ratio or win expectation model ([wikipedia page](https://en.wikipedia.org/wiki/Pythagorean_expectation))
+Bill James, the godfather of Sabermetrics, developed the Pythagorean win expectation model ([wikipedia page](https://en.wikipedia.org/wiki/Pythagorean_expectation)). The basic idea is that there is a relationship between the runs a team scores ($RS$) and allows ($RA$), and the proportion of the games that they can be expected to win ($WE$). The equation is expressed thus:
+
+$$ WE = RS^2 / (RS^2 + RA^2)$$
+
 
 
 FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=BaseRuns)
@@ -122,6 +127,18 @@ summary(winexp_mod)
 
 ```
 
+
+
+_interpretation_
+
+
+#### Residuals
+
+One of the interesting things we can look at is the 
+
+
+
+---
 
 
 ### `ggeffects` package
