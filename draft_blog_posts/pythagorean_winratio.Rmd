@@ -15,6 +15,22 @@ library(Lahman)
 ```
 
 
+As I write this (2018-07-04) the Seattle Mariners are sitting in second place in the American League West, with a winning percentage of .640 and half a game behind the defending World Series champion Houston Astros. 
+
+The Mariners' relatively small run differential (i.e. how many more runs they have scored than allowed) has been noted all season; 
+
+* at the end of the first month of the season Jake Mailhot (@jakemailhot) at Lookout Landing wrote ["Just how lucky have the Mariners been?"](https://www.lookoutlanding.com/2018/5/1/17308386/mariners-cluster-luck-april-run-differential); 
+
+* on May 25, Sports Illustrated carried an article ["The Mariners Have Been Very Lucky, But They May Also Be Pretty Good"](https://www.si.com/mlb/2018/05/25/seattle-mariners-al-west)
+
+*at the end of May (2018-05-29) John Trupin (@JohnTrupin) on the same site wrote ["The Mariners aren’t the first team built on a run differential-beating bullpen"](https://www.lookoutlanding.com/2018/5/29/17406204/the-mariners-arent-the-first-team-built-on-a-run-differential-beating-bullpen-diaz-colome-nicasio).
+
+The team's success has continued; 
+
+So this seems like a good time to look at a few of the measures of "win expectation" that have burbled up in the Sabremetric community of the years, and how we might tackle them using R.
+
+For this season, our data source is [Fangraphs' team dashboard](https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=8&season=2018&month=0&season1=2018&ind=0&team=0,ts&rost=&age=&filter=&players=0). It takes a bit of flinagalling to get what we want.
+
 
 ## Pythagorean win ratio
 
