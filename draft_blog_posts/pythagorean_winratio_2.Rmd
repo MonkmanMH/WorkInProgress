@@ -7,6 +7,8 @@ output: html_document
 ```{r setup}
 
 library(tidyverse)
+library(broom)
+
 library(Lahman)
 
 ```
@@ -51,13 +53,6 @@ FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=
 
 
 
-#### `ggplot2 3.0.0`
-
-This also seemed like a good time to take [the latest version of `ggplot2` (3.0.0)](https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/) for a test run.
-
-
-
-
 ### function
 
 ```{r}
@@ -95,7 +90,7 @@ Teams_sel <- Teams %>%
   mutate(winpct = W / G)
 
 Teams_sel <- Teams_sel %>%
-  mutate(winpct_Pyth = winexp_fun(RS, RA))
+  mutate(winexp = winexp_fun(RS, RA))
 
 
 head(Teams_sel)
@@ -110,7 +105,7 @@ Use ggplot2 to look at the relationship between the Pythagorean estimate and the
 ```{r}
 
 ggplot(data = Teams_sel) +
-  geom_point(mapping = aes(x = winpct_Pyth, y = winpct))
+  geom_point(mapping = aes(x = winexp, y = winpct))
 
 ```
 
@@ -119,7 +114,7 @@ ggplot(data = Teams_sel) +
 
 ```{r}
 
-winexp_mod <- lm(winpct_Pyth ~ winpct, Teams_sel)
+winexp_mod <- lm(winexp ~ winpct, Teams_sel)
 
 print(winexp_mod)
 
@@ -134,14 +129,59 @@ _interpretation_
 
 #### Residuals
 
-One of the interesting things we can look at is the 
+One of the interesting things we can look at is the difference between the Pythagorean predicted value (`winexp`) and the actual value (`winpct`)--the regression residual.
+
+Use `broom`
+
+David Robinson, 2015-03-19, ["broom: a package for tidying statistical models into data frames"](https://www.r-bloggers.com/broom-a-package-for-tidying-statistical-models-into-data-frames/)
+
+* also https://cran.r-project.org/web/packages/broom/vignettes/broom.html 
+
+
+
+```{r}
+
+tidy(winexp_mod)
+
+```
+
+
+```{r}
+
+glance(winexp_mod)
+
+
+head(augment(winexp_mod))
+
+```
+
+
+
+The Pythagorean model explains a lot of the variation: the R-squared value of `r glance(winexp_mod)$r.squared`
+
+
+
+
+
+Idea: filter where .se.fit is poor (i.e. big residual), plot -- see where the 2018 Mariners sit on the list
+
+
+https://drsimonj.svbtle.com/visualising-residuals
+ 
 
 
 
 ---
 
 
-### `ggeffects` package
+
+#### `ggplot2 3.0.0`
+
+This also seemed like a good time to take [the latest version of `ggplot2` (3.0.0)](https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/) for a test run.
+
+
+
+#### `ggeffects` package
 
 Daniel Lüdecke, 2018-07-04, ["Marginal Effects for Regression Models in R"](https://www.r-bloggers.com/marginal-effects-for-regression-models-in-r-rstats-dataviz/)
 
