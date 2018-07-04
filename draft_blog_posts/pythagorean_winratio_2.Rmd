@@ -1,10 +1,9 @@
 ---
-title: "Pythagorean win ratio"
+title: "R Notebook"
 output: html_notebook
 editor_options: 
   chunk_output_type: inline
 ---
-
 
 
 ```{r setup}
