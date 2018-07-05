@@ -2,7 +2,7 @@
 title: "Xaringan slide template"
 subtitle: "eigengrau theme"
 author: "Martin Monkman"
-date: "2018/06/06"
+date: "2018/07/05"
 output:
   xaringan::moon_reader:
     css: ["default", "css_files/eigengrau.css", "css_files/eigengrau-fonts.css"]    
@@ -102,13 +102,28 @@ background-position: 50% 50%
 
 ---
 
+class: slide-banner
+
+# Banner
+
+## h2
+
+### h3
+
+#### h4 the so-called slide-banner
+
+- did it work?
+
+- did it screw up anything else?
+
+---
+
 ## add slides 
 
 - pure white background
 
 #### slides with banners 
 
-- eigengrau banner with "fafaff" body
 
 - "fafaff" banner with eigengrau body
 
@@ -117,6 +132,7 @@ background-position: 50% 50%
 #### punch colours
 
 - need some thematically consistent highlight colours
+
 
 ---
 

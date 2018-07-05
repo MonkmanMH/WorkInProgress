@@ -161,12 +161,12 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   color: #fafaff;
 }
 
-.slide-final > h1  {
+.slide-final > h1 {
   color: #fafaff;
   text-shadow: none;
 }
 
-.slide-final > h2  {
+.slide-final > h2 {
   color: #fafaff;
   text-shadow: none;
 }
@@ -176,4 +176,38 @@ thead, tfoot, tr:nth-child(even) { background: #eee }
   text-shadow: none;
 }
 
+/* DOESN'T WORK! */
+/* turns off slide numbers for for specified pages: https://github.com/gnab/remark/issues/298 */
+.title-slide .slide-final .slide-blackback {
+  display: none;
+}
+
+
+/* adapted from metropolis.css */
+
+.slide-banner {
+  background-color: #fafaff;
+  border-top: 80px solid #16161d;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.5;
+  padding: 1em 2em 1em 2em
+}
+
+
+.slide-banner > h1 {
+  font-family: 'Fira Sans';
+  font-weight: normal;
+  font-size: 45px;
+  margin-top: -95px;
+  margin-left: -00px;
+  color: #00ffff;
+}
+
+.slide-banner > inverse {
+width: 112px;
+height: 47px;
+border-bottom: 1px solid black;
+position: absolute;
+}
 
