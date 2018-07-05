@@ -186,41 +186,38 @@ The Pythagorean model explains a lot of the variation: the R-squared value of `r
 
 
 
-
-#### Residuals
-
-One of the interesting things we can look at is the difference between the Pythagorean predicted value (`winexp`) and the actual value (`winpct`)--the regression residual. NO IT'S NOT
+One of the interesting things we can look at is the difference between the Pythagorean predicted value (`winexp`) and the actual value (`winpct`).
 
 
 
-https://drsimonj.svbtle.com/visualising-residuals
+In this plot, the cases above the red line are where teams have outperformed their win expectancy, and those below the line have failed to win as many games as the Pythagorean model would predict.
+
+What we are really interested in are the extreme cases--some of those single dots that are visible outside the main cloud that is clustered around the line.
 
 
 ```{r}
 
 
-ggplot(lm(winpct~winexp, data = Teams_sel)) + 
-  geom_point(aes(x = .fitted, y = .resid))
-
-
-ggplot(winexp_mod_tidy, aes(x = winexp, y = winpct)) +
+ggplot(Teams_sel, aes(x = winexp, y = winpct)) +
   geom_point() +
-  geom_line(aes(x = .fitted), colour = "red") +
-  geom_segment(aes(xend = .fitted, yend = winpct)) +
-  geom_point() +
-  geom_point(aes(y = .fitted), shape = 1)
-
-
-
-
-ggplot(winexp_mod_tidy, aes(x = winexp, y = winpct)) +
-  geom_segment(aes(xend = winpct, yend = .fitted)) +
-  geom_point() +
-  geom_point(aes(y = .fitted), shape = 1)
+  geom_segment(aes(x = 0.3, xend = 0.7, y = 0.3, yend = 0.7), colour = "red", size = 1)
 
 
 ```
 
+
+
+And just for fun, let's compare the "unity" line shown in red (where `winexp` == `winpct`) and the line of best fit created by the regression model (in blue). There's a slight discrepancy (figure out what it means--is it that teams at the bottom left are over-performing Pythagorean, suggesting winning more close games, while those at the top are underperforming, meaning they are winning more blowouts?)
+
+
+```{r}
+
+ggplot(Teams_sel, aes(x = winexp, y = winpct)) +
+  geom_point() +
+  geom_segment(aes(x = 0.3, xend = 0.7, y = 0.3, yend = 0.7), colour = "red", size = 1) +
+  geom_smooth(method = lm)
+
+```
 
 
 
