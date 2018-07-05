@@ -151,11 +151,8 @@ ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
 _interpretation_
 
 
-#### Residuals
 
-One of the interesting things we can look at is the difference between the Pythagorean predicted value (`winexp`) and the actual value (`winpct`)--the regression residual.
-
-Use `broom`
+Use `broom` to get the model statistics
 
 David Robinson, 2015-03-19, ["broom: a package for tidying statistical models into data frames"](https://www.r-bloggers.com/broom-a-package-for-tidying-statistical-models-into-data-frames/)
 
@@ -174,8 +171,12 @@ tidy(winexp_mod)
 
 glance(winexp_mod)
 
+```
 
-head(augment(winexp_mod))
+```{r}
+
+winexp_mod_tidy <- augment(winexp_mod)
+head(winexp_mod_tidy)
 
 ```
 
@@ -186,11 +187,48 @@ The Pythagorean model explains a lot of the variation: the R-squared value of `r
 
 
 
+#### Residuals
 
-Idea: filter where .se.fit is poor (i.e. big residual), plot -- see where the 2018 Mariners sit on the list
+One of the interesting things we can look at is the difference between the Pythagorean predicted value (`winexp`) and the actual value (`winpct`)--the regression residual. NO IT'S NOT
+
 
 
 https://drsimonj.svbtle.com/visualising-residuals
+
+
+```{r}
+
+
+ggplot(lm(winpct~winexp, data = Teams_sel)) + 
+  geom_point(aes(x = .fitted, y = .resid))
+
+
+ggplot(winexp_mod_tidy, aes(x = winexp, y = winpct)) +
+  geom_point() +
+  geom_line(aes(x = .fitted), colour = "red") +
+  geom_segment(aes(xend = .fitted, yend = winpct)) +
+  geom_point() +
+  geom_point(aes(y = .fitted), shape = 1)
+
+
+
+
+ggplot(winexp_mod_tidy, aes(x = winexp, y = winpct)) +
+  geom_segment(aes(xend = winpct, yend = .fitted)) +
+  geom_point() +
+  geom_point(aes(y = .fitted), shape = 1)
+
+
+```
+
+
+
+
+---
+
+
+Idea: filter where .se.fit is poor (i.e. big residual), plot -- see where the 2018 Mariners sit on the list
+
  
 
 
