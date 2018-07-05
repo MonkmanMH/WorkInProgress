@@ -30,6 +30,8 @@ class: inverse
 
 - the hex color of eigengrau is "#16161d"
 
+
+
 .footnote[
 [1] [wikipedia](https://en.wikipedia.org/wiki/Eigengrau)
 ]
@@ -54,13 +56,17 @@ The hex code values are
 
 # light background
 
-# h1
+# h1 (largest heading)
 
-## h2
+## h2 (medium heading)
 
-### h3
+### h3 (small heading)
 
-and some text
+some text
+
+- and a bullet
+
+code: none required; this is the default
 
 
 ---
@@ -69,13 +75,20 @@ class: inverse
 
 # This is class: inverse
 
-# h1
+# h1 (largest heading)
 
-## h2
+## h2 (medium heading)
 
-### h3
+### h3 (small heading)
 
-text
+some text
+
+- and a bullet
+
+code:
+<BR>
+`class: inverse`
+
 
 ---
 
@@ -83,6 +96,9 @@ class: inverse, centre, middle
 
 # Suitable for section breaks
 
+code:
+<BR>
+`class: inverse, centre, middle`
 
 
 
@@ -99,22 +115,31 @@ suitable for images when you want the illusion of full-bleed
 background-image: url(rmarkdown_hex_small.png)
 background-position: 50% 50%
 
+code:
+<BR>
+`class: slide-blackback`
 
 ---
 
 class: slide-banner
 
-# Banner
+# This is a banner slide
 
-## h2
+## h2 for medium headings
 
-### h3
+### h3 for small headings
 
-#### h4 the so-called slide-banner
+#### h4 for pale smallest headings
 
-- did it work?
+This is text
 
-- did it screw up anything else?
+- this is a bullet
+
+
+code:
+<BR>
+`class: slide-banner`
+
 
 ---
 
@@ -148,7 +173,13 @@ Where you might also say "questions?"
 ### @monkmanmh
 
 <BR><BR>
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) and the eigengrau theme
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) and uses the eigengrau theme
+
+<BR>
+code:
+<BR>
+`class: slide-final, left, middle`
+
 
 
 
