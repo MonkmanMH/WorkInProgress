@@ -44,7 +44,7 @@ class: inverse
 
 This deck is based a gradation palette based on eigengrau
 
-The hex code values are
+The hex code values are, from darkest to lightest
 
 - "#16161d" (eigengrau)
 - "#47474e"
@@ -85,8 +85,10 @@ some text
 
 - and a bullet
 
-code:
 <BR>
+
+`#`
+
 `class: inverse`
 
 
