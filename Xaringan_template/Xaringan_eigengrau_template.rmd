@@ -28,6 +28,8 @@ class: inverse
 
 - the uniform dark gray background that many people report seeing in the absence of light<sup>1</sup>
 
+- the background of this slide is eigengrau
+
 - the hex color of eigengrau is "#16161d"
 
 
@@ -42,15 +44,15 @@ class: inverse
 
 # eigengrau
 
-This deck is based a gradation palette based on eigengrau
+This template's palette is based a gradation that starts with eigengrau
 
 The hex code values are, from darkest to lightest
 
-- "#16161d" (eigengrau)
-- "#47474e"
-- "#7e7e85"
-- "#babac8"
-- "#fafaff" (not quite pure white)
+- this text is eigengrau; "#16161d" 
+- <font color = "#47474e">this text is "#47474e"</font>
+- <font color = "#7e7e85">this text is "#7e7e85"</font>
+- <font color = "#babac8">this text is "#babac8"</font>
+- the background colour of this slide is "#fafaff", not quite pure white
 
 ---
 
@@ -110,16 +112,31 @@ class: slide-blackback
 
 #### A pure black background
 
-suitable for images when you want the illusion of full-bleed
+<font color = "#fafaff">
 
---
+- suitable for images when you want the illusion of full-bleed
+
+<BR></BR>
+
+code:
+
+<BR></BR>
+
+class: slide-blackback
+
+</font>
+
+
+
+---
+
+class: slide-blackback
 
 background-image: url(rmarkdown_hex_small.png)
 background-position: 50% 50%
 
-code:
-<BR>
-`class: slide-blackback`
+--
+
 
 ---
 
