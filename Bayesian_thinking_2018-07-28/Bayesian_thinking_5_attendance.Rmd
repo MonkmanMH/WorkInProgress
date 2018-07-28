@@ -180,4 +180,13 @@ ppc_stat(d$fraction, ynew, stat="min")
 
 "Need to interact with your model...need to establish a general strategy, plan of attack, and iterate"
 
+Would we get a different answer next time?
+
+"Yes" >> which is why you need solid well-documented scripts! Reproducible and replicable work
+
+If you trying to understand what drives attendance...perhaps extract season ticket holders from rest to understand variability
+
+
+
+
 
