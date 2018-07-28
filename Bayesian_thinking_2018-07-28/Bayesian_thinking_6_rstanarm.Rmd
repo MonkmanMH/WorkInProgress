@@ -1,0 +1,14 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+http://www-math.bgsu.edu/~albert/jsm2018/package_examples/rstanarm_Example.html
+
+```{r}
+
+
+
+```
+
+

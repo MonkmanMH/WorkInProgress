@@ -1,0 +1,211 @@
+---
+title: "Bayesian Thinking"
+output: html_notebook
+---
+
+JSM2018
+2018-07-28
+
+Jim Albert
+
+
+## 2. Normal inference
+
+http://www-math.bgsu.edu/~albert/jsm2018/course_files/Normal.R
+
+```{r}
+
+
+## ------------------------------------------------------------------------
+library(rethinking)
+data(Howell1)
+d2 <- Howell1[Howell1$age >= 18, ]
+
+#
+
+```
+
+
+```{r}
+# ---- fig.width=4, fig.height=2.5----------------------------------------
+sample_mu <- rnorm(1000, 170, 20)
+sample_sigma <- runif(1000, 0, 50)
+prior_h <- rnorm(1000, sample_mu, sample_sigma)
+dens( prior_h)
+
+
+
+```
+
+
+1. Grid approximation
+
+```{r}
+
+
+## ------------------------------------------------------------------------
+require(LearnBayes)
+lpost <- function(parameters, y){
+  mu <- parameters[1]
+  sigma <- parameters[2]
+  log_likelihood <- sum(dnorm(y, mu, sigma, log=TRUE))
+  log_prior <- dnorm(mu, 178, 20, log=TRUE) +
+               dunif(sigma, 0, 50, log=TRUE )
+  log_likelihood + log_prior
+}
+
+## ------------------------------------------------------------------------
+mycontour(lpost, c(152, 157, 6.5, 9), d2$height)
+
+```
+
+
+2. Quadratic Approximation
+
+```{r}
+
+## ------------------------------------------------------------------------
+flist <- alist(
+  height ~ dnorm( mu, sigma ) ,
+  mu ~ dnorm( 178, 20 ) ,
+  sigma ~ dunif( 0, 50)
+)
+
+## ------------------------------------------------------------------------
+m4.1 <- rethinking::map( flist, data = d2)
+
+
+## ------------------------------------------------------------------------
+precis( m4.1 )
+
+```
+
+impact of different prior?
+
+```{r}
+
+## ------------------------------------------------------------------------
+m4.2 <- map(flist <- alist(
+  height ~ dnorm( mu, sigma ) ,
+  mu ~ dnorm( 178, 0.1 ) ,
+  sigma ~ dunif( 0, 50)
+  ), data=d2
+)
+precis(m4.2)
+
+```
+
+
+3. Sampling from the Posterior
+
+a simulation approach
+
+
+```{r}
+
+## ------------------------------------------------------------------------
+vcov( m4.1 )
+
+## ------------------------------------------------------------------------
+post <- rethinking::extract.samples( m4.1, 1000)
+head(post)
+
+```
+
+
+```{r}
+
+## ------------------------------------------------------------------------
+library(ggplot2)
+ggplot(post, aes(mu, sigma)) + geom_point()
+
+```
+
+
+```{r}
+
+## ------------------------------------------------------------------------
+library(dplyr)
+summarize(post, Prob=mean(mu > 155))
+
+```
+
+
+```{r}
+
+
+## ------------------------------------------------------------------------
+summarize(post, LO = quantile(sigma, .1),
+                HI = quantile(sigma, .9))
+
+```
+
+Can learn aobut functions of the parameters
+
+```{r}
+
+## ------------------------------------------------------------------------
+post <- mutate(post, CV = mu / sigma)
+
+## ------------------------------------------------------------------------
+summarize(post, LO = quantile(CV, .1),
+                HI = quantile(CV, .9))
+
+```
+
+
+Prediction
+
+Simulation of Predictive Density
+
+```{r}
+
+## ------------------------------------------------------------------------
+one_sample <- function(j){
+  pars <- post[j, ]
+  ys <- rnorm(10, pars$mu, pars$sigma)
+  max(ys)
+}
+
+## ------------------------------------------------------------------------
+library(tidyverse)
+MS <- map_dbl(1:1000, one_sample)
+
+## ---- fig.width=4, fig.height=2.5----------------------------------------
+dens(MS)
+
+## ------------------------------------------------------------------------
+quantile(MS, c(.10, .90))
+
+
+```
+
+
+
+## Exercises ------------------------------------------------------------
+
+http://www-math.bgsu.edu/~albert/jsm2018/package_examples/Exercises.html
+
+
+```{r}
+
+library(rethinking)
+d <- data.frame(y = c(36, 26, 35, 31, 12, 
+                      14, 46, 19, 37, 28))
+bfit <- map(flist <- alist(
+  y ~ dpois( lambda ) ,
+  lambda ~ dnorm( 30,  10 )
+), data=d
+)
+precis(bfit)
+##         Mean StdDev  5.5% 94.5%
+## lambda 28.44   1.66 25.78  31.1
+sim_draws <- extract.samples(bfit, 1000)
+ynew <- rpois(1000, sim_draws$lambda)
+
+quantile(ynew, c(.05, .95))
+mean(ynew)
+
+
+```
+
