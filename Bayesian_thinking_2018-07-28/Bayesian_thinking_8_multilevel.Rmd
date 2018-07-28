@@ -155,4 +155,15 @@ writeLines(modelString, con="normexch.bug")
 ```
 
 
+---
+
+
+### Prediction
+
+new player: only have model
+
+predict player in the model: have existing data
+
+
+
 

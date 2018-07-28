@@ -3,9 +3,26 @@ title: "Bayesian Thinking: ReadMe"
 output: html_notebook
 ---
 
-Resources
+## Resources
 
 http://www-math.bgsu.edu/~albert/jsm2018/package_examples/
 
 http://www-math.bgsu.edu/~albert/jsm2017/package_examples/
+
+
+
+## References
+
+Efron & Morriss (see home runs / multi-level models)
+
+
+https://baseballwithr.wordpress.com/2016/02/15/revisiting-efron-and-morriss-baseball-study/
+
+http://www.swarthmore.edu/NatSci/peverso1/Sports%20Data/JamesSteinData/Efron-Morris%20Baseball/EfronMorrisBB.txt
+
+https://gist.github.com/bayesball/15557fa4648ed4755500
+ 
+https://vincentarelbundock.github.io/Rdatasets/doc/pscl/EfronMorris.html
+
+
 

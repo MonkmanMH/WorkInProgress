@@ -26,15 +26,7 @@ discreteness of data (integers!) of PAs on X axis, home runs on Y (i.e. bottom r
 
 
 
-> (digression: Efron and Morriss data set)
->
-> https://baseballwithr.wordpress.com/2016/02/15/revisiting-efron-and-morriss-baseball-study/
->
-> http://www.swarthmore.edu/NatSci/peverso1/Sports%20Data/JamesSteinData/Efron-Morris%20Baseball/EfronMorrisBB.txt
->
-> https://gist.github.com/bayesball/15557fa4648ed4755500
-> 
-> https://vincentarelbundock.github.io/Rdatasets/doc/pscl/EfronMorris.html
+(digression: Efron and Morriss data set -- see readme.rmd)
 
 
 
