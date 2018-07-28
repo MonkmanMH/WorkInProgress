@@ -3,6 +3,12 @@ title: "HomeRun.R"
 output: html_notebook
 ---
 
+## Multi-level models
+
+
+### 1. Home Runs
+
+2017 season, on May 13 -- want to predict the remainder of the season (for players who had recorded minimum of 10 PAs)
 
 ```{r}
 
@@ -16,6 +22,23 @@ ggplot(d2017, aes(PA, HR / PA)) + geom_point()
 
 ```
 
+discreteness of data (integers!) of PAs on X axis, home runs on Y (i.e. bottom row is 0 home runs, next is 1 home run, then 2, etc)
+
+
+
+> (digression: Efron and Morriss data set)
+>
+> https://baseballwithr.wordpress.com/2016/02/15/revisiting-efron-and-morriss-baseball-study/
+>
+> http://www.swarthmore.edu/NatSci/peverso1/Sports%20Data/JamesSteinData/Efron-Morris%20Baseball/EfronMorrisBB.txt
+>
+> https://gist.github.com/bayesball/15557fa4648ed4755500
+> 
+> https://vincentarelbundock.github.io/Rdatasets/doc/pscl/EfronMorris.html
+
+
+
+#### fit the No-Pool model
 
 ```{r}
 
@@ -26,12 +49,30 @@ fit_individual <- glm(HR ~ Player + offset(log(PA)),
 d2017$rate_estimates <- exp(fit_individual$linear.predictors) /
                       d2017$PA
 
+```
+
+
+#### fit the Pooled Model using glm
+
+the other extreme
+
+```{r}
+
+
 ## ------------------------------------------------------------------------
 fit_pool <- glm(HR ~ 1 + offset(log(PA)),
                 family=poisson,
                 data=d2017)
 exp(coef(fit_pool)) 
 
+```
+
+
+#### Quick fit of Partial Pooling Model
+
+see Gelman & Hill
+
+```{r}
 ## ------------------------------------------------------------------------
 library(lme4)
 fit_pp <- glmer(HR ~ (1 | Player) + 
@@ -42,6 +83,10 @@ fit_pp <- glmer(HR ~ (1 | Player) +
 ## ------------------------------------------------------------------------
 fit_pp
 
+```
+
+
+```{r}
 ## ------------------------------------------------------------------------
 library(rstanarm)
 fit_partialpool <- stan_glmer(HR ~ (1 | Player) + 
@@ -49,15 +94,36 @@ fit_partialpool <- stan_glmer(HR ~ (1 | Player) +
                               family=poisson,
                               data=d2017)
 
+
+```
+
+
+
+
+```{r}
+
 ## ------------------------------------------------------------------------
 prior_summary(fit_partialpool)
 
+```
+
+
+classical method would have given a point estimate, but this approach gives a reasonable estimate range...plotted below
+
+
+```{r}
 ## ---- fig.height=4-------------------------------------------------------
 posterior <- as.matrix(fit_partialpool)
 ggplot(data.frame(Sigma=sqrt(posterior[, 325])), 
        aes(Sigma)) +
       geom_density()
 
+```
+
+
+
+
+```{r}
 ## ---- echo=FALSE---------------------------------------------------------
 shift_draws <- function(draws) {
   exp(sweep(draws[, -c(1, 325)], MARGIN = 1, 
@@ -73,11 +139,23 @@ Estimates <- data.frame(PA = d2017$PA,
                         Estimate = d2017$rate_estimates,
                         Type="Individual")
 
+```
+
+
+
+
+```{r}
 ## ---- echo=FALSE---------------------------------------------------------
 ggplot(rbind(d_estimates, Estimates), 
        aes(PA, Estimate, color=Type)) + geom_point() +
   geom_smooth(se=FALSE)
 
+```
+
+
+
+
+```{r}
 ## ------------------------------------------------------------------------
 library(lme4)
 library(rstanarm)
