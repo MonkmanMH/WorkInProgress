@@ -1,0 +1,11 @@
+---
+title: "Bayesian Thinking: ReadMe"
+output: html_notebook
+---
+
+Resources
+
+http://www-math.bgsu.edu/~albert/jsm2018/package_examples/
+
+http://www-math.bgsu.edu/~albert/jsm2017/package_examples/
+
