@@ -1,0 +1,117 @@
+## ----setup, include=FALSE------------------------------------------------
+knitr::opts_chunk$set(echo = TRUE, 
+        message = FALSE, warnings = FALSE)
+
+## ---- fig.height=3, fig.width=5------------------------------------------
+d <- read.csv("http://personal.bgsu.edu/~albert/data/gateway.csv")
+library(tidyverse)
+ggplot(d, aes(Year, Count)) + geom_jitter()
+
+## ---- excho=FALSE--------------------------------------------------------
+S <- summarize(group_by(d, Year),
+               M=median(Count),
+               QL=quantile(Count, .25),
+               QU=quantile(Count, .75),
+               Step=1.5 * (QU - QL),
+               Fence_Lo= QL - Step,
+               Fence_Hi= QU + Step)
+d <- inner_join(d, S)
+d2 <- filter(d, Count > Fence_Lo, Count < Fence_Hi)
+
+## ---- fig.height=4, fit.width=5------------------------------------------
+ggplot(d2, aes(Year, Count)) + 
+  geom_jitter() 
+
+## ------------------------------------------------------------------------
+d2$year_number <- d2$Year - 2002
+
+## ------------------------------------------------------------------------
+library(rethinking)
+m1 <- map(
+  alist(
+    Count ~ dpois( lambda ),
+    log(lambda) <- a + b * year_number,
+    a ~ dnorm(0, 100),
+    b ~ dnorm(0, 100)
+  ), data=d2, start=list(a=6, b=0.1)
+)
+
+## ---- fig.height=3, fig.width=5------------------------------------------
+sim_m1 <- extract.samples(m1, n = 1000)
+ggplot(sim_m1, aes(a, b)) + geom_point()
+
+## ------------------------------------------------------------------------
+precis(m1, digits=4)
+
+## ------------------------------------------------------------------------
+post_lambda <- function(year_no){
+  lp <- sim_m1[, "a"] + year_no * sim_m1[, "b"]
+  Q <- quantile(exp(lp), c(0.05, 0.95))
+  data.frame(Year = year_no, L_05 = Q[1], L_95 = Q[2])
+}
+
+## ------------------------------------------------------------------------
+OUT <- do.call("rbind", 
+               lapply(0:10, post_lambda))
+
+## ---- fig.width=4, fig.height=2------------------------------------------
+ggplot(OUT, aes(Year, L_05)) +
+  geom_line() +
+  geom_line(data=OUT, aes(Year, L_95)) +
+  ylab("Expected Count")
+
+## ------------------------------------------------------------------------
+replicated_data <- function(j){
+  lambda <- sim_m1[j, "a"] + sim_m1[j, "b"] * 
+         d2$year_number
+  ys <- rpois(length(lambda), exp(lambda))
+  sd(ys)
+}
+pred_SD <- map_dbl(1:1000, replicated_data)
+
+## ---- fig.height=3, fig.width=5------------------------------------------
+ggplot(data.frame(pred_SD), aes(pred_SD)) +
+  geom_histogram() +
+  geom_vline(xintercept = sd(d2$Count))
+
+## ------------------------------------------------------------------------
+modelString = "
+model{
+for(i in 1:n){
+mu[i] <- beta[1] +  beta[2] * year[i] 
+lambda[i] <- exp(mu[i])
+p[i] <- r / (r + lambda[i])
+y[i] ~ dnegbin(p[i], r)
+}	
+beta[1:2] ~ dmnorm(b0[1:2], B0[ , ])
+r ~ dunif(0, 200)
+}"
+writeLines(modelString, con="negbin1.bug")
+
+## ------------------------------------------------------------------------
+forJags <- list(n=dim(d2)[1],  
+                year = d2$year_number,
+                y = d$Count,    
+                b0 = rep(0, 2),        
+                B0 = diag(.0001, 2))
+
+## ------------------------------------------------------------------------
+inits <- list(list(beta=rep(0, 2),
+                   r=1))
+
+## ------------------------------------------------------------------------
+require(rjags)
+foo <- jags.model(file="negbin1.bug",
+                  data=forJags,
+                  inits=inits,
+                  n.adapt = 5000)
+
+## ------------------------------------------------------------------------
+update(foo,5000)
+out <- coda.samples(foo,
+                    variable.names=c("beta", "r"),
+                    n.iter=5000)
+
+## ------------------------------------------------------------------------
+summary(out)
+
