@@ -3,6 +3,13 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+NOTE:
+
+rethinking package github
+https://github.com/rmcelreath/rethinking
+
+
+
 ## Attendance Data
 
 http://www-math.bgsu.edu/~albert/jsm2018/course_files/Attendance.R
@@ -32,6 +39,12 @@ summary(fit)
 ```
 
 
+### Using STAN in `rstanarm` package
+
+What priors are used?
+
+
+
 ```{r}
 
 ## ------------------------------------------------------------------------
@@ -39,12 +52,32 @@ library(rstanarm)
 fit2 <- stan_betareg(fraction ~ Weekend + Period, data=d,
                      link="logit")
 
+```
+
+
+summary of the priors
+
+```{r}
+
+
 ## ------------------------------------------------------------------------
 prior_summary(fit2)
+
+```
+
+
+MCMC diagnostics -- trace plots
+
+```{r}
 
 ## ------------------------------------------------------------------------
 library(bayesplot)
 mcmc_trace(as.matrix(fit2))
+
+```
+
+
+```{r}
 
 ## ------------------------------------------------------------------------
 mcmc_acf(as.matrix(fit2))
@@ -52,14 +85,32 @@ mcmc_acf(as.matrix(fit2))
 ## ------------------------------------------------------------------------
 mcmc_dens(as.matrix(fit2))
 
+
+```
+
+
+```{r}
+
 ## ------------------------------------------------------------------------
 posterior_interval(fit2)
+
+```
+
+this model isn't a good fit--baseball attendance isn't uni-modal
+
+
+```{r}
 
 ## ------------------------------------------------------------------------
 posterior_sims <- as.matrix(fit2)
 head(posterior_sims)
 
 ```
+
+
+
+
+Interested in expected attendance, weekdays, each period
 
 
 ```{r}
@@ -81,6 +132,27 @@ ggplot(rbind(d1, d2, d3), aes(Fraction)) +
   geom_density() + facet_wrap(~ Label, ncol=1)
 
 ```
+
+
+shinystan ... not sure how this works
+
+```{r}
+
+launch_shinystan(fit2)
+
+
+```
+
+more diagnostics
+
+- by various diagnostic measures
+
+-- density plot doesn't fit models 
+
+-- median, min show variation between, but sd is rather close 
+
+- need to look at many measures to determine if it's a good model or not
+
 
 
 ```{r}
@@ -105,5 +177,7 @@ ppc_stat(d$fraction, ynew, stat="min")
 
 
 
+
+"Need to interact with your model...need to establish a general strategy, plan of attack, and iterate"
 
 
