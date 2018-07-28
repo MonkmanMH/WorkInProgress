@@ -68,6 +68,8 @@ exp(coef(fit_pool))
 ```
 
 
+#### Partial Pooled Model
+
 #### Quick fit of Partial Pooling Model
 
 see Gelman & Hill
@@ -142,6 +144,7 @@ Estimates <- data.frame(PA = d2017$PA,
 ```
 
 
+#### Obtain Rate Estimates
 
 
 ```{r}
@@ -167,5 +170,8 @@ fit <- glmer(cbind(Hits, AB - Hits) ~ (1 | Player),
 ```
 
 
+```{r}
+
+```
 
 
