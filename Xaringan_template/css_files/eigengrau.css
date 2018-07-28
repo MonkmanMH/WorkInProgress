@@ -15,7 +15,8 @@ p {
 }
 
 a, a > code {
-  color: #7e7e85;
+/*  background-color: #7e7e85; */
+  color: #babac8;
   text-decoration: none;
 }
 
