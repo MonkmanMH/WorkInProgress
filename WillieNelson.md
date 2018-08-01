@@ -4,7 +4,7 @@
 
 I sometimes get asked to speak to groups of university students or people just embarking on their careers. I am used to getting asked about career advice, and I suspect that most people are expecting responses like "Take Course X" or "Learn to program [insert language Y]" or "Get certified as professional designation Z."  Instead I do this:
 
-At the end of the presentation, I say "Let's play _Name That Celebrity_" and show a sequence of photos of Willie Nelson, working backwards in time, noting the fact that it's clearly the same man, just younger (and sometimes pointing out that the hole in the guitar is smaller).  
+At the end of the presentation, I say "Let's play _Name That Celebrity_" and show a sequence of photos of Willie Nelson, working backwards in time, noting the fact that it's clearly the same man, just younger (and sometimes pointing out that the hole in the guitar top made by his guitar pick is not as big as it is now).  
 
 {The photos are below.}
 
