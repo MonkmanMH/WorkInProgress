@@ -25,13 +25,16 @@ The Mariners' relatively small run differential (i.e. how many more runs they ha
 
 * and on July 3, Jeff Sullivan opined ["The Mariners Are Trying to Be the Clutchiest Team on Record"](https://www.fangraphs.com/blogs/the-mariners-are-trying-to-be-the-clutchiest-team-on-record/)
 
-Of course, regression to the mean is a thing, and later in the season their luck ran out. 
+Of course, regression to the mean is a thing, and later in the season their luck started to run out. 
 
-I've written before about run scoring and prevention (here and here); this time, I will compare the individual team performance in a single season.  This will look at the simplest of the measures of "win expectation" that have burbled up in the Sabremetric community over the years; the other approaches may be worthy of consideration for a future post.
+---
+
+I've written before about run scoring and prevention (index [here](http://bayesball.blogspot.com/search/label/run%20scoring)); this time, I will compare the individual team performance in a single season.  This will look at the simplest of the measures of "win expectation" that have burbled up in the Sabremetric community over the years; the other approaches may be worthy of consideration for a future post.
+
 
 > For the 2018 season, our data source is [Fangraphs' team dashboard](https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=8&season=2018&month=0&season1=2018&ind=0&team=0,ts&rost=&age=&filter=&players=0). It takes a bit of flinagalling to get what we want.
 
-We'll rely on the [`Lahman` package](https://cran.r-project.org/web/packages/Lahman/), which will (at this writing) take us through the 2016 season.
+We'll rely on the [CRAN](https://cran.r-project.org/) version of the [`Lahman` package](https://cran.r-project.org/web/packages/Lahman/), which will (at this writing) take us through the 2016 season.
 
 
 ## Pythagorean win ratio
@@ -43,64 +46,44 @@ $$ WE = RS^2 / (RS^2 + RA^2)$$
 
 
 
-FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=BaseRuns)
-
-* [Pythagorean Win-Loss](https://www.fangraphs.com/library/principles/expected-wins-and-losses/)
-
-* [Pythagorean Win-Loss](https://www.fangraphs.com/library/team-record-pythagorean-record-and-base-runs/)
-
-* See also ["BaseRuns" definition](https://www.fangraphs.com/library/features/baseruns/) for alternative measure
-
-
-
 ### function
+
+Let's write a one-line function for this equation. 
 
 ```{r}
 
 winexp_fun <- function(RS, RA) {
-  winratio <- RS^2 / (RS^2 + RA^2)
+  RS^2 / (RS^2 + RA^2)
 }
 
 ```
 
 
-test
-
-```{r}
-
-RS <- 4.43
-RA <- 4.18
-
-
-winexp_fun(RS, RA)
-
-```
-
 ## Empirical test
+
+For this, we'll use the Major League Baseball data from 1961 through 2016--a total of 1476 team seasons.
+
+This code chunk accesses the `Teams` table from the Lahman database, and wrangles it a bit, and adds (though the `dplyr::mutate` function) two new variables: the team's winning percentage, and using the `winexp_fun` function above, the win expectancy.
 
 ```{r}
 
 data(Teams)
 
-head(Teams)
-
 Teams_sel <- Teams %>%
-  filter(yearID > 1961) %>%
+  filter(yearID >= 1961) %>%
   rename(RS = R) %>%
-  mutate(winpct = W / G)
+  mutate(winpct = W / G, 
+         winexp = winexp_fun(RS, RA))
 
-Teams_sel <- Teams_sel %>%
-  mutate(winexp = winexp_fun(RS, RA))
-
-
-head(Teams_sel)
 
 ```
 
 
 #### plot
 
-Use ggplot2 to look at the relationship between the Pythagorean estimate and the true value.
+Use ggplot2 to look at the relationship between the Pythagorean estimate and the true value. We can do this in a couple of ways: one is to overlay the density plots of the two variables, and the other is an X-Y scatterplot.
+
+> need to add a legend. See http://www.rpubs.com/dvdunne/adding_legend, https://stackoverflow.com/questions/29563375/plotting-line-legend-for-two-density-curves-with-ggplot2
 
 ```{r}
 
@@ -108,6 +91,14 @@ ggplot(data = Teams_sel) +
   geom_density(aes(x = winexp), colour = "red") +
   geom_density(aes(x = winpct), colour = "blue")
                  
+
+ggplot(data = Teams_sel) +
+  geom_density(aes(x = winexp, colour = "winexp"), show.legend = FALSE) +
+  stat_density(aes(x = winpct, colour = "winpct"),
+               geom = "line", position = "identity", size = 0) +
+  guides(colour = guide_legend(override.aes=list(size=1)))
+
+  
 
 ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
   geom_point()
@@ -219,12 +210,28 @@ ggplot(Teams_sel, aes(x = winexp, y = winpct)) +
 
 
 
+### Further reading
+
+FanGraphs ["BaseRuns" page](https://www.fangraphs.com/depthcharts.aspx?position=BaseRuns)
+
+* [Pythagorean Win-Loss](https://www.fangraphs.com/library/principles/expected-wins-and-losses/)
+
+* [Pythagorean Win-Loss](https://www.fangraphs.com/library/team-record-pythagorean-record-and-base-runs/)
+
+* See also ["BaseRuns" definition](https://www.fangraphs.com/library/features/baseruns/) for alternative measure
+
+Jay Heumann, ["An improvement to the baseball statistic 'Pythagorean Wins'"](https://content.iospress.com/download/journal-of-sports-analytics/jsa0018?id=journal-of-sports-analytics%2Fjsa0018), _Journal of Sports Analytics_ 2 (2016) 49–59
+
+
 ---
 
 
+## ETC - future analysis possibilities
+
 Idea: filter where .se.fit is poor (i.e. big residual), plot -- see where the 2018 Mariners sit on the list
 
- 
+
+Idea: regression to the mean over the course of a season, via a Bayesian MCMC approach 
 
 
 
