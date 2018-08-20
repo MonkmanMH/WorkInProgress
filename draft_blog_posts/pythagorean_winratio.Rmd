@@ -129,7 +129,11 @@ Add the model line to the scatter plot
 
 ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
   geom_point() +
-  geom_smooth(method = lm)
+  geom_smooth(method = lm) +
+  coord_fixed() +
+  xlim(.2, .8) +
+  ylim(.2, .8)
+
 
 
 
