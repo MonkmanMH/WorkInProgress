@@ -4,18 +4,9 @@ output: html_document
 ---
 
 
-```{r setup}
-
-library(tidyverse)
-library(broom)
-
-library(Lahman)
-
-```
-
 Mid-way through the 2018 Major League Baseball (MLB) season, the Seattle Mariners were sitting in second place in the American League West, with a winning percentage over .600. 
 
-The Mariners' relatively small run differential (i.e. how many more runs they have scored than allowed) had been noted all season; 
+The Mariners' relatively small run differential (i.e. how many more runs they scored than allowed) had been noted all season; 
 
 * at the end of the first month of the season Jake Mailhot (@jakemailhot) at Lookout Landing wrote ["Just how lucky have the Mariners been?"](https://www.lookoutlanding.com/2018/5/1/17308386/mariners-cluster-luck-april-run-differential); 
 
@@ -25,17 +16,12 @@ The Mariners' relatively small run differential (i.e. how many more runs they ha
 
 * and on July 3, Jeff Sullivan opined ["The Mariners Are Trying to Be the Clutchiest Team on Record"](https://www.fangraphs.com/blogs/the-mariners-are-trying-to-be-the-clutchiest-team-on-record/)
 
-Of course, regression to the mean is a thing, and later in the season their luck started to run out. 
+Of course, [regression toward the mean](https://en.wikipedia.org/wiki/Regression_toward_the_mean) is a thing, and later in the season their luck started to run out. 
+
 
 ---
 
-I've written before about run scoring and prevention (index [here](http://bayesball.blogspot.com/search/label/run%20scoring)); this time, I will compare the individual team performance in a single season.  This will look at the simplest of the measures of "win expectation" that have burbled up in the Sabremetric community over the years; the other approaches may be worthy of consideration for a future post.
-
-
-> For the 2018 season, our data source is [Fangraphs' team dashboard](https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=8&season=2018&month=0&season1=2018&ind=0&team=0,ts&rost=&age=&filter=&players=0). It takes a bit of flinagalling to get what we want.
-
-We'll rely on the [CRAN](https://cran.r-project.org/) version of the [`Lahman` package](https://cran.r-project.org/web/packages/Lahman/), which will (at this writing) take us through the 2016 season.
-
+I've written before about run scoring and prevention (index [here](http://bayesball.blogspot.com/search/label/run%20scoring)); this time, I will examine the individual team performance in a single season, looking at the simplest of the measures of "win expectation" that have burbled up in the sabermetric community over the years; the other approaches may be worthy of consideration for a future post.
 
 ## Pythagorean win ratio
 
@@ -61,9 +47,25 @@ winexp_fun <- function(RS, RA) {
 
 ## Empirical test
 
-For this, we'll use the Major League Baseball data from 1961 through 2016--a total of 1476 team seasons.
 
-This code chunk accesses the `Teams` table from the Lahman database, and wrangles it a bit, and adds (though the `dplyr::mutate` function) two new variables: the team's winning percentage, and using the `winexp_fun` function above, the win expectancy.
+First, we'll load the packages we need. Note that `tidyverse` contains multiple packages, including the graphing package `ggplot2` and the data wrangling package `dplyr`. We'll also load `broom`, which facilitates manipulation of the regression model outputs.
+
+For this analysis, we'll use the Major League Baseball data from 1961 through 2016--a total of 1476 team seasons. To get the data, we'll rely on the [CRAN](https://cran.r-project.org/) version of the [`Lahman` package](https://cran.r-project.org/web/packages/Lahman/), which will (at this writing) take us through the 2016 season. 
+
+
+
+
+```{r setup}
+
+library(tidyverse)
+library(broom)
+
+library(Lahman)
+
+```
+
+
+The code chunk below accesses the `Teams` table from the Lahman database, and wrangles it a bit, and adds (though the `dplyr::mutate` function) two new variables: the team's winning percentage, and using the `winexp_fun` function we wrote above, the win expectancy.
 
 ```{r}
 
@@ -83,14 +85,9 @@ Teams_sel <- Teams %>%
 
 Use ggplot2 to look at the relationship between the Pythagorean estimate and the true value. We can do this in a couple of ways: one is to overlay the density plots of the two variables, and the other is an X-Y scatterplot.
 
-> need to add a legend. See http://www.rpubs.com/dvdunne/adding_legend, https://stackoverflow.com/questions/29563375/plotting-line-legend-for-two-density-curves-with-ggplot2
+First the density plot.
 
 ```{r}
-
-ggplot(data = Teams_sel) +
-  geom_density(aes(x = winexp), colour = "red") +
-  geom_density(aes(x = winpct), colour = "blue")
-                 
 
 ggplot(data = Teams_sel) +
   geom_density(aes(x = winexp, colour = "winexp"), show.legend = FALSE) +
@@ -98,11 +95,47 @@ ggplot(data = Teams_sel) +
                geom = "line", position = "identity", size = 0) +
   guides(colour = guide_legend(override.aes=list(size=1)))
 
-  
+# tips from https://stackoverflow.com/questions/29563375/plotting-line-legend-for-two-density-curves-with-ggplot2
 
-ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
+
+```
+
+
+Next, the scatter plot. Because we are going to return to the foundations of this plot (i.e. the calculated win expectancy as the X axis and the end-of-season final winning percentage plotted on the Y axis), we'll create a blank frame in an object called `we_scatterplot`. 
+
+Note that there's a few things going on here:
+
+* the use of the `geom_blank` function; usually, we would call `geom_point` for a scatter plot. 
+
+* the `coord_fixed` means that the X and Y scales have the units represented by equal length on both (one tenth of a point is the same length on each). 
+
+* the `scale_x_continuous` function and its parallel for y set the grid marks and length of the two axes.
+
+
+```{r}
+
+we_scatterplot <- ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
+  geom_blank() +
+  coord_fixed() +
+  scale_x_continuous(breaks = seq(0.2, 0.8, by = 0.1),
+                     limits = c(0.2, 0.75)) +
+  scale_y_continuous(breaks = seq(0.2, 0.8, by = 0.1),
+                     limits = c(0.2, 0.75)) 
+
+we_scatterplot
+
+```
+
+
+The `we_scatterplot` object contains the `winexp` and `winpct` data points, so we can summon them in the `geom_` that we want. 
+
+Now, we'll render that object but using the `geom_point` so we can see the winexp and winpct values.
+
+```{r}
+
+
+we_scatterplot +
   geom_point()
-
 
 
 
@@ -127,7 +160,7 @@ Add the model line to the scatter plot
 
 ```{r}
 
-ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
+we_scatterplot +
   geom_point() +
   geom_smooth(method = lm) +
   coord_fixed() +
@@ -191,7 +224,7 @@ What we are really interested in are the extreme cases--some of those single dot
 ```{r}
 
 
-ggplot(Teams_sel, aes(x = winexp, y = winpct)) +
+we_scatterplot +
   geom_point() +
   geom_segment(aes(x = 0.3, xend = 0.7, y = 0.3, yend = 0.7), colour = "red", size = 1)
 
@@ -205,7 +238,7 @@ And just for fun, let's compare the "unity" line shown in red (where `winexp` ==
 
 ```{r}
 
-ggplot(Teams_sel, aes(x = winexp, y = winpct)) +
+we_scatterplot +
   geom_point() +
   geom_segment(aes(x = 0.3, xend = 0.7, y = 0.3, yend = 0.7), colour = "red", size = 1) +
   geom_smooth(method = lm)
