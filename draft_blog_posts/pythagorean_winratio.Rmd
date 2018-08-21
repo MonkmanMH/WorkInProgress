@@ -1,12 +1,12 @@
 ---
-title: "Regression models and win expectancy"
+title: "Regression models and win expectation"
 output: html_document
 ---
 
 
-Mid-way through the 2018 Major League Baseball (MLB) season, the Seattle Mariners were sitting in second place in the American League West, with a winning percentage over .600. 
+Mid-way through the 2018 Major League Baseball (MLB) season, the Seattle Mariners were sitting in second place in the American League West, with a winning percentage over .600. This success had been in spite of a low run differential (i.e. how many more runs they scored than allowed)--they had been winning a lot of close games.
 
-The Mariners' relatively small run differential (i.e. how many more runs they scored than allowed) had been noted all season; 
+The Mariners' success had been noted all season; 
 
 * at the end of the first month of the season Jake Mailhot (@jakemailhot) at Lookout Landing wrote ["Just how lucky have the Mariners been?"](https://www.lookoutlanding.com/2018/5/1/17308386/mariners-cluster-luck-april-run-differential); 
 
@@ -16,17 +16,18 @@ The Mariners' relatively small run differential (i.e. how many more runs they sc
 
 * and on July 3, Jeff Sullivan opined ["The Mariners Are Trying to Be the Clutchiest Team on Record"](https://www.fangraphs.com/blogs/the-mariners-are-trying-to-be-the-clutchiest-team-on-record/)
 
-Of course, [regression toward the mean](https://en.wikipedia.org/wiki/Regression_toward_the_mean) is a thing, and later in the season their luck started to run out. 
+Of course, [regression toward the mean](https://en.wikipedia.org/wiki/Regression_toward_the_mean) is a thing, and later in the season their win/loss ratio more closely reflected their run differential. 
 
 
 ---
 
-I've written before about run scoring and prevention (index [here](http://bayesball.blogspot.com/search/label/run%20scoring)); this time, I will examine the individual team performance in a single season, looking at the simplest of the measures of "win expectation" that have burbled up in the sabermetric community over the years; the other approaches may be worthy of consideration for a future post.
+I've written before about run scoring and prevention (index [here](http://bayesball.blogspot.com/search/label/run%20scoring)); this time, I will look at the simplest of the measures of "win expectation" that have burbled up in the sabermetric community over the years; the other approaches may be worthy of consideration for a future post. This exercise will give us a way to look at the ways that the statistical programming language R works with regression models.
+
 
 ## Pythagorean win ratio
 
 
-Bill James, the godfather of Sabermetrics, developed the Pythagorean win expectation model ([wikipedia page](https://en.wikipedia.org/wiki/Pythagorean_expectation)). The basic idea is that there is a relationship between the runs a team scores ($RS$) and allows ($RA$), and the proportion of the games that they can be expected to win ($WE$). The equation is expressed thus:
+Bill James, the godfather of sabermetrics, developed the Pythagorean win expectation model ([wikipedia page](https://en.wikipedia.org/wiki/Pythagorean_expectation)). The basic idea is that there is a relationship between the runs a team scores ($RS$) and allows ($RA$), and the proportion of the games that they can be expected to win ($WE$). The equation is expressed thus:
 
 $$ WE = RS^2 / (RS^2 + RA^2)$$
 
@@ -34,7 +35,7 @@ $$ WE = RS^2 / (RS^2 + RA^2)$$
 
 ### function
 
-Let's write a one-line function for this equation. 
+Let's write a little function for this equation...in that way, we can save some typing later.
 
 ```{r}
 
@@ -45,10 +46,10 @@ winexp_fun <- function(RS, RA) {
 ```
 
 
-## Empirical test
+## The data
 
 
-First, we'll load the packages we need. Note that `tidyverse` contains multiple packages, including the graphing package `ggplot2` and the data wrangling package `dplyr`. We'll also load `broom`, which facilitates manipulation of the regression model outputs.
+First, we'll load the packages we need. Note that `tidyverse` contains multiple packages, including the graphing package `ggplot2` and the data wrangling package `dplyr`. We'll also load `broom`, which facilitates manipulation of the model outputs.
 
 For this analysis, we'll use the Major League Baseball data from 1961 through 2016--a total of 1476 team seasons. To get the data, we'll rely on the [CRAN](https://cran.r-project.org/) version of the [`Lahman` package](https://cran.r-project.org/web/packages/Lahman/), which will (at this writing) take us through the 2016 season. 
 
@@ -65,7 +66,7 @@ library(Lahman)
 ```
 
 
-The code chunk below accesses the `Teams` table from the Lahman database, and wrangles it a bit, and adds (though the `dplyr::mutate` function) two new variables: the team's winning percentage, and using the `winexp_fun` function we wrote above, the win expectancy.
+The code chunk below accesses the `Teams` table from the Lahman database, and wrangles it a bit, and adds (though the `dplyr::mutate` function) two new variables: the team's winning percentage, and using the `winexp_fun` function we wrote above, the win expectation.
 
 ```{r}
 
@@ -83,7 +84,7 @@ Teams_sel <- Teams %>%
 
 #### plot
 
-Use ggplot2 to look at the relationship between the Pythagorean estimate and the true value. We can do this in a couple of ways: one is to overlay the density plots of the two variables, and the other is an X-Y scatterplot.
+Now we'll use `ggplot2` to look at the relationship between the Pythagorean estimate of win expectation and the actual value of winning percentage. We can do this in a couple of ways: one is to overlay the density plots of the two variables, and the other is an X-Y scatterplot.
 
 First the density plot.
 
@@ -100,12 +101,14 @@ ggplot(data = Teams_sel) +
 
 ```
 
+In the above plot, we can see that there's not a perfect match--first, there's gaps between the two lines at either tail of the curve. But the blue line (representing the actual winning percentage) isn't a smooth curve at the top--there's a hollow around .500, and increased proportions on either side. Something to look at another day!
 
-Next, the scatter plot. Because we are going to return to the foundations of this plot (i.e. the calculated win expectancy as the X axis and the end-of-season final winning percentage plotted on the Y axis), we'll create a blank frame in an object called `we_scatterplot`. 
+
+Next, the scatter plot. Because we are going to return to the foundations of this plot (i.e. the calculated win expectancy as the X axis and the end-of-season final winning percentage plotted on the Y axis), we'll create a blank frame in an object called `we_scatterplot`. With this object already created, we can build a variety of plots by simply calling the base object. (It's not lazy, it's _efficient_.)
 
 Note that there's a few things going on here:
 
-* the use of the `geom_blank` function; usually, we would call `geom_point` for a scatter plot. 
+* the use of the `geom_blank` function; usually, we would call `geom_point` for a scatter plot, but in this case we don't want to see the points. 
 
 * the `coord_fixed` means that the X and Y scales have the units represented by equal length on both (one tenth of a point is the same length on each). 
 
@@ -141,8 +144,13 @@ we_scatterplot +
 
 ```
 
+In the above plot it's easy to see the strong relationship between the win expectation and the winning percentage. It's not a perfect relation; over a 162 game season, there is still room for variation.
+
 
 #### The regression model
+
+Let's model that relationship. R makes regression model building easy; the `lm` function is all that it takes. The `print()` and `summary()` functions let us see the key elements from the model.
+
 
 ```{r}
 
@@ -156,18 +164,14 @@ summary(winexp_mod)
 
 
 
-Add the model line to the scatter plot
+R also makes it very easy to add the regression model line to the scatter plot, with the `geom_smooth()` function. Note that we have to specify the `method = lm`; the default is a [LOESS smoothing](https://en.wikipedia.org/wiki/Local_regression) curve.
+
 
 ```{r}
 
 we_scatterplot +
   geom_point() +
-  geom_smooth(method = lm) +
-  coord_fixed() +
-  xlim(.2, .8) +
-  ylim(.2, .8)
-
-
+  geom_smooth(method = lm)
 
 
 ```
@@ -181,6 +185,7 @@ _interpretation_
 Use `broom` to get the model statistics
 
 David Robinson, 2015-03-19, ["broom: a package for tidying statistical models into data frames"](https://www.r-bloggers.com/broom-a-package-for-tidying-statistical-models-into-data-frames/)
+
 
 * also https://cran.r-project.org/web/packages/broom/vignettes/broom.html 
 
@@ -226,7 +231,7 @@ What we are really interested in are the extreme cases--some of those single dot
 
 we_scatterplot +
   geom_point() +
-  geom_segment(aes(x = 0.3, xend = 0.7, y = 0.3, yend = 0.7), colour = "red", size = 1)
+  geom_segment(aes(x = 0.25, xend = 0.75, y = 0.25, yend = 0.75), colour = "red", size = 1)
 
 
 ```
@@ -240,7 +245,7 @@ And just for fun, let's compare the "unity" line shown in red (where `winexp` ==
 
 we_scatterplot +
   geom_point() +
-  geom_segment(aes(x = 0.3, xend = 0.7, y = 0.3, yend = 0.7), colour = "red", size = 1) +
+  geom_segment(aes(x = 0.25, xend = 0.75, y = 0.25, yend = 0.75), colour = "red", size = 1) +
   geom_smooth(method = lm)
 
 ```
