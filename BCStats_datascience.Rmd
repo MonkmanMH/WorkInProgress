@@ -1,0 +1,53 @@
+---
+title: "BC Stats - data science function & team"
+author: "Martin Monkman"
+date: "August 22, 2018"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What is data science?
+
+BC Stats already does data science. It is the process of: 
+
+* working with business areas (which inside a government include program and policy units) to identify their business challenges, and how data and analysis can inform their decision process
+
+* creating a data collection strategy 
+
+* collecting the data (whether from an existing source such as Statistics Canada, or from administrative records, or through original collection--a survey)
+
+* wrangling it into a usable form
+
+* analysis and modeling
+
+* visualizing the results
+
+* communicating the results
+
+* working with the business area to make sure that the results are answering the business questions
+
+This process can by cyclical; sometimes, the questions answered provoke new questions.
+
+
+### Data science at BC Stats
+
+BC Stats has been tackling this process since 1894. So what has changed in our working environment?
+
+1. The data that are available to us have changed. Increasingly, we are working with more complex data, particularly when it comes to administrative records. These bigger data sets require more wrangling.
+
+2. Today's desktop computers allow us--the data scientists--to undertake more complex analysis and modeling. Methods that only existed as theory 30 or 40 years ago can now be run in a few seconds on our PCs.
+
+3. There are new methods that allow us to communicate the results more effectively, and in keeping with the expectations of our audiences.
+
+
+We have not fully responded to these shifts. A response requires an ability to innovate, to test (and sometimes fail), and to refine. Given our business model we can fall into the trap sometimes known as "the tyrany of the urgent"--we need to get a report to a client by a stated deadline, so the risks that are inherent in the process of testing a new tool or method dissuade us from doing anything other than sticking to what we know works.
+
+This understandable reticence to try anything new comes with a significant downside: as the world changes around us, we risk falling further and further behind, until such time as we are unable to do what our clients want. In short, we will become irrelevant. And although we are smart people with specialized and in-depth knowledge, we are not unique. And it's not just that we are not irreplacable--we might not be able to do what the market for our talents wants or needs. The very best buggy whip makers in the world were still out of work when nobody needed a buggy whip.
+
+
+####
+
+
