@@ -32,6 +32,17 @@ BC Stats already does data science. It is the process of:
 This process can by cyclical; sometimes, the questions answered provoke new questions.
 
 
+It is important to note that a big part of this process is supported by the tools--a software or programming tool that automates your work, and can be re-run with new or different data as required.
+
+
+**Opinionated Analysis Development**
+
+https://peerj.com/preprints/3210/
+
+
+**Reproducibility**
+
+
 ### Data science at BC Stats
 
 BC Stats has been tackling this process since 1894. So what has changed in our working environment?
@@ -48,6 +59,52 @@ We have not fully responded to these shifts. A response requires an ability to i
 This understandable reticence to try anything new comes with a significant downside: as the world changes around us, we risk falling further and further behind, until such time as we are unable to do what our clients want. In short, we will become irrelevant. And although we are smart people with specialized and in-depth knowledge, we are not unique. And it's not just that we are not irreplacable--we might not be able to do what the market for our talents wants or needs. The very best buggy whip makers in the world were still out of work when nobody needed a buggy whip.
 
 
-####
+#### Work Examples
+
+The Data Science team will take the lead on some projects, from consulting with the client organization to reporting the results.
+
+Examples include:
+
+* Voter List Quality measurement for Elections BC
 
 
+In other cases, the team will be available to support projects across BC Stats. Examples to date include:
+
+* BC Public Service Exit Survey (Julie)
+
+* BC Student Outcomes visualization (the "dashboard" built by Nasim)
+
+
+
+The longer and more precise list of the types of work are listed here:
+
+**projects**
+
+* survey programming
+
+* data analysis
+
+* statistical modeling
+
+* reporting: tables, charts, web-based visualizations (a.k.a. "dashboards")
+
+
+**methodology**
+
+* sampling and weighting
+
+* statistical disclosure control
+
+
+**workflow**
+
+* using R from start to finish
+
+* functional programming 
+
+* RMarkdown (and the various flavours thereof)
+
+
+
+
+-30-

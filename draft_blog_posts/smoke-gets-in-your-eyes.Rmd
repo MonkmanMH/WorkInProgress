@@ -1,0 +1,25 @@
+---
+title: "Smoke gets in your eyes"
+author: "Martin Monkman"
+date: "August 23, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Air quality
+
+https://twitter.com/ageara/status/1032643002718543872
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Last night&#39;s Victoria&#39;s smoke roller coaster - (ug/m3 / hour of PPM 2.5) feel lucky to be on this side of the curve. Thoughts with BC interior towns continuing to deal with <a href="https://twitter.com/hashtag/AirQuality?src=hash&amp;ref_src=twsrc%5Etfw">#AirQuality</a> from <a href="https://twitter.com/hashtag/BCWildfire?src=hash&amp;ref_src=twsrc%5Etfw">#BCWildfire</a> . Source: <a href="https://twitter.com/hashtag/opendata?src=hash&amp;ref_src=twsrc%5Etfw">#opendata</a> from  <a href="https://t.co/RAPziqMKE8">https://t.co/RAPziqMKE8</a>  <a href="https://twitter.com/hashtag/yyj?src=hash&amp;ref_src=twsrc%5Etfw">#yyj</a> <a href="https://t.co/DJep5MCmA6">pic.twitter.com/DJep5MCmA6</a></p>&mdash; Greg Lawrance (@ageara) <a href="https://twitter.com/ageara/status/1032643002718543872?ref_src=twsrc%5Etfw">August 23, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+### References
+
+Current Air Quality Data page for [Victoria Topaz station](http://www.env.gov.bc.ca/epd/bcairquality/readings/map/station.html#E231866), from the British Columbia Ministry of Environment
+
+* BC Air Data Archive [data download page for Victoria Topaz station](https://envistaweb.env.gov.bc.ca/StationReportFast.aspx?ST_ID=4)
