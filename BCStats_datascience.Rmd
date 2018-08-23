@@ -34,13 +34,26 @@ This process can by cyclical; sometimes, the questions answered provoke new ques
 
 It is important to note that a big part of this process is supported by the tools--a software or programming tool that automates your work, and can be re-run with new or different data as required.
 
+A data scientist stands with one foot in statistics and another in computer science--programming skills are as important as methodological skills and knowledge.
+
+* R
+
+* github
+
+
 
 **Opinionated Analysis Development**
 
-https://peerj.com/preprints/3210/
+> Parker H. (2017) Opinionated analysis development. PeerJ Preprints 5:e3210v1 
+> https://doi.org/10.7287/peerj.preprints.3210v1
+> https://peerj.com/preprints/3210/
 
 
-**Reproducibility**
+* reproducible
+
+* accurate
+
+* collaborative
 
 
 ### Data science at BC Stats
@@ -105,6 +118,24 @@ The longer and more precise list of the types of work are listed here:
 * RMarkdown (and the various flavours thereof)
 
 
+
+***
+
+
+https://twitter.com/aschinchon/status/1032402299140956160
+
+```{r}
+
+library(tidyverse)
+
+seq(-10, 10, by = .05) %>%
+  expand.grid(x=., y=.) %>%
+  ggplot(aes(x=(x+sin(y)), y=(y+cos(x)))) +
+  geom_point(alpha=.1, shape=20, size=0, color="white")+
+  theme_void()+coord_fixed()+theme(panel.background = element_rect(fill="violetred4"))
+
+
+```
 
 
 -30-
