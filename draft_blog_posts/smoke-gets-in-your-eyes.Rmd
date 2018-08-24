@@ -11,6 +11,80 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Air quality
 
+As I write this (2018-08-23) there are [currently 469 wildfires burning in British Columbia](http://bcfireinfo.for.gov.bc.ca/hprScripts/WildfireNews/Fires.asp?Mode=normal&AllFires=0&FC=0), the largest of which, the Alkali Lake fire, is a complex that started as four separate fires and has now burned nearly 120,000 hectares (460 square miles). These fires have a significant impact on people's lives--many areas are under evacuation order and evacuation alert, and there are reports that homes have been destroyed by the blazes.
+
+The fires also create a significant amount of smoke, which has been pushed great distances by the shifting winds. This includes the large population centres of Vancouver and Victoria in British Columbia, as well as the Seattle metropolitan region and elsewhere in Washington.
+
+The Province of British Columbia has many air quality monitoring stations around the province, and makes the data available. 
+
+First of all, we'll download the data from the Victoria Topaz station from the B.C. Air Data Archive, from the British Columbia Ministry of Environment. 
+
+* [data download page for Victoria Topaz station](https://envistaweb.env.gov.bc.ca/StationReportFast.aspx?ST_ID=4)
+
+```{r}
+
+library(tidyverse)
+library(readxl)
+library(lubridate)
+library(glue)
+
+```
+
+
+The downloaded file is a mess. First of all, although I clicked the "Excel" option for file format, the file thinks it's HTML. So a cleaned up and functional CSV version of the hourly file from 2018-06-01 to 2018-08-23, with AVG "Type" selected, is here.
+
+```{r}
+
+airqual_hour <- readr::read_csv("Victoria_Topaz_hourly.csv")
+
+airqual_hour <- airqual_hour %>%
+  mutate(date_ymd = mdy(Date))
+
+airqual_hour <- airqual_hour %>%
+  mutate(timehr = case_when(
+    is.na(Time) ~ "00:00:00",
+    TRUE ~ as.character(Time)
+  ))
+
+
+
+airqual_hour <- airqual_hour %>%
+  mutate(datetimehr = glue("{date_ymd} {timehr}"),
+         datetimehr_2 = ymd_hms(airqual_hour$datetimehr)
+)
+
+
+
+airqual_hour %>%
+  mutate(datetimehr_x = ymd_h(datetimehr))
+
+
+```
+
+
+
+```{r}
+
+ggplot(airqual_hour, aes(x = date_ymd, y = PM25)) +
+  geom_point()
+
+
+```
+
+
+
+
+```{r}
+
+ggplot(airqual_hour, aes(x = date_ymd, y = PM25)) +
+  geom_point()
+
+
+```
+
+
+
+
 https://twitter.com/ageara/status/1032643002718543872
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Last night&#39;s Victoria&#39;s smoke roller coaster - (ug/m3 / hour of PPM 2.5) feel lucky to be on this side of the curve. Thoughts with BC interior towns continuing to deal with <a href="https://twitter.com/hashtag/AirQuality?src=hash&amp;ref_src=twsrc%5Etfw">#AirQuality</a> from <a href="https://twitter.com/hashtag/BCWildfire?src=hash&amp;ref_src=twsrc%5Etfw">#BCWildfire</a> . Source: <a href="https://twitter.com/hashtag/opendata?src=hash&amp;ref_src=twsrc%5Etfw">#opendata</a> from  <a href="https://t.co/RAPziqMKE8">https://t.co/RAPziqMKE8</a>  <a href="https://twitter.com/hashtag/yyj?src=hash&amp;ref_src=twsrc%5Etfw">#yyj</a> <a href="https://t.co/DJep5MCmA6">pic.twitter.com/DJep5MCmA6</a></p>&mdash; Greg Lawrance (@ageara) <a href="https://twitter.com/ageara/status/1032643002718543872?ref_src=twsrc%5Etfw">August 23, 2018</a></blockquote>
@@ -23,3 +97,10 @@ https://twitter.com/ageara/status/1032643002718543872
 Current Air Quality Data page for [Victoria Topaz station](http://www.env.gov.bc.ca/epd/bcairquality/readings/map/station.html#E231866), from the British Columbia Ministry of Environment
 
 * BC Air Data Archive [data download page for Victoria Topaz station](https://envistaweb.env.gov.bc.ca/StationReportFast.aspx?ST_ID=4)
+
+
+**tidyverse**
+
+[readr](https://readr.tidyverse.org)
+
+[readxl](https://readxl.tidyverse.org/)
