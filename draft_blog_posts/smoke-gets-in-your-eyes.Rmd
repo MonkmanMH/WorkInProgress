@@ -9,13 +9,212 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+```{r packages}
+
+# tidyverse
+library(tidyverse)
+library(glue)
+library(googledrive)
+
+# alternaverse
+library(RCurl)
+
+```
+
+
+
 ## Air quality
 
-As I write this (2018-08-23) there are [currently 469 wildfires burning in British Columbia](http://bcfireinfo.for.gov.bc.ca/hprScripts/WildfireNews/Fires.asp?Mode=normal&AllFires=0&FC=0), the largest of which, the Alkali Lake fire, is a complex that started as four separate fires and has now burned nearly 120,000 hectares (460 square miles). These fires have a significant impact on people's lives--many areas are under evacuation order and evacuation alert, and there are reports that homes have been destroyed by the blazes.
+As I write this (2018-08-23) there are [currently 469 wildfires burning in British Columbia](http://bcfireinfo.for.gov.bc.ca/hprScripts/WildfireNews/Fires.asp?Mode=normal&AllFires=0&FC=0), the largest of which, the Alkali Lake fire, started as four separate fires that have now merged and burned nearly 120,000 hectares (460 square miles). These fires have a significant impact on people's lives--many areas are under evacuation order and evacuation alert, and there are reports that homes have been destroyed by the blazes.
 
 The fires also create a significant amount of smoke, which has been pushed great distances by the shifting winds. This includes the large population centres of Vancouver and Victoria in British Columbia, as well as the Seattle metropolitan region and elsewhere in Washington.
 
-The Province of British Columbia has many air quality monitoring stations around the province, and makes the data available. 
+The Province of British Columbia has many air quality monitoring stations around the province, and makes the data available. The measure most used for monitoring the effects on health is PM25 or PM2.5, for fine particles with a diameter of 2.5 microns (millionths of a metre). The B.C. government has a [Current Particulate Matter map](http://www.env.gov.bc.ca/epd/bcairquality/readings/find-stations-map-PM25.html) that colour codes the one hour average measures for all the testing stations around the province.
+
+
+
+### The data file
+
+The DataBC Catalogue provides access to air quality data. There's ["verified" to the end of 2017](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-verified-hourly-data), and ["unverified" for the past 30 days](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-unverified-hourly-air-quality-and-meteorological-data). Since we want to see what happened this week, it's the latter we want. (The page with the [links to the raw files is here](ftp://ftp.env.gov.bc.ca/pub/outgoing/AIR/Hourly_Raw_Air_Data/Air_Quality/).)
+
+The files are arranged by particulate or gas type; there's a table for ozone and another for sulpher dioxide, and others for the particulate matter. 
+
+Note that the data are made available under the Province of B.C.'s Open Data license, and are in nice tidy form. And the date format is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), which makes me happy.
+
+
+
+To make sure we've got a reproducible version, I've saved the file I downloaded early this morning to my google drive. The link to the folder is [here](https://drive.google.com/drive/folders/1zxhz9niF5ooLHw-_JCylCyRVbH8wPkfK?usp=sharing).
+
+
+```{r}
+
+PM25_data <- readr::read_csv("PM25_2018-08-23.csv")
+
+
+```
+
+
+Let the wild wrangling start!
+
+```{r}
+
+station_name <- "Victoria Topaz"
+
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  labs(x = "date",
+       title = glue("Air quality: ", station_name),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+  
+
+```
+
+
+Colwood City Hall
+
+
+```{r}
+
+station_name <- "Colwood City Hall"
+
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  labs(x = "date",
+       title = glue("Air quality: ", station_name),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+  
+
+```
+
+
+```{r}
+unique(PM25_data$STATION_NAME)
+```
+
+
+```{r}
+
+station_name <- "Smithers St Josephs"
+
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  labs(x = "date",
+       title = glue("Air quality: ", station_name),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+```
+
+
+```{r}
+
+station_name <- "Prince George Plaza 400"
+
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  labs(x = "date",
+       title = glue("Air quality: ", station_name),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+
+```
+
+
+
+
+```{r}
+
+station_name <- "Burns Lake Fire Centre"
+
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  labs(x = "date",
+       title = glue("Air quality: ", station_name),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+
+```
+
+***
+
+### all three stations in one plot
+
+You may have noticed that the Y axis on the three plots is quite different--Victoria reaches 300, Smithers gets to 400, and Prince George is double that at 800. There are two ways we can compare the three stations: a single plot, or faceted plots.
+
+
+#### line
+
+```{r}
+
+
+station_name <- c("Prince George Plaza 400", "Smithers St Josephs", "Victoria Topaz")
+
+PM25_data %>%
+  filter(STATION_NAME %in% station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE, colour = STATION_NAME)) +
+  labs(x = "date",
+       title = glue("Air quality: Prince George, Smithers, Victoria"),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+
+```
+
+
+#### facets
+
+```{r}
+
+
+station_name <- c("Prince George Plaza 400", "Smithers St Josephs", "Victoria Topaz")
+
+PM25_data %>%
+  filter(STATION_NAME %in% station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  facet_grid(STATION_NAME ~ .) +
+  labs(x = "date",
+       title = glue("Air quality: Prince George, Smithers, Victoria"),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+PM25_data %>%
+  filter(STATION_NAME %in% station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  facet_grid(. ~ STATION_NAME) +
+  labs(x = "date",
+       title = glue("Air quality: Prince George, Smithers, Victoria"),
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+```
+
+
+***
+
+#### rejected
 
 First of all, we'll download the data from the Victoria Topaz station from the B.C. Air Data Archive, from the British Columbia Ministry of Environment. 
 
@@ -91,84 +290,6 @@ airqual_hour %>%
 
 ggplot(airqual_hour, aes(x = date_ymd, y = PM25)) +
   geom_point()
-
-
-```
-
-
-
-### Another data file
-
-The DataBC Catalogue provides access to air quality data. There's ["verified" to the end of 2017](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-verified-hourly-data), and ["unverified" for the past 30 days](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-unverified-hourly-air-quality-and-meteorological-data). Since we want to see what happened this week, it's the latter we want. (The page with the [links to the raw files is here](ftp://ftp.env.gov.bc.ca/pub/outgoing/AIR/Hourly_Raw_Air_Data/Air_Quality/).)
-
-The files are arranged by particulate or gas type; there's a table for ozone and another for sulpher dioxide, and others for the particulate matter. The one most used for monitoring the effects on health is PM25 or PM2.5, for fine particles with a diameter of 2.5 microns (millionths of a metre).
-
-Note that the data are made available under the Province of B.C.'s Open Data license, and are in nice tidy form. And the date format is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), which makes me happy.
-
-The Province of B.C. has a [Current Particulate Matter map](http://www.env.gov.bc.ca/epd/bcairquality/readings/find-stations-map-PM25.html) that colour codes the one hour average measures for all the testing stations around the province.
-
-
-```{r}
-
-PM25_data <- readr::read_csv("PM25.csv")
-
-
-```
-
-
-Let the wild wrangling start!
-
-```{r}
-
-station_name <- "Victoria Topaz"
-
-PM25_data %>%
-  filter(STATION_NAME == station_name) %>%
-  ggplot() +
-  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
-  labs(x = "date",
-       title = glue("Air quality: ", station_name),
-       subtitle = "one hour average, µg/m3 of PM2.5", 
-       caption = "data: Ministry of Environment and Climate Change Strategy")
-  
-
-```
-
-
-```{r}
-unique(PM25_data$STATION_NAME)
-```
-
-
-```{r}
-
-station_name <- "Smithers St Josephs"
-
-PM25_data %>%
-  filter(STATION_NAME == station_name) %>%
-  ggplot() +
-  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
-  labs(x = "date",
-       title = glue("Air quality: ", station_name),
-       subtitle = "one hour average, µg/m3 of PM2.5", 
-       caption = "data: Ministry of Environment and Climate Change Strategy")
-
-```
-
-
-```{r}
-
-station_name <- "Prince George Plaza 400"
-
-PM25_data %>%
-  filter(STATION_NAME == station_name) %>%
-  ggplot() +
-  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
-  labs(x = "date",
-       title = glue("Air quality: ", station_name),
-       subtitle = "one hour average, µg/m3 of PM2.5", 
-       caption = "data: Ministry of Environment and Climate Change Strategy")
-
 
 
 ```
