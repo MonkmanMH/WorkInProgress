@@ -120,16 +120,17 @@ Let the wild wrangling start!
 
 ```{r}
 
-PM25_data_VT <- PM25_data %>%
-  filter(STATION_NAME == "Victoria Topaz")
+station_name <- "Victoria Topaz"
 
-ggplot(PM25_data_VT, aes(x = DATE_PST, y = REPORTED_VALUE)) +
-  geom_line() +
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
   labs(x = "date",
-       title = "Air quality: Victoria Topaz",
+       title = glue("Air quality: ", station_name),
        subtitle = "one hour average, µg/m3 of PM2.5", 
        caption = "data: Ministry of Environment and Climate Change Strategy")
-
+  
 
 ```
 
@@ -141,31 +142,33 @@ unique(PM25_data$STATION_NAME)
 
 ```{r}
 
-PM25_data_VT <- PM25_data %>%
-  filter(STATION_NAME == "Smithers St Josephs")
+station_name <- "Smithers St Josephs"
 
-ggplot(PM25_data_VT, aes(x = DATE_PST, y = REPORTED_VALUE)) +
-  geom_line() +
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
   labs(x = "date",
-       title = "Air quality: Smithers St Josephs",
+       title = glue("Air quality: ", station_name),
        subtitle = "one hour average, µg/m3 of PM2.5", 
        caption = "data: Ministry of Environment and Climate Change Strategy")
-
 
 ```
 
 
 ```{r}
 
-PM25_data_VT <- PM25_data %>%
-  filter(STATION_NAME == "Prince George Plaza 400")
+station_name <- "Prince George Plaza 400"
 
-ggplot(PM25_data_VT, aes(x = DATE_PST, y = REPORTED_VALUE)) +
-  geom_line() +
+PM25_data %>%
+  filter(STATION_NAME == station_name) %>%
+  ggplot() +
+  geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
   labs(x = "date",
-       title = "Air quality: Prince George Plaza 400",
+       title = glue("Air quality: ", station_name),
        subtitle = "one hour average, µg/m3 of PM2.5", 
        caption = "data: Ministry of Environment and Climate Change Strategy")
+
 
 
 ```
