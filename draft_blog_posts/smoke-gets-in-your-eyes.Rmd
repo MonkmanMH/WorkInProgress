@@ -31,7 +31,7 @@ library(glue)
 ```
 
 
-The downloaded file is a mess. First of all, although I clicked the "Excel" option for file format, the file thinks it's HTML. So a cleaned up and functional CSV version of the hourly file from 2018-06-01 to 2018-08-23, with AVG "Type" selected, is here.
+The downloaded file is a mess. First of all, although I clicked the "Excel" option for file format, the file thinks it's HTML. So I manually cleaned up the table and have saved a functional CSV version of the hourly file from 2018-06-01 to 2018-08-23, with AVG "Type" selected.
 
 ```{r}
 
@@ -97,6 +97,84 @@ ggplot(airqual_hour, aes(x = date_ymd, y = PM25)) +
 
 
 
+### Another data file
+
+The DataBC Catalogue provides access to air quality data. There's ["verified" to the end of 2017](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-verified-hourly-data), and ["unverified" for the past 30 days](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-unverified-hourly-air-quality-and-meteorological-data). Since we want to see what happened this week, it's the latter we want. (The page with the [links to the raw files is here](ftp://ftp.env.gov.bc.ca/pub/outgoing/AIR/Hourly_Raw_Air_Data/Air_Quality/).)
+
+The files are arranged by particulate or gas type; there's a table for ozone and another for sulpher dioxide, and others for the particulate matter. The one most used for monitoring the effects on health is PM25 or PM2.5, for fine particles with a diameter of 2.5 microns (millionths of a metre).
+
+Note that the data are made available under the Province of B.C.'s Open Data license, and are in nice tidy form. And the date format is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601), which makes me happy.
+
+The Province of B.C. has a [Current Particulate Matter map](http://www.env.gov.bc.ca/epd/bcairquality/readings/find-stations-map-PM25.html) that colour codes the one hour average measures for all the testing stations around the province.
+
+
+```{r}
+
+PM25_data <- readr::read_csv("PM25.csv")
+
+
+```
+
+
+Let the wild wrangling start!
+
+```{r}
+
+PM25_data_VT <- PM25_data %>%
+  filter(STATION_NAME == "Victoria Topaz")
+
+ggplot(PM25_data_VT, aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  geom_line() +
+  labs(x = "date",
+       title = "Air quality: Victoria Topaz",
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+```
+
+
+```{r}
+unique(PM25_data$STATION_NAME)
+```
+
+
+```{r}
+
+PM25_data_VT <- PM25_data %>%
+  filter(STATION_NAME == "Smithers St Josephs")
+
+ggplot(PM25_data_VT, aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  geom_line() +
+  labs(x = "date",
+       title = "Air quality: Smithers St Josephs",
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+```
+
+
+```{r}
+
+PM25_data_VT <- PM25_data %>%
+  filter(STATION_NAME == "Prince George Plaza 400")
+
+ggplot(PM25_data_VT, aes(x = DATE_PST, y = REPORTED_VALUE)) +
+  geom_line() +
+  labs(x = "date",
+       title = "Air quality: Prince George Plaza 400",
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: Ministry of Environment and Climate Change Strategy")
+
+
+```
+
+
+
+
+
+***
 
 https://twitter.com/ageara/status/1032643002718543872
 
