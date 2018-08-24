@@ -53,10 +53,8 @@ airqual_hour <- airqual_hour %>%
          datetimehr_2 = ymd_hms(airqual_hour$datetimehr)
 )
 
+ls.str(airqual_hour)
 
-
-airqual_hour %>%
-  mutate(datetimehr_x = ymd_h(datetimehr))
 
 
 ```
@@ -65,8 +63,23 @@ airqual_hour %>%
 
 ```{r}
 
-ggplot(airqual_hour, aes(x = date_ymd, y = PM25)) +
-  geom_point()
+ggplot(airqual_hour, aes(x = datetimehr_2, y = PM25)) +
+  geom_line()
+
+airqual_hour %>%
+  filter(date_ymd >= "2018-07-01") %>%
+  ggplot() + 
+  geom_line(aes(x = datetimehr_2, y = PM25))
+
+
+airqual_hour %>%
+  filter(date_ymd >= "2018-07-01") %>%
+  ggplot() + 
+  geom_line(aes(x = datetimehr_2, y = PM25)) +
+  labs(x = "date",
+       title = "Victoria Topaz",
+       subtitle = "one hour average, µg/m3 of PM2.5", 
+       caption = "data: B.C. Air Data Archive")
 
 
 ```
