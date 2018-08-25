@@ -10,15 +10,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r packages}
+```{r packages, warning=FALSE, message=FALSE}
 
 # tidyverse
 library(tidyverse)
 library(glue)
-library(googledrive)
-
-# alternaverse
-library(RCurl)
 
 ```
 
@@ -45,7 +41,7 @@ Note that the data are made available under the Province of B.C.'s Open Data lic
 To make sure we've got a reproducible version, I've saved the file I downloaded early this morning to my google drive. The link to the folder is [here](https://drive.google.com/drive/folders/1zxhz9niF5ooLHw-_JCylCyRVbH8wPkfK?usp=sharing).
 
 
-```{r}
+```{r results='hide', message=FALSE}
 
 PM25_data <- readr::read_csv("PM25_2018-08-23.csv")
 
@@ -72,14 +68,25 @@ PM25_data %>%
 ```
 
 
-There's a second air quality monitoring station in the Victoria CMA, at Colwood City Hall. To plot that, all we need to do is change the value assigned to the `station_name` variable.
+There are 61 air quality monitoring stations around British Columbia. It would be interesting to see how the air quality was in other parts of the region--and since over half (54% in 2017) of the province's population lives in the Vancouver Census Metropolitan Area (CMA), let's plot the air quality there. There are multiple stations in the Vancouver CMA, so I chose the one at New Westminster Sapperton Park...it's fairly central in the region.
 
-But since we're going to be doing this often, let's wrap the filter and plot code in a function.
+We can run this line of code to see a listing of all 61 stations (but we won't do that now...)
+
+```{r eval=FALSE}
+# list all the air quality stations for which there is PM2.5 data
+unique(PM25_data$STATION_NAME)
+
+```
+
+
+And since we're going to be doing this often, let's wrap the code that filters for the location we want and runs the plot in a function.
+
 
 
 ```{r}
 
 
+# the air quality plot
 PM25_plot <- function(datafile, station_name){
   datafile %>%
   filter(STATION_NAME == station_name) %>%
@@ -91,34 +98,17 @@ PM25_plot <- function(datafile, station_name){
        caption = "data: B.C. Ministry of Environment and Climate Change Strategy")
 }
 
-
-station_name <- "Colwood City Hall"
-
-PM25_plot(PM25_data, station_name)
-
-```
-
-
-```{r}
-unique(PM25_data$STATION_NAME)
-```
-
-
-
-```{r}
-
-station_name <- "Kamloops Federal Building"
+# our New Westminster plot
+station_name <- "New Westminster Sapperton Park"
 
 PM25_plot(PM25_data, station_name)
 
-
-
 ```
 
 
-And what about the towns that are the closest to the fires? You may have seen the news stories and images from Prince George like [this](https://globalnews.ca/news/4393740/prince-george-wildfire-smoke/) and [this](https://globalnews.ca/news/4395799/fort-st-james-smoke-timelapse/), or the [images of the smoke plume from the NASA Worldview site ](https://worldview.earthdata.nasa.gov/?p=geographic&l=VIIRS_SNPP_CorrectedReflectance_TrueColor(hidden),MODIS_Aqua_CorrectedReflectance_TrueColor(hidden),MODIS_Terra_CorrectedReflectance_TrueColor,Reference_Labels,Reference_Features(hidden),Coastlines&t=2018-08-17-T00%3A00%3A00Z&z=3&v=-129.8449397281824,48.691966947332034,-115.07931472818241,57.067943509832034).
+And what about the towns that are the closest to the fires? While there are fires burning across the province, the fires that are burning the forests of the Nechako Plateau have understandably received a lot of attention. You may have seen the news stories and images from Prince George like [this](https://globalnews.ca/news/4393740/prince-george-wildfire-smoke/) and [this](https://globalnews.ca/news/4395799/fort-st-james-smoke-timelapse/), or the [images of the smoke plume from the NASA Worldview site ](https://worldview.earthdata.nasa.gov/?p=geographic&l=VIIRS_SNPP_CorrectedReflectance_TrueColor(hidden),MODIS_Aqua_CorrectedReflectance_TrueColor(hidden),MODIS_Terra_CorrectedReflectance_TrueColor,Reference_Labels,Reference_Features(hidden),Coastlines&t=2018-08-17-T00%3A00%3A00Z&z=3&v=-129.8449397281824,48.691966947332034,-115.07931472818241,57.067943509832034).
 
-
+Prince George is east of many major fires, downwind of the prevailing westerly winds. So what has the air quality in Prince George been like?
 
 ```{r}
 
@@ -142,7 +132,7 @@ PM25_plot(PM25_data, station_name)
 ```
 
 
-Interstingly, the town of Smithers is west of the fires that are burning on the Nechako Plateau and producing all the smoke experienced in Burns Lake and Prince George. They've had a very different experience, only seeing smoke in the sky when the winds shifted to become easterly.
+The town of Smithers is west of the fires that are burning on the Nechako Plateau and producing all the smoke experienced in Burns Lake and Prince George. The residents of Smithers have had a very different experience, only seeing smoke in the sky when the winds shifted to become easterly.
 
 
 ```{r}
@@ -185,6 +175,8 @@ PM25_data %>%
 
 Facets give us another way to view the comparisons. In the first version, with the facets stacked vertically, it emphasizes comparisons on the X axis--that is, over time. In this way, we can see that that four locations have had a range of intensity of the smoke events, and that those events have occured at different times. 
 
+For this, we'll shorten the period so that is starts with August 1.
+
 ```{r}
 
 
@@ -218,110 +210,6 @@ PM25_data %>%
 ```
 
 
-***
+These two plots show that Burns Lake and Prince George have not only had the most extreme smoke events, but that they have had sustained periods of poor air quality through the whole month. While the most extreme event in Smithers exceeds that of Victoria, the folks there haven't had a prolonged period of smoke in the air like the other three locations--a "one and done".
 
-#### rejected
-
-First of all, we'll download the data from the Victoria Topaz station from the B.C. Air Data Archive, from the British Columbia Ministry of Environment. 
-
-* [data download page for Victoria Topaz station](https://envistaweb.env.gov.bc.ca/StationReportFast.aspx?ST_ID=4)
-
-```{r}
-
-library(tidyverse)
-library(readxl)
-library(lubridate)
-library(glue)
-
-```
-
-
-The downloaded file is a mess. First of all, although I clicked the "Excel" option for file format, the file thinks it's HTML. So I manually cleaned up the table and have saved a functional CSV version of the hourly file from 2018-06-01 to 2018-08-23, with AVG "Type" selected.
-
-```{r}
-
-airqual_hour <- readr::read_csv("Victoria_Topaz_hourly.csv")
-
-airqual_hour <- airqual_hour %>%
-  mutate(date_ymd = mdy(Date))
-
-airqual_hour <- airqual_hour %>%
-  mutate(timehr = case_when(
-    is.na(Time) ~ "00:00:00",
-    TRUE ~ as.character(Time)
-  ))
-
-
-
-airqual_hour <- airqual_hour %>%
-  mutate(datetimehr = glue("{date_ymd} {timehr}"),
-         datetimehr_2 = ymd_hms(airqual_hour$datetimehr)
-)
-
-ls.str(airqual_hour)
-
-
-
-```
-
-
-
-```{r}
-
-ggplot(airqual_hour, aes(x = datetimehr_2, y = PM25)) +
-  geom_line()
-
-airqual_hour %>%
-  filter(date_ymd >= "2018-07-01") %>%
-  ggplot() + 
-  geom_line(aes(x = datetimehr_2, y = PM25))
-
-
-airqual_hour %>%
-  filter(date_ymd >= "2018-07-01") %>%
-  ggplot() + 
-  geom_line(aes(x = datetimehr_2, y = PM25)) +
-  labs(x = "date",
-       title = "Victoria Topaz",
-       subtitle = "one hour average, µg/m3 of PM2.5", 
-       caption = "data: B.C. Air Data Archive")
-
-
-```
-
-
-
-
-```{r}
-
-ggplot(airqual_hour, aes(x = date_ymd, y = PM25)) +
-  geom_point()
-
-
-```
-
-
-
-
-
-***
-
-https://twitter.com/ageara/status/1032643002718543872
-
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Last night&#39;s Victoria&#39;s smoke roller coaster - (ug/m3 / hour of PPM 2.5) feel lucky to be on this side of the curve. Thoughts with BC interior towns continuing to deal with <a href="https://twitter.com/hashtag/AirQuality?src=hash&amp;ref_src=twsrc%5Etfw">#AirQuality</a> from <a href="https://twitter.com/hashtag/BCWildfire?src=hash&amp;ref_src=twsrc%5Etfw">#BCWildfire</a> . Source: <a href="https://twitter.com/hashtag/opendata?src=hash&amp;ref_src=twsrc%5Etfw">#opendata</a> from  <a href="https://t.co/RAPziqMKE8">https://t.co/RAPziqMKE8</a>  <a href="https://twitter.com/hashtag/yyj?src=hash&amp;ref_src=twsrc%5Etfw">#yyj</a> <a href="https://t.co/DJep5MCmA6">pic.twitter.com/DJep5MCmA6</a></p>&mdash; Greg Lawrance (@ageara) <a href="https://twitter.com/ageara/status/1032643002718543872?ref_src=twsrc%5Etfw">August 23, 2018</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-
-### References
-
-Current Air Quality Data page for [Victoria Topaz station](http://www.env.gov.bc.ca/epd/bcairquality/readings/map/station.html#E231866), from the British Columbia Ministry of Environment
-
-* BC Air Data Archive [data download page for Victoria Topaz station](https://envistaweb.env.gov.bc.ca/StationReportFast.aspx?ST_ID=4)
-
-
-**tidyverse**
-
-[readr](https://readr.tidyverse.org)
-
-[readxl](https://readxl.tidyverse.org/)
+-30-
