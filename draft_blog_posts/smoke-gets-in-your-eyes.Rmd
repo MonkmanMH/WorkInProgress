@@ -53,14 +53,12 @@ For the first plot, let's look at the PM2.5 level for my hometown of Victoria, B
 
 ```{r}
 
-station_name <- "Victoria Topaz"
-
 PM25_data %>%
-  filter(STATION_NAME == station_name) %>%
+  filter(STATION_NAME == "Victoria Topaz") %>%
   ggplot() +
   geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
   labs(x = "date",
-       title = glue("Air quality: ", station_name),
+       title = glue("Air quality: Victoria Topaz"),
        subtitle = "one hour average, µg/m3 of PM2.5", 
        caption = "data: B.C. Ministry of Environment and Climate Change Strategy")
   
@@ -79,7 +77,7 @@ unique(PM25_data$STATION_NAME)
 ```
 
 
-And since we're going to be doing this often, let's wrap the code that filters for the location we want and runs the plot in a function.
+And since we're going to be doing this often, let's wrap the code that filters for the location we want and runs the plot in a function. Note that we'll create a new variable `station_name` so all we need to do to change the plot is assign the name of the station we want, and off we go. Not only does this simplify our lives now, but is all-but-essential for a Shiny application.
 
 
 
