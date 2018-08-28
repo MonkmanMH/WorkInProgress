@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "figures/")
 ```
 
 
@@ -51,7 +51,7 @@ PM25_data <- readr::read_csv("PM25_2018-08-23.csv")
 
 For the first plot, let's look at the PM2.5 level for my hometown of Victoria, B.C.
 
-```{r}
+```{r Victoria}
 
 PM25_data %>%
   filter(STATION_NAME == "Victoria Topaz") %>%
@@ -81,7 +81,7 @@ And since we're going to be doing this often, let's wrap the code that filters f
 
 
 
-```{r}
+```{r plot_function}
 
 
 # the air quality plot
@@ -96,6 +96,11 @@ PM25_plot <- function(datafile, station_name){
        caption = "data: B.C. Ministry of Environment and Climate Change Strategy")
 }
 
+```
+
+
+```{r NewWestminster}
+
 # our New Westminster plot
 station_name <- "New Westminster Sapperton Park"
 
@@ -108,7 +113,7 @@ And what about the towns that are the closest to the fires? While there are fire
 
 Prince George is east of many major fires, downwind of the prevailing westerly winds. So what has the air quality in Prince George been like?
 
-```{r}
+```{r PrinceGeorge}
 
 station_name <- "Prince George Plaza 400"
 
@@ -121,7 +126,7 @@ PM25_plot(PM25_data, station_name)
 
 Or still closer to the fires, the town of Burns Lake.
 
-```{r}
+```{r BurnsLake}
 
 station_name <- "Burns Lake Fire Centre"
 
@@ -133,7 +138,7 @@ PM25_plot(PM25_data, station_name)
 The town of Smithers is west of the fires that are burning on the Nechako Plateau and producing all the smoke experienced in Burns Lake and Prince George. The residents of Smithers have had a very different experience, only seeing smoke in the sky when the winds shifted to become easterly.
 
 
-```{r}
+```{r Smithers}
 
 station_name <- "Smithers St Josephs"
 
@@ -150,7 +155,7 @@ You may have noticed that the Y axis on the plots can be quite different--for ex
 
 #### line
 
-```{r}
+```{r four_plot}
 
 
 station_name <- c("Burns Lake Fire Centre", "Prince George Plaza 400", "Smithers St Josephs", "Victoria Topaz")
@@ -175,7 +180,7 @@ Facets give us another way to view the comparisons. In the first version, with t
 
 For this, we'll shorten the period so that is starts with August 1.
 
-```{r}
+```{r facets}
 
 
 station_name <- c("Burns Lake Fire Centre", "Prince George Plaza 400", "Smithers St Josephs", "Victoria Topaz")
