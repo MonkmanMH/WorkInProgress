@@ -1,7 +1,7 @@
 ---
-title: "Smoke gets in your eyes"
+title: "Smoke from a distant fire"
 author: "Martin Monkman"
-date: "August 23, 2018"
+date: "August 31, 2018"
 output: html_document
 ---
 
@@ -20,11 +20,13 @@ library(glue)
 
 
 
-## Air quality
+## Forest fires and air quality
 
-As I write this (2018-08-23) there are [currently 469 wildfires burning in British Columbia](http://bcfireinfo.for.gov.bc.ca/hprScripts/WildfireNews/Fires.asp?Mode=normal&AllFires=0&FC=0), the largest of which, the Alkali Lake fire, started as four separate fires that have now merged and burned nearly 120,000 hectares (460 square miles). These fires have a significant impact on people's lives--many areas are under evacuation order and evacuation alert, and there are reports that homes have been destroyed by the blazes.
+It was recently announced that during 2018, [British Columbia has seen the most extensive forest fire season on record](https://www.cbc.ca/news/canada/british-columbia/state-emergency-bc-wildfires-1.4803546)
 
-The fires also create a significant amount of smoke which has been pushed great distances by the shifting winds. This includes the large population centres of Vancouver and Victoria in British Columbia, as well as the Seattle metropolitan region and elsewhere in Washington. (Clifford Mass, Professor of Atmospheric Sciences at the Universtiy of Washington in Seattle, has written extensively about the smoke events in the region; see for example [Western Washington Smoke: Darkest Before the Dawn](http://cliffmass.blogspot.com/2018/08/western-washington-smoke-darkest-before.html) from 2018-08-22.)
+As I write this (2018-08-31) there are [currently 442 wildfires burning in British Columbia](http://bcfireinfo.for.gov.bc.ca/hprScripts/WildfireNews/Fires.asp?Mode=normal&AllFires=0&FC=0). These fires have a significant impact on people's lives--many areas are under evacuation order and evacuation alert, and there are reports that homes have been destroyed by the blazes.
+
+The fires also create a significant amount of smoke, which has been pushed great distances by the shifting winds. This includes the large population centres of Vancouver and Victoria in British Columbia, as well as the Seattle metropolitan region and elsewhere in Washington. (Clifford Mass, Professor of Atmospheric Sciences at the Universtiy of Washington in Seattle, has written extensively about the smoke events in the region; see for example [Western Washington Smoke: Darkest Before the Dawn](http://cliffmass.blogspot.com/2018/08/western-washington-smoke-darkest-before.html) from 2018-08-22.)
 
 The Province of British Columbia has many air quality monitoring stations around the province, and makes the data available. The measure most used for monitoring the effects on health is PM25 or PM2.5, for fine particles with a diameter of 2.5 microns (millionths of a metre). The B.C. government has a [Current Particulate Matter map](http://www.env.gov.bc.ca/epd/bcairquality/readings/find-stations-map-PM25.html) that colour codes the one hour average measures for all the testing stations around the province.
 
@@ -32,7 +34,7 @@ The Province of British Columbia has many air quality monitoring stations around
 
 ### The data file
 
-The DataBC Catalogue provides access to air quality data. There's ["verified" to the end of 2017](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-verified-hourly-data), and ["unverified" for the past 30 days](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-unverified-hourly-air-quality-and-meteorological-data). Since we want to see what happened this week, it's the latter we want. (The page with the [links to the raw files is here](ftp://ftp.env.gov.bc.ca/pub/outgoing/AIR/Hourly_Raw_Air_Data/Air_Quality/).)
+The DataBC Catalogue provides access to air quality data. There's ["verified" to the end of 2017](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-verified-hourly-data), and ["unverified" for the past 30 days](https://catalogue.data.gov.bc.ca/dataset/air-quality-monitoring-unverified-hourly-air-quality-and-meteorological-data). Since we want to see what happened this month, it's the latter we want. (The page with the [links to the raw files is here](ftp://ftp.env.gov.bc.ca/pub/outgoing/AIR/Hourly_Raw_Air_Data/Air_Quality/).)
 
 The files are arranged by particulate or gas type; there's a table for ozone and another for sulpher dioxide, and others for the particulate matter. 
 
@@ -43,7 +45,7 @@ To make sure we've got a reproducible version, I've saved the file I downloaded 
 
 ```{r results='hide', message=FALSE}
 
-PM25_data <- readr::read_csv("PM25_2018-08-23.csv")
+PM25_data <- readr::read_csv("PM25_2018-08-31.csv")
 
 
 ```
@@ -99,10 +101,12 @@ PM25_plot <- function(datafile, station_name){
 ```
 
 
-```{r NewWestminster}
+The majority of British Columbians live in the Metro Vancouver area; I've selected the Burnaby South station as one to represent the entire region, since it's somewhere in the middle of where the region's residents live.
+
+```{r Burnaby}
 
 # our New Westminster plot
-station_name <- "New Westminster Sapperton Park"
+station_name <- "Burnaby South"
 
 PM25_plot(PM25_data, station_name)
 
@@ -174,11 +178,13 @@ PM25_data %>%
 ```
 
 
+With four complex lines as we have here, it can be hard to discern which line is which. 
+
+
 #### facets
 
 Facets give us another way to view the comparisons. In the first version, with the facets stacked vertically, it emphasizes comparisons on the X axis--that is, over time. In this way, we can see that that four locations have had a range of intensity of the smoke events, and that those events have occured at different times. 
 
-For this, we'll shorten the period so that is starts with August 1.
 
 ```{r facets}
 
@@ -187,32 +193,35 @@ station_name <- c("Burns Lake Fire Centre", "Prince George Plaza 400", "Smithers
 
 
 PM25_data %>%
-  filter(STATION_NAME %in% station_name,
-         DATE_PST >= "2018-08-01") %>%
+  filter(STATION_NAME %in% station_name) %>%
   ggplot() +
   geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
   facet_grid(STATION_NAME ~ .) +
-  labs(x = "date",
-       title = glue("Air quality: Burns Lake, Prince George, Smithers, Victoria"),
+  labs(title = glue("Air quality: Burns Lake, Prince George, Smithers, Victoria"),
        subtitle = "one hour average, µg/m3 of PM2.5", 
-       caption = "data: B.C. Ministry of Environment and Climate Change Strategy")
+       caption = "data: B.C. Ministry of Environment and Climate Change Strategy") +
+  theme(axis.text.x=element_text(size=rel(0.75), angle=90),
+        axis.title = element_blank())
 
 
 PM25_data %>%
-  filter(STATION_NAME %in% station_name,
-         DATE_PST >= "2018-08-01") %>%
+  filter(STATION_NAME %in% station_name) %>%
   ggplot() +
   geom_line(aes(x = DATE_PST, y = REPORTED_VALUE)) +
   facet_grid(. ~ STATION_NAME) +
-  labs(x = "date",
-       title = glue("Air quality: Burns Lake, Prince George, Smithers, Victoria"),
+  labs(title = glue("Air quality: Burns Lake, Prince George, Smithers, Victoria"),
        subtitle = "one hour average, µg/m3 of PM2.5", 
-       caption = "data: B.C. Ministry of Environment and Climate Change Strategy")
+       caption = "data: B.C. Ministry of Environment and Climate Change Strategy") +
+  theme(axis.text.x=element_text(size=rel(0.75), angle=90),
+        axis.title = element_blank())
+  
 
 
 ```
 
 
-These two plots show that Burns Lake and Prince George have not only had the most extreme smoke events, but that they have had sustained periods of poor air quality through the whole month. While the most extreme event in Smithers exceeds that of Victoria, the folks there haven't had a prolonged period of smoke in the air like the other three locations--a "one and done".
+These two plots show not only that Burns Lake and Prince George have had the most extreme smoke events, but that they have had sustained periods of poor air quality through the whole month. While the most extreme event in Smithers exceeds that of Victoria, there hasn't been a prolonged period of smoke in the air like the other three locations.
+
+
 
 -30-
