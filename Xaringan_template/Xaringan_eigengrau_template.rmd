@@ -46,13 +46,14 @@ class: inverse
 
 This template's palette is based a gradation that starts with eigengrau
 
-The hex code values are, from darkest to lightest
+The hex code values are, from darkest to lightest:
 
 - this text is eigengrau; "#16161d" 
 - <font color = "#47474e">this text is "#47474e"</font>
 - <font color = "#7e7e85">this text is "#7e7e85"</font>
 - <font color = "#babac8">this text is "#babac8"</font>
 - the background colour of this slide is "#fafaff", not quite pure white
+  - this is also the colour of text on a dark background
 
 ---
 
@@ -89,7 +90,7 @@ some text
 
 <BR>
 
-`#`
+`---`
 
 `class: inverse`
 
@@ -98,10 +99,12 @@ some text
 
 class: inverse, centre, middle
 
-# Suitable for section breaks
+# inverse is suitable for section breaks
 
 code:
 <BR>
+`---`
+
 `class: inverse, centre, middle`
 
 
