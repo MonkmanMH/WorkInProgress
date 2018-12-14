@@ -1,0 +1,30 @@
+---
+title: "Let's Make a Deal!"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+A simulation of the Monty Hall Problem.
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+
+simulation <- crossing(trial = 1:1e6) %>%
+  mutate(door_1 = 0,
+         door_2 = 0,
+         door_3 = 0,
+         select = sample(3, n(), TRUE),
+         switch = if_else(select == 2, "LOSE", "WIN"))
+
+simulation %>%
+  summarise(mean(switch == "WIN"))
+
+```
+
+
+
