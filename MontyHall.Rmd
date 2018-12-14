@@ -5,7 +5,12 @@ editor_options:
   chunk_output_type: inline
 ---
 
-A simulation of the Monty Hall Problem.
+A simulation of the Monty Hall Problem, from this tweet:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> monty hall problem solved in <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a>. Inspired by <a href="https://twitter.com/drob?ref_src=twsrc%5Etfw">@drob</a>&#39;s screen casts <a href="https://t.co/z3DUEciyxs">pic.twitter.com/z3DUEciyxs</a></p>&mdash; kigen (@kigtembu) <a href="https://twitter.com/kigtembu/status/1073291954249760768?ref_src=twsrc%5Etfw">December 13, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 
 ```{r}
 library(tidyverse)
