@@ -45,6 +45,8 @@ x %>%
 a plot of the above table
 
 ```{r}
+
+goalsscored_plot <-
 ggplot(data=x, aes(value)) + 
   geom_histogram(binwidth = 1, fill = "white", colour = "black") +
   scale_x_continuous(breaks=seq(0,8,1)) +
@@ -55,6 +57,9 @@ ggplot(data=x, aes(value)) +
        subtitle = "20 shots per game each with 5.5% chance of scoring",
        caption = "source: a question @nnstats posed on twitter")
 
+
+ggsave(filename = "goalsscored_plot.png", plot = goalsscored_plot,
+       width = 8, height = 6)
 
 ```
 
