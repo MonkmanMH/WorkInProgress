@@ -1,0 +1,46 @@
+---
+title: "goal scoring"
+output: html_notebook
+---
+
+
+ 
+ 
+ <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">imagine a hockey game where we know that Team A scores exactly 1 goal for sure and Team B takes 20 shots, each with a 5.5% chance of going in.<br>which team would you rather be?<br>(nothing additional happens if you tie.)</p>&mdash; Namita (@nnstats) <a href="https://twitter.com/nnstats/status/1075189243314610176?ref_src=twsrc%5Etfw">December 19, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">x &lt;- replicate(10000, sum(sample(0:1, 20, TRUE, c(0.945, 0.055))))<br>table(ifelse(x == 0, &quot;Team A win&quot;, ifelse(x == 1, &quot;Draw&quot;, &quot;Team B win&quot;))) / 100<br><br>Draw Team A win Team B win <br>37.52      32.18      30.30<a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/Kv8rXj7AIi">https://t.co/Kv8rXj7AIi</a></p>&mdash; Eric (@expersso) <a href="https://twitter.com/expersso/status/1075425581146271747?ref_src=twsrc%5Etfw">December 19, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+```{r}
+ 
+x <- replicate(10000, sum(sample(0:1, 20, TRUE, c(0.945, 0.055))))
+
+table(ifelse(x == 0, "Team A win", ifelse(x == 1, "Draw", "Team B win"))) / 100
+
+```
+
+
+### make a histogram of the distribution
+
+```{r}
+
+library(tidyverse)
+
+x <- as.tibble(x)
+
+x %>%
+  group_by(value) %>%
+  tally()
+
+ggplot(data=x, aes(value)) + 
+  geom_histogram(binwidth = 1, fill = "white", colour = "black")
+
+
+```
+
+
+
+-30-
