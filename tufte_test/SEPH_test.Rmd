@@ -1,0 +1,167 @@
+---
+title: "SEPH test"
+subtitle: "Payroll employees"
+author: "Martin Monkman"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+
+
+# tidyverse
+library(tidyverse)
+#library(readr)
+#library(ggplot2) 
+#library(dplyr)
+#library(forcats)
+library(stringr)
+library(glue)
+
+# monthly data series
+library(lubridate)
+# extending ggplot2
+library("scales")
+
+# cansim
+#install.packages("devtools")
+#devtools::install_github("mountainmath/cansim")
+library(cansim)
+
+
+### ---
+# bonus function for "not in" (opposite of %in%)
+# https://stackoverflow.com/a/50255505/4170032
+`%!in%` <- purrr::compose(`!`, `%in%`)
+
+
+
+```
+
+# Introduction
+
+Statistics Canada, Survey of Employment, Payroll^[See Statistics Canada [Survey of Employment, Payrolls and Hours](http://www23.statcan.gc.ca/imdb/p2SV.pl?Function=getSurvey&SDDS=2612&dis=1)] 
+
+
+Comparison with LFS^[[Comparing the Survey of employment, payrolls and hours and the Labour Force Survey](https://www150.statcan.gc.ca/n1/pub/72-203-g/2013001/part-partie8-eng.htm)]
+
+
+There are multiple data tables associated with the SEPH^[[SEPH data](
+https://www150.statcan.gc.ca/n1/daily-quotidien/181025/dq181025a-cansim-eng.htm)]
+
+
+
+
+# Long-term trend
+
+Up over time
+
+B.C. has lower average weekly earning than the national average.
+
+```{r data_read, echo = FALSE}
+
+data_14_10_0223_01 <- get_cansim("14-10-0223-01")
+
+
+# convert date field to ISO8601 with day of month (default to 01)
+data_14_10_0223_01 <- data_14_10_0223_01 %>%
+    mutate(REF_DATE = ymd(REF_DATE, truncated = 2)) 
+
+data_14_10_0223_01 <- data_14_10_0223_01 %>%
+  mutate(NAICS_desc =
+           case_when(
+             `North American Industry Classification System (NAICS)` == 
+               "Health care and social assistance" ~ 
+               "Health care & social assistance",
+             `North American Industry Classification System (NAICS)` == 
+               "Accommodation and food services" ~ 
+               "Accommodation & food services",
+             `North American Industry Classification System (NAICS)` == 
+               "Professional, scientific and technical services" ~ 
+               "Professional, scientific & technical services",
+             `North American Industry Classification System (NAICS)` == 
+               "Transportation and warehousing" ~ 
+               "Transportation & warehousing",
+             `North American Industry Classification System (NAICS)` == 
+               "Administrative and support, waste management and remediation services" ~ 
+               "Administrative & support",
+             TRUE ~ `North American Industry Classification System (NAICS)`
+           ))
+
+# convert NAICS name to factor for ease of use later  
+data_14_10_0223_01 <- data_14_10_0223_01 %>%
+    mutate(NAICS_desc = 
+             as_factor(NAICS_desc)) 
+
+```
+
+
+Annual trend figure in the margin (need to work on format--too many years shown)
+
+```{r fig-margin, fig.margin = TRUE, fig.cap = "Average weekly earnings, Canada and British Columbia.", fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE, echo = FALSE}
+dataplot <- data_14_10_0223_01 %>%
+  filter(GEO %in% c("British Columbia", "Canada"), 
+         NAICS_desc == "Industrial aggregate excluding unclassified businesses", 
+         Estimate == "Average weekly earnings including overtime for all employees") %>%
+  filter(REF_DATE >= as.Date("2008-01-01")) %>%
+  ggplot(aes(x=REF_DATE, y=VALUE, group = GEO, colour = GEO)) + 
+    geom_line(size=1.5) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y",
+               minor_breaks = NULL)
+
+dataplot2 <- dataplot +
+  ylim(700, 1050) +
+  scale_y_continuous(labels = comma, limits = c(700, 1050)) +
+  scale_colour_manual(name=NULL,
+                      breaks=c("Canada", "British Columbia"),
+                      labels=c("Canada", "British Columbia"), 
+                      values=c("#325A80", "#CCB550")) +
+  theme_bw() +
+  theme(
+    panel.border = element_rect(colour="white"),
+    plot.title = element_text(face="bold"),
+    legend.position=c(1,0), 
+    legend.justification=c(1,0),
+    legend.title = element_text(size=12),
+    legend.text = element_text(size=11),
+    axis.line = element_line(colour="black"),
+    axis.title = element_text(size=10),
+    axis.text = element_text(size=10)
+  )
+
+#SEPH_earnings_title <- as.character("Average weekly earnings including overtime for all employees")
+#SEPH_earnings_subtitle <- as.character("January 2010 = 100")
+SEPH_earnings_caption <- as.character("Source: Statistics Canada, CANSIM table 14-10-0223-01")
+SEPH_earnings_yaxis <- as.character("Dollars")
+
+# add titles / X-Y axis labels / caption
+SEPH_earnings_plot <- dataplot2 +
+  labs(
+#    title = SEPH_earnings_title,
+#    subtitle = SEPH_earnings_subtitle,
+       caption = SEPH_earnings_caption, 
+       x = NULL, y = SEPH_earnings_yaxis) 
+
+SEPH_earnings_plot
+  
+
+```
+
+
+```{r bib, include=FALSE}
+# create a bib file for the R packages used in this document
+knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```
