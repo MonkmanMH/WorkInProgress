@@ -12,7 +12,7 @@ The Mariners' success had been noted all season;
 
 * on May 25, Sports Illustrated carried an article ["The Mariners Have Been Very Lucky, But They May Also Be Pretty Good"](https://www.si.com/mlb/2018/05/25/seattle-mariners-al-west)
 
-*at the end of May (2018-05-29) John Trupin (@JohnTrupin) on the same site wrote ["The Mariners aren’t the first team built on a run differential-beating bullpen"](https://www.lookoutlanding.com/2018/5/29/17406204/the-mariners-arent-the-first-team-built-on-a-run-differential-beating-bullpen-diaz-colome-nicasio).
+* at the end of May (2018-05-29) John Trupin (@JohnTrupin) on the same site wrote ["The Mariners aren’t the first team built on a run differential-beating bullpen"](https://www.lookoutlanding.com/2018/5/29/17406204/the-mariners-arent-the-first-team-built-on-a-run-differential-beating-bullpen-diaz-colome-nicasio).
 
 * and on July 3, Jeff Sullivan opined ["The Mariners Are Trying to Be the Clutchiest Team on Record"](https://www.fangraphs.com/blogs/the-mariners-are-trying-to-be-the-clutchiest-team-on-record/)
 
@@ -21,7 +21,7 @@ Of course, [regression toward the mean](https://en.wikipedia.org/wiki/Regression
 
 ---
 
-I've written before about run scoring and prevention (index [here](http://bayesball.blogspot.com/search/label/run%20scoring)); this time, I will look at the simplest of the measures of "win expectation" that have burbled up in the sabermetric community over the years; the other approaches may be worthy of consideration for a future post. This exercise will give us a way to look at the ways that the statistical programming language R works with regression models.
+I've written before about run scoring and prevention (index [here](http://bayesball.blogspot.com/search/label/run%20scoring)). This time, I will look at the simplest of the measures of "win expectation" that have burbled up in the sabermetric community over the years; the other approaches may be worthy of consideration for a future post. This exercise will give us a way to look at the ways that the statistical programming language R works with regression models.
 
 
 ## Pythagorean win ratio
@@ -114,6 +114,30 @@ Note that there's a few things going on here:
 
 * the `scale_x_continuous` function and its parallel for y set the grid marks and length of the two axes.
 
+There are two ways to approach this. In the first, the object contains no data whatsoever; if we want a scatter plot, we can add the data in the `geom_point` call.
+
+```{r}
+
+we_scatterplot <- ggplot() +
+  geom_blank() +
+  coord_fixed() +
+  scale_x_continuous(breaks = seq(0.2, 0.8, by = 0.1),
+                     limits = c(0.2, 0.75)) +
+  scale_y_continuous(breaks = seq(0.2, 0.8, by = 0.1),
+                     limits = c(0.2, 0.75)) 
+
+we_scatterplot
+
+
+we_scatterplot +
+  geom_point(data = Teams_sel, mapping = aes(x = winexp, y = winpct))
+
+
+```
+
+
+The second approach will work more effectively for our project, since we are returning to the same underlying framwork, and plotting different representations of the same data. So the data gets embedded in the object during its creation, but since we're used `geom_blank` we don't see any of the data.
+
 
 ```{r}
 
@@ -128,6 +152,8 @@ we_scatterplot <- ggplot(data = Teams_sel, aes(x = winexp, y = winpct)) +
 we_scatterplot
 
 ```
+
+
 
 
 The `we_scatterplot` object contains the `winexp` and `winpct` data points, so we can summon them in the `geom_` that we want. 
