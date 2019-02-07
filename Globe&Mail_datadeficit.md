@@ -16,6 +16,9 @@ https://www.theglobeandmail.com/canada/article-flying-blind-why-does-canada-know
 2019-01-27
 https://www.theglobeandmail.com/canada/article-experts-make-recommendations-about-how-canada-can-fix-its-data-deficit/
 
+https://www.theglobeandmail.com/canada/article-divorce-and-marriage-data-crucial-for-understanding-canadas-public/
+
+https://www.theglobeandmail.com/opinion/article-statistics-canada-is-better-than-you-might-think-but-it-can-still-do/
 
 https://www.theglobeandmail.com/canada/article-experts-make-recommendations-about-how-canada-can-fix-its-data-deficit/
 
