@@ -1,0 +1,145 @@
+---
+title: "Stephanie's fence"
+author: "Martin Monkman"
+date: "February 27, 2019"
+output:
+  github_document:
+    html_preview: true
+---
+
+<!-- 
+This file is licensed with the Creative Commons Attribution 4.0 International License.
+-->
+
+Note: https://github.com/bcgov/envreportutils
+
+## Stephanie's fence blew down
+
+
+```{r}
+library(weathercan)
+library(dplyr)
+library(ggplot2)
+
+library(feather)
+
+```
+
+
+(1) Get and wrangle the [Environment and Climate Change Canada (ECCC)](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html) [wind direction data](http://climate.weather.gc.ca/glossary_e.html#windSpd) using the the [rOpenSci](https://ropensci.org/) [`weathercan` R package](http://ropensci.github.io/weathercan/) `r emo::ji("package")`. I filtered out wind speeds of zero and grouped wind speed into a three categories (1-25 km/h, 26-50 km/h and 51-75 km/h):
+
+```{r  wind_data, eval=FALSE}
+
+stn <- stations_search(name = "Esquimalt", interval = "hour") %>% 
+  select(station_id) %>% 
+  pull()
+data <- weather_dl(station_id = stn)
+wind_dir <- data %>% 
+  select(station_id, station_name, date, wind_spd, wind_dir) %>% 
+  filter(wind_spd != 0) %>% 
+  mutate(wind_spd_cat = cut(wind_spd, breaks = c(0,25,50,75),
+                            labels = c("1-25 km/h Winds",
+                                       "26-50 km/h Winds",
+                                       "51-75 km/h Winds")))
+wind_dir
+
+write_feather(wind_dir, "wind_dir.feather")
+```
+
+
+read from the saved feather file
+
+```{r}
+wind_dir <- read_feather("wind_dir.feather")
+```
+
+
+(2) Plot wind direction over time for each wind speed category:
+
+```{r wind_plot, fig.width = 9}
+wind_plot <- wind_dir %>% 
+  filter(wind_dir != 0) %>% 
+  mutate(wind_dir_deg = wind_dir*10) %>% 
+  ggplot(aes(x = date, y = wind_dir_deg)) +
+  geom_point(colour = "#3182bd", alpha = .7) +
+  facet_wrap(~wind_spd_cat) +
+  theme_minimal() +
+  labs(x = NULL, y = "wind direction (degrees true)",
+       title = "Wind Direction & Average Hourly Wind Speed Measured\nat Esquimalt Harbour (1994-2019)",
+       caption = "*Data sourced from Environment Canada using the weathercan R package") +
+  scale_y_continuous(limits = c(-5, 365),
+                     breaks = seq(0, 360, 60),
+                     expand = c(0, 0)) +
+  theme(axis.text = element_text(size = 10),
+        axis.title = element_text(size = 12),
+        strip.text = element_text(size = 10, face = "bold"),
+        plot.title = element_text(size = 12, face = "bold"),
+        plot.margin = unit(c(4,50,4,4),"mm"))
+wind_plot
+```
+
+### Wind speed by wind direction
+
+
+```{r}
+
+wind_plot2 <- wind_dir %>% 
+  filter(wind_dir != 0) %>% 
+  mutate(wind_dir_deg = wind_dir*10) %>% 
+  ggplot(aes(x = wind_dir_deg, y = wind_spd)) +
+  geom_point(colour = "#3182bd", alpha = .5, position = "jitter") 
+  
+
+wind_plot2
+
+```
+
+
+```{r}
+
+wind_plot2 + coord_polar()
+  
+
+
+```
+
+
+
+```{r}
+
+wind_plot2 + 
+  coord_polar() +
+  theme_minimal() +
+  scale_x_continuous(breaks = c(0, 90, 180, 270))
+  
+
+
+```
+
+### Density plot
+
+```{r}
+
+wind_plot2 <- wind_dir %>% 
+  filter(wind_dir != 0,
+         wind_spd > 0) %>% 
+  mutate(wind_dir_deg = wind_dir*10) %>% 
+  ggplot(aes(x = wind_dir_deg, y = wind_spd)) +
+  stat_density_2d(aes(fill = stat(level)), geom = "polygon")
+
+wind_plot2
+
+
+```
+
+
+
+```{r}
+
+wind_plot2 + coord_polar()
+
+
+```
+
+
+`r Sys.Date()`
