@@ -13,7 +13,7 @@ This file is licensed with the Creative Commons Attribution 4.0 International Li
 
 Note: https://github.com/bcgov/envreportutils
 
-## Stephanie's fence blew down
+## Stephanie's fencepost
 
 
 ```{r}
@@ -54,7 +54,7 @@ wind_dir <- read_feather("wind_dir.feather")
 ```
 
 
-(2) Plot wind direction over time for each wind speed category:
+Stephanie's orginal plot:
 
 ```{r wind_plot, fig.width = 9}
 wind_plot <- wind_dir %>% 
@@ -78,8 +78,10 @@ wind_plot <- wind_dir %>%
 wind_plot
 ```
 
+
 ### Wind speed by wind direction
 
+Rather than date, use speed as the x axis variable
 
 ```{r}
 
@@ -95,6 +97,8 @@ wind_plot2
 ```
 
 
+Now: plot that using polar coordinates
+
 ```{r}
 
 wind_plot2 + coord_polar()
@@ -103,7 +107,7 @@ wind_plot2 + coord_polar()
 
 ```
 
-
+tweak the formatting a bit
 
 ```{r}
 
@@ -117,6 +121,8 @@ wind_plot2 +
 ```
 
 ### Density plot
+
+The above version is rather cluttered -- how would a density plot look?
 
 ```{r}
 
