@@ -21,27 +21,108 @@ library(feather)
 ```
 
 
-```{r get_date}
+The data are accessed using the package **weathercan**:
+
+* [github page](https://github.com/ropensci/weathercan)
+
+
+Stations in the Victoria CMA of interest:
+
+* Race Rocks
+
+* VICTORIA GONZALES HTS
+
+
+```{r}
+
+stations_BC <- stations %>%
+  filter(prov == "BC", interval == "hour")
+
+stations_BC 
+
+stations_search(name = "Oak", interval = "hour")
+
+
+
+```
+
+
+
+```{r get_data_function}
+## find the weather station id with weathercan
+
+weather_data_fun <- function(stn_num) {
+  weather_dl(station_ids = stn_num)  
+}
+
+
+```
+
+
+
+Esquimalt
+
+```{r get_data}
 ## find the weather station id with weathercan
 
 stn <- stations_search(name = "Esquimalt", interval = "hour") %>% 
-
   select(station_id) %>% 
-
   pull()
-
-
 
 ## get the data for stn with weathercan
 
 data <- weather_dl(station_ids = stn)
 
-# save(data, file = "R/fence/tmp/stn52_data.RData")
-
-# load("R/fence/tmp/stn52_data.RData")
-
-
 feather::write_feather(data, "weathercan_data_Esquimalt.feather")
+```
+
+Race Rocks
+
+```{r get_data}
+## find the weather station id with weathercan
+
+stn <- stations_search(name = "Race Rocks", interval = "hour") %>% 
+  select(station_id) %>% 
+  pull()
+
+## get the data for stn with weathercan
+
+data <- weather_dl(station_ids = stn)
+
+feather::write_feather(data, "weathercan_data_RaceRocks.feather")
+```
+
+
+#### Victoria Gonzales Hts 
+
+Stn #113 only goes to 1988
+
+```{r get_data}
+
+stations_search(name = "VICTORIA GONZALES HTS", interval = "hour")
+
+data <- weather_data_fun("114")
+
+feather::write_feather(data, "weathercan_data_VictoriaGonzalesHts.feather")
+
+
+```
+
+
+
+#### Victoria Gonzales Hts 
+
+only goes to 1988
+
+```{r get_data}
+
+stations_search(name = "VICTORIA JUBILEE", interval = "hour")
+
+data <- weather_data_fun("119")
+
+feather::write_feather(data, "weathercan_data_VictoriaGonzalesHts.feather")
+
+
 ```
 
 
@@ -55,59 +136,44 @@ data <- feather::read_feather("weathercan_data_Esquimalt.feather")
 ```{r}
 ## coord_polar plot of wind direction for wind speeds >50km/h
 
-wind_circle <- data %>% 
-
+data %>% 
   select(station_id, station_name, date, wind_spd, wind_dir) %>% 
+  filter(wind_spd > 50)
 
+
+wind_circle <- data %>% 
+  select(station_id, station_name, date, wind_spd, wind_dir) %>% 
   filter(wind_spd > 50) %>%
-
   mutate(wind_dir_deg = wind_dir*10,
-
          event = case_when(date == "2019-02-09" ~ "Feb 9th 2019",
-
                            TRUE ~ "1994 to 2019")) %>% 
-
   ggplot(aes(x = wind_dir_deg, y = wind_spd, group = event, colour = event)) +
-
   geom_point(alpha = .7, size = 3, position = "jitter") +
-
   coord_polar() +
-
   theme_minimal() +
-
   scale_colour_manual(name = NULL, values = c("Feb 9th 2019" = "red",
-
                                               "1994 to 2019" = "#3182bd")) +
-
   scale_x_continuous(limits = c(0, 360),
-
                      breaks = c(360, 90, 180, 270),
-
                      labels = c("North\n(360)", "East\n(90)", "South\n(180)", "West\n(270)")) +
-
   scale_y_continuous(limits = c(0, 70)) +
-
   labs(x = "wind direction (degrees true)",
-
        y = "wind speed (km/h)",
-
        title = "Wind Direction for Average Hourly Wind Speeds Above 50km/h\nRecorded at Esquimalt Harbour (1994-2019)",
-
        caption = "Data sourced from Environment Canada using the\nweathercan R package on February 20th 2019") +
-
   theme(plot.title = element_text(hjust = 0.5, face = "bold"),
-
         axis.title = element_text(size = 14),
-
         axis.text = element_text(size = 12),
-
         legend.text = element_text(size = 14),
-
         legend.position = c(.99,.9))
 
 wind_circle
 
 
+```
+
+
+```{r}
 
 ## save png for sharing
 
