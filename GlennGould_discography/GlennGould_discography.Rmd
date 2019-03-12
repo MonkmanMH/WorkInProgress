@@ -13,40 +13,122 @@ library(tibble)
 
 ```{r}
 
-headings <- c("NUM", "Year of Issue", "Title", 
-              "Recorded",
+headings <- c("NUM", 
+              "year.of.issue", 
+              "title", 
               "works",
-              "Label",
+              "other artists",
+              "recording.date", "recording.location",
+              "label",
               "serial.number.mono", "serial.number.stereo")
+
+```
+
+test run, one release
+```{r}
 
 discog_table <- 
   c(
 #  
+  "001",
   "1956", 
   "Bach: The Goldberg Variations",
   "Goldberg Variations",
-  "June 10 - June 16, 1955 in CBS 30th Street Studio", 
-  "Columbia Masterworks", "ML 5060", NA,
-#
-  "1956", "Beethoven: Piano Sonatas Nos. 30-32",
-  "Piano Sonata No. 30",
-  "Piano Sonata No. 31",
-  "Piano Sonata No. 32",
-  "June 20 - June 29, 1956 in CBS 30th Street Studio", "Columbia Masterworks, ML 5130",
-#  
-  "1957", "Bach: Concerto No. 1 in D minor, BWV 1052 & Beethoven: Concerto No. 2 in B-flat major, Op. 19",
-  "Bach: Concerto No. 1 in D minor, BWV 1052",
-  "Beethoven: Piano Concerto No. 2",
-  "(with Leonard Bernstein / Columbia Symphony Orchestra)",
   NA,
-  "April 9 - April 11, 1957 and April 30, 1957 in CBS 30th Street Studio", "Columbia Masterworks, ML 5211",
+  "June 10 - June 16, 1955", "CBS 30th Street Studio", 
+  "Columbia Masterworks", 
+  "ML 5060", NA)
+
+#
+
+cbind.data.frame(headings, discog_table)
+
+
+```
+
+
+test run, three releases
+```{r}
+
+discog_table <- 
+  c(
 #  
-  "1957", "Bach: Partitas Nos. 5 & 6; Fugues in F-sharp minor and E major",
-  "Partita No. 5 in G major, BWV 829",
-  "Partita No. 6 in E minor, BWV 830",
-  "Fugue No. 9 in E major, BWV 878",
-  "Fugue No. 14 in F-sharp minor, BWV 883",
-  "Columbia Masterworks, ML 5186",
+  "001",
+  "1956", 
+  "Bach: The Goldberg Variations",
+  "Goldberg Variations",
+  NA,
+  "June 10 - June 16, 1955", "CBS 30th Street Studio", 
+  "Columbia Masterworks", 
+  "ML 5060", NA,
+#
+  "002", 
+  "1956", 
+  "Beethoven: Piano Sonatas Nos. 30-32",
+  "Piano Sonata No. 30, Piano Sonata No. 31, Piano Sonata No. 32",
+  NA,
+  "June 20 - June 29, 1956", "CBS 30th Street Studio", 
+  "Columbia Masterworks", 
+  "ML 5130", NA,
+#  
+  "003",
+  "1957", 
+  "Bach: Concerto No. 1 in D minor, BWV 1052 & Beethoven: Concerto No. 2 in B-flat major, Op. 19",
+  "Bach: Concerto No. 1 in D minor, BWV 1052, Beethoven: Piano Concerto No. 2",
+  "Leonard Bernstein / Columbia Symphony Orchestra)",
+  "April 9 - April 11, 1957 and April 30, 1957", "CBS 30th Street Studio", 
+  "Columbia Masterworks", 
+  "ML 5211", NA)
+
+cbind.data.frame(headings, discog_table)
+
+
+```
+
+
+full list of releases
+```{r}
+discog_table <- 
+  c(
+#  
+  "001",
+  "1956", 
+  "Bach: The Goldberg Variations",
+  "Goldberg Variations",
+  NA,
+  "June 10 - June 16, 1955", "CBS 30th Street Studio", 
+  "Columbia Masterworks", 
+  "ML 5060", NA,
+#
+  "002", 
+  "1956", 
+  "Beethoven: Piano Sonatas Nos. 30-32",
+  "Piano Sonata No. 30, Piano Sonata No. 31, Piano Sonata No. 32",
+  NA,
+  "June 20 - June 29, 1956", "CBS 30th Street Studio", 
+  "Columbia Masterworks", 
+  "ML 5130", NA,
+#  
+  "003",
+  "1957", 
+  "Bach: Concerto No. 1 in D minor, BWV 1052 & Beethoven: Concerto No. 2 in B-flat major, Op. 19",
+  "Bach: Concerto No. 1 in D minor, BWV 1052, Beethoven: Piano Concerto No. 2",
+  "Leonard Bernstein / Columbia Symphony Orchestra)",
+  "April 9 - April 11, 1957 and April 30, 1957", "CBS 30th Street Studio", 
+  "Columbia Masterworks", 
+  "ML 5211", NA,
+#  
+  "004",
+  "1957", 
+  "Bach: Partitas Nos. 5 & 6; Fugues in F-sharp minor and E major",
+  "Partita No. 5 in G major, BWV 829, 
+  Partita No. 6 in E minor, BWV 830,
+  Fugue No. 9 in E major, BWV 878,
+  Fugue No. 14 in F-sharp minor, BWV 883",
+  NA,
+  NA,
+  "Columbia Masterworks", 
+  "ML 5186", NA,
 #
   "1958", "Haydn: Sonata No. 3 in E-flat major; Mozart: Sonata No. 10 in C major, K.330; Fantasia and Fugue in C major, K.394",
   "Haydn: Piano Sonata No. 59",
