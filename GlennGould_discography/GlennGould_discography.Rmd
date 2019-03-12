@@ -8,6 +8,8 @@ library(datapasta)
 
 library(dplyr)
 library(tibble)
+library(tidyr)
+
 ```
 
 
@@ -84,6 +86,22 @@ cbind.data.frame(headings, discog_table)
 
 
 ```
+
+some functionality
+
+https://stackoverflow.com/questions/42790219/how-do-i-transpose-a-tibble-in-r 
+
+```{r}
+
+discog <- cbind.data.frame(headings, discog_table)
+
+t(discog)
+
+data.table::transpose(discog)
+
+
+```
+
 
 
 full list of releases
