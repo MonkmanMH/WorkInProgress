@@ -24,6 +24,8 @@ headings <- c("NUM",
               "label",
               "serial.number.mono", "serial.number.stereo")
 
+headings_tbl <- tibble(headings)
+
 ```
 
 test run, one release
@@ -45,6 +47,7 @@ discog_table <-
 
 cbind.data.frame(headings, discog_table)
 
+rbind.data.frame(headings, discog_table)
 
 ```
 
@@ -85,6 +88,7 @@ discog_table <-
 cbind.data.frame(headings, discog_table)
 
 
+
 ```
 
 some functionality
@@ -93,12 +97,31 @@ https://stackoverflow.com/questions/42790219/how-do-i-transpose-a-tibble-in-r
 
 ```{r}
 
+tibble(discog_table)
+
+
 discog <- cbind.data.frame(headings, discog_table)
 
-t(discog)
+discog
 
-data.table::transpose(discog)
+discog %>%
+  mutate(headings = as.character(headings),
+         discog_table = as.character(discog_table))
 
+```
+
+
+### split function
+
+```{r}
+
+# https://stackoverflow.com/questions/3318333/split-a-vector-into-chunks-in-r/27861896
+
+x <- seq_along(discog_table)
+
+d1 <- split(discog_table, ceiling(x/10))
+
+d1
 
 ```
 
@@ -109,141 +132,232 @@ full list of releases
 discog_table <- 
   c(
 #  
-  "001",
-  "1956", 
-  "Bach: The Goldberg Variations",
-  "Goldberg Variations",
-  NA,
-  "June 10 - June 16, 1955", "CBS 30th Street Studio", 
-  "Columbia Masterworks", 
-  "ML 5060", NA,
+"001",
+"1956", 
+"Bach: The Goldberg Variations",
+"Goldberg Variations",
+NA,
+"June 10 - June 16, 1955", 
+"CBS 30th Street Studio", 
+"Columbia Masterworks", 
+"ML 5060", NA,
 #
-  "002", 
-  "1956", 
-  "Beethoven: Piano Sonatas Nos. 30-32",
-  "Piano Sonata No. 30, Piano Sonata No. 31, Piano Sonata No. 32",
-  NA,
-  "June 20 - June 29, 1956", "CBS 30th Street Studio", 
-  "Columbia Masterworks", 
-  "ML 5130", NA,
+"002", 
+"1956", 
+"Beethoven: Piano Sonatas Nos. 30-32",
+"Piano Sonata No. 30; Piano Sonata No. 31; Piano Sonata No. 32",
+NA,
+"June 20 - June 29, 1956", 
+"CBS 30th Street Studio", 
+"Columbia Masterworks", 
+"ML 5130", NA,
 #  
-  "003",
-  "1957", 
-  "Bach: Concerto No. 1 in D minor, BWV 1052 & Beethoven: Concerto No. 2 in B-flat major, Op. 19",
-  "Bach: Concerto No. 1 in D minor, BWV 1052, Beethoven: Piano Concerto No. 2",
-  "Leonard Bernstein / Columbia Symphony Orchestra)",
-  "April 9 - April 11, 1957 and April 30, 1957", "CBS 30th Street Studio", 
-  "Columbia Masterworks", 
-  "ML 5211", NA,
+"003",
+"1957", 
+"Bach: Concerto No. 1 in D minor, BWV 1052 & Beethoven: Concerto No. 2 in B-flat major, Op. 19",
+"Bach: Concerto No. 1 in D minor, BWV 1052; 
+  Beethoven: Piano Concerto No. 2",
+"Leonard Bernstein / Columbia Symphony Orchestra)",
+"April 9 - April 11, 1957 and April 30, 1957", 
+"CBS 30th Street Studio", 
+"Columbia Masterworks", 
+"ML 5211", NA,
 #  
-  "004",
-  "1957", 
-  "Bach: Partitas Nos. 5 & 6; Fugues in F-sharp minor and E major",
-  "Partita No. 5 in G major, BWV 829, 
-  Partita No. 6 in E minor, BWV 830,
-  Fugue No. 9 in E major, BWV 878,
+"004",
+"1957", 
+"Bach: Partitas Nos. 5 & 6; Fugues in F-sharp minor and E major",
+"Partita No. 5 in G major, BWV 829; 
+  Partita No. 6 in E minor, BWV 830;
+  Fugue No. 9 in E major, BWV 878;
   Fugue No. 14 in F-sharp minor, BWV 883",
-  NA,
-  NA,
-  "Columbia Masterworks", 
-  "ML 5186", NA,
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5186", NA,
 #
-  "1958", "Haydn: Sonata No. 3 in E-flat major; Mozart: Sonata No. 10 in C major, K.330; Fantasia and Fugue in C major, K.394",
-  "Haydn: Piano Sonata No. 59",
-  "Mozart: Piano Sonata No. 10",
-  "Mozart: Fantasia and Fugue",
-  "Columbia Masterworks, ML 5274",
+"005",  
+"1958", 
+"Haydn: Sonata No. 3 in E-flat major; Mozart: Sonata No. 10 in C major, K.330; Fantasia and Fugue in C major, K.394",
+"Haydn: Piano Sonata No. 59; 
+  Mozart: Piano Sonata No. 10;
+  Mozart: Fantasia and Fugue",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5274", NA,
 #
-  "1958", "Beethoven: Concerto No. 1 in C major; Bach: Concerto No. 5 in F minor",
-  "Bach: Keyboard concerto No. 5",
-  "Beethoven: Piano Concerto No. 1",
-  "(with Vladimir Golschmann / Columbia Symphony Orchestra)",
-  NA,
-  "Columbia Masterworks, ML 5298, MS 6017",
+"006",
+"1958", 
+"Beethoven: Concerto No. 1 in C major; Bach: Concerto No. 5 in F minor",
+"Bach: Keyboard concerto No. 5;
+  Beethoven: Piano Concerto No. 1",
+"Vladimir Golschmann / Columbia Symphony Orchestra",
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5298", "MS 6017",
 #
-  "1959", "tBerg: Sonata for Piano, Op. 1; Schoenberg: Three Piano Pieces, Op. 11; Krenek: Sonata No. 3 for Piano, Op. 92, No. 4",
-  "Berg: Piano Sonata, Op. 1",
-  "Schoenberg: Three Piano Pieces, Op. 11",
-  "Krenek: Piano Sonata No. 3, Op. 92, No. 4",
-  "Columbia Masterworks, ML 5336",
+"007",
+"1959", 
+"Berg: Sonata for Piano, Op. 1; Schoenberg: Three Piano Pieces, Op. 11; Krenek: Sonata No. 3 for Piano, Op. 92, No. 4",
+"Berg: Piano Sonata, Op. 1; 
+  Schoenberg: Three Piano Pieces, Op. 11;
+  Krenek: Piano Sonata No. 3, Op. 92, No. 4",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5336", NA,
 #
-  "1960", "Gould: String Quartet No. 1",
-  "String Quartet in F minor, Op. 1",
-  "(performed by Symphonia Quartet)",
-  NA,
-  "Columbia Masterworks, ML 5578, MS 6178",
+"008",
+"1960", 
+"Gould: String Quartet No. 1",
+"String Quartet in F minor, Op. 1",
+"Symphonia Quartet",
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5578", "MS 6178",
 #
-  "1960", "Beethoven: Piano Concerto No. 3 in C minor, Op. 37",
-  "Piano Concerto No. 3",
-  "(with Leonard Bernstein / Columbia Symphony Orchestra)",
-  NA,
-  "Columbia Masterworks, ML 5418, MS 6096",
+"009",
+"1960",
+"Beethoven: Piano Concerto No. 3 in C minor, Op. 37",
+"Piano Concerto No. 3",
+"Leonard Bernstein / Columbia Symphony Orchestra",
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5418", "MS 6096",
 #
-  "1960", "Bach: Italian Concerto in F major & Partita Nos. 1 & 2",
-  "Italian Concerto, BWV 971",
-  "Partita No. 1 in B-flat major, BWV 825",
-  "Partita No. 2 in C minor, BWV 826",
-  "Columbia Masterworks, ML 5472, MS 6141",
+"010",
+"1960", 
+"Bach: Italian Concerto in F major & Partita Nos. 1 & 2",
+"Italian Concerto, BWV 971;
+  Partita No. 1 in B-flat major, BWV 825;
+  Partita No. 2 in C minor, BWV 826",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5472", "MS 6141",
+
 #
-  "1961", "Brahms: 10 Intermezzi",
-  "Intermezzo in A major, Op. 76, No. 6",
-  "Intermezzo in A minor, Op. 76, No. 7",
-  "Intermezzo in E major, Op. 116, No. 4",
-  "Intermezzo in E-flat major, Op. 117, No. 1",
-  "Intermezzo in B-flat minor, Op. 117, No. 2",
-  "Intermezzo in C-sharp minor, Op. 117, No. 3",
-  "Intermezzo in A minor, Op. 118, No. 1",
-  "Intermezzo in A major, Op. 118, No. 2",
-  "Intermezzo in E-flat minor, Op. 118, No. 6",
-  "Intermezzo in B minor, Op. 119, No. 1",
-  "Columbia Masterworks, ML 5637, MS 6237",
+"011",
+"1961", 
+"Brahms: 10 Intermezzi",
+"Intermezzo in A major, Op. 76, No. 6;
+  Intermezzo in A minor, Op. 76, No. 7;
+  Intermezzo in E major, Op. 116, No. 4;
+  Intermezzo in E-flat major, Op. 117, No. 1;
+  Intermezzo in B-flat minor, Op. 117, No. 2;
+  Intermezzo in C-sharp minor, Op. 117, No. 3;
+  Intermezzo in A minor, Op. 118, No. 1;
+  Intermezzo in A major, Op. 118, No. 2;
+  Intermezzo in E-flat minor, Op. 118, No. 6;
+  Intermezzo in B minor, Op. 119, No. 1",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5637", "MS 6237",
 #
-  "1961", "Beethoven: Piano Concerto No. 4 in G major, Op. 58",
-  "Piano Concerto No. 4",
-  "(with Leonard Bernstein / New York Philharmonic)",
-  NA,
-  "Columbia Masterworks, ML 5662, MS 6262",
+"012",
+"1961", 
+"Beethoven: Piano Concerto No. 4 in G major, Op. 58",
+"Piano Concerto No. 4",
+"Leonard Bernstein / New York Philharmonic",
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5662", "MS 6262",
 #
-  "1962", "Mozart: Piano Concerto No. 24 in C minor, K. 491 & Schoenberg: Piano Concerto, Op. 42",
-  "Mozart: Piano Concerto No. 24 (with Walter Susskind / CBC Symphony Orchestra)",
-  "Schoenberg: Piano Concerto (with Robert Craft / CBC Symphony Orchestra)",
-  "Columbia Masterworks, ML 5739, MS 6339",
+"013",
+"1962", 
+"Mozart: Piano Concerto No. 24 in C minor, K. 491 & Schoenberg: Piano Concerto, Op. 42",
+"Mozart: Piano Concerto No. 24 (with Walter Susskind / CBC Symphony Orchestra);
+  Schoenberg: Piano Concerto (with Robert Craft / CBC Symphony Orchestra)",
+"Walter Susskind / CBC Symphony Orchestra; 
+  Robert Craft / CBC Symphony Orchestra",
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5739", "MS 6339",
 #
-  "1962", "Bach: The Art of the Fugue, Volume I",
-  "The Art of Fugue, Fugues 1 - 9",
-  "(played on organ)",
-  NA,
-  "Columbia Masterworks, ML 5738, MS 6338",
+"014",
+"1962", 
+"Bach: The Art of the Fugue, Volume I",
+"The Art of Fugue, Fugues 1 - 9 (played on organ)",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5738", "MS 6338",
 #
-  "1962", "Strauss: Enoch Arden (Tennyson), Op. 38",
-  "Enoch Arden",
-  "(with Claude Rains, speaker)",
-  NA,
-  "Columbia Masterworks, ML 5741, MS 6341",
+"015",
+"1962", 
+"Strauss: Enoch Arden (Tennyson), Op. 38",
+"Enoch Arden",
+"Claude Rains, speaker",
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5741", "MS 6341",
 #
-  "1963", "Bach: The Well-Tempered Clavier, Book I Volume I, BWV 846-853",
-  "The Well-Tempered Clavier, Book I, Preludes and Fugues 1 - 8",
-  "Columbia Masterworks, ML 5739, MS 6339",
+"016",
+"1963", 
+"Bach: The Well-Tempered Clavier, Book I Volume I, BWV 846-853",
+"The Well-Tempered Clavier, Book I, Preludes and Fugues 1 - 8",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5739", "MS 6339",
 #
-  "1963", "Bach: Partitas 3 & 4, Toccata 7",
-  "Partita No. 3 in A minor, BWV 827",
-  "Partita No. 4 in D major, BWV 828",
-  "Toccata No. 7 in E minor",
-  "Columbia Masterworks, ML 5898, MS 6498",
+"017",
+"1963", 
+"Bach: Partitas 3 & 4, Toccata 7",
+"Partita No. 3 in A minor, BWV 827;
+  Partita No. 4 in D major, BWV 828;
+  Toccata No. 7 in E minor",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5898", "MS 6498",
 #
-  "1963", "Bach: The Well-Tempered Clavier, Book I Volume 2, BWV 854-861",
-  "The Well-Tempered Clavier, Book I, Preludes and Fugues 9 - 16",
-  "Columbia Masterworks, ML 5938, MS 6538",
+"018",
+"1963", 
+"Bach: The Well-Tempered Clavier, Book I Volume 2, BWV 854-861",
+"The Well-Tempered Clavier, Book I, Preludes and Fugues 9 - 16",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 5938", "MS 6538",
 #
-  "1964", "Bach: Two and Three Part Inventions, BWV 772-801 (Inventions & Sinfonias)",
-  "Inventions and Sinfonias, BWV 772-801",
-  "March 18 & 19, 1964 in CBS 30th Street Studio", "Columbia Masterworks, ML 6022, MS 6622",
+"019",
+"1964", 
+"Bach: Two and Three Part Inventions, BWV 772-801 (Inventions & Sinfonias)",
+"Inventions and Sinfonias, BWV 772-801",
+NA,
+"March 18 & 19, 1964", 
+"CBS 30th Street Studio", 
+"Columbia Masterworks", 
+"ML 6022", "MS 6622",
 #
-  "1965", "Beethoven: Sonatas No. 5-7, Op. 10, No. 1-3",
-  "Piano Sonata No. 5",
-  "Piano Sonata No. 6",
-  "Piano Sonata No. 7",
-  "Columbia Masterworks, ML 6086, MS 6686",
+"020",
+"1965", 
+"Beethoven: Sonatas No. 5-7, Op. 10, No. 1-3",
+"Piano Sonata No. 5;
+  Piano Sonata No. 6;
+  Piano Sonata No. 7",
+NA,
+NA,
+NA,
+"Columbia Masterworks", 
+"ML 6086", "MS 6686",
 #
   "1965", "Bach: The Well-Tempered Clavier, Book I Volume 3, BWV 862-869",
   "The Well-Tempered Clavier, Book I, Preludes and Fugues 17 - 24",
@@ -630,7 +744,21 @@ discog_table <-
   "* July 27-29 & September 8, 1982, St. Lawrence Hall, Toronto / ** 1973, Eaton Auditorium, Toronto (originally released in 1973 by Columbia Masterworks, M 32351)", "Sony Classical, SK 46279",
   "References")
 
-vector_paste_vertical()
+
+
+
+### split function
+
+# https://stackoverflow.com/questions/3318333/split-a-vector-into-chunks-in-r/27861896
+
+x <- seq_along(discog_table)
+
+d1 <- split(discog_table, ceiling(x/10))
+
+d1
+
+```
+
 
 ```
 
