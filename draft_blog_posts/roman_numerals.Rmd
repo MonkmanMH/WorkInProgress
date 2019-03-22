@@ -1,0 +1,26 @@
+---
+title: "roman"
+author: "Martin Monkman"
+date: "March 22, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+as.roman(1813)
+```
+
+```{r}
+as.numeric(as.roman("MDCCCXIII"))
+```
+
+```{r}
+jane_dates <- c(1811, 1813, 1814, 1815, 1818, 1818, 1871)
+jane_dates_roman <- as.roman(jane_dates)
+jane_dates_roman
+as.numeric(as.roman(jane_dates_roman))
+```
