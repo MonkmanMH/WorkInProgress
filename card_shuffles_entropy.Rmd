@@ -115,7 +115,7 @@ library(ggplot2)
 # Number of cards
 ncard <- 52 
 # Number of shuffles to plot
-nshuffle <- 20
+nshuffle <- 25
 # Parameter between 0 and 1 to control randomness of the shuffle
 # Setting this closer to 1 makes the initial correlations fade away
 # more slowly, setting it closer to 0 makes them fade away faster
