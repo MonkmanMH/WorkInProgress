@@ -123,7 +123,7 @@ mixprob <- 0.985
 
 
 # Number of runs
-runs <- 100
+runs <- 1000
 runnum <- NULL
 iteration <- NULL
 entropy <- NULL
@@ -225,12 +225,23 @@ ggplot(output, aes(x = as_factor(iteration), y = entropy)) +
 
 # individual lines
 
-ggplot(output) +
-  geom_line(aes(x = iteration, y = entropy, colour = as_factor(runnum)))
+#ggplot(output) +
+#  geom_line(aes(x = iteration, y = entropy, colour = as_factor(runnum)))
 
 ```
 
 ### summary statistics
 
 add mean and SD stats for each iteration
+
+
+```{r}
+
+output %>%
+  group_by(iteration) %>%
+  summarise(entropy_mean = mean(entropy),
+            entropy_sd = sd(entropy),
+            entropy_se = sd(entropy) / sqrt(length(output)))
+
+```
 
