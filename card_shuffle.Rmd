@@ -1,0 +1,334 @@
+---
+title: "Card shuffling"
+output: html_notebook
+---
+
+Blog post:
+https://mikesmathpage.wordpress.com/2017/04/23/card-shuffling-and-shannon-entropy/
+
+CrossValidated:
+https://stats.stackexchange.com/questions/78591/correlation-between-two-decks-of-cards
+
+
+
+## original
+
+```{r}
+library(ggplot2)
+# Number of cards
+ncard <- 52 
+# Number of shuffles to plot
+nshuffle <- 20
+# Parameter between 0 and 1 to control randomness of the shuffle
+# Setting this closer to 1 makes the initial correlations fade away
+# more slowly, setting it closer to 0 makes them fade away faster
+mixprob <- 0.985 
+# Make data frame to keep track of progress
+shuffleorder <- NULL
+startorder <- NULL
+iteration <- NULL
+shuffletracker <- data.frame(shuffleorder, startorder, iteration)
+# Initialize cards in sequential order
+startorder <- seq(1,ncard)
+shuffleorder <- startorder
+entropy <- rep(0, nshuffle)
+# Loop over each new shuffle
+for (ii in 1:nshuffle) {
+    # Append previous results to data frame
+    iteration <- rep(ii, ncard)
+    shuffletracker <- rbind(shuffletracker, data.frame(shuffleorder,
+                            startorder, iteration))
+    # Calculate pairwise value difference histogram
+    freq <- rep(0, ncard)
+    for (ij in 1:ncard) {
+        if (ij == 1) {
+            idx <- shuffleorder[1] - shuffleorder[ncard]
+        } else {
+            idx <- shuffleorder[ij] - shuffleorder[ij-1]
+        }
+        # Impose periodic boundary condition
+        if (idx < 1) {
+            idx <- idx + ncard
+        }
+        freq[idx] <- freq[idx] + 1
+    }
+    # Sum over frequency histogram to compute entropy
+    for (ij in 1:ncard) {
+        if (freq[ij] == 0) {
+            x <- 0
+        } else {
+            p <- freq[ij] / ncard
+            x <- -p * log(p, base=exp(1))
+        }
+        entropy[ii] <- entropy[ii] + x
+    }
+    # Shuffle the cards to prepare for the next iteration
+    lefthand <- shuffleorder[floor((ncard/2)+1):ncard]
+    righthand <- shuffleorder[1:floor(ncard/2)]
+    ij <- 0
+    ik <- 0
+    while ((ij+ik) < ncard) {
+        if ((runif(1) < mixprob) & (ij < length(lefthand))) {
+            ij <- ij + 1
+            shuffleorder[ij+ik] <- lefthand[ij]
+        }
+        if ((runif(1) < mixprob) & (ik < length(righthand))) {
+            ik <- ik + 1
+            shuffleorder[ij+ik] <- righthand[ik]
+        }
+    }
+}
+# Plot entropy vs. shuffle iteration
+iteration <- seq(1, nshuffle)
+output <- data.frame(iteration, entropy)
+#print(qplot(iteration, entropy, data=output, xlab="Shuffle Iteration", 
+#            ylab="Information Entropy", geom=c("point", "line"),
+#            color=iteration) + scale_color_gradient(low="#ffb000",
+#            high="red"))
+# -- plot in notebook --
+qplot(iteration, entropy, data=output, xlab="Shuffle Iteration", 
+            ylab="Information Entropy", geom=c("point", "line"),
+            color=iteration) + scale_color_gradient(low="#ffb000",
+            high="red")
+# Plot gradually de-correlating sort order
+#dev.new()
+#print(qplot(startorder, shuffleorder, data=shuffletracker, color=iteration,
+#            xlab="Start Order", ylab="Shuffle Order") + facet_wrap(~ iteration,
+#            ncol=4) + scale_color_gradient(low="#ffb000", high="red"))
+# -- plot in notebook --
+qplot(startorder, shuffleorder, data=shuffletracker, color=iteration,
+            xlab="Start Order", ylab="Shuffle Order") + facet_wrap(~ iteration,
+            ncol=4) + scale_color_gradient(low="#ffb000", high="red")
+```
+
+## Revised: with multiple runs through the process
+
+
+```{r}
+
+library(ggplot2)
+
+
+# set random seed
+set.seed(3842553)
+
+# Number of cards
+ncard <- 52 
+# Number of shuffles to plot
+nshuffle <- 25
+# Parameter between 0 and 1 to control randomness of the shuffle
+# Setting this closer to 1 makes the initial correlations fade away
+# more slowly, setting it closer to 0 makes them fade away faster
+mixprob <- 0.985 
+# Number of runs
+runs <- 1000
+runnum <- NULL
+iteration <- NULL
+entropy <- NULL
+output <- data.frame(runnum, iteration, entropy)
+# Start new loop
+for (runnum in 1:runs){
+# Make data frame to keep track of progress
+shuffleorder <- NULL
+startorder <- NULL
+iteration <- NULL
+shuffletracker <- data.frame(shuffleorder, startorder, iteration)
+# Initialize cards in sequential order
+startorder <- seq(1,ncard)
+shuffleorder <- startorder
+entropy <- rep(0, nshuffle)
+# Loop over each new shuffle
+for (ii in 1:nshuffle) {
+    # Append previous results to data frame
+    iteration <- rep(ii, ncard)
+    shuffletracker <- rbind(shuffletracker, data.frame(shuffleorder,
+                            startorder, iteration))
+    # Calculate pairwise value difference histogram
+    freq <- rep(0, ncard)
+    for (ij in 1:ncard) {
+        if (ij == 1) {
+            idx <- shuffleorder[1] - shuffleorder[ncard]
+        } else {
+            idx <- shuffleorder[ij] - shuffleorder[ij-1]
+        }
+        # Impose periodic boundary condition
+        if (idx < 1) {
+            idx <- idx + ncard
+        }
+        freq[idx] <- freq[idx] + 1
+    }
+    # Sum over frequency histogram to compute entropy
+    for (ij in 1:ncard) {
+        if (freq[ij] == 0) {
+            x <- 0
+        } else {
+            p <- freq[ij] / ncard
+            x <- -p * log(p, base=exp(1))
+        }
+        entropy[ii] <- entropy[ii] + x
+    }
+    # Shuffle the cards to prepare for the next iteration
+    lefthand <- shuffleorder[floor((ncard/2)+1):ncard]
+    righthand <- shuffleorder[1:floor(ncard/2)]
+    ij <- 0
+    ik <- 0
+    while ((ij+ik) < ncard) {
+        if ((runif(1) < mixprob) & (ij < length(lefthand))) {
+            ij <- ij + 1
+            shuffleorder[ij+ik] <- lefthand[ij]
+        }
+        if ((runif(1) < mixprob) & (ik < length(righthand))) {
+            ik <- ik + 1
+            shuffleorder[ij+ik] <- righthand[ik]
+        }
+    }
+}
+iteration <- seq(1, nshuffle)
+output2 <- data.frame(runnum, iteration, entropy)
+output <- rbind(output, output2)
+}
+```
+
+
+
+
+
+## Function
+
+
+```{r}
+
+# set random seed
+set.seed(3842553)
+
+# Number of cards
+ncard <- 52 
+# Number of shuffles to plot
+nshuffle <- 25
+# Parameter between 0 and 1 to control randomness of the shuffle
+# Setting this closer to 1 makes the initial correlations fade away
+# more slowly, setting it closer to 0 makes them fade away faster
+mixprob <- 0.985 
+
+runnum <- NULL
+iteration <- NULL
+entropy <- NULL
+output <- data.frame(runnum, iteration, entropy)
+
+
+# FUNCTION
+
+shuffle_fun <- function(runs){
+
+# Start new loop
+for (runnum in 1:runs){
+# Make data frame to keep track of progress
+shuffleorder <- NULL
+startorder <- NULL
+iteration <- NULL
+shuffletracker <- data.frame(shuffleorder, startorder, iteration)
+# Initialize cards in sequential order
+startorder <- seq(1,ncard)
+shuffleorder <- startorder
+entropy <- rep(0, nshuffle)
+# Loop over each new shuffle
+for (ii in 1:nshuffle) {
+    # Append previous results to data frame
+    iteration <- rep(ii, ncard)
+    shuffletracker <- rbind(shuffletracker, data.frame(shuffleorder,
+                            startorder, iteration))
+    # Calculate pairwise value difference histogram
+    freq <- rep(0, ncard)
+    for (ij in 1:ncard) {
+        if (ij == 1) {
+            idx <- shuffleorder[1] - shuffleorder[ncard]
+        } else {
+            idx <- shuffleorder[ij] - shuffleorder[ij-1]
+        }
+        # Impose periodic boundary condition
+        if (idx < 1) {
+            idx <- idx + ncard
+        }
+        freq[idx] <- freq[idx] + 1
+    }
+    # Sum over frequency histogram to compute entropy
+    for (ij in 1:ncard) {
+        if (freq[ij] == 0) {
+            x <- 0
+        } else {
+            p <- freq[ij] / ncard
+            x <- -p * log(p, base=exp(1))
+        }
+        entropy[ii] <- entropy[ii] + x
+    }
+    # Shuffle the cards to prepare for the next iteration
+    lefthand <- shuffleorder[floor((ncard/2)+1):ncard]
+    righthand <- shuffleorder[1:floor(ncard/2)]
+    ij <- 0
+    ik <- 0
+    while ((ij+ik) < ncard) {
+        if ((runif(1) < mixprob) & (ij < length(lefthand))) {
+            ij <- ij + 1
+            shuffleorder[ij+ik] <- lefthand[ij]
+        }
+        if ((runif(1) < mixprob) & (ik < length(righthand))) {
+            ik <- ik + 1
+            shuffleorder[ij+ik] <- righthand[ik]
+        }
+    }
+}
+iteration <- seq(1, nshuffle)
+output2 <- data.frame(runnum, iteration, entropy)
+output <- rbind(output, output2)
+}
+
+output
+
+# close shuffle_fun
+} 
+```
+
+### run the function
+
+```{r}
+
+output <- shuffle_fun(1000)
+
+```
+
+***
+
+### plots
+
+```{r}
+library(ggplot2)
+library(forcats)
+library(dplyr)
+ggplot(output, aes(x = iteration, y = entropy)) +
+  geom_point()
+ggplot(output, aes(group = as_factor(iteration), y = entropy)) +
+  geom_boxplot()
+ggplot(output, aes(x = as_factor(iteration), y = entropy)) +
+  geom_violin()
+# individual lines
+#ggplot(output) +
+#  geom_line(aes(x = iteration, y = entropy, colour = as_factor(runnum)))
+```
+
+### summary statistics
+
+add mean and SD stats for each iteration
+
+
+```{r}
+outputstats <- output %>%
+  group_by(iteration) %>%
+  summarise(entropy_mean = mean(entropy),
+            entropy_sd = sd(entropy),
+            entropy_se = sd(entropy) / sqrt(length(output)))
+
+outputstats
+
+
+```
+
