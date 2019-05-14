@@ -9,6 +9,12 @@ But when we look more closely, we see that they are fundamentally different. The
     width="400">
 (_Source: Wikipedia_)
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
+   style="position:relative; left:50px; top:-10px; width:50px; height:50px; border:none;"
+   alt="European robin"
+   title="European robin" />
+
+
 The American robin (_Turdus migratorius_) is a thrush, and eats earthworms and other invertebrates, along with fruits and berries.
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Turdus-migratorius-002.jpg/1280px-Turdus-migratorius-002.jpg" alt="American robin" width="400" align="left">
 (_Source: Wikipedia_)
