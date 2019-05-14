@@ -5,7 +5,8 @@ What do we mean when we see a bird and say that it's a robin? A lot depends on y
 But when we look more closely, we see that they are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
     alt="European robin" 
-    style="position:relative; left:10px; top:0px; width=400px;">
+    style="position:relative; left:10px; top:0px;"
+    width="400">
 (_Source: Wikipedia_)
 
 The American robin (_Turdus migratorius_) is a thrush, and eats earthworms and other invertebrates, along with fruits and berries.
