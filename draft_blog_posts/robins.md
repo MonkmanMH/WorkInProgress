@@ -30,3 +30,9 @@ The second tweet in his thread was the one that caught my attention:
 
 This tweet, and some of the key responses, provoked some thinking.
 
+Eric Colson, 2019-03-08, [Why Data Science Teams Need Generalists, Not Specialists](https://hbr.org/2019/03/why-data-science-teams-need-generalists-not-specialists)
+
+Eric Colson, 2019-03-11, [Beware the data science pin factory: The power of the full-stack data science generalist and the perils of division of labor through function](https://multithreaded.stitchfix.com/blog/2019/03/11/FullStackDS-Generalists/)
+
+
+
