@@ -1,6 +1,6 @@
 # Same name, different bird
 
-What do we mean when we see a bird and say that it's a robin? Superficially, the European robin and the American robin are similar--brownish birds with a red breast. But a lot depends on your location; you don't have to look very closely to see that they are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
+What do we mean when we see a bird and say that it's a robin? A superficial description would be a small brownish bird with a red breast. But that's a superficial description, and when we say "robin" a lot depends on your location; you don't have to look very closely to see that the European and American robins are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
     alt="European robin" width="400">
 (_Source: Wikipedia_)
@@ -24,9 +24,11 @@ The second tweet in his thread was the one that caught my attention:
 
 Eric Colson's paper at HBR (2019-03-08), [Why Data Science Teams Need Generalists, Not Specialists](https://hbr.org/2019/03/why-data-science-teams-need-generalists-not-specialists), provides a compelling argument the generalist data scientist provides significant value to the organization, particularly small organizations.
 
-Implicit in both Long and Colson's positions is that there are two different types of data scientists: the generalist and the specialist.
+Explicit in both Long and Colson's statements is that there are two different types of data scientists: the generalist and the specialist.
 
-I want to go further in this typology, and postulate (based on my own anecdotal observations) some of the differences between the two.
+I want to go further in refining this typology, and postulate (based on my own anecdotal observations) some of the differences between the two.
+
+### Generalists
 
 Generalists can be found, as JD Long has noted, in smaller organizations. 
 
@@ -46,6 +48,62 @@ I would go further, and argue that data scientists can (and perhaps should!) be 
 
 And following this line of thinking, I have observed that generalist data scientists tend to favour R as their tool of choice. Roger Peng (a biostatistician) has said "The R programming language has become the de facto programming language for data science." R was developed first as a programming environment in which to do statistics, so many of the defaults and behaviours are optimized around how statisticians and subject-matter practitioners tend to think about their data analysis problem.
 
-The specialist data scientist is a different creature. They tend to have an advanced degree in Computer Science or Computational Statistics, and work largely on the "modeling" part of the process.
+R's foundational data structures are mathematical and statistical in nature: vectors, matricies, and data frames. As well, base R has a plethora of statistical functionality built in--for example, t tests, regression models, and statistical distributions.
+
+### Specialists
+
+The specialist data scientist is a different creature. They tend to have degree in Computer Science or Computational Statistics, often at the graduate level. In Drew Conway's Venn diagram, they tend to be very deep on the "hacking skills", with less emphasis on the statistics (as a discipline) or subject matter expertise.
+
+Their work seems to fall largely on the "modeling" part of the data science process. They work with tidy, pre-processed data, often as part of an automated data processing flow from collection through analysis and modeling, to communication (which might also included automated feedback to points earlier in the process).
+
+Because of their computer science backgrounds, these data scientists, in general, favour Python as their programming environment of choice. Python is a programming language first, to which data analytics packages (such as the [{pandas} data analysis package](https://pandas.pydata.org/)) has been added. 
+
+
+### The view from a small organization
+
+I work in a small data analytics organization, and lead a crack team of data scientists. Like myself, they fit the "generalist" typology--although computer science courses have been part of our training, we don't hold degrees in that area.
+
+An example of our workflow can be shown in the example of an employee survey. Our process used to look like this:
+
+Data was extracted from the human resources database; we relied on database administrators from outside our organization to do this for us. This formed the survey frame, which was used in our survey software to administer the survey; the survey data then flowed into SPSS, where it was joined with demographic values from the HR database. Manipulation and modelling occured in three programs: SPSS, Excel, and Stata. Summary tables for the clients were created in Excel, along with PDF and HTML versions of documents written in Word.
+
+Note that programmers--outside the organization were responsible for automating the production of the output reports, which varied only by department.
+
+Now it looks like this:
+
+
+### Growing data science in a small data-centric organization
+
+The challenge:
+
+* growing generalist data science practice. 
+
+My experience: some are "Super User" (find Dr Aimee Gott's slides)
+
+* self-directed learning based on problem-solving mindset, often driven by inate urge to find efficiencies
+
+Need to empower them, find Super Users in Training
+
+
+_ELABORATE_
+
+### Plugging data science into a large data-centric organization
+
+Two challenges: 
+
+* growing generalist data science practice in the specialist areas.
+
+* fitting the specialists into an existing workflow
+
+_ELABORATE_
+
+
+### It's not just the people
+
+Key point: data scientists of both stripes need a robust tech platform. Not rejecting IT, but need something different than app development
+
+(similarity to dev ops)
+
+
 
 
