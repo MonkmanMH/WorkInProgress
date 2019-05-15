@@ -65,8 +65,6 @@ I work in a small data analytics organization, and lead a crack team of data sci
 
 An example of our workflow can be shown in the example of an employee survey. Our process used to look like this:
 
-![survey workflow - old](survey_workflow_1.png)
-
 <img src="survey_workflow_1.png" 
     alt="survey workflow: past" width="600">
 
