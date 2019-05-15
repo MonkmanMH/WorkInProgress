@@ -35,16 +35,17 @@ The academic backgrounds of data scientists tend to be [Statistics](https://shar
 This tends to position them smack dab in the middle of [Drew Conway's famous Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram):
 <img src="https://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w">
 
+They bring subject matter expertise, foundational statistical knowledge, and some pragmatic programming skills.
 
-Their work tends to follow the full range of a typical data science project as envisioned by Grolemund and Wickham in [_R for Data Science_](https://r4ds.had.co.nz/index.html):
+The work of the generalist tends to follow the full sequence of a typical data science project as envisioned by Grolemund and Wickham in [_R for Data Science_](https://r4ds.had.co.nz/index.html):
 
 <img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png" 
     alt="the data science process" width="400">
     
-I would go further, and say that data scientists can be involved even earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase.
+I would go further, and argue that data scientists can (and perhaps should!) be involved earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase.
 
 And following this line of thinking, I have observed that generalist data scientists tend to favour R as their tool of choice. Roger Peng (a biostatistician) has said "The R programming language has become the de facto programming language for data science." R was developed first as a programming environment in which to do statistics, so many of the defaults and behaviours are optimized around how statisticians and subject-matter practitioners tend to think about their data analysis problem.
 
-
+The specialist data scientist is a different creature. They tend to have an advanced degree in Computer Science or Computational Statistics, and work largely on the "modeling" part of the process.
 
 
