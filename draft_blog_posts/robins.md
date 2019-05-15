@@ -32,6 +32,10 @@ Generalists can be found, as JD Long has noted, in smaller organizations.
 
 The academic backgrounds of data scientists tend to be [Statistics](https://sharla.party/) (as a discipline), or they are people with a quantitative bent from (for want of a better term) subject matter disciplines, such as [Astronomy](https://juliasilge.com/resume/), [Economics](https://medium.com/@metjush/4-reasons-why-economists-make-great-data-scientists-and-why-no-one-tells-them-524478845ec2), [Geography](http://personal.tcu.edu/kylewalker/projects.html), and [Psychology](https://psyr.org/).
 
+This tends to position them smack dab in the middle of [Drew Conway's famous Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram):
+<img src="https://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w">
+
+
 Their work tends to follow the full range of a typical data science project as envisioned by Grolemund and Wickham in [_R for Data Science_](https://r4ds.had.co.nz/index.html):
 
 <img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png" 
@@ -39,6 +43,8 @@ Their work tends to follow the full range of a typical data science project as e
     
 I would go further, and say that data scientists can be involved even earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase.
 
-And following this line of thinking, I have observed that generalist data scientists tend to favour R as their tool of choice. Roger Peng (a biostatistician) has said "The R programming language has become the de facto programming language for data science."
+And following this line of thinking, I have observed that generalist data scientists tend to favour R as their tool of choice. Roger Peng (a biostatistician) has said "The R programming language has become the de facto programming language for data science." R was developed first as a programming environment in which to do statistics, so many of the defaults and behaviours are optimized around how statisticians and subject-matter practitioners tend to think about their data analysis problem.
+
+
 
 
