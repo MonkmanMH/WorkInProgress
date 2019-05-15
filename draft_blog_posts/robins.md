@@ -1,8 +1,6 @@
 # Same name, different bird
 
-What do we mean when we see a bird and say that it's a robin? A lot depends on your location. Superficially, the European robin and the American robin are similar--brownish birds with a red breast. 
-
-But you don't have to look very closely to see that they are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
+What do we mean when we see a bird and say that it's a robin? Superficially, the European robin and the American robin are similar--brownish birds with a red breast. But a lot depends on your location; you don't have to look very closely to see that they are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
     alt="European robin" width="400">
 (_Source: Wikipedia_)
@@ -26,13 +24,7 @@ The second tweet in his thread was the one that caught my attention:
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Data Science got initial traction inside of small firms &amp; startups that needed fast iteration &amp; could not support specialists in data, stats, hacking &amp; biz. They grew up this hybrid that combines domains and doesn’t specialize. In large orgs there becomes friction w specialists.</p>&mdash; JD Long (@CMastication) <a href="https://twitter.com/CMastication/status/1126458904060276736?ref_src=twsrc%5Etfw">May 9, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-
-
-This tweet, and some of the key responses, provoked some thinking.
-
-Eric Colson, 2019-03-08, [Why Data Science Teams Need Generalists, Not Specialists](https://hbr.org/2019/03/why-data-science-teams-need-generalists-not-specialists)
-
-Eric Colson, 2019-03-11, [Beware the data science pin factory: The power of the full-stack data science generalist and the perils of division of labor through function](https://multithreaded.stitchfix.com/blog/2019/03/11/FullStackDS-Generalists/)
+Eric Colson's paper at HBR (2019-03-08), [Why Data Science Teams Need Generalists, Not Specialists](https://hbr.org/2019/03/why-data-science-teams-need-generalists-not-specialists), provides a compelling argument the generalist data scientist provides significant value to the organization, particularly small organizations.
 
 
 
