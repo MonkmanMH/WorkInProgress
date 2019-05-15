@@ -113,7 +113,22 @@ _ELABORATE_
 
 Key point: data scientists of both stripes need a robust tech platform. Not rejecting IT, but need something different than app development
 
-(similarity to dev ops)
+(similarity to dev ops -- tweet in JD Long's thread)
+
+
+### Leadership
+
+Leaders of data scientists need to be able to empower their teams
+
+A significant part of that leadership is being the person to [work through and around the Giant Hairball, and help the team overcome the gravity of the Hairball](https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2018-11-07_EARL_Seattle/Overcoming_gravity.md)
+
+
+### A biased view
+
+Of course, there is significant bias in the Euro- and North American-centric definition of what defines a "robin". In the same way that there is a [Japanese robin](https://en.wikipedia.org/wiki/Japanese_robin) and a [Siberian blue robin](https://en.wikipedia.org/wiki/Siberian_blue_robin) (below), my view of what defines a "data scientist" might also be too narrow.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Luscinia_cyane_-_Khao_Yai.jpg/1024px-Luscinia_cyane_-_Khao_Yai.jpg" alt="Siberian blue robin" width="600">
+(_Source: Wikipedia_)
 
 
 
