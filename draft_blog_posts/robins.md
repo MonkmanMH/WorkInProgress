@@ -2,12 +2,12 @@
 
 What do we mean when we see a bird and say that it's a robin? A superficial description would be a small brownish bird with a red breast. But that's a superficial description, and when we say "robin" a lot depends on your location; you don't have to look very closely to see that the European and American robins are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
-    alt="European robin" width="400">
+    alt="European robin" width="600">
 (_Source: Wikipedia_)
 
 
 The American robin (_Turdus migratorius_) is a thrush, and eats earthworms and other invertebrates, along with fruits and berries.
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Turdus-migratorius-002.jpg/1280px-Turdus-migratorius-002.jpg" alt="American robin" width="400">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Turdus-migratorius-002.jpg/1280px-Turdus-migratorius-002.jpg" alt="American robin" width="600">
 (_Source: Wikipedia_)
 
 (The naming of the American robin is a classic case of ["The Captain's Hat"](https://www.youtube.com/watch?v=dOBhf8f7cXM); European explorers and colonists arriving in other parts of the world and naming things in a way that isn't necessarily accurate.)
@@ -65,11 +65,22 @@ I work in a small data analytics organization, and lead a crack team of data sci
 
 An example of our workflow can be shown in the example of an employee survey. Our process used to look like this:
 
-Data was extracted from the human resources database; we relied on database administrators from outside our organization to do this for us. This formed the survey frame, which was used in our survey software to administer the survey; the survey data then flowed into SPSS, where it was joined with demographic values from the HR database. Manipulation and modelling occured in three programs: SPSS, Excel, and Stata. Summary tables for the clients were created in Excel, along with PDF and HTML versions of documents written in Word.
+![survey workflow - old](survey_workflow_1.png)
 
-Note that programmers--outside the organization were responsible for automating the production of the output reports, which varied only by department.
+<img src="survey_workflow_1.png" 
+    alt="survey workflow: past" width="600">
+
+
+Data was extracted from the human resources database; we relied on database administrators from outside our organization to do this for us. This formed the survey frame, which was used in our survey software to administer the survey; the survey data then flowed into SPSS, where it was joined with demographic values from the HR database. Manipulation and modelling occured in three programs: SPSS, Excel, and Stata. 
+
+The reporting to the clients was in the form of summary tables in Excel, along with PDF and HTML versions of documents written in Word. Note that programmers outside the organization were responsible for automating the production of these outputs, which have consistent structure and vary only by department.
 
 Now it looks like this:
+
+<img src="survey_workflow_2.png" 
+    alt="survey workflow: future" width="600">
+
+The data scientists in our organization can write (in R) code that pulls the extract from the database which is used for the survey frame. They deploy the survey to collect the data, and then use R to wrangle and model the survey data--work that was done in a variety of other tools. The data scientists have also written R code (using the [{xlsx} package](https://github.com/colearendt/xlsx)), and creates a variety of outputs including Excel, PDF, and (coming soon) web-based reports (using [Shiny](https://shiny.rstudio.com/)).
 
 
 ### Growing data science in a small data-centric organization
@@ -106,4 +117,6 @@ Key point: data scientists of both stripes need a robust tech platform. Not reje
 
 
 
+## Notes
 
+[PDF](robins_notes.pdf) 
