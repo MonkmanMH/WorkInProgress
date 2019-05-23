@@ -1,6 +1,6 @@
 # Same name, different bird
 
-What do we mean when we see a bird and say that it's a robin? A superficial description would be a small brownish bird with a red breast. But that's a superficial description, and when we say "robin" a lot depends on your location; you don't have to look very closely to see that the European and American robins are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
+What do we mean when we see a bird and say that it's a robin? A simple description would be a small brownish bird with a red breast. But that's a superficial description, and when we say "robin" what we mean depends on your location; you don't have to look very closely to see that the European and American robins are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
     alt="European robin" width="600">
 (_Source: Wikipedia_)
@@ -52,7 +52,7 @@ R's foundational data structures are mathematical and statistical in nature: vec
 
 ### Specialists
 
-The specialist data scientist is a different creature. They tend to have degree in Computer Science or Computational Statistics, often at the graduate level. In Drew Conway's Venn diagram, they tend to be very deep on the "hacking skills", with less emphasis on the statistics (as a discipline) or subject matter expertise.
+The specialist data scientist is a different creature. They tend to have a degree in Computer Science or Computational Statistics, often at the graduate level. In Drew Conway's Venn diagram, they tend to be very deep on the "hacking skills", with less emphasis on the statistics (as a discipline) or subject matter expertise.
 
 Their work seems to fall largely on the "modeling" part of the data science process. They work with tidy, pre-processed data, often as part of an automated data processing flow from collection through analysis and modeling, to communication (which might also included automated feedback to points earlier in the process).
 
@@ -67,7 +67,8 @@ An example of our workflow can be shown in the example of an employee survey. Ou
 
 <img src="survey_workflow_1.png" 
     alt="survey workflow: past" width="600">
-
+    
+[_source: Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)
 
 Data was extracted from the human resources database; we relied on database administrators from outside our organization to do this for us. This formed the survey frame, which was used in our survey software to administer the survey; the survey data then flowed into SPSS, where it was joined with demographic values from the HR database. Manipulation and modelling occured in three programs: SPSS, Excel, and Stata. 
 
