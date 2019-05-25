@@ -57,12 +57,19 @@ Those foundational elements include sampling >> [Not So Standard Deviations 81](
 > Hilary Parker: Data scientists working in tech...are really quick to say "I need to spin up this infrastructure to do _this_"...what big data tool can solve this problem? Instead of does the confidence need to be this small? And there's a certain joy with building out the infrastructure.
 
 
+Characteristic | Generalist | Specialist
+--- | --- | ---
+academic background | Statistics, social science, physical science | Computer Science, Computational Statistics
+Venn diagram emphasis | subject matter, statistics | hacking
+Data science project | start-to-finish | exploration
+language | R | Python
+
 
 ### Specialists
 
 The specialist data scientist is a different creature. They tend to have a degree in Computer Science or Computational Statistics, often at the graduate level. In Drew Conway's Venn diagram, they tend to be very deep on the "hacking skills", with less emphasis on the statistics (as a discipline) or subject matter expertise.
 
-Their work seems to fall largely on the "modeling" part of the data science process. They work with tidy, pre-processed data, often as part of an automated data processing flow from collection through analysis and modeling, to communication (which might also included automated feedback to points earlier in the process).
+Their work seems to fall largely on the "exploration" phases, with a strong emphasis on the "modeling" part of the data science process. They work with tidy, pre-processed data, often as part of an automated data processing flow from collection through analysis and modeling, to communication (which might also included automated feedback to points earlier in the process).
 
 Because of their computer science backgrounds, these data scientists, in general, favour Python as their programming environment of choice. Python is a programming language first, to which data analytics packages (such as the [{pandas} data analysis package](https://pandas.pydata.org/)) has been added. 
 
