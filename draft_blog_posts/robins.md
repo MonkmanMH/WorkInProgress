@@ -66,7 +66,15 @@ Roger Peng and Hilary Parker touch on these differences in their podcast [Not So
 
 Hilary Parker adds another dimension to the typology: 
 
-> Data scientists working in tech...are really quick to say "I need to spin up this infrastructure to do _this_"... \[asking\] "What big data tool can solve this problem?" Instead of \["Does the confidence need to be this small?"\] And \[for specialists\] there's a certain joy with building out the infrastructure.
+> Data scientists working in tech...are really quick to say "I need to spin up this infrastructure to do _this_" \[They ask\] "What big data tool can deal with this problem?", rather than \[what a statistician might ask\] "Does the confidence interval really need to be this small for this application?" And \[for specialists\] there's a certain joy with building out the infrastructure.
+
+
+
+Kareem Carr goes further, and parses what I've described as a dichotomy into four separate categories:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Big data: Create huge datasets. Insights will be obvious!<br><br>Data science: Play with data. Visualize it. Insights will be obvious!<br><br>Machine learning: Feed data into cool algorithms. Insights will be obvious!<br><br>Statistics: The insights will never obvious.<a href="https://twitter.com/hashtag/epitwitter?src=hash&amp;ref_src=twsrc%5Etfw">#epitwitter</a> <a href="https://twitter.com/hashtag/statstwitter?src=hash&amp;ref_src=twsrc%5Etfw">#statstwitter</a></p>&mdash; 🔥Kareem Carr🔥 (@kareem_carr) <a href="https://twitter.com/kareem_carr/status/1132311323218501632?ref_src=twsrc%5Etfw">May 25, 2019</a></blockquote>
+
+If I am interpreting this correctly, in my typology the "big data" and "machine learning" are part of the specialist group, and "data science" and "statistics" are generalists.
 
 
 
@@ -75,16 +83,10 @@ Hilary Parker adds another dimension to the typology:
 
 Characteristic | Generalist | Specialist
 --- | --- | ---
-academic background | Statistics, social science, physical science | Computer Science, Computational Statistics
+academic background | Statistics, social science, physical science | Computer Science, Computer Engineering, Computational Statistics
 Venn diagram emphasis | subject matter, statistics | hacking
 Data science project | start-to-finish | exploration
 language | R | Python
-
-Kareem Carr goes further, and parses what I've described as a dichotomy into four separate categories:
-
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Big data: Create huge datasets. Insights will be obvious!<br><br>Data science: Play with data. Visualize it. Insights will be obvious!<br><br>Machine learning: Feed data into cool algorithms. Insights will be obvious!<br><br>Statistics: The insights will never obvious.<a href="https://twitter.com/hashtag/epitwitter?src=hash&amp;ref_src=twsrc%5Etfw">#epitwitter</a> <a href="https://twitter.com/hashtag/statstwitter?src=hash&amp;ref_src=twsrc%5Etfw">#statstwitter</a></p>&mdash; 🔥Kareem Carr🔥 (@kareem_carr) <a href="https://twitter.com/kareem_carr/status/1132311323218501632?ref_src=twsrc%5Etfw">May 25, 2019</a></blockquote>
-
-If I am interpreting this correctly, in my typology the "big data" and "machine learning" are part of the specialist group, and "data science" and "statistics" are generalists.
 
 
 
