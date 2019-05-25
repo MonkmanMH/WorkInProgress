@@ -50,7 +50,9 @@ And following this line of thinking, I have observed that generalist data scient
 
 R's foundational data structures are mathematical and statistical in nature: vectors, matricies, and data frames. As well, base R has a plethora of statistical functionality built in--for example, t tests, regression models, and statistical distributions.
 
-Those foundational elements include sampling >> NSSD 81
+Those foundational elements include sampling >> [Not So Standard Deviations 81](http://nssdeviations.com/81-getting-to-yes-with-data-analysis), starting at 25:00
+
+> Whenever I bring up the topic of sampling, minds are blown...the data science mindset is kind of like looking at the problems from two different angles...
 
 ### Specialists
 
