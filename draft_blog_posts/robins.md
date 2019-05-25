@@ -101,7 +101,7 @@ An example of our workflow can be shown in the example of an employee survey. Ou
 <img src="survey_workflow_1.png" 
     alt="survey workflow: past" width="600">
     
-[_source: Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)
+[_source: modified from Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)
 
 Data was extracted from the human resources database; we relied on database administrators from outside our organization to do this for us. This formed the survey frame, which was used in our survey software to administer the survey; the survey data then flowed into SPSS, where it was joined with demographic values from the HR database. Manipulation and modelling occured in three programs: SPSS, Excel, and Stata. 
 
@@ -111,6 +111,7 @@ Now it looks like this:
 
 <img src="survey_workflow_2.png" 
     alt="survey workflow: future" width="600">
+[_source: modified from Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)
 
 The data scientists in our organization can write (in R) code that pulls the extract from the database which is used for the survey frame. They deploy the survey to collect the data, and then use R to wrangle and model the survey data--work that was done in a variety of other tools. The data scientists have also written R code (using the [{xlsx} package](https://github.com/colearendt/xlsx)), and creates a variety of outputs including Excel, PDF, and (coming soon) web-based reports (using [Shiny](https://shiny.rstudio.com/)).
 
@@ -118,15 +119,24 @@ The data scientists in our organization can write (in R) code that pulls the ext
 
 ### Growing data science in a small data-centric organization
 
-The challenge:
+The challenge: growing generalist data science practice. The people in your organization are already busy working on data-centric analytic tasks, whether that's calculating growth rates, adjusting monthly data points for seasonality, or determining if there are differences between demographic groups in survey respondents in how they answered the questions.  
 
-* growing generalist data science practice. 
+By "growing data science practice" I mean adopting [Opinionated Analysis Development](https://peerj.com/preprints/3210/), making their work more effective and efficient through practices that are reproducible and auditable, accurate, and collaborative. R, and the surrounding elements of the R ecosystem, clearly support this direction.
 
-My experience: some are "Super User" (find Dr Aimee Gott's slides)
+My understanding of the sub-sets of generalists has been coloured by the presentation given by Aimee Gott at the EARL Conference in Seattle (2018-11-07). (You can find a [video of an earlier presentation at the European R Users Meeting (eRum), 2018-05-18](https://www.youtube.com/watch?v=0Y1jRwMBElc).)
 
+Super Users: 
 * self-directed learning based on problem-solving mindset, often driven by inate urge to find efficiencies
 
-Need to empower them, find Super Users in Training
+* need to empower them, find 
+
+Future Super Users -- "generally interested in R, people who want to get knowledge. Will take every course that's available.
+
+The Casual Users: the person who will happily do analysis and write scripts, but won't go further (eg workflow, functions, packages)
+
+* how do we interact with them? What gets tehm excited?
+
+The Copy, Paste, Tweak-er: I'm going to figure out which line of your code will change the colour. Main doers of every day analytics. Probably never going to get them to build an R package.
 
 
 _ELABORATE_
@@ -140,6 +150,11 @@ Two challenges:
 * fitting the specialists into an existing workflow
 
 _ELABORATE_
+
+
+### Generalists in large organizations
+
+And yes, they exist. How can they co-exist with specialist data scientists?
 
 
 ### It's not just the people
@@ -156,9 +171,10 @@ Leaders of data scientists need to be able to empower their teams
 A significant part of that leadership is being the person to [work through and around the Giant Hairball, and help the team overcome the gravity of the Hairball](https://github.com/bcgov/bcgov-rstats-public-presentations/blob/master/2018-11-07_EARL_Seattle/Overcoming_gravity.md)
 
 
+
 ### A biased view
 
-Of course, there is significant bias in the Euro- and North American-centric definition of what defines a "robin". In the same way that there is a [Japanese robin](https://en.wikipedia.org/wiki/Japanese_robin) and a [Siberian blue robin](https://en.wikipedia.org/wiki/Siberian_blue_robin) (below), my view of what defines a "data scientist" might also be too narrow.
+Of course, there is significant bias in the Euro- and North American-centric definition of what defines a "robin". (As I don my Captain's Hat.) In the same way that there is a [Japanese robin](https://en.wikipedia.org/wiki/Japanese_robin) and a [Siberian blue robin](https://en.wikipedia.org/wiki/Siberian_blue_robin) (below), my view of what defines a "data scientist" might also be too narrow.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Luscinia_cyane_-_Khao_Yai.jpg/1024px-Luscinia_cyane_-_Khao_Yai.jpg" alt="Siberian blue robin" width="600">
 (_Source: Wikipedia_)
