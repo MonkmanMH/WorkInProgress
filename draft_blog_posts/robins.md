@@ -50,9 +50,13 @@ And following this line of thinking, I have observed that generalist data scient
 
 R's foundational data structures are mathematical and statistical in nature: vectors, matricies, and data frames. As well, base R has a plethora of statistical functionality built in--for example, t tests, regression models, and statistical distributions.
 
-Those foundational elements include sampling >> [Not So Standard Deviations 81](http://nssdeviations.com/81-getting-to-yes-with-data-analysis), starting at 25:00
+Those foundational elements include sampling >> [Not So Standard Deviations 81](http://nssdeviations.com/81-getting-to-yes-with-data-analysis), starting at 25:00 through 30:00
 
-> Whenever I bring up the topic of sampling, minds are blown...the data science mindset is kind of like looking at the problems from two different angles...
+> Roger Peng: I find that whenever I bring up the topic of sampling, minds are blown...the data science mindset is kind of like looking at the problems from two different angles...the perspective is different. The data represents the truth, and we need to do all we can to use all of it. If I use all the data then I'm doing Big Data, but if I'm sampling then I'm just a Statistician.
+
+> Hilary Parker: Data scientists working in tech...are really quick to say "I need to spin up this infrastructure to do _this_"...what big data tool can solve this problem? Instead of does the confidence need to be this small? And there's a certain joy with building out the infrastructure.
+
+
 
 ### Specialists
 
@@ -86,6 +90,13 @@ Now it looks like this:
     alt="survey workflow: future" width="600">
 
 The data scientists in our organization can write (in R) code that pulls the extract from the database which is used for the survey frame. They deploy the survey to collect the data, and then use R to wrangle and model the survey data--work that was done in a variety of other tools. The data scientists have also written R code (using the [{xlsx} package](https://github.com/colearendt/xlsx)), and creates a variety of outputs including Excel, PDF, and (coming soon) web-based reports (using [Shiny](https://shiny.rstudio.com/)).
+
+
+Kareem Carr goes further, and parses what I've described as a dichotomy into four separate categories:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Big data: Create huge datasets. Insights will be obvious!<br><br>Data science: Play with data. Visualize it. Insights will be obvious!<br><br>Machine learning: Feed data into cool algorithms. Insights will be obvious!<br><br>Statistics: The insights will never obvious.<a href="https://twitter.com/hashtag/epitwitter?src=hash&amp;ref_src=twsrc%5Etfw">#epitwitter</a> <a href="https://twitter.com/hashtag/statstwitter?src=hash&amp;ref_src=twsrc%5Etfw">#statstwitter</a></p>&mdash; 🔥Kareem Carr🔥 (@kareem_carr) <a href="https://twitter.com/kareem_carr/status/1132311323218501632?ref_src=twsrc%5Etfw">May 25, 2019</a></blockquote>
+
+If I am interpreting this correctly, in my typology the "big data" and "machine learning" are part of the specialist group, and "data science" and "statistics" are generalists.
 
 
 ### Growing data science in a small data-centric organization
