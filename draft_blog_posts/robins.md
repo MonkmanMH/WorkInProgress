@@ -123,7 +123,7 @@ The challenge: growing generalist data science practice. The people in your orga
 
 By "growing data science practice" I mean adopting [Opinionated Analysis Development](https://peerj.com/preprints/3210/), making their work more effective and efficient through practices that are reproducible and auditable, accurate, and collaborative. R, and the surrounding elements of the R ecosystem, clearly support this direction.
 
-My understanding of the sub-sets of generalists has been coloured by the presentation given by Aimee Gott at the EARL Conference in Seattle (2018-11-07). (You can find a [video of an earlier presentation at the European R Users Meeting (eRum), 2018-05-18](https://www.youtube.com/watch?v=0Y1jRwMBElc).)
+My understanding of the sub-sets of generalists has been coloured by the presentation given by Aimée Gott at the EARL Conference in Seattle (2018-11-07). (You can find a [video of an earlier presentation she gave at the European R Users Meeting (eRum), 2018-05-18](https://www.youtube.com/watch?v=0Y1jRwMBElc), which included the same groups.)
 
 Super Users: 
 * self-directed learning based on problem-solving mindset, often driven by inate urge to find efficiencies
