@@ -44,7 +44,12 @@ The work of the generalist tends to follow the full sequence of a typical data s
 <img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png" 
     alt="the data science process" width="400">
     
-I would go further, and argue that data scientists can (and perhaps should!) be involved earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase.
+I would go further, and argue that data scientists can (and perhaps should!) be involved earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase. I am supported in this thinking by Stephanie Hicks and Roger Peng, whose recent paper ["Elements and Principles of Data Analysis"](https://arxiv.org/abs/1903.07639) (2019-03-18) includes the following definition of data science:
+
+> Data science is the science and design of (1) actively creating a question to investigate a hypothesis with data, (2) connecting that question with the collection of appropriate data and the application of appropriate methods, algorithms, computational tools
+or languages in a data analysis, and (3) communicating and making decisions based on
+new or already established knowledge derived from the data and data analysis.
+_(p.2)_
 
 And following this line of thinking, I have observed that generalist data scientists tend to favour R as their tool of choice. Roger Peng (a biostatistician) has said "The R programming language has become the de facto programming language for data science." R was developed first as a programming environment in which to do statistics, so many of the defaults and behaviours are optimized around how statisticians and subject-matter practitioners tend to think about their data analysis problem.
 
