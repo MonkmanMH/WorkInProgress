@@ -139,6 +139,8 @@ The Casual Users: the person who will happily do analysis and write scripts, but
 The Copy, Paste, Tweak-er: I'm going to figure out which line of your code will change the colour. Main doers of every day analytics. Probably never going to get them to build an R package.
 
 
+Liz Matthews, ["How to grow your own data scientists: a practical guide for the data-driven C-Suite"](https://www.hrzone.com/talent/development/how-to-grow-your-own-data-scientists-a-practical-guide-for-the-data-driven-c#.XO0MXbwbtig.twitter), hrzone.com, 2019-05-28
+
 _ELABORATE_
 
 ### Plugging data science into a large data-centric organization
