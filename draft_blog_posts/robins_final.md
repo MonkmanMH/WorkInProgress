@@ -1,14 +1,16 @@
 # Same name, different bird
 
-What do we mean when we see a bird and say that it's a robin? A simple description would be a small brownish bird with a red breast. But that's a superficial description, and when we say "robin" what we mean depends on your location; you don't have to look very closely to see that the European and American robins are fundamentally different. The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
+What do we mean when we see a bird and say that it's a robin? A simple description would be a small brownish bird with a red breast. But that's a superficial description, and when we say "robin" what we mean depends on your location; you don't have to look very closely to see that the European and American robins are fundamentally different. 
+
+The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
     alt="European robin" width="600">
-(_Source: Wikipedia_)
+(_Source: [Wikipedia](https://en.wikipedia.org/wiki/European_robin)_)
 
 
 The American robin (_Turdus migratorius_) is a thrush, and eats earthworms and other invertebrates, along with fruits and berries.
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Turdus-migratorius-002.jpg/1280px-Turdus-migratorius-002.jpg" alt="American robin" width="600">
-(_Source: Wikipedia_)
+(_Source: [Wikipedia](https://en.wikipedia.org/wiki/American_robin)_)
 
 (The naming of the American robin is a classic case of ["The Captain's Hat"](https://www.youtube.com/watch?v=dOBhf8f7cXM); European explorers and colonists arriving in other parts of the world and naming things in a way that reflected their existing knowledge and preconceptions.)
 
@@ -34,24 +36,24 @@ Generalists can be found, as JD Long has noted, in smaller organizations.
 
 The academic backgrounds of data scientists tend to be [Statistics](https://sharla.party/) (as a discipline), or they are people with a quantitative bent from (for want of a better term) subject matter disciplines, such as [Astronomy](https://juliasilge.com/resume/), [Economics](https://medium.com/@metjush/4-reasons-why-economists-make-great-data-scientists-and-why-no-one-tells-them-524478845ec2), [Geography](http://personal.tcu.edu/kylewalker/projects.html), and [Psychology](https://psyr.org/).
 
-This tends to position them smack dab in the middle of [Drew Conway's famous Venn diagram](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram):
+This tends to position them smack dab in the middle of [Drew Conway's famous _Data Science Venn diagram_](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram):
 <img src="https://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w">
 
-They bring subject matter expertise, foundational statistical knowledge, and some pragmatic programming skills.
+These generalist data scientists bring subject matter expertise, foundational statistical knowledge, and some pragmatic programming skills.
 
 The work of the generalist tends to follow the full sequence of a typical data science project as envisioned by Grolemund and Wickham in [_R for Data Science_](https://r4ds.had.co.nz/index.html):
 
 <img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png" 
-    alt="the data science process" width="400">
+    alt="the data science process" width="600">
     
-I would go further, and argue that data scientists can (and perhaps should!) be involved earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase. I am supported in this thinking by Stephanie Hicks and Roger Peng, whose recent paper ["Elements and Principles of Data Analysis"](https://arxiv.org/abs/1903.07639) (2019-03-18) includes the following definition of data science:
+I would go further, and argue that data scientists can (and perhaps should!) be involved earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase. I am supported in this way of thinking by Stephanie Hicks and Roger Peng, whose recent paper ["Elements and Principles of Data Analysis"](https://arxiv.org/abs/1903.07639) (2019-03-18) includes the following definition of data science:
 
 > Data science is the science and design of (1) actively creating a question to investigate a hypothesis with data, (2) connecting that question with the collection of appropriate data and the application of appropriate methods, algorithms, computational tools
 or languages in a data analysis, and (3) communicating and making decisions based on
 new or already established knowledge derived from the data and data analysis.
 _(p.2)_
 
-And following this line of thinking, I have observed that generalist data scientists tend to favour R as their tool of choice. Roger Peng (a biostatistician) has said "The R programming language has become the de facto programming language for data science." R was developed first as a programming environment in which to do statistics, so many of the defaults and behaviours are optimized around how statisticians and subject-matter practitioners tend to think about their data analysis problem.
+And following this line of thinking, I have observed that generalist data scientists tend to favour [R](https://cran.r-project.org/) as their tool of choice. Roger Peng (a biostatistician) has said "The R programming language has become the de facto programming language for data science." R was developed first as a programming environment in which to do statistics, so many of the defaults and behaviours are optimized around how statisticians and subject-matter practitioners tend to think about their data analysis problem.
 
 R's foundational data structures are mathematical and statistical in nature: vectors, matricies, and data frames. As well, base R has a plethora of statistical functionality built in--for example, t tests, regression models, and statistical distributions.
 
@@ -71,7 +73,7 @@ Roger Peng and Hilary Parker touch on these differences in their podcast [Not So
 
 Hilary Parker adds another dimension to the typology: 
 
-> Data scientists working in tech...are really quick to say "I need to spin up this infrastructure to do _this_" \[They ask\] "What big data tool can deal with this problem?", rather than \[what a statistician might ask\] "Does the confidence interval really need to be this small for this application?" And \[for specialists\] there's a certain joy with building out the infrastructure.
+> Data scientists working in tech...are really quick to say "I need to spin up this infrastructure to do _this_"; (they ask) "What big data tool can deal with this problem?", rather than (what a statistician might ask) "Does the confidence interval really need to be this small for this application?" And (for specialists) there's a certain joy with building out the infrastructure.
 
 
 
@@ -118,7 +120,7 @@ Now it looks like this:
     alt="survey workflow: future" width="600">
 [_source: modified from Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)
 
-The data scientists in our organization can write (in R) code that pulls the extract from the database which is used for the survey frame. They deploy the survey to collect the data, and then use R to wrangle and model the survey data--work that was done in a variety of other tools. The data scientists have also written R code (using the [{xlsx} package](https://github.com/colearendt/xlsx)), and creates a variety of outputs including Excel, PDF, and (coming soon) web-based reports (using [Shiny](https://shiny.rstudio.com/)).
+The data scientists in our organization can write (in R) code that pulls the extract from the database which is used for the survey frame. They deploy the survey to collect the data, and then use R to wrangle and model the survey data--work that was done in a variety of other tools. The data scientists have also written R code, and creates a variety of outputs including Excel (using the [{xlsx} package](https://github.com/colearendt/xlsx)), PDF, and (coming soon) web-based reports (using [Shiny](https://shiny.rstudio.com/)).
 
 In a large organization, the pin factory efficiencies would have led to specialization at every step of this workflow, but in our small shop, it's extremely beneficial, as JD Long noted, to reduce the transaction costs.
 
@@ -127,7 +129,7 @@ It's certainly working for us.
 
 ### A biased view
 
-Of course, there is significant bias in the Euro- and North American-centric definition of what defines a "robin". In the same way that there is a [Japanese robin](https://en.wikipedia.org/wiki/Japanese_robin) and a [Siberian blue robin](https://en.wikipedia.org/wiki/Siberian_blue_robin) (below), my view of what defines a "data scientist" might also be too narrow.
+There is significant bias in the Euro- and North American-centric definition of what defines a "robin". In the same way that there is a [Japanese robin](https://en.wikipedia.org/wiki/Japanese_robin) and a [Siberian blue robin](https://en.wikipedia.org/wiki/Siberian_blue_robin) (below), my view of what defines a "data scientist" might also be too narrow.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Luscinia_cyane_-_Khao_Yai.jpg/1024px-Luscinia_cyane_-_Khao_Yai.jpg" alt="Siberian blue robin" width="600">
 (_Source: Wikipedia_)
