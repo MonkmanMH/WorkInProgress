@@ -4,12 +4,12 @@ What do we mean when we see a bird and say that it's a robin? A simple descripti
 
 The European robin (_Erithacus rubecula_) is an Old World flycatcher, catching insects on the wing. 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/1280px-Erithacus_rubecula_with_cocked_head.jpg" 
-    alt="European robin" width="600">
+    alt="European robin" width="600"><p>
 (_Source: [Wikipedia](https://en.wikipedia.org/wiki/European_robin)_)
 
 
 The American robin (_Turdus migratorius_) is a thrush, and eats earthworms and other invertebrates, along with fruits and berries.
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Turdus-migratorius-002.jpg/1280px-Turdus-migratorius-002.jpg" alt="American robin" width="600">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Turdus-migratorius-002.jpg/1280px-Turdus-migratorius-002.jpg" alt="American robin" width="600"><p>
 (_Source: [Wikipedia](https://en.wikipedia.org/wiki/American_robin)_)
 
 (The naming of the American robin is a classic case of ["The Captain's Hat"](https://www.youtube.com/watch?v=dOBhf8f7cXM); European explorers and colonists arriving in other parts of the world and naming things in a way that reflected their existing knowledge and preconceptions.)
@@ -37,14 +37,14 @@ Generalists can be found, as JD Long has noted, in smaller organizations.
 The academic backgrounds of data scientists tend to be [Statistics](https://sharla.party/) (as a discipline), or they are people with a quantitative bent from (for want of a better term) subject matter disciplines, such as [Astronomy](https://juliasilge.com/resume/), [Economics](https://medium.com/@metjush/4-reasons-why-economists-make-great-data-scientists-and-why-no-one-tells-them-524478845ec2), [Geography](http://personal.tcu.edu/kylewalker/projects.html), and [Psychology](https://psyr.org/).
 
 This tends to position them smack dab in the middle of [Drew Conway's famous _Data Science Venn diagram_](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram):
-<img src="https://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w">
+<img src="https://static1.squarespace.com/static/5150aec6e4b0e340ec52710a/t/51525c33e4b0b3e0d10f77ab/1364352052403/Data_Science_VD.png?format=750w"><p>
 
 These generalist data scientists bring subject matter expertise, foundational statistical knowledge, and some pragmatic programming skills.
 
 The work of the generalist tends to follow the full sequence of a typical data science project as envisioned by Grolemund and Wickham in [_R for Data Science_](https://r4ds.had.co.nz/index.html):
 
 <img src="https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png" 
-    alt="the data science process" width="600">
+    alt="the data science process" width="600"><p>
     
 I would go further, and argue that data scientists can (and perhaps should!) be involved earlier in the process, providing insights and expertise to the framing of the research question and the data collection phase. I am supported in this way of thinking by Stephanie Hicks and Roger Peng, whose recent paper ["Elements and Principles of Data Analysis"](https://arxiv.org/abs/1903.07639) (2019-03-18) includes the following definition of data science:
 
@@ -101,12 +101,12 @@ language | R | Python
 
 ### The view from a small organization
 
-I work in a small data analytics organization, and lead a crack team of data scientists. Like myself, they fit the "generalist" typology--although computer science courses have been part of our training, we don't hold degrees in that area.
+I work in a small data analytics organization, and lead a crack team of data scientists. We all fit the "generalist" typology--although computer science courses have been part of our training, we don't hold degrees in that area.
 
-An example of our workflow can be shown in the example of an employee survey. Our process used to look like this:
+An example of our workflow can be shown in the example of an employee survey that we conduct. Our process used to look like this:
 
 <img src="survey_workflow_1.png" 
-    alt="survey workflow: past" width="600">
+    alt="survey workflow: past" width="600"><p>
     
 [_source: modified from Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)
 
@@ -118,20 +118,19 @@ Now it looks like this:
 
 <img src="survey_workflow_2.png" 
     alt="survey workflow: future" width="600">
-[_source: modified from Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)
+[_source: modified from Andy Teucher and Stephanie Hazlitt_](https://github.com/bcgov/bcgov-rstats-public-presentations/tree/master/2018-11-05_UBC_GEM580)<p>
 
 The data scientists in our organization can write (in R) code that pulls the extract from the database which is used for the survey frame. They deploy the survey to collect the data, and then use R to wrangle and model the survey data--work that was done in a variety of other tools. The data scientists have also written R code, and creates a variety of outputs including Excel (using the [{xlsx} package](https://github.com/colearendt/xlsx)), PDF, and (coming soon) web-based reports (using [Shiny](https://shiny.rstudio.com/)).
 
-In a large organization, the pin factory efficiencies would have led to specialization at every step of this workflow, but in our small shop, it's extremely beneficial, as JD Long noted, to reduce the transaction costs.
+In a large organization, the pin factory efficiencies would have led to specialization at every step of this workflow, but in our small shop, it's extremely beneficial, as JD Long noted, to reduce the transaction costs. It's certainly working for us; reducing our reliance and interactions with specialized IT resources (i.e. our transaction costs) has improved our efficiencies.
 
-It's certainly working for us.
 
 
 ### A biased view
 
-There is significant bias in the Euro- and North American-centric definition of what defines a "robin". In the same way that there is a [Japanese robin](https://en.wikipedia.org/wiki/Japanese_robin) and a [Siberian blue robin](https://en.wikipedia.org/wiki/Siberian_blue_robin) (below), my view of what defines a "data scientist" might also be too narrow.
+There is significant bias in the Euro- and North American-centric definition of what defines a "robin". But my view of what defines a "data scientist" might also be too narrow, in the same way that there is a [Japanese robin](https://en.wikipedia.org/wiki/Japanese_robin) and a [Siberian blue robin](https://en.wikipedia.org/wiki/Siberian_blue_robin) (below).
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Luscinia_cyane_-_Khao_Yai.jpg/1024px-Luscinia_cyane_-_Khao_Yai.jpg" alt="Siberian blue robin" width="600">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Luscinia_cyane_-_Khao_Yai.jpg/1024px-Luscinia_cyane_-_Khao_Yai.jpg" alt="Siberian blue robin" width="600"><p>
 (_Source: Wikipedia_)
 
 
