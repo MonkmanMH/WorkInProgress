@@ -2,7 +2,7 @@
 title: "Xaringan slide template"
 subtitle: "eigengrau theme"
 author: "Martin Monkman"
-date: "2018/07/05"
+date: "2019/07/01"
 output:
   xaringan::moon_reader:
     css: ["default", "css_files/eigengrau.css", "css_files/eigengrau-fonts.css"]    
@@ -70,6 +70,19 @@ some text
 - and a bullet
 
 code: none required; this is the default
+
+
+---
+
+# Two-column format
+
+## split your text into two columns
+
+`.pull-left[]` and `.pull-right[]` to split your text into two columns.
+
+- see the example at 
+
+https://bookdown.org/yihui/rmarkdown/xaringan-format.html#content-classes
 
 
 ---
