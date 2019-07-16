@@ -1,0 +1,83 @@
+---
+title: "add rows"
+output: html_notebook
+---
+
+Use the {tibble} package to add a total row to a table.
+
+```{r}
+
+library(dplyr)
+library(tibble)
+
+library(gapminder)
+
+```
+
+use the {gapminder} package 
+
+https://github.com/jennybc/gapminder
+
+
+```{r}
+
+aggregate(lifeExp ~ continent, gapminder, median)
+
+```
+
+the {dplyr} way:
+
+```{r}
+
+gapminder %>%
+  group_by(continent) %>%
+  summarize(avg.lifeExp = median(lifeExp))
+
+```
+
+
+
+```{r}
+
+gapminder %>%
+  filter(year == 2007) 
+
+gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  tally()
+
+gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  summarise(total.pop = sum(pop))
+
+gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  summarise(total.pop = sum(as.numeric(pop)))
+
+
+```
+
+
+now add a total world population row
+
+```{r}
+
+gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  summarise(total.pop = sum(as.numeric(pop))) %>%
+  janitor::adorn_totals()
+
+
+gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  summarise(total.pop = sum(as.numeric(pop))) %>%
+  add_row(continent = "World total")
+
+
+```
+
