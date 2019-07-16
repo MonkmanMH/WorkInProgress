@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 
-.html
+*.html
 
 .bz2
 .zip

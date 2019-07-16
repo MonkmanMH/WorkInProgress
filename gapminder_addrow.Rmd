@@ -51,7 +51,7 @@ gapminder %>%
   filter(year == 2007) %>%
   group_by(continent) %>%
   summarise(total.pop = sum(pop))
-
+# need to specify `pop` as.numeric! the sum causes "integer overflow"
 gapminder %>%
   filter(year == 2007) %>%
   group_by(continent) %>%
@@ -65,18 +65,54 @@ now add a total world population row
 
 ```{r}
 
+# {janitor} package
 gapminder %>%
   filter(year == 2007) %>%
   group_by(continent) %>%
   summarise(total.pop = sum(as.numeric(pop))) %>%
   janitor::adorn_totals()
 
-
+# {tibble::add_row()}
 gapminder %>%
   filter(year == 2007) %>%
   group_by(continent) %>%
   summarise(total.pop = sum(as.numeric(pop))) %>%
   add_row(continent = "World total")
+
+
+# -- breaks
+gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  summarise(total.pop = sum(as.numeric(pop))) %>%
+  add_row(continent = "World total",
+          total.pop = sum(total.pop))
+
+
+
+###
+
+world.total <- gapminder %>%
+  filter(year == 2007) %>%
+  summarise(world.total = sum(as.numeric(pop))) %>%
+  pull(world.total)
+
+gapminder %>%
+  group_by(continent) %>%
+  summarise(total.pop = sum(as.numeric(pop))) %>%
+  add_row(continent = "World total",
+          total.pop = world.total)
+
+
+###
+
+gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  summarise(total.pop = sum(as.numeric(pop))) %>%
+  add_row(continent = "World total",
+          total.pop = sum(total.pop))
+
 
 
 ```
