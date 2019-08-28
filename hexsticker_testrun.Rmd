@@ -1,0 +1,51 @@
+---
+title: "BIDA302 hexsticker"
+output: html_notebook
+---
+
+
+```{r}
+
+# 
+
+library(hexSticker)
+
+```
+
+https://github.com/GuangchuangYu/hexSticker 
+
+```{r}
+sticker(bwplot, package="hexSticker", p_size=8, s_x=1.05, s_y=.75, s_width=2, s_height=1.5,
+        h_fill="#f9690e", h_color="#f39c12", filename="inst/figures/lattice.png")
+```
+
+
+UVic logo
+https://www.uvic.ca/brand/look-feel/logo/index.php 
+
+
+UVic colour
+https://www.uvic.ca/brand/look-feel/colour/palette/index.php
+
+
+```{r}
+
+imgurl <- "uvic_logo-vert.jpg"
+
+library(showtext)
+## Loading Google fonts (http://www.google.com/fonts)
+font_add_google("Raleway", "raleway")
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
+
+BIDA302_hex <- 
+  sticker(imgurl, package="BIDA302", 
+          p_size=12, s_x=1, s_y=0.75, s_width=.6,
+        h_fill="#005493", h_color="#F5AA1C",
+        p_family = "raleway")
+
+BIDA302_hex
+
+```
+
