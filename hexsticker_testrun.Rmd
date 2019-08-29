@@ -14,12 +14,6 @@ library(hexSticker)
 
 https://github.com/GuangchuangYu/hexSticker 
 
-```{r}
-sticker(bwplot, package="hexSticker", p_size=8, s_x=1.05, s_y=.75, s_width=2, s_height=1.5,
-        h_fill="#f9690e", h_color="#f39c12", filename="inst/figures/lattice.png")
-```
-
-
 UVic logo
 https://www.uvic.ca/brand/look-feel/logo/index.php 
 
@@ -28,24 +22,165 @@ UVic colour
 https://www.uvic.ca/brand/look-feel/colour/palette/index.php
 
 
-```{r}
+## fonts & colours
 
-imgurl <- "uvic_logo-vert.jpg"
+```{r}
 
 library(showtext)
 ## Loading Google fonts (http://www.google.com/fonts)
 font_add_google("Raleway", "raleway")
+font_add_google("Poiret One", "poiret")
+
+## loading local font 
+font_add(family = "broadway", regular = "BROADW.TTF")
+
+font_add("trebuchet",
+         regular="C:\\Windows\\Fonts\\trebuc.ttf")
+
+font_add("gill",
+         regular="C:\\Windows\\Fonts\\GILSANUB.TTF")
+
+
+
 ## Automatically use showtext to render text for future devices
 showtext_auto()
 
 
+```
+
+
+### colours
+
+
+```{r}
+
+uvic_blue <- "#005493"
+uvic_yellow <- "#F5AA1C"
+uvic_red <- "#C63527"
+uvic_blue_dark <- "#002754"
+
+```
+
+
+
+
+## trials
+
+```{r}
+
+
+imgurl <- "uviclogo.jpg"
+
 BIDA302_hex <- 
   sticker(imgurl, package="BIDA302", 
-          p_size=12, s_x=1, s_y=0.75, s_width=.6,
-        h_fill="#005493", h_color="#F5AA1C",
+          p_size=14, s_x=1, s_y=0.75, s_width=.6,
+        h_fill=uvic_blue, h_color=uvic_yellow,
         p_family = "raleway")
 
 BIDA302_hex
 
 ```
 
+
+
+```{r}
+
+imgurl <- "uvic_logo-vert.jpg"
+
+library(showtext)
+## loading local font 
+font_add(family = "broadway", regular = "BROADW.TTF")
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
+
+BIDA302_hex <- 
+  sticker(imgurl, package="BIDA302", 
+          p_size=14, 
+          s_x=1, s_y=0.6, s_width=.7,
+        h_fill=uvic_blue, h_color=uvic_yellow,
+        p_family = "broadway")
+
+BIDA302_hex
+
+```
+
+
+
+```{r}
+
+imgurl <- "UVicMark-blue.jpg"
+
+library(showtext)
+## loading local font 
+#font_add(family = "broadway", regular = "BROADW.TTF")
+
+font_add("verdana",
+         regular="C:\\Windows\\Fonts\\verdana.ttf",
+         bold="C:\\Windows\\Fonts\\verdanab.ttf",
+         italic="C:\\Windows\\Fonts\\verdanai.ttf")
+
+
+## Automatically use showtext to render text for future devices
+showtext_auto()
+
+
+BIDA302_hex <- 
+  sticker(imgurl, package="BIDA302", 
+          p_size=14, 
+          s_x=1, s_y=0.75, s_width=.6,
+        h_fill=uvic_blue, h_color=uvic_yellow,
+        p_family = "verdana")
+
+BIDA302_hex
+
+```
+
+
+
+
+```{r}
+
+imgurl <- "Martlet-yellow.jpg"
+
+library(showtext)
+## loading local font 
+#font_add(family = "broadway", regular = "BROADW.TTF")
+
+font_add("trebuchet",
+         regular="C:\\Windows\\Fonts\\trebuc.ttf")
+
+font_add("gill",
+         regular="C:\\Windows\\Fonts\\GILSANUB.TTF")
+
+
+BIDA302_hex <- 
+  sticker(imgurl, package="BIDA302", 
+          p_size=14, p_color = uvic_yellow,
+          s_x=1, s_y=0.6, s_width=.4,
+        h_fill=uvic_blue_dark, h_color=uvic_yellow,
+        p_family = "gill")
+
+BIDA302_hex
+
+
+```
+
+
+
+```{r}
+
+imgurl <- "Martlet-yellow.jpg"
+
+
+BIDA302_hex <- 
+  sticker(imgurl, package="BIDA302", 
+          p_size=16, p_color = uvic_yellow,
+          s_x=1, s_y=0.6, s_width=.4,
+        h_fill= uvic_blue_dark, h_color=uvic_yellow,
+        p_family = "poiret")
+
+BIDA302_hex
+
+
+```
