@@ -1,0 +1,44 @@
+---
+title: "Gender Wage Gap"
+author: "Martin Monkman"
+date: "09/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Conference Board of Canada
+
+https://www.conferenceboard.ca/(X(1)S(bqlf3koxwu3q531m24yvta30))/hcp/provincial/society/gender-gap.aspx?AspxAutoDetectCookieSupport=1
+
+
+## OECD
+
+[Gender wage gap](https://data.oecd.org/earnwage/gender-wage-gap.htm)
+
+
+## Statistics Canada
+
+
+The Daily, 2019-10-07
+[Study: The gender wage gap in Canada: 1998 to 2018](https://www150.statcan.gc.ca/n1/daily-quotidien/191007/dq191007a-eng.htm?CMP=mstatcan)
+
+
+- full report https://www150.statcan.gc.ca/n1/pub/75-004-m/75-004-m2019004-eng.htm
+
+
+_Women and Paid Work_ (report, 2017-03-08) https://www150.statcan.gc.ca/n1/pub/89-503-x/2015001/article/14694-eng.htm
+
+
+[Gender, Diversity and Inclusion Statistics](https://www.statcan.gc.ca/eng/topics-start/gender_diversity_and_inclusion)
+
+
+### data
+
+[Average and median gender pay ratio in annual wages, salaries and commissions](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410032401&pickMembers%5B0%5D=1.13)
+
+
+
+-30-
