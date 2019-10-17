@@ -30,6 +30,7 @@ library(showtext)
 ## Loading Google fonts (http://www.google.com/fonts)
 font_add_google("Raleway", "raleway")
 font_add_google("Poiret One", "poiret")
+font_add_google("Comfortaa", "comfortaa")
 
 ## loading local font 
 font_add(family = "broadway", regular = "BROADW.TTF")
@@ -179,6 +180,25 @@ BIDA302_hex <-
           s_x=1, s_y=0.6, s_width=.4,
         h_fill= uvic_blue_dark, h_color=uvic_yellow,
         p_family = "poiret")
+
+BIDA302_hex
+
+
+```
+
+
+
+```{r}
+
+imgurl <- "Martlet-yellow.jpg"
+
+
+BIDA302_hex <- 
+  sticker(imgurl, package="BIDA302", 
+          p_size=16, p_color = uvic_yellow,
+          s_x=1, s_y=0.6, s_width=.4,
+        h_fill= uvic_blue_dark, h_color=uvic_yellow,
+        p_family = "comfortaa")
 
 BIDA302_hex
 
