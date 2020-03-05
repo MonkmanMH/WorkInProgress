@@ -1,5 +1,47 @@
 # Things you might want to change
 
+.First <- function() {
+  # set library path
+  .libPaths("C:/RPackages")
+  # load packages
+  # library(ggplot2)
+  # library(Lahman)
+  # msg upon completion
+  cat("\nTEST - Successfully loaded Martin's Rprofile.site with libPaths set to C:/RPackages at", date(), "\n", "\n",
+  # https://www.rostrum.blog/2019/01/04/rprofile-motivate/, plus some from inspirobot.me  (above the #)
+       sample(x = (c("ONLY WHEN YOU SEE THE FULL POTENTIAL OF QUESTIONS, WILL YOU MEET QUESTIONS",
+                     "ALWAYS RESIST YOUR BRAIN",
+                     "INNOVATION: IT BEGINS WITH YOU",
+                     "GET FAMOUS",
+                     "JUST BECAUSE YOU'RE ABLE TO FEEL, DOESN'T NECESSARILY MEAN THAT YOU'RE NOT SPECTACULAR",
+                     "EACH DAY IS ANOTHER CHANCE TO BE DREADFULLY DYSFUNCTIONAL",
+                     "WHERE THE IMPOSSIBLE ENDS, POLICIES BEGIN",
+                     "INSPIRATION IS MIND-ALTERING. CREATION IS REVOLUTIONARY.",
+                     "CARE ABOUT COMMON SENSE",
+                     #
+                     "DON'T PANIC",
+                     "Do the thing! Yeah!",
+                     "Generic motivational quote!"
+                     )
+                   ),
+              size = 1        
+              ),
+    "\n"
+    )        
+  }
+ 
+
+## .Last() run at the end of the session
+
+.Last <- function() {
+  # save command history here?
+  cat("\nGoodbye at ", date(), 
+  "\n")      
+  }
+#
+
+options("bcgovr.coc.email" = "martin.monkman@gov.bc.ca")
+
 # options(papersize="a4")
 # options(editor="notepad")
 # options(pager="internal")
@@ -21,20 +63,3 @@
 #  if (interactive()) 
 #    fortunes::fortune()
 
-  
-  Sys.setenv(PATH = paste("c:/PGMS/ImageMagick-7.0.5-5/bin",
-                          Sys.getenv("PATH"), sep = ";"))
-  
-
-  .libPaths("C:/PGMS/RLibrary")
-  
-  .First <- function() {
-    cat("\nWelcome to Martin's floobR environment at", date(), "\n")
-  }
-  
-  .Last <- function() {
-    cat("\nGood show, good show, cheerio, cheerio! 
-        \nThe time is now", date(), "\n")
-  }
-  
-  
