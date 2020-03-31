@@ -1,0 +1,22 @@
+---
+title: "Fun with exponents"
+output: html_notebook
+---
+
+
+```{r}
+
+expo_gro <- function(n, x = 1){
+  ((1 + (1 / n)) ^ n) / x
+}
+
+```
+
+
+```{r}
+expo_gro(100000, 1)
+
+
+expo_gro(100000, 3)
+```
+
