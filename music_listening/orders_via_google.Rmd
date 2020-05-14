@@ -1,0 +1,35 @@
+---
+title: "shipping times"
+output: html_notebook
+---
+
+Pulling data from a google sheet, and calculating average shipping time by origin
+
+```{r}
+library(dplyr)
+library(googlesheets4)
+
+# run `gs4_auth()` to set google authorization
+# - see https://googlesheets4.tidyverse.org/reference/gs4_auth.html for details
+
+```
+
+
+```{r}
+
+df_orders <- read_sheet("https://docs.google.com/spreadsheets/d/1dm8SdtAdMm27a-zAainTmWAa4PY5lHc3LmNLAXyNB0A/edit?usp=sharing")
+
+df_orders
+
+```
+
+
+```{r}
+
+df_orders %>% 
+  filter(date_arrived >= "2019-12-12") %>% 
+  group_by(origin) %>% 
+  summarise(duration = mean(elapsed))
+
+```
+
