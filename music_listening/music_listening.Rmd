@@ -31,7 +31,7 @@ library(RcppRoll)
 
 # read from google sheets
 
-df_playlist <- read_sheet("https://docs.google.com/spreadsheets/d/1ikmr00SgTuC-iGjVNZMD8ClCgATz98KCAQvR2U5baIw/edit#gid=1036964301")
+df_playlist <- read_sheet("https://docs.google.com/spreadsheets/d/1kHBEMFEDwyszldNbNvD2A6Pt8KYoUACDZZ0usWvrruA/edit?usp=sharing")
 
 
 df_playlist
@@ -43,7 +43,7 @@ df_playlist
 ```{r}
 
 df_playlist_trim <- df_playlist %>% 
-  select(index, 
+  select("index" = (starts_with("index:")), 
          year, month, day,
          date_of_acquisition,
          format, disc_num,
@@ -62,7 +62,7 @@ df_play_summary <- df_playlist_trim %>%
   tally()
 
 df_play_summary <- df_play_summary %>%
-  mutate(roll_avg = roll_mean(x = n, n = 7, fill = NA))
+  mutate(roll_avg = roll_mean(x = n, n = 14, fill = NA))
 
 df_play_summary
 
@@ -72,7 +72,7 @@ df_play_summary
 
 ggplot(df_play_summary, aes(x = play_date, y = roll_avg)) +
   geom_line() +
-  geom_smooth()
+  geom_smooth(span = 0.25)
 
 
 ```
