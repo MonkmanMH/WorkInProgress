@@ -1,0 +1,66 @@
+---
+title: "creating fixed-width files"
+output: html_notebook
+---
+
+
+Star Wars characters: https://rdrr.io/cran/dplyr/man/starwars.html
+
+```{r}
+
+starwars <- dplyr::starwars
+
+
+starwars %>% 
+  filter(films == "A New Hope")
+
+lapply(starwars$films, `[[`, 1)
+
+
+
+```
+
+
+```{r}
+detect_string <- function(your_list, vector_strings){
+  lapply(your_list, function(x) {
+    if(TRUE %in% str_detect(x, paste(vector_strings, collapse = "|"))){
+      TRUE
+    } else {FALSE}
+  })
+}
+
+detect_string(starwars$films, "A New Hope")   
+
+newhope <- starwars %>% 
+  filter(detect_string(starwars$films, "A New Hope") == TRUE) 
+
+newhope <- newhope %>% 
+  select(name, height, mass, homeworld, species) 
+
+newhope
+
+write_csv(newhope, "newhope.csv")
+
+```
+
+
+
+```{r}
+iris
+
+gdata::write.fwf(iris, file = "iris.txt", 
+                 width = (c(
+                   3,  # Sepal.Length
+                   3,   # Sepal.Width
+                   3,   # Petal.Length
+                   3,   # Petal.Width
+                   10   # Species
+                   ))
+                 )
+
+
+```
+
+
+
