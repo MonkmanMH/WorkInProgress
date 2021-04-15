@@ -1,0 +1,90 @@
+---
+title:, "Census, Costs"
+output:, html_notebook
+---
+
+
+```{r, setup}
+library(tidyverse)
+```
+
+
+
+Program(s), and, Internal, Services, 2015-16, Main, Estimates, 2015-16, Planned, Spending, 2016-17, Planned, Spending, 2017-18, Planned, Spending, 2015-16, Total, Authorities, Available, for, Use, 2015-16, Actual, Spending, (authorities, used), 2014-15, Actual, Spending, (authorities, used), 2013-14, Actual, Spending, (authorities, used), Economic, and, Environmental, Statistics
+127,982,162, 127,982,162, 128,535,138, 128,966,864
+129,904,043
+130,488,036, 132,627,053, 130,781,314, Socio-economic, Statistics, 94,887,730, 94,887,730, 100,763,339, 98,938,776
+101,692,699
+101,784,521, 100,399,795, 103,547,956, Censuses, 153,382,820, 153,382,820, 374,123,155, 53,228,283
+143,077,849
+143,002,356, 69,835,205, 57,036,722, Statistical, Infrastructure, 105,110,975, 105,110,975, 97,950,720, 96,525,394
+108,827,938
+87,473,605, 116,399,563, 135,719,900, Subtotal, 481,363,687, 481,363,687, 701,372,352, 377,659,317
+483,502,529
+462,748,518, 419,261,616, 427,085,892, Cost-recovered, Statistical, Services, 112,060,852, 112,060,852, 112,025,384, 112,025,384
+112,025,384
+96,359,919, 76,333,208, 80,001,693, Subtotal, 112,060,852, 112,060,852, 112,025,384, 112,025,384
+112,025,384
+96,359,919, 76,333,208, 80,001,693
+Internal, Services, 51,666,281, 51,666,281, 58,086,277, 58,485,569
+62,163,757
+62,786,663, 55,940,845, 56,705,219, Total, Gross, Expenditures, 645,090,820, 645,090,820, 871,484,013, 548,170,270
+657,691,670
+621,895,100, 551,535,669, 563,792,804, Respendable, Revenue, -120,000,000, -120,000,000, -120,000,000, -120,000,000
+-120,000,000
+-104,334,535, -84,333,208, -92,281,029
+Total, Net, Expenditures, 525,090,820, 525,090,820, 751,484,013, 428,170,270
+537,691,670
+517,560,565, 467,202,461, 471,511,775
+
+---
+
+
+```{r}
+statcan_budget <- tribble(
+~"Program(s) and Internal Services", ~"2015-16 Main Estimates", ~"2015-16 Planned Spending", ~"2016-17 Planned Spending", ~"2017-18 Planned Spending", ~"2015-16 Total Authorities Available for Use", ~"2015-16 Actual Spending (authorities used)", ~"2014-15 Actual Spending (authorities used)", ~"2013-14 Actual Spending (authorities used)",
+"Economic and Environmental Statistics",
+127982162, 127982162, 128535138, 128966864, 129904043, 130488036, 132627053, 130781314, 
+"Socio-economic Statistics", 94887730, 94887730, 100763339, 98938776, 101692699, 101784521, 100399795, 103547956, 
+"Censuses", 153382820, 153382820, 374123155, 53228283, 143077849, 143002356, 69835205, 57036722, 
+"Statistical Infrastructure", 105110975, 105110975, 97950720, 96525394, 108827938,
+87473605, 116399563, 135719900, 
+"Subtotal 1", 481363687, 481363687, 701372352, 377659317, 483502529,
+462748518, 419261616, 427085892, 
+"Cost-recovered Statistical Services", 112060852, 112060852, 112025384, 112025384, 112025384,
+96359919, 76333208, 80001693, 
+"Subtotal 2", 112060852, 112060852, 112025384, 112025384, 112025384, 96359919, 76333208, 80001693,
+"Internal Services", 51666281, 51666281, 58086277, 58485569, 62163757,
+62786663, 55940845, 56705219, 
+"Total Gross Expenditures", 645090820, 645090820, 871484013, 548170270, 657691670, 621895100, 551535669, 563792804, 
+"Respendable Revenue", -120000000, -120000000, -120000000, -120000000, -120000000,
+-104334535, -84333208, -92281029,
+"Total Net Expenditures", 525090820, 525090820, 751484013, 428170270, 537691670,
+517560565, 467202461, 471511775
+)
+
+statcan_budget
+
+```
+
+
+```{r}
+
+statcan_budget_fy <- statcan_budget %>% 
+  select(pgm = "Program(s) and Internal Services",
+         fy14 = "2013-14 Actual Spending (authorities used)",
+         fy15 = "2014-15 Actual Spending (authorities used)",
+         fy16 = "2015-16 Actual Spending (authorities used)",
+         fy17 = "2015-16 Actual Spending (authorities used)",
+         fy18 = "2017-18 Planned Spending") 
+
+statcan_budget_fy %>% 
+  filter(pgm == "Censuses") %>% 
+  pivot_longer(-pgm, names_to = "fiscal_year", values_to = "expenditure") %>% 
+  mutate(expenditure_bc_share = expenditure * 0.135) %>% 
+  summarise(total_cost = sum(expenditure),
+            total_cost_bc = sum(expenditure_bc_share),
+            total_cost_bc_annum = sum(expenditure_bc_share)/5)
+
+```
+
