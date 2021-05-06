@@ -1,0 +1,97 @@
+---
+title: "split_strings"
+author: "Martin Monkman"
+date: "05/05/2021"
+output: html_document
+---
+
+
+```{r setup}
+library(tidyverse)
+```
+
+
+Some messy data--note that the 2nd row has an explicit missing Sales value in the middle and the end (there is a comma at the end of the string), and the 3rd row has an implicit missing Sales value at the end.
+
+```{r}
+df <- tribble(
+  ~"ID", ~"City", ~"Sales",
+  1, "Istanbul,Tokyo,Brussels", "4,5,6",
+  2, "London,New York,Paris,Berlin,Madrid", "20,30,,50,",
+  3, "London,Paris,New York,Munich", "1979,1980,1981"
+)
+
+df
+```
+
+The goal is to split each City cell into separate entry, and then match with the Sales column. Once that's done for each row, they get bound together into a single table.
+
+The first row will look like this:
+
+```{r}
+
+tribble(
+  ~"City", ~"Sales",
+  "Istanbul", "4",
+  "Tokyo", "5",
+  "Brussels", "6"
+)
+
+
+```
+
+
+Some experimentation
+
+```{r}
+
+df[1, , drop = TRUE]
+
+df[1,]
+
+
+df2 <- as.matrix(df)
+as.vector(df2[1,])
+
+
+df %>% 
+  select(-ID) %>% 
+  as.matrix() 
+
+```
+
+
+Got it! split the columns into separate objects, then use `data.frame()` to join them by position, then `rbind()`
+
+```{r}
+city_names <- str_split(df$City, ",")
+sales <- str_split(df$Sales, ",")
+
+df_a <- data.frame(city_names[[1]], sales[[1]])
+colnames(df_a) <- c("city_name", "sales") 
+  
+
+df_b <- data.frame(city_names[[2]], sales[[2]])
+colnames(df_b) <- c("city_name", "sales") 
+
+rbind(df_a, df_b)
+
+```
+
+Turn it into a function
+
+```{r}
+
+city_names <- str_split(df$City, ",")
+sales <- str_split(df$Sales, ",")
+
+temp_df <- data.frame(city_names = vector("character"),
+                     sales = vector("character"))
+
+
+for(i in nrow(df)) {
+  temp_df[i] <- data.frame(city_names[[i]], sales[[i]])
+}
+
+```
+
