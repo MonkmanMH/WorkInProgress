@@ -7,7 +7,8 @@
   # library(ggplot2)
   # library(Lahman)
   # msg upon completion
-  cat("\nTEST - Successfully loaded Martin's Rprofile.site with libPaths set to C:/RPackages at", date(), "\n", "\n",
+  # cat("\nTEST - Successfully loaded Martin's Rprofile.site with libPaths set to C:/RPackages at", date(), "\n", "\n",
+    cat("\nTEST - Successfully loaded Martin's Rprofile.site at", date(), "\n", "\n",
   # https://www.rostrum.blog/2019/01/04/rprofile-motivate/, plus some from inspirobot.me  (above the #)
        sample(x = (c("ONLY WHEN YOU SEE THE FULL POTENTIAL OF QUESTIONS, WILL YOU MEET QUESTIONS",
                      "ALWAYS RESIST YOUR BRAIN",
@@ -25,11 +26,12 @@
                      "WITH AVERAGE PEOPLE COME AVERAGE SCIENCES",
                      "SCRUTINIZE STRUCTURE. ALPHABETIZE RESILIENCE.",
                      "FAILURE CAN FEEL PAINFUL",
-                     "MAKE THE MOST OF YOUR ATTITUDE"
+                     "MAKE THE MOST OF YOUR ATTITUDE",
+                     "THINK. IT'S NEVER TOO LATE"
                      #
-                     "DON'T PANIC",
-                     "Do the thing! Yeah!",
-                     "Generic motivational quote!"
+                     # "DON'T PANIC",
+                     # "Do the thing! Yeah!",
+                     # "Generic motivational quote!"
                      )
                    ),
               size = 1        
