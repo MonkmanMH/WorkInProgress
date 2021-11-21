@@ -11,12 +11,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This script generates a random "employee ID" that is similar in structure to national identification numbers, such as the National Insurance Number (NINO) in the United Kingdom, Social Security Number (SSN) in the United States and the Social Insurance Number (SIN) in Canada.
 
-For the unique identification generated here, the structure is:
+For the unique identification generated here, the structure is 12 characters:
 
-Two letters, four numbers, two letters, two numbers
+Two letters, a hyphen, four numbers, a hyphen, two letters, two numbers
 
 There is no restriction on which letters or numerals can be assigned (this is often not the case; for example, many systems implement approaches where the letter O cannot be used, as it can be easily confused with the number zero).
 
+### Approach 1
 
 ```{r}
 # set random number generator seed to year Canad introduced the SIN
@@ -36,6 +37,33 @@ createRandString()
 ```
 
 
+modify to fit our pattern
+
+```{r}
+# set random number generator seed to year Canad introduced the SIN
+# https://en.wikipedia.org/wiki/Social_insurance_number
+set.seed(1964)
+
+# function from https://stackoverflow.com/a/42734700/4170032
+digits = 0:9
+createRandString <- function() {
+  v = c(sample(LETTERS, 2, replace = TRUE),
+        "-",
+        sample(digits, 4, replace = TRUE),
+        "-",
+        sample(LETTERS, 2, replace = TRUE),
+        sample(digits, 2, replace = TRUE))
+  return(paste0(v,collapse = ""))
+}
+
+createRandString()
+
+replicate(5, createRandString())
+
+```
+
+### Approach 2
+
 
 ```{r}
 # from https://stackoverflow.com/a/42734570/4170032
@@ -52,6 +80,31 @@ sprintf("%s%s%s", stri_rand_strings(5, 5, '[A-Z]'),
 
 do.call(paste0, Map(stri_rand_strings, n=5, length=c(5, 4, 1),
             pattern = c('[A-Z]', '[0-9]', '[A-Z]')))
+
+```
+
+
+replicate with our structure
+
+note: this has the flexibility to easily add a longer regex that prevents the use of problematic letters
+
+```{r}
+# set the number of iterations desired
+i <- 5
+
+# note need to add to the number of "%s" to equal the number of string chunks
+# -- see ?sprintf, fmt argument
+
+sprintf(fmt = "%s%s%s%s%s%s", 
+        stri_rand_strings(i, 2, '[A-Z]'),
+        "-",
+        stri_rand_strings(i, 4, '[0-9]'),
+        "-",
+        stri_rand_strings(i, 2, '[A-Z]'),
+        stri_rand_strings(i, 2, '[0-9]')
+)
+
+
 
 ```
 
