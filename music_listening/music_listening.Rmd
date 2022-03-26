@@ -121,6 +121,10 @@ ecm <- df_playlist %>%
 ecm
 ```
 
+### most played
+
+artist
+
 ```{r}
 
 ecm %>% 
@@ -130,6 +134,7 @@ ecm %>%
 
 ```
 
+album
 
 ```{r}
 
@@ -148,7 +153,7 @@ ecm_min <- ecm %>%
 #  filter(format == LP) %>% 
   group_by(artist, album) %>% 
   tally() %>% 
-  arrange(n)
+  filter(n == 1)
   
 ecm_min
 
@@ -167,7 +172,7 @@ ecm %>%
 
 ### ECM lps
 
-#### next up
+longest-ago played LPs
 
 ```{r}
 
@@ -180,6 +185,37 @@ ecm %>%
   
 
 ```
+
+Longest ago played, where have LP (i.e. if it was played via another format, it gets skipped)
+
+```{r}
+ecm_last_played <- ecm %>% 
+  group_by(artist, album) %>% 
+  summarise(last_played = max(play_date)) %>% 
+  ungroup()
+
+ecm_last_played
+
+# check unique
+ecm_last_played %>% 
+  group_by(artist, album) %>% 
+  tally() %>% 
+  filter(n > 1)
+
+# create list of unique ECM LPs
+ecm_lp <- ecm %>%
+  filter(format == "LP") %>% 
+  distinct(artist, album)
+
+# join, slice with 10 least recently played
+ecm_lp %>% 
+  left_join(ecm_last_played, by = c("artist", "album")) %>% 
+  slice_min(order_by = last_played, n = 10)
+  
+
+```
+
+
 
 last played
 
