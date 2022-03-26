@@ -23,6 +23,9 @@ library(RcppRoll)
 
 ```
 
+## read from google
+
+https://www.r-bloggers.com/2021/12/how-to-connect-r-to-google-sheets-using-googlesheets4/
 
 ```{r}
 # local copy
@@ -31,11 +34,19 @@ library(RcppRoll)
 
 # read from google sheets
 
-df_playlist <- read_sheet("https://docs.google.com/spreadsheets/d/1kHBEMFEDwyszldNbNvD2A6Pt8KYoUACDZZ0usWvrruA/edit?usp=sharing")
+# test version
+#music_playlist <- "https://docs.google.com/spreadsheets/d/1LJdGL1tASJYJ41Yvxku4k5_tYG5mV-8xcoH8e1-vWp8/edit?usp=sharing"
+
+# full version
+music_playlist <- "https://docs.google.com/spreadsheets/d/1kHBEMFEDwyszldNbNvD2A6Pt8KYoUACDZZ0usWvrruA/edit?usp=sharing"
 
 
-df_playlist
+#df_playlist <- read_sheet(music_playlist)
+df_playlist <- read_sheet(music_playlist, 
+                          col_types = "cciiiiDccicccccccccccccccDdccD"
+                          )
 
+tail(df_playlist)
 ```
 
 
@@ -43,13 +54,19 @@ df_playlist
 ```{r}
 
 df_playlist_trim <- df_playlist %>% 
+  mutate(disc_num = case_when(
+    is.na(disc_num) ~ 1,
+    TRUE ~ as.numeric(disc_num)
+  )) %>% 
   select("index" = (starts_with("index:")), 
          year, month, day,
          date_of_acquisition,
          format, disc_num,
          genre) %>% 
   mutate(play_date = make_date(year, month, day)) %>% 
-  filter(play_date > as_date("2017-01-01"))
+  filter(play_date > as_date("2017-03-31"))
+
+max(df_playlist_trim$play_date)
 
 df_playlist_trim
 
@@ -57,9 +74,14 @@ df_playlist_trim %>%
   group_by(date_of_acquisition) %>% 
   tally
 
-df_play_summary <- df_playlist_trim %>% 
+df_playlist_trim %>% 
   group_by(play_date) %>% 
   tally()
+
+df_play_summary <- df_playlist_trim %>% 
+  group_by(play_date) %>%
+  summarise(n = sum(disc_num))
+
 
 df_play_summary <- df_play_summary %>%
   mutate(roll_avg = roll_mean(x = n, n = 14, fill = NA))
@@ -68,7 +90,9 @@ df_play_summary
 
 ```
 
-```{r}
+## plot trend
+
+```{r plot_trend}
 
 ggplot(df_play_summary, aes(x = play_date, y = roll_avg)) +
   geom_line() +
@@ -77,3 +101,96 @@ ggplot(df_play_summary, aes(x = play_date, y = roll_avg)) +
 
 ```
 
+
+## ECM
+
+```{r}
+
+ecm <- df_playlist %>% 
+  filter(str_detect(label, "ECM")) %>% 
+  drop_na(year) %>% 
+  mutate(play_date = make_date(year, month, day)) %>% 
+  select(artist, 
+         album, 
+         format,
+         play_date)
+
+#%>% 
+#  filter(play_date > as_date("2017-03-31"))
+
+ecm
+```
+
+```{r}
+
+ecm %>% 
+  group_by(artist) %>% 
+  tally() %>% 
+  arrange(desc(n))
+
+```
+
+
+```{r}
+
+ecm %>% 
+  group_by(artist, album) %>% 
+  tally() %>% 
+  arrange(desc(n))
+
+```
+
+
+
+```{r}
+
+ecm_min <- ecm %>% 
+#  filter(format == LP) %>% 
+  group_by(artist, album) %>% 
+  tally() %>% 
+  arrange(n)
+  
+ecm_min
+
+```
+
+
+
+```{r}
+
+ecm %>% 
+  semi_join(ecm_min, by = c("artist", "album")) %>% 
+  select(album, artist, play_date)
+
+```
+
+
+### ECM lps
+
+#### next up
+
+```{r}
+
+ecm %>% 
+  filter(format == "LP") %>% 
+  group_by(artist, album) %>% 
+  summarise(last_played = max(play_date)) %>% 
+  ungroup() %>% 
+  slice_min(order_by = last_played, n = 10)
+  
+
+```
+
+last played
+
+```{r}
+
+ecm %>% 
+  filter(format == "LP") %>% 
+  group_by(artist, album) %>% 
+  summarise(last_played = max(play_date)) %>% 
+  ungroup() %>% 
+  slice_max(order_by = last_played, n = 5)
+  
+
+```

@@ -19,6 +19,9 @@ There is no restriction on which letters or numerals can be assigned (this is of
 
 ### Approach 1
 
+The first of two of the solutions presented at https://stackoverflow.com/questions/46104176/how-to-run-a-function-multiple-times-and-write-the-results-to-a-list
+
+
 ```{r}
 # set random number generator seed to year Canad introduced the SIN
 # https://en.wikipedia.org/wiki/Social_insurance_number
@@ -89,8 +92,9 @@ replicate with our structure
 note: this has the flexibility to easily add a longer regex that prevents the use of problematic letters
 
 ```{r}
-# set the number of iterations desired
-i <- 5
+# set seed and the number of iterations desired
+set.seed(1964)
+i <- 10
 
 # note need to add to the number of "%s" to equal the number of string chunks
 # -- see ?sprintf, fmt argument
