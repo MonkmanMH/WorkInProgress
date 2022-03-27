@@ -146,6 +146,7 @@ ecm %>%
 ```
 
 
+only played once
 
 ```{r}
 
@@ -160,6 +161,20 @@ ecm_min
 ```
 
 
+### most/least recently played
+
+
+most recent
+
+```{r}
+
+ecm %>% 
+  select(artist, album, format, play_date) %>% 
+  arrange(desc(play_date))
+
+```
+
+least recent (longest ago)
 
 ```{r}
 
@@ -168,6 +183,7 @@ ecm %>%
   select(album, artist, play_date)
 
 ```
+
 
 
 ### ECM lps
@@ -230,3 +246,36 @@ ecm %>%
   
 
 ```
+
+
+## Pat Metheny
+
+```{r}
+
+metheny <- df_playlist %>% 
+  filter(str_detect(artist, "Metheny")) %>% 
+  drop_na(year) %>% 
+  mutate(play_date = make_date(year, month, day)) %>% 
+  select(artist, 
+         album, 
+         format,
+         play_date)
+
+metheny
+
+```
+
+### most played
+
+
+
+```{r}
+
+metheny %>% 
+  group_by(album) %>% 
+  tally() %>% 
+  arrange(desc(n))
+
+```
+
+
