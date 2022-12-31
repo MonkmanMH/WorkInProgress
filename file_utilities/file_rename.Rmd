@@ -12,19 +12,30 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## file renaming
 
+https://www.statology.org/rename-file-in-r/
 
+
+Rename multiple files with a particular pattern
+
+
+Example: File folder with band name, remove band name from sub-folders
+
+
+* NOTE: a file with the full `file_pattern` before the "." extension will a) be renamed with no name, and should appear in your Windows file exporer but not your RStudio project
 
 ```{r}
 
-artist <- "The Beatles"
+# set the artist name (used to set working directory and string to replace)
+artist <- "Steely Dan"
 
-setwd(glue::glue("F:/@FPAR/{artist}"))
+setwd(glue::glue("{artist}"))
 getwd()
 
-
+# note either hyphen or N-dash (<alt>0150)
 file_pattern <- glue::glue('{artist} [-–] ')
 list.files(pattern = file_pattern)
 
+# replacement
 file.rename(list.files(pattern = file_pattern),
             stringr::str_replace(list.files(pattern =file_pattern), pattern=file_pattern, ''))
 
