@@ -1,0 +1,32 @@
+---
+title: "file utilities"
+author: "Martin Monkman"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## file renaming
+
+
+
+```{r}
+
+artist <- "The Beatles"
+
+setwd(glue::glue("F:/@FPAR/{artist}"))
+getwd()
+
+
+file_pattern <- glue::glue('{artist} [-–] ')
+list.files(pattern = file_pattern)
+
+file.rename(list.files(pattern = file_pattern),
+            stringr::str_replace(list.files(pattern =file_pattern), pattern=file_pattern, ''))
+
+```
+
