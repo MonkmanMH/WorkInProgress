@@ -80,6 +80,28 @@ estimate_pi()
 
 ### Martin's version 
 
+For this version, we will create a circle of radius = 1, centered on the point (0, 0). On a cartesian plane, this will put the four cardinal points at (clockwise from north) 
+
+* 0, 1 (top)
+* 1, 0 (right)
+* 0, -1 (bottom)
+* -1, 0 (left)
+
+Around the circle we will create a square with sides of a length of 2 (i.e. 2 times the length of the radius), with the four corners at (clockwise from top left)
+
+* -1, 1 (top left)
+* 1, 1 (top right)
+* 1, -1 (bottom right)
+* -1, -1 (bottom left)
+
+Since the area of a circle is pi * r squared, and r (and therefore r squared) is 1, the circle has an area of pi. 
+
+The square, with sides of length 2, has an area of 4.
+
+Below, we create a random distribution of points within the square, and determine which of them are inside the circle. The proportion of the points inside the circle (times four) will give us our estimate of the value of pi.
+
+* equation for a circle of radius = 1 is: sqrt(x-squared + y-squared)
+
 ```{r}
 
 
@@ -95,7 +117,7 @@ pi_table <- pi_table %>%
     TRUE ~ FALSE
   ))
 
-# plot a circle
+# plot a circle using ggforce::geom_circle()  https://ggforce.data-imaginist.com/
 ggplot() +
   ggforce::geom_circle(aes(x0 = 0, y0 = 0, r = 1)) +
   coord_fixed()
