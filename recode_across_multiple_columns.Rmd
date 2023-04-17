@@ -52,6 +52,15 @@ What I have been trying to find is a way to use something like `across()` which 
 I have a nagging sense that I am overlooking something that would give me a streamlined solution to this (other than a time machine, and getting whoever coded the data to use the option_ T/F approach!)
 
 
+## not quite solutions
+
+https://stackoverflow.com/questions/58686186/recode-multiple-polytomous-variables
+
+https://stackoverflow.com/questions/43836503/recoding-multiple-variables-in-r
+
+dplyr::across() https://dplyr.tidyverse.org/articles/colwise.html
+
+
 
 https://www.r-bloggers.com/2022/08/analyzing-multiple-response-questions/
 
