@@ -1,0 +1,101 @@
+---
+title: "multiple evaluation"
+author: "Martin Monkman"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+## The problem
+
+I have a "check all that apply" survey question that has been coded with as many columns as there are options, but the columns are only filled if a respondent has checked an option.
+
+I want to create a new variable for each option, which has a TRUE or FALSE for the options.
+
+```{r data}
+
+dat <- tribble(
+  ~user_id, ~var_01, ~var_02, ~var_03,
+  "user_w", "option 1", "option 2", "option 3",
+  "user_x", "option 1", "option 2", NA,
+  "user_y", "option 2", "option 3", NA,
+  "user_z", "option 3", NA, NA
+)
+
+dat
+
+```
+
+I could use a `case_when()` inside a `mutate()`, but it has to be repeated for as many options as I have. (IRL one of the surveys I have been asked to analyze has 14 options...so it would require 14 evaluations for each of the 14 mutations. That's 196 copy/paste jobs.) 
+
+Here's the code for option 2, which occurs in var_01 and var_02.
+
+```{r}
+
+dat %>% 
+  mutate(option_2 = case_when(
+    var_01 == "option 2" ~ TRUE,
+    var_02 == "option 2" ~ TRUE,
+    var_03 == "option 2" ~ TRUE,
+    TRUE ~ FALSE
+  ))
+
+```
+
+What I have been trying to find is a way to use something like `across()` which will evaluate all `var_` variables in a single mutate line. (All of the `across()` examples I have found apply the same function repeatedly to all the variables, e.g. mean of var_01, mean of var_02, etc.)
+
+I have a nagging sense that I am overlooking something that would give me a streamlined solution to this (other than a time machine, and getting whoever coded the data to use the option_ T/F approach!)
+
+
+
+https://www.r-bloggers.com/2022/08/analyzing-multiple-response-questions/
+
+{expss} 
+
+* https://cran.r-project.org/web/packages/expss/index.html
+
+* https://github.com/gdemin/expss
+
+
+**polytomous mode**
+
+```{r}
+expss::calc_cro(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
+```
+
+
+```{r}
+polytomous <- data.frame(
+response1 = c("R", "Python","R", "Stata", "SPSS","Python","Stata","SPSS","R"),
+response2 = c("Python", "R", "Stata", "SPSS", "R", "R", "R", "Stata", "SPSS")
+)
+polytomous
+
+#indicator <- data.frame(
+#R = c("Yes","Yes","Yes", "No", "Yes","Yes","Yes","No","Yes"),
+#Stata = c("No","No","Yes","Yes","No","No","Yes","Yes","No"),
+#Python = c("Yes","Yes","No","No","No","Yes","No","No","No"),
+#SPSS = c("No","No","No","Yes","Yes","No","No","Yes","Yes")
+#)
+#indicator
+```
+
+```{r}
+library(expss)
+cross_cases(polytomous, mrset(response1 %to% response2), total(label = "Freq"))
+```
+
+
+```{r}
+library(expss)
+cross_cases(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
+cross_cpct(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
+cross_tpct(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
+
+```
+
