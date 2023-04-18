@@ -93,3 +93,52 @@ cross_cpct(dat, mrset(var_01 %to% var_03), total(label = "pct"))
 
 But none of these options provide a way to mutate a new column into my original records.
 
+
+###---
+
+
+## pivot solution
+
+```{r}
+# ya basic
+dat %>% 
+  pivot_longer(cols = -user_id, names_to = "var_name", values_to = "option_list") %>% 
+  drop_na(option_list) %>% 
+  mutate(option_tf = TRUE) %>% 
+  pivot_wider(names_from = option_list, values_from = option_tf)
+
+# leaving NA rows adds an NA column and superfluous rows
+dat %>% 
+  pivot_longer(cols = -user_id, names_to = "var_name", values_to = "option_list") %>% 
+  #drop_na(option_list) %>% 
+  mutate(option_tf = ifelse(is.na(option_list), FALSE, TRUE)) %>% 
+  pivot_wider(names_from = option_list, values_from = option_tf)
+
+```
+
+### This Is The Way
+
+```{r}
+
+dat
+
+dat_wide <- dat %>% 
+  pivot_longer(cols = -user_id, names_to = "var_name", values_to = "option_list") %>% 
+  # drop those pesky NA values
+  drop_na(option_list) %>% 
+  mutate(option_tf = TRUE) %>% 
+  # deselect column so that the pivot results in 1 row per user
+  select(-var_name) %>% 
+  pivot_wider(names_from = option_list, values_from = option_tf)
+
+dat_wide
+
+# at this point, can choose to add FALSE if our analysis calls for it
+dat_wide <- dat_wide %>% 
+  mutate(across(starts_with("option"),
+                ~replace(.x, is.na(.x), FALSE)))
+
+dat_wide
+```
+
+-30-
