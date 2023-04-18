@@ -141,4 +141,33 @@ dat_wide <- dat_wide %>%
 dat_wide
 ```
 
+###---
+
+## SPSS format
+
+
+df_survey %>%
+  select(user_id, contains("q16")) %>%
+  # mutate to create factors--so we end up with the value label as the pivoted variable name
+  #  mutate(across(starts_with("q16"),
+  mutate(across(q16_01:q16_13,
+                .fns = haven::as_factor)) %>%
+  # 
+  pivot_longer(
+    cols = (q16_01:q16_13),
+    names_to = "var_name",
+    values_to = "option_list"
+  ) %>%
+  # drop those pesky NA values
+  drop_na(option_list) %>%
+  mutate(option_tf = TRUE) %>%
+  # deselect column so that the pivot results in 1 row per user
+  select(-var_name) %>%
+  # 
+  pivot_wider(names_from = option_list,
+    names_glue = "q16_{option_list}",
+              values_from = option_tf)
+
+```
+
 -30-
