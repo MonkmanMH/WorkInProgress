@@ -17,6 +17,8 @@ I have a "check all that apply" survey question that has been coded with as many
 
 I want to create a new variable for each option, which has a TRUE or FALSE for the options.
 
+Here's a toy example:
+
 ```{r data}
 
 dat <- tribble(
@@ -47,9 +49,13 @@ dat %>%
 
 ```
 
-What I have been trying to find is a way to use something like `across()` which will evaluate all `var_` variables in a single mutate line. (All of the `across()` examples I have found apply the same function repeatedly to all the variables, e.g. mean of var_01, mean of var_02, etc.)
+What I have been trying to find is a way to use something like `across()` which will evaluate all `var_` variables in a single mutate line. 
 
-I have a nagging sense that I am overlooking something that would give me a streamlined solution to this (other than a time machine, and getting whoever coded the data to use the option_ T/F approach!)
+* All of the `across()` examples I have found apply the same function repeatedly to all the variables, e.g. mean of var_01, mean of var_02, etc.
+
+* If the data was stored in a single variable (i.e. a "pick one" survey question, rather than a "check all that apply") a `pivot_wider()` with a TRUE / FALSE option
+
+I have a nagging sense that I am overlooking something that would give me a streamlined solution to this (other than a time machine, and politely asking whoever coded the data to use the option = T/F approach!)
 
 
 ## not quite solutions
@@ -71,40 +77,19 @@ https://www.r-bloggers.com/2022/08/analyzing-multiple-response-questions/
 * https://github.com/gdemin/expss
 
 
-**polytomous mode**
-
-```{r}
-expss::calc_cro(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
-```
-
-
-```{r}
-polytomous <- data.frame(
-response1 = c("R", "Python","R", "Stata", "SPSS","Python","Stata","SPSS","R"),
-response2 = c("Python", "R", "Stata", "SPSS", "R", "R", "R", "Stata", "SPSS")
-)
-polytomous
-
-#indicator <- data.frame(
-#R = c("Yes","Yes","Yes", "No", "Yes","Yes","Yes","No","Yes"),
-#Stata = c("No","No","Yes","Yes","No","No","Yes","Yes","No"),
-#Python = c("Yes","Yes","No","No","No","Yes","No","No","No"),
-#SPSS = c("No","No","No","Yes","Yes","No","No","Yes","Yes")
-#)
-#indicator
-```
-
-```{r}
-library(expss)
-cross_cases(polytomous, mrset(response1 %to% response2), total(label = "Freq"))
-```
+Note: the {expss} package has a set of functions to calculate summary tables from data that is stored in this way (_polytomous_). Here the `cross_cases()` function produces the frequency counts for our data.
 
 
 ```{r}
 library(expss)
-cross_cases(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
-cross_cpct(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
-cross_tpct(dat, mrset(var_01 %to% var_03), total(label = "Freq"))
-
+expss::cross_cases(dat, mrset(var_01 %to% var_03), total(label = "freq"))
 ```
+
+Similarly, the `cross_cpct()` function calculates the column percentages:
+
+```{r}
+cross_cpct(dat, mrset(var_01 %to% var_03), total(label = "pct"))
+```
+
+But none of these options provide a way to mutate a new column into my original records.
 
